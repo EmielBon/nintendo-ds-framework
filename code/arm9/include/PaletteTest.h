@@ -1,0 +1,22 @@
+#pragma once
+
+#include "Game.h"
+#include "X11Palette.h"
+#include "types.h"
+
+namespace Test
+{
+	class PaletteTest : public Framework::Game
+	{
+	private:
+
+		using super = Framework::Game;
+
+	protected:
+
+		void Initialize();
+		void LoadContent();
+		void Update(const GameTime &gameTime);
+		void Draw(const GameTime &gameTime);
+	};
+}

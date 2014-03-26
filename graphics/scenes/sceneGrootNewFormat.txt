@@ -1,0 +1,126 @@
+GameObject
+{
+	id = 0;
+	model = barrel;
+	solid = true;
+	keyframe0
+	{
+		translation = (0, 0, 3.65);
+		rotation = (0, 0, 0);
+		scaling = (1, 1, 1);
+	}
+}
+GameObject
+{
+	id = 1;
+	model = barrel;
+	solid = true;
+	keyframe0
+	{
+		translation = (-0.7, 0, 3.1);
+		rotation = (0, 0, 0);
+		scaling = (1, 1, 1);
+	}
+}
+GameObject
+{
+	id = 2;
+	model = barrel;
+	solid = true;
+	keyframe0
+	{
+		translation = (-0.7, 0.4, 3.85);
+		rotation = (0, -3.525565, -4.712389);
+		scaling = (1, 1, 1);
+	}
+}
+GameObject
+{
+	id = 3;
+	model = fence_wood_base;
+	solid = true;
+	keyframe0
+	{
+		translation = (-1.4, 0, 0);
+		rotation = (0, 0, 0);
+		scaling = (1, 1, 1);
+	}
+}
+GameObject
+{
+	id = 4;
+	model = fence_wood_base;
+	solid = true;
+	keyframe0
+	{
+		translation = (1.45, 0, 0);
+		rotation = (0, 0, 0);
+		scaling = (1, 1, 1);
+	}
+}
+GameObject
+{
+	id = 5;
+	model = fence_wood_end;
+	solid = true;
+	keyframe0
+	{
+		translation = (2.9, 0, 0);
+		rotation = (0, 0, 0);
+		scaling = (1, 1, 1);
+	}
+}
+GameObject
+{
+	id = 6;
+	model = pipe;
+	solid = true;
+	keyframe0
+	{
+		translation = (2.95, 0, 2.6);
+		rotation = (0, 0, 0);
+		scaling = (1, 1, 1);
+	}
+}
+GameObject
+{
+	id = 7;
+	model = townhouse;
+	solid = true;
+	keyframe0
+	{
+		translation = (2.45, 0, -1.05);
+		rotation = (0, 0, 0);
+		scaling = (1, 1, 1);
+	}
+	keyframe51
+	{
+		translation = (-7.191639, 0, -1.05);
+		rotation = (0, 0, 0);
+		scaling = (1, 1, 1);
+	}
+}
+GameObject
+{
+	id = 8;
+	model = crate;
+	solid = true;
+	keyframe0
+	{
+		translation = (0, 0, 1.6);
+		rotation = (0, 0, 0);
+		scaling = (1, 1, 1);
+	}
+}
+GameObject
+{
+	id = 9;
+	model = floor;
+	solid = true;
+	keyframe0
+	{
+		translation = (0, 0, 0);
+		rotation = (0, 0, 0);
+		scaling = (5, 5, 5);
+	}
+}

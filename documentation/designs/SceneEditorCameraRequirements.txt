@@ -1,0 +1,11 @@
+Camera object
+
+Van buiten (global axes):
+x Verplaatsen
+- Draaien
+x Erin gaan
+
+Van binnen (local axes):
+- Verplaatsen
+- Focus zetten
+- Zoomen

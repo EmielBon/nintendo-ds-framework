@@ -1,0 +1,9 @@
+[x] Include normals
+[x] Include UVs
+[x] Triangulate faces
+[x] Polygroups
+[x] Objects as OBJ objects
+[x] Objects as OBJ groups
+
+X forward
+Y up

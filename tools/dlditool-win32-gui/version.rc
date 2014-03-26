@@ -1,0 +1,203 @@
+/***********************************************************************
+**
+** Module: version.rc
+**
+** Description: Resource script version number includes + program history.
+**
+** Author: Adam Hodson - Meester Jones
+**
+** Created: 09/05/2003
+**
+** Modified: -
+**
+** Copyright (C) 2003 Adam Hodson
+** All Rights Reserved
+**
+** This program is free software; you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation; either version 2 of the License, or
+** (at your option) any later version.
+** 
+** This program is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+** GNU General Public License for more details.
+** 
+** You should have received a copy of the GNU General Public License
+** along with this program; if not, write to the Free Software
+** Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+** 
+** The author can be contacted via Email at meester_jones@lycos.co.uk
+**
+***********************************************************************/
+
+//
+// Geo Skin - Meester Jones <meester_jones@lycos.co.uk>
+//
+// 1.2
+//
+// - Added separator bitmap and menu skins preview.
+// - Geoskin now handles the new Bar and Menu registry structure.
+// - Modified Geoskin so you can now run it without having any skins installed. This
+// lets you edit your colours or create colour themes without skins.
+// - Fixed some positioning issues in the effects preview tab.
+//
+// 1.1
+//
+// - The 'Settings' tab now uses a treeview to display it's options.
+// - Removed 'Satuartion Limit' from the 'Effects' tab. The 'Limit' option now does
+// this as it provides better results.
+// - Added TheDawgLives' improved Greyscale option.
+// - If GeoSkin detects the GeoSkinEdit.exe in the same directory GeoSkin was run from,
+// it adds an 'Edit Skin' option to the Theme list popup menu which opens the selected
+// skin in GeoSkinEdit.
+// - You can now enable / disable 'Bar Shadows' from GeoSkin (Bar Shadows requires XP).
+// - You can now enable / disable 'Alpha Blending' from GeoSkin (requires Windows 2000
+// or better).
+// - Made zoom optional in the 'Colour' tab.
+// - You can now change the name of a Geobar in the 'Skins' tab.
+// - You can now change the transparent colour of a Geobar in the 'Skins' tab. You can
+// edit the colour or grab a colour from anywhere off the screen.
+// - GeoSkin now supports XP Theming.
+// - Fixed bar highlighting.
+// - Made the effects dialog larger to stop skin previews getting clipped.
+//
+// 1.0
+//
+// - Added TheDawgLives' colour effects code into the 'Effects' tab. You can apply tints
+// and effects to skins and colour schemes and save them as brand new schemes.
+// - Added zoomed area in the 'Colours' tab to make colour selecting by clicking on the
+// previews easier.
+// - Added popup menu for the theme list - right click an item to remove it or refresh
+// the theme list.
+// - You can now click for colours on the gripper preview.
+// - Splash screen / Wallpaper smooth resizing works in 16bit colourmode.
+// - Fixed stupid bug in .reg file loader.
+// - Major internal changes to the code. Again. :)
+//
+// 0.9
+//
+// - Internal development version.
+//
+// 0.8
+//
+// - Added colour editing options in the 'Colours' tab.
+// - 'Colours' tab now shows all the currently implemented colours used by Geo Shell
+// in the bar and menu previews.
+// - You can click on the menu / bar previews to select a colour to edit.
+// - You can export your edited colour settings to a .reg file.
+// - You can import your current colour settings into Geo Skin.
+// - Fixed selection bug in the bar combo when switching tabs.
+//
+//
+// 0.7.1
+//
+// - Reinstated old recycling code as it wasn't working with the latest Geo Shell beta.
+//
+// 0.7
+//
+// - Added '-import' command line option to convert old style skin directories
+// to the new format.
+// - Added a basic bar colours preview - with a coloured gripper.
+// - Added 'Settings' tab which lets you control aspects of the Geo Shell UI and
+// Geo Skin settings. Geo Skin settings are stored in 'geoskin.cfg'.
+// - Added support for XP-Style menus and system colours in the menu preview.
+// - Colour settings are no longer set with RegEdit. This is safer and should theoretically
+// allow Windows 95/98 users to use V5 RegEdit files transparently.
+// - Geo Skin will attempt to convert from 'Custom Colors' settings to the new colour
+// settings when it finds them in a .reg file.
+// - Added an option to fill in missing colour scheme entries with default colours.
+// - Visual improvements to the menu preview.
+// - Fixed 'Apply' button disabling when applying skins to specifc Geo Bars.
+// - Removed '-nowallpaper' command line option as you can do this via the panel. :)
+//
+// 0.6
+//
+// - Added menu, splash-screen and wallpaper previews.
+// - Sets 'splash.bmp' and 'wallpaper.bmp' if they're in the current skin dir.
+// - Tab control for easy switching between previews.
+// - Starts up with the currently used skin highlighted.
+// - Recursion fix in preview loader.
+// - Window maximizing / resizing bugs fixed.
+// - Fixed .reg file validation error under certain circumstances.
+// - Added '-nowallpaper' command line option to preserve your own wallpaper setting.
+// - Lots more internal restructuring. :)
+//
+// 0.5
+//
+// - You can now apply a skin to all bars or a specific Geo Bar.
+// - Highlight button added so you can see which bar you're skinning. 
+// - You can now select 'No skin' to use the default GeoShell skin.
+// - Previews skins correctly that don't have hidden bitmaps.
+// - Improved the reliability of the skin preview loader.
+// - Fixed bogus .reg validation failure under certain circumstances.
+// - Fixed uneccessary recycle when you OK the same skin you just applied.
+//
+// 0.4
+//
+// - Run with command line option -random to get GeoSkin to choose a random skin
+//   on startup and then closedown automatically.
+// - Replaced static buffers with dynamically allocated strings.
+// - Major internal restructuring.
+// - Dodgy .reg filenames now shown in message box, when import validation fails.
+// - Sub-directory skins now appear in the correct alphabetical order of the list.
+// - Fixed bug in bar preview size calculations.
+//
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "version.h"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""version.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+END
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION VERSION_NUMBERMAJOR,VERSION_NUMBERMINOR
+ PRODUCTVERSION VERSION_NUMBERMAJOR,VERSION_NUMBERMINOR
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x9L
+#else
+ FILEFLAGS 0x8L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080904b0"
+        BEGIN
+            VALUE "Comments", COMMENTS_STRING
+            VALUE "CompanyName", COMPANY_NAME
+            VALUE "FileDescription", FILE_DESCRIPTION
+            VALUE "FileVersion", VERSION_STRING
+            VALUE "LegalCopyright", COPYRIGHT_STRING
+			VALUE "PrivateBuild", VERSION_NUMBER_STRING
+            VALUE "ProductName", PRODUCT_NAME
+            VALUE "ProductVersion", VERSION_STRING
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x809, 1200
+    END
+END

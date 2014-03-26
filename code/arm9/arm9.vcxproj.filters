@@ -1,0 +1,798 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="include\FileStream.h">
+      <Filter>FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Memory2D.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MemorySlot.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\types.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackgroundMemory.h">
+      <Filter>Graphics\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Background.h">
+      <Filter>Graphics\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Palette.h">
+      <Filter>Graphics\Palette</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PaletteMemory.h">
+      <Filter>Graphics\Palette</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SpriteMemory.h">
+      <Filter>Graphics\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Sprite.h">
+      <Filter>Graphics\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="include\VideoRamBank.h">
+      <Filter>Graphics\VRAM</Filter>
+    </ClInclude>
+    <ClInclude Include="include\VideoRam.h">
+      <Filter>Graphics\VRAM</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ObjectAttributeMemory.h">
+      <Filter>Graphics\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Keys.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KeyState.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KeyPad.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TileSet.h">
+      <Filter>Graphics\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TileMemory.h">
+      <Filter>Graphics\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Room.h">
+      <Filter>Framework2D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameObject.h">
+      <Filter>Framework2D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CollisionMap.h">
+      <Filter>Framework2D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game2D.h">
+      <Filter>Framework2D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Chicken.h">
+      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Cyclops.h">
+      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Enemy.h">
+      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Guard.h">
+      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ShadowLink.h">
+      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TouchScreen.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TextRenderer.h">
+      <Filter>Graphics\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ScreenBlockEntry.h">
+      <Filter>Graphics\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TileSet16.h">
+      <Filter>Graphics\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TileSet256.h">
+      <Filter>Graphics\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Tile.h">
+      <Filter>Graphics\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Test3D.h">
+      <Filter>Test\Test 3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Test2D.h">
+      <Filter>Test\Test 2D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ZeldaStuff.h">
+      <Filter>Test\Test 2D\Zelda</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Bullet.h">
+      <Filter>Test\Test 2D\Zelda</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Link.h">
+      <Filter>Test\Test 2D\Zelda</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Sprites.h">
+      <Filter>Graphics\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Backgrounds.h">
+      <Filter>Graphics\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Framework2D.h">
+      <Filter>Framework2D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Framework.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Model.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ModelMesh.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BasicEffect.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Path.h">
+      <Filter>Framework2D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\File.h">
+      <Filter>FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BoundingSphere.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vertex.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IUpdateable.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IDrawable.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IDisposable.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Log.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LogEntry.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Console.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DirectionalLight.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DebugUI.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Font.h">
+      <Filter>Graphics\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BoundingBox.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\fixed.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ModelMeshPart.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PointLight.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ViewPort.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RasterizerState.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GraphicsDeviceManager.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TextureMemory.h">
+      <Filter>Graphics\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Texture.h">
+      <Filter>Graphics\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Debug.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ContainmentType.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Mario.h">
+      <Filter>Test\Test 3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\VertexBuffer.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EfficientVertex.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IndexBuffer.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Material.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BinaryReader.h">
+      <Filter>FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\StreamReader.h">
+      <Filter>FileSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\StringHelper.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Timer.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Assert.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Profiler.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LogPrinter.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Logging.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SetHelper.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Game.h">
+      <Filter>Framework\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameComponent.h">
+      <Filter>Framework\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DrawableGameComponent.h">
+      <Filter>Framework\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameComponentCollection.h">
+      <Filter>Framework\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IGameComponent.h">
+      <Filter>Framework\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameTime.h">
+      <Filter>Framework\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TimeSpan.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IGameHost.h">
+      <Filter>Framework\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NDSGameHost.h">
+      <Filter>Framework\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DateTime.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GraphicsDevice.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Screen.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Color.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MemoryTypes.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FPSCounter.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="include\VideoRamBankNames.h">
+      <Filter>Graphics\VRAM</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Button.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TouchState.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IEventListener.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IActionListener.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AbstractButton.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Room3D.h">
+      <Filter>Framework3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameObjec3D.h">
+      <Filter>Framework3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Light.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OpenGL.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FixedHelper.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MathFunctions.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Container.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Component.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Rectangle.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Size.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MapTile.h">
+      <Filter>Graphics\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MapResource.h">
+      <Filter>LLR</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SpriteResource.h">
+      <Filter>LLR</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SpriteSubImage.h">
+      <Filter>Graphics\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IGraphicsResource.h">
+      <Filter>LLR</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TilesManager.h">
+      <Filter>Graphics\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BreakPoint.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ProfilingManager.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ProfilingResult.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TiledBackground.h">
+      <Filter>Graphics\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Map.h">
+      <Filter>Graphics\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DisplayList.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vec2.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vec3.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Mat.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Camera.h">
+      <Filter>Graphics\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FlyingCamera.h">
+      <Filter>Framework3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameCamera.h">
+      <Filter>Framework3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Scene.h">
+      <Filter>Framework3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SceneObject.h">
+      <Filter>Framework3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ContentManager.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SpriteSet.h">
+      <Filter>Graphics\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MatrixPerformanceTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CollisionTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ColorPickerTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ConsoleTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DebugUITest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EfficientVectorsTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PaletteTest.h">
+      <Filter>Test\Palette Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\X11Palette.h">
+      <Filter>Test\Palette Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ProfilingTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SpriteTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TextRenderingTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TimerTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\FileStream.cpp">
+      <Filter>FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Memory2D.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MemorySlot.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Background.cpp">
+      <Filter>Graphics\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BackgroundMemory.cpp">
+      <Filter>Graphics\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="source\PaletteMemory.cpp">
+      <Filter>Graphics\Palette</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Sprite.cpp">
+      <Filter>Graphics\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SpriteMemory.cpp">
+      <Filter>Graphics\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VideoRam.cpp">
+      <Filter>Graphics\VRAM</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VideoRamBank.cpp">
+      <Filter>Graphics\VRAM</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ObjectAttributeMemory.cpp">
+      <Filter>Graphics\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Palette.cpp">
+      <Filter>Graphics\Palette</Filter>
+    </ClCompile>
+    <ClCompile Include="source\KeyPad.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TileSet.cpp">
+      <Filter>Graphics\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CollisionMap.cpp">
+      <Filter>Framework2D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Room.cpp">
+      <Filter>Framework2D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game2D.cpp">
+      <Filter>Framework2D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Chicken.cpp">
+      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Cyclops.cpp">
+      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Guard.cpp">
+      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ShadowLink.cpp">
+      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Enemy.cpp">
+      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TouchScreen.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TextRenderer.cpp">
+      <Filter>Graphics\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TileMemory.cpp">
+      <Filter>Graphics\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="source\main9.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Test3D.cpp">
+      <Filter>Test\Test 3D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Test2D.cpp">
+      <Filter>Test\Test 2D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Link.cpp">
+      <Filter>Test\Test 2D\Zelda</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Bullet.cpp">
+      <Filter>Test\Test 2D\Zelda</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Path.cpp">
+      <Filter>Framework2D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Tile.cpp">
+      <Filter>Graphics\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Log.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LogEntry.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Console.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DebugUI.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BoundingBox.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BasicEffect.cpp">
+      <Filter>Graphics\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ModelMeshPart.cpp">
+      <Filter>Graphics\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BoundingSphere.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GraphicsDeviceManager.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TextureMemory.cpp">
+      <Filter>Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Mario.cpp">
+      <Filter>Test\Test 3D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VertexBuffer.cpp">
+      <Filter>Graphics\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Material.cpp">
+      <Filter>Graphics\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BinaryReader.cpp">
+      <Filter>FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="source\StringHelper.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Timer.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LogPrinter.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Logging.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Game.cpp">
+      <Filter>Framework\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GameTime.cpp">
+      <Filter>Framework\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TimeSpan.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="source\NDSGameHost.cpp">
+      <Filter>Framework\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\StreamReader.cpp">
+      <Filter>FileSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Profiler.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GraphicsDevice.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Screen.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Color.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FPSCounter.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Button.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TouchState.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbstractButton.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Component.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TilesManager.cpp">
+      <Filter>Graphics\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ProfilingManager.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ProfilingResult.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TiledBackground.cpp">
+      <Filter>Graphics\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Map.cpp">
+      <Filter>Graphics\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DisplayList.cpp">
+      <Filter>Graphics\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Camera.cpp">
+      <Filter>Graphics\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FlyingCamera.cpp">
+      <Filter>Framework3D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GameCamera.cpp">
+      <Filter>Framework3D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Scene.cpp">
+      <Filter>Framework3D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SceneObject.cpp">
+      <Filter>Framework3D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ContentManager.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CollisionTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ConsoleTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DebugUITest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EfficientVectorsTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="source\PaletteTest.cpp">
+      <Filter>Test\Palette Test</Filter>
+    </ClCompile>
+    <ClCompile Include="source\X11Palette.cpp">
+      <Filter>Test\Palette Test</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ProfilingTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SpriteTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TextRenderingTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TimerTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MatrixPerformanceTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{1cc45359-0cfe-4f63-b311-7275d7f715c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test">
+      <UniqueIdentifier>{76bda93c-5ef3-4c72-b1c4-92014f6f0986}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileSystem">
+      <UniqueIdentifier>{7794f963-bab0-448b-ad56-24483ed14e54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{407a6495-0013-43be-b3ff-d17f66e5294e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{e6805ac7-b491-4c09-a036-9658d9b51bc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Background">
+      <UniqueIdentifier>{80e514e3-8124-485b-a956-f2fb124d02d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Sprite">
+      <UniqueIdentifier>{fb8c4fd1-1596-40dd-99ec-f9d91eb7b830}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Palette">
+      <UniqueIdentifier>{b9acac28-2ca4-4e9d-8994-91ab0bbdbbfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\VRAM">
+      <UniqueIdentifier>{3cc12abe-23ff-425a-8229-263bb9af91c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{e2e62cf2-ebb7-482e-ae4a-8e870133b803}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework2D">
+      <UniqueIdentifier>{5d8974a5-cedf-4f62-a786-2821fe013949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Text">
+      <UniqueIdentifier>{8f00a456-e5dd-4641-a1db-740d7bfe253b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test\Palette Test">
+      <UniqueIdentifier>{22ff8798-6d40-49c1-a1e7-ea8a49652dd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\3D">
+      <UniqueIdentifier>{7c64d355-0a8c-45c7-838b-96007c3152b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test\Test 3D">
+      <UniqueIdentifier>{195d89ea-d1b5-414c-a976-c3dfed0ecb8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debug">
+      <UniqueIdentifier>{0199053d-51a1-4e4d-9b24-f4337b24ef3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{ca1f01fe-af85-4fe3-94c4-8eef2bccc607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Controls">
+      <UniqueIdentifier>{a46dc48d-d56a-4656-a1c6-4bfe84105c0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Textures">
+      <UniqueIdentifier>{a2aa3dcc-13b8-489e-bc21-eaae8c6e78fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Tiles">
+      <UniqueIdentifier>{68fd8124-dc8a-4c16-aa91-5d33f8200f66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game">
+      <UniqueIdentifier>{8d308273-acd1-4deb-990a-0b921daa3394}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{723f2b19-ca35-4730-961b-687d308e10c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework3D">
+      <UniqueIdentifier>{793a4158-f7fb-4ab2-b852-f76a5314190c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LLR">
+      <UniqueIdentifier>{74ff88e0-ca34-477c-a657-9862c0cea28c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test\Test 2D">
+      <UniqueIdentifier>{6f0a803b-90f6-43c0-9bf1-79779a766c22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test\Test 2D\Zelda">
+      <UniqueIdentifier>{527c6ede-0b99-49e9-a7ae-5a1d3905d5e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test\Test 2D\Zelda\Enemies">
+      <UniqueIdentifier>{5ec68015-d1b7-46d5-ae06-7a16b883bb59}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

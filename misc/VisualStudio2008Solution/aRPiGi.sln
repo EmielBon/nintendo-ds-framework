@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "arm9", "arm9\arm9.vcproj", "{B308E890-5C56-4573-A050-850DD047381E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "arm7", "arm7\arm7.vcproj", "{8D0329FF-26B1-4E4A-BB57-786D207D4650}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aRPiGi", "aRPiGi.vcproj", "{4E8BE469-B0C9-46EC-AD99-FD1BFA783E1B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Nintendo DS = Debug|Nintendo DS
+		Debug|Win32 = Debug|Win32
+		Release|Nintendo DS = Release|Nintendo DS
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B308E890-5C56-4573-A050-850DD047381E}.Debug|Nintendo DS.ActiveCfg = Debug|Win32
+		{B308E890-5C56-4573-A050-850DD047381E}.Debug|Nintendo DS.Build.0 = Debug|Win32
+		{B308E890-5C56-4573-A050-850DD047381E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B308E890-5C56-4573-A050-850DD047381E}.Debug|Win32.Build.0 = Debug|Win32
+		{B308E890-5C56-4573-A050-850DD047381E}.Release|Nintendo DS.ActiveCfg = Release|Win32
+		{B308E890-5C56-4573-A050-850DD047381E}.Release|Nintendo DS.Build.0 = Release|Win32
+		{B308E890-5C56-4573-A050-850DD047381E}.Release|Win32.ActiveCfg = Release|Win32
+		{B308E890-5C56-4573-A050-850DD047381E}.Release|Win32.Build.0 = Release|Win32
+		{8D0329FF-26B1-4E4A-BB57-786D207D4650}.Debug|Nintendo DS.ActiveCfg = Debug|Win32
+		{8D0329FF-26B1-4E4A-BB57-786D207D4650}.Debug|Nintendo DS.Build.0 = Debug|Win32
+		{8D0329FF-26B1-4E4A-BB57-786D207D4650}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8D0329FF-26B1-4E4A-BB57-786D207D4650}.Debug|Win32.Build.0 = Debug|Win32
+		{8D0329FF-26B1-4E4A-BB57-786D207D4650}.Release|Nintendo DS.ActiveCfg = Release|Win32
+		{8D0329FF-26B1-4E4A-BB57-786D207D4650}.Release|Nintendo DS.Build.0 = Release|Win32
+		{8D0329FF-26B1-4E4A-BB57-786D207D4650}.Release|Win32.ActiveCfg = Release|Win32
+		{8D0329FF-26B1-4E4A-BB57-786D207D4650}.Release|Win32.Build.0 = Release|Win32
+		{4E8BE469-B0C9-46EC-AD99-FD1BFA783E1B}.Debug|Nintendo DS.ActiveCfg = Debug|Win32
+		{4E8BE469-B0C9-46EC-AD99-FD1BFA783E1B}.Debug|Nintendo DS.Build.0 = Debug|Win32
+		{4E8BE469-B0C9-46EC-AD99-FD1BFA783E1B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4E8BE469-B0C9-46EC-AD99-FD1BFA783E1B}.Debug|Win32.Build.0 = Debug|Win32
+		{4E8BE469-B0C9-46EC-AD99-FD1BFA783E1B}.Release|Nintendo DS.ActiveCfg = Release|Win32
+		{4E8BE469-B0C9-46EC-AD99-FD1BFA783E1B}.Release|Nintendo DS.Build.0 = Release|Win32
+		{4E8BE469-B0C9-46EC-AD99-FD1BFA783E1B}.Release|Win32.ActiveCfg = Release|Win32
+		{4E8BE469-B0C9-46EC-AD99-FD1BFA783E1B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

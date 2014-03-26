@@ -1,0 +1,10 @@
+barrel 0 0 3.65 0.5 0.5 0.5 0 0 0 true
+barrel -0.7 0 3.1 0.5 0.5 0.5 0 0 0 true
+barrel -0.7 0.4 3.85 0.5 0.5 0.5 0 -3.52556508902855 -4.71238898038469 true
+fence_wood_base -1.4 0 0 0.75 0.75 0.75 0 0 0 true
+fence_wood_base 1.45 0 0 0.75 0.75 0.75 0 0 0 true
+fence_wood_end 2.9 0 0 0.75 0.75 0.75 0 0 0 true
+pipe 2.95 0 2.6 0.5 0.5 0.5 0 0 0 true
+townhouse 2.45 0 -1.05 1.1 1.1 1.1 0 0 0 true
+crate 0 0 1.6 0.5 0.5 0.5 0 0 0 true
+floor 0 0 0 5 5 5 0 0 0 true

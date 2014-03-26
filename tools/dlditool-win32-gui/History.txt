@@ -1,0 +1,35 @@
+0.01
+
+- Initial Release
+
+0.02
+
+- Patcher now looks for .dldi files in a given folder and populates a list from the available drivers.
+- Patcher can now process multiple files.
+- Files can be dragged and dropped onto the patcher.
+
+0.021
+
+- Added 'About' dialog.
+- Included GPL license.
+
+0.3
+
+- Updated to latest source 1.10.
+- Added 'clear' button to the patch list.
+- Added version info.
+- Added XP theme support.
+
+0.031
+
+- Updated to latest source 1.21.
+
+0.032
+
+- Updated to latest source 1.23 from DevKitPro CVS.
+- Fixed dialog sizing error (Maxim).
+- Added icon (Maxim).
+- Added file filters to .nds browse dialog (Maxim).
+- .nds browse dialog supports multiple selections (Maxim/bob_fossil)
+- Fixes to the output window with moved caret/text selections (Maxim).
+

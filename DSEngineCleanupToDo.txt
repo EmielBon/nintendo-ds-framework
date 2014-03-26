@@ -1,0 +1,52 @@
+DS Engine Cleanup To-Do List
+
+Added functionality
+[-] Make API more consistent with XNA, maybe add some extra XNA functions
+[-] Add support for other engine modes
+[-] Add support for direct (non-tiled) background drawing
+[-] Add support for 3D on 2 screens
+[-] Add support for sprite sizes other than 32x32
+[-] Implement unit testing
+[-] Deletion of resources
+[-] Allow loading of GameObjects from files
+[-] Allow loading of Rooms from files
+[-] Integrate LUA for player and NPC behaviour
+[-] Create nice buttons and stuff for debug UI
+
+Cleanup:
+[x] Create one template Vector class, instead of 4
+[x] Replace Point by Vec2<int>
+[x] Create one template Matrix class, instead of 1 for only fx12
+[x] Fix the camera controls
+[x] Fix sprites
+[x] Remove Pair in favor of Tuple
+[-] Implement or throw away BinaryReader
+[-] Replace "super" with "base"
+[-] Implement proper loading of Paths
+[-] Implement Rooms properly
+[-] Replace Ptr's by * when reference counting is not needed
+[-] Replace Ptr and * by non-const references when it makes sense
+[-] Add versions for matrix calculations (and other things) that take a non-const reference output parameter
+[-] Improve loading efficiency
+[-] Make handling backgrounds easier, easy assignment of tiled backgrounds
+[-] Cleanup sprite system
+[-] Simplify tile handling further, it still takes too much unclear steps. Maybe cut down on the automation.
+[-] Improve tile handling performance. Maybe add support for caching of tile locations.
+[-] Bring comments up to standards (look at FileStream.h for example)
+[-] Fix or remove all the tests
+[-] Proper support for calculations among multiple fixed-point formats
+[-] Fix console (efficiency (maybe automate less?) and fix bug where text gets displayed lower when switching log views in DebugUI)
+[-] Switch to Git and GitHub
+[-] Make a good folder structure for the source code
+[-] Compile into separate libraries
+[/] Bring up to standards with C++11
+	http://msdn.microsoft.com/en-us/library/hh567368.aspx
+	[x] Alias templates: 			Replace some defines / typedefs with "using x = y"
+	[/] Initializer lists:			Replace lame vector / object initialization with { } shorthand
+									Add support for initializer lists to own classes
+	[/] Delegating constructors: 	Where it makes sense
+	[/] Defaulted functions:		Where an empty constructor is added along with a custom constructor
+	[/] Ranged for loop:			Where iterator loops occur that start with "for(auto"
+	[-] Strongly typed enums: 		Where it makes sense
+	[-] Deleted functions:			When you want to avoid implicit calling of a function with implicit type conversion, e.g a function only intended for floats is also called for an integer argument.
+	[-] Override and final:			Where it makes sense

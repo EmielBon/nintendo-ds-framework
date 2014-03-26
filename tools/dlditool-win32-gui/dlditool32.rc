@@ -1,0 +1,146 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.K.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""version.rc""\r\n"
+    "CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST ""dlditool32.manifest""\r\n"
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MAIN DIALOG DISCARDABLE  0, 0, 261, 210
+STYLE WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "DLDI File:",IDC_DLDI,6,9,42,12
+    COMBOBOX        IDC_DLDI_COMBO,54,9,159,54,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",IDC_DLDI_BROWSE,222,9,18,15
+    LTEXT           "Binaries:",IDC_BINARY,6,33,42,12
+    LISTBOX         IDC_BINARY_LIST,54,33,159,51,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_BINARY_BROWSE,222,33,18,15
+    PUSHBUTTON      "&Clear",IDC_CLEAR,219,69,36,15
+    LTEXT           "Output:",IDC_LOG,6,87,42,12
+    EDITTEXT        IDC_LOG_EDIT,6,102,243,81,ES_MULTILINE | ES_AUTOHSCROLL | 
+                    ES_READONLY | WS_VSCROLL
+    PUSHBUTTON      "&Patch",IDC_PATCH,6,189,51,15
+    PUSHBUTTON      "&About",IDC_ABOUT,201,189,48,15
+END
+
+IDD_ABOUT DIALOG DISCARDABLE  0, 0, 187, 153
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,69,120,50,14
+    LTEXT           "Windows Version:",IDC_ABOUT3,42,69,60,12
+    CTEXT           "Dynamically Linked Disk Interface patch tool",IDC_ABOUT,
+                    6,9,177,15
+    CTEXT           "by Michael Chisholm (Chishm)",IDC_ABOUT2,6,48,177,15
+    LTEXT           "bleh",IDC_ABOUT4,114,69,30,12
+    CTEXT           "by Adam Hodson (bob_fossil)",IDC_ABOUT5,6,87,177,12
+    CTEXT           "meh",IDC_ABOUT6,63,27,60,15
+    CTEXT           "Bug fixes and extra code by Maxim",IDC_ABOUT7,6,102,177,
+                    12
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_MAIN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 254
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 203
+    END
+
+    IDD_ABOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 146
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON                ICON    DISCARDABLE     "icon.ico"
+#endif    // English (U.K.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#include "version.rc"
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "dlditool32.manifest"
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

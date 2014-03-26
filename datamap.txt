@@ -1,0 +1,49 @@
+=== RAM ===
+
+Map
+ - Entry refereert aan specifieke tile in tileset
+ 
+TileSet
+ - Lijst tiles
+
+Tile
+ - 64 entries (8x8)
+ - Entry refereert aan een specifieke kleur in palette
+
+Palette
+ - Willekeurig aantal entries
+ - Entry is een 16 bit kleur
+ 
+=== VRAM ===
+
+Map
+ - Entry is een index, refereert aan een tile vanaf de tile base
+
+TileSet
+ - Lijst van 1024 tiles
+ 
+Tile
+ - 64 entries (8x8)
+ - Entry is een index tussen de 0 en 255 in palette
+ 
+Palette
+ - 255 entries
+ - Entry is een 16 bit kleur
+ 
+=== Conversie ===
+ 
+Map laden
+Tile set laden
+Map + tile set = map van echte referenties aan tiles
+
+Map naar VRAM
+ x *Tijdelijk* palette van die tile set in z'n geheel toevoegen in PALRAM, offset onthouden
+ x Alle entries langslopen, lijstje van toe te voegen tiles maken
+ - Nieuwe tileset maken met tiles uit dat lijstje
+ - Alle tiles daarin offsetten met de offset uit PALRAM
+ - Elke tile in het lijstje in VRAM zetten, nummer van die tile in VRAM onthouden
+ 
+Vragen?:
+- Wat is een tile? Pointer?
+- Wat is Map+Tileset? Moet dat in ShowMap?
+- Data kopieren in 1 blok is snel, maar moet het niet met random access om fragmentatie te handelen

@@ -1,0 +1,56 @@
+Functionality:
+
+- Support for extended palettes by Expand method
+- Offsets in sprite memory
+- Support for other map sizes than 32x32
+/ Dynamic loading/unloading of tilesets
+- Investigate different modes and add proper support for them
+
+Optimizations:
+- Fix "reaches end of non void function" warning
+- Call grit via makefile
+- Add check to see if the tileSet is not added beyond TILE_MEMORY_MAX
+
+Maybe someday:
+- Different folder for each namespace
+- Data compression
+
+Done:
+x Basic sprite support
+x Wrap KeyPad input
+x Stapgrootte sprite indices aanpassen aan DISPLAY_SPR_SIZExx
+x Make Map Editor that saves into a format that can be directly imported by the DS
+  x Add support for different map sizes
+x Back to references to TileSet and Map
+x Structs maken voor tile data (voor sneller kopiëren, beter dan gewoon u8)
+  x http://www.coranac.com/tonc/text/objbg.htm
+x Add full support for the sub engine (maybe debug mode where you can put the bottom screen on the top etc.)
+x Support for hardware scrolling
+x Support for more than one palette
+
+No longer relevant:
+x GetMap/TileBase in BackgroundMemory are slow, they take O(n) time
+x Detect min(largest continuous free block, TileSet size) in VRAM for copying
+  x If it doesn't fit, cut the TileSet into (largest continuous free VRAM block, the rest) and try again
+
+Thoughts:
+x XNA gebruikt de naam GraphicsResource als overkoepeling
+x SPRITE_SIZE_32/64/128/256 duiden op de hoeveelheid sprite memory
+  - Of heeft het te maken met de grootte van de sprites?
+  x De gfxIndex stapgrootte is daarvan afhankelijk omdat hij wrapt
+  - Dynamish die 2 dingen aanpassen
+    - Kijken hoe veel memory gebruik wordt voor sprites, niet hoeveel gereserveerd is (boeite dat wel, als het niet precies klopt krijg je toch nog artifacts?)
+x In plaats van tilesets en palettes in hetzelfde formaat op te slaan in RAM en VRAM, is het misschien beter om de sets en palettes in VRAM te laten genereren uit die in het RAM
+- Windows worden gebruikt om delen van het scherm weg te masken, je hebt window 0, window 1 en obj window
+- GBA kan geen byte writes (VRAM, PALRAM, OAM)! Doe ik dat wel goed nu? Byte reads zijn wel OK. Hij write ipv een enkele byte write de byte naar de 2 bytes in het (laatste) halfword
+x Memory alignment hoef je niet (veel) over na te denken, het GBFS (of NitroFS) alignt al zelf op 32 bits
+x Map tiles en sprites (de upper-left tile index) hebben naast de index ook nog bits voor andere dingen! Flipping en palette index bij 4bpp tiles.
+- 1 32x32 map = 2kb = 1 map base
+- 1 tile base = 16kb = 256 8x8 tiles
+- 4 tile bases = 128kb = 1024 tiles
+x Elke background kan z'n eigen map base en tile base kiezen
+- Maximaal reserveren voor elke background zou zijn:  
+  - 4 64x64 maps: 32kb
+  - 4 * 128kb voor tiles = 512kb
+  - Totaal = 544kb van de beschikbare 656kb VRAM voor ALLEEN de bg's van de main engine
+  - For now maar 4 backgrounds laten doen met dezelfde 1024 tiles

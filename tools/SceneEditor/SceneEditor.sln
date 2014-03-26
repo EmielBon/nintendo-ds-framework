@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SceneEditor", "SceneEditor\SceneEditor\SceneEditor.csproj", "{40D03960-ED10-4021-A395-F1E263212B40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SceneEditorContent", "SceneEditor\SceneEditorContent\SceneEditorContent.contentproj", "{081268B8-03D6-4FF3-A379-24C14E4C5CE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40D03960-ED10-4021-A395-F1E263212B40}.Debug|x86.ActiveCfg = Debug|x86
+		{40D03960-ED10-4021-A395-F1E263212B40}.Debug|x86.Build.0 = Debug|x86
+		{40D03960-ED10-4021-A395-F1E263212B40}.Release|x86.ActiveCfg = Release|x86
+		{40D03960-ED10-4021-A395-F1E263212B40}.Release|x86.Build.0 = Release|x86
+		{081268B8-03D6-4FF3-A379-24C14E4C5CE0}.Debug|x86.ActiveCfg = Debug|x86
+		{081268B8-03D6-4FF3-A379-24C14E4C5CE0}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

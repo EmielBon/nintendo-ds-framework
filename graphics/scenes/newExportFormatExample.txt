@@ -1,0 +1,12 @@
+GameObject
+{
+	id = 1;
+	model = pipe;
+	solid = true;
+	keyframe1
+	{ 
+		translation = (x, y, z);
+		rotation = (x, y, z); 
+		scaling = (x, y, z);
+	}
+}
