@@ -85,7 +85,7 @@ namespace Test
 	//-------------------------------------------------------------------------------------------------
 	void Test3D::LoadContent()
 	{
-		scene = Content.Load<Scene>("sceneCompleet");
+		scene = Content.Load<Scene>("scene");
 		scene->Lights.push_back(Light(Color::White, Vector3(0, -1, -1)));
 		scene->Ambient = Color::Gray;
 		Components.Add(scene);

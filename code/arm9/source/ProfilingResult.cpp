@@ -7,8 +7,6 @@ namespace Debug
 	//-------------------------------------------------------------------------------------------------
 	String ProfilingResult::ToString() const
 	{
-		PROFILE_METHOD(PRTStr);
-		
 		char str[100];
 		
 		float current = LastDuration.TotalMilliseconds();

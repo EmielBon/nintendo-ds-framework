@@ -10,6 +10,7 @@
 #include "SpriteTest.h"
 #include "ProfilingTest.h"
 #include "MatrixPerformanceTest.h"
+#include "FixedPointUnitTest.h"
 
 int main(void) 
 {
@@ -25,6 +26,7 @@ int main(void)
 	//Test::SpriteTest test;
 	//Test::ProfilingTest test;
 	//Test::MatrixPerformanceTest test;
+	//Test::FixedPointUnitTest test;
 
 	test.Run();
 

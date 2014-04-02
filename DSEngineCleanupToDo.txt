@@ -10,7 +10,7 @@ Added functionality
 [-] Deletion of resources
 [-] Allow loading of GameObjects from files
 [-] Allow loading of Rooms from files
-[-] Integrate LUA for player and NPC behaviour
+[-] Integrate LUA for game logic
 [-] Create nice buttons and stuff for debug UI
 
 Cleanup:
@@ -20,6 +20,8 @@ Cleanup:
 [x] Fix the camera controls
 [x] Fix sprites
 [x] Remove Pair in favor of Tuple
+[x] Switch to Git and GitHub
+[x] Proper support for calculations among multiple fixed-point formats
 [-] Implement or throw away BinaryReader
 [-] Replace "super" with "base"
 [-] Implement proper loading of Paths
@@ -34,9 +36,9 @@ Cleanup:
 [-] Improve tile handling performance. Maybe add support for caching of tile locations.
 [-] Bring comments up to standards (look at FileStream.h for example)
 [-] Fix or remove all the tests
-[-] Proper support for calculations among multiple fixed-point formats
-[-] Fix console (efficiency (maybe automate less?) and fix bug where text gets displayed lower when switching log views in DebugUI)
-[-] Switch to Git and GitHub
+
+[-] Fix console (efficiency (maybe automate less?)
+[-] Fix bug where text gets displayed lower when switching log views in DebugUI
 [-] Make a good folder structure for the source code
 [-] Compile into separate libraries
 [/] Bring up to standards with C++11

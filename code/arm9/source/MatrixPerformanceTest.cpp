@@ -12,10 +12,10 @@ namespace Test
 	{
 		auto timer1 = Timer::Start();
 		int i = 0;
-		Matrix mat1 = Matrix::Identity();
+		Matrix mat1( Matrix::Identity());
 		while (i++ < 10000)
 		{
-			mat1 = Matrix::Identity() * Matrix::Identity();
+			mat1 = std::move(Matrix::Identity() * Matrix::Identity());
 		}
 		timer1->Stop();
 		

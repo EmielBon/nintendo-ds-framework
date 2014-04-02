@@ -1,5 +1,7 @@
 #pragma once
 
+#include <nds/arm9/sassert.h>
+
 namespace Util
 {
 	class FixedHelper;
@@ -20,27 +22,29 @@ public:
 
 	fixed<f>(int x)
 	{
+		sassert(x < MAX_VALUE, "Fixed point overflow");
 		number = x << f;
 	}
 
 	fixed<f>(int64 x)
 	{
+		sassert(x < MAX_VALUE, "Fixed point overflow");
 		number = x << f;
 	}
 
 	fixed<f>(float x)
 	{
+		sassert(x < MAX_VALUE, "Fixed point overflow");
 		number = (int)(x * (1 << f) + (x >= 0 ? 0.5f : -0.5f));
 	}
 
 	template<int g>
 	fixed<f>(fixed<g> x)
 	{	
-	#if (f > g)
+	if (f > g)
 		number = x.number << (f - g);
-	#else
+	else
 		number = x.number >> (g - f);
-	#endif
 	}
 
 	fixed<f> operator+(const fixed<f> &other) const
@@ -70,15 +74,18 @@ public:
 
 	fixed<f> operator*(const fixed<f> &other) const
 	{
-		int64 result = (int64)number * (int64)other.number;
+		sassert((number >> 12) * (other.number >> 12) < MAX_VALUE, "Fixed Point Overflow");
+
+		int64 result = (int64)number * other.number;
 		return Fromf32((int)(result >> f));
 	}
 
-	/*fixed<f> operator*=(const fixed<f> &other)
+	fixed<f> operator*=(const fixed<f> &other)
 	{
-		int64 result = (int64)number *= (int64)other.number
-		return Fromf32();
-	}*/
+		fixed<f> x = *this * other;
+		number = x.number;
+		return *this;
+	}
 
 	fixed<f> operator/(const fixed<f> &other) const
 	{
@@ -86,11 +93,12 @@ public:
 		return Fromf32(result);
 	}
 
-	/*fixed<f> operator/=(const fixed<f> &other)
+	fixed<f> operator/=(const fixed<f> &other)
 	{
-		number = (Fromf32(number) / Fromf32(other.number)).number;
-		return Fromf32(number);
-	}*/
+		fixed<f> x = *this / other;
+		number = x.number;
+		return *this;
+	}
 
 	bool operator==(const fixed<f> &other) const
 	{
@@ -150,6 +158,10 @@ private:
 		x.number = f32;
 		return x;
 	}
+
+public:
+
+	static const int MAX_VALUE = 1 << (31 - f);
 
 public:
 

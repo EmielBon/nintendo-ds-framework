@@ -10,20 +10,11 @@ namespace Graphics
 
 	//-------------------------------------------------------------------------------------------------
 	FlyingCamera::FlyingCamera(Vector3 eye, Vector3 focus, fx12 aspectRatio) : super(eye, focus, aspectRatio)
-	{
-		// Todo: Mostly untested for eyes other than starting
-		/*Vector3 v1 = Vector3(Eye.x - Focus.x, 0, Eye.z - Focus.z);
-		Vector3 v2 = Vector3(0, 0, 1);
-		fx12 product = Vector3::Dot(v1, v2) / (v1.Length() * v2.Length());
-		
-		Yaw = Math::Acos((float)product) + Math::Pi;	
-		Vector3 v3 = Vector3(0, v1.y, 0);
-		Pitch = Math::Acos((float)(Vector3::Dot(v1, v3) / (v2.Length() * v3.Length()))) - Math::Pi/2;*/
+	{	
 		Vector3 lookAt = LookAt();
 		lookAt.y = 0;
 		lookAt = lookAt.Normalize();
-		Yaw =  Math::Acos(Vector3::Dot(lookAt, Vector3::UnitX())) * -Math::Sign(lookAt.z);
-		//ASSERT2(false, lookAt.ToString());
+		Yaw =  Math::Acos(Vector3::Dot(lookAt, Vector3::UnitX())) * -Math::Sign(lookAt.z) + Math::PiFixed;
 
 		lookAt = LookAt();
 		lookAt = Vector3::Transform(lookAt, Matrix::CreateRotationY(-Yaw).M);
@@ -49,7 +40,7 @@ namespace Graphics
 		moveVector = Vector3();
 		
 		// Rotate the focus vector
-		Vector3 forward(0, 0, -1);
+		Vector3 forward(0, 0, 1);
 		Vector3 cameraForward = Vector3::Transform(forward, rotation.M);
 		Focus = Eye + cameraForward;
 
