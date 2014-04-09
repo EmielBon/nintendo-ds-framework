@@ -137,6 +137,7 @@ namespace Framework
 		}
 
 		Ptr<TiledBackground> map = New<TiledBackground>(mapSize.Width, mapSize.Height);
+		map->CollisionMap = collisionMap;
 
 		auto& screenBlockEntries = mapData->ScreenBlockEntries;
 

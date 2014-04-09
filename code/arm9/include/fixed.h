@@ -74,7 +74,7 @@ public:
 
 	fixed<f> operator*(const fixed<f> &other) const
 	{
-		sassert((number >> 12) * (other.number >> 12) < MAX_VALUE, "Fixed Point Overflow");
+		sassert((number >> f) * (other.number >> f) < MAX_VALUE, "Fixed Point Overflow");
 
 		int64 result = (int64)number * other.number;
 		return Fromf32((int)(result >> f));
@@ -98,6 +98,11 @@ public:
 		fixed<f> x = *this / other;
 		number = x.number;
 		return *this;
+	}
+
+	fixed<f> operator%(const fixed<f> &other) const
+	{
+		return *this - int(*this / other) * other;
 	}
 
 	bool operator==(const fixed<f> &other) const

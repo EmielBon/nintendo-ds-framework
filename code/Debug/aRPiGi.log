@@ -1,0 +1,69 @@
+﻿Build started 5-4-2014 14:54:03.
+     1>Project "C:\Programming\nintendo-ds-framework\code\aRPiGi.vcxproj" on node 3 (Build target(s)).
+     1>Build:
+         make -j 2>&1 | sed -e 's/\(\w\+\):\([0-9]\+\):/\1(\2):/'
+         make -C arm7
+         make -C arm9
+         make[1]: Entering directory `/c/Programming/nintendo-ds-framework/code/arm7'
+         make[1]: Entering directory `/c/Programming/nintendo-ds-framework/code/arm9'
+         make[2]: `/c/Programming/nintendo-ds-framework/code/aRPiGi.arm7' is up to date.
+         make[1]: Leaving directory `/c/Programming/nintendo-ds-framework/code/arm7'
+         CollisionTest.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/CollisionTest.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/CollisionTest.cpp -o CollisionTest.o 
+         ConsoleTest.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/ConsoleTest.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/ConsoleTest.cpp -o ConsoleTest.o 
+         DebugUI.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/DebugUI.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/DebugUI.cpp -o DebugUI.o 
+         DebugUITest.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/DebugUITest.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/DebugUITest.cpp -o DebugUITest.o 
+         EfficientVectorsTest.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/EfficientVectorsTest.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/EfficientVectorsTest.cpp -o EfficientVectorsTest.o 
+         FixedPointUnitTest.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/FixedPointUnitTest.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/FixedPointUnitTest.cpp -o FixedPointUnitTest.o 
+         Game.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/Game.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/Game.cpp -o Game.o 
+         Game2D.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/Game2D.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/Game2D.cpp -o Game2D.o 
+         GraphicsDeviceManager.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/GraphicsDeviceManager.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/GraphicsDeviceManager.cpp -o GraphicsDeviceManager.o 
+         Link.cpp
+         LogPrinter.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/Link.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/Link.cpp -o Link.o 
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/LogPrinter.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/LogPrinter.cpp -o LogPrinter.o 
+         Mario.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/Mario.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/Mario.cpp -o Mario.o 
+         MatrixPerformanceTest.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/MatrixPerformanceTest.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/MatrixPerformanceTest.cpp -o MatrixPerformanceTest.o 
+         NDSGameHost.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/NDSGameHost.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/NDSGameHost.cpp -o NDSGameHost.o 
+         PaletteTest.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/PaletteTest.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/PaletteTest.cpp -o PaletteTest.o 
+         Room.cpp
+         ProfilingTest.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/ProfilingTest.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/ProfilingTest.cpp -o ProfilingTest.o 
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/Room.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/Room.cpp -o Room.o 
+         SpriteTest.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/SpriteTest.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/SpriteTest.cpp -o SpriteTest.o 
+         Test2D.cpp
+         Test3D.cpp
+         c:/Programming/nintendo-ds-framework/code/arm9/source/Link.cpp: In member function 'virtual void Test::Link::Draw(const Framework::GameTime&)':
+         c:/Programming/nintendo-ds-framework/code/arm9/source/Link.cpp(97):49: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/Test2D.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/Test2D.cpp -o Test2D.o 
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/Test3D.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/Test3D.cpp -o Test3D.o 
+         TextRenderingTest.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/TextRenderingTest.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/TextRenderingTest.cpp -o TextRenderingTest.o 
+         TimerTest.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/TimerTest.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/TimerTest.cpp -o TimerTest.o 
+         main9.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/main9.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/main9.cpp -o main9.o 
+         linking aRPiGi.arm9.elf
+         built ... aRPiGi.arm9
+         make[1]: Leaving directory `/c/Programming/nintendo-ds-framework/code/arm9'
+         ndstool	-c aRPiGi.nds -7 aRPiGi.arm7 -9 aRPiGi.arm9 -d ../gamedata
+         Nintendo DS rom tool 1.50.1 - Jun 19 2012
+         by Rafael Vuijk, Dave Murphy, Alexei Karpenko
+     1>Done Building Project "C:\Programming\nintendo-ds-framework\code\aRPiGi.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:18.45

@@ -1,0 +1,5 @@
+﻿GameMap1 : TiledBackground
+{
+	Source = "newGameMap";
+
+}

@@ -15,8 +15,9 @@ namespace Framework2D
 
 	public:
 
-		int X, Y;
-		int ImageSpeed;
+		fx12 X, Y;
+		fx12 ImageSpeed;
+		fx12 ImageIndex;
 		Ptr<Graphics::Sprite> Sprite;
 
 	protected:

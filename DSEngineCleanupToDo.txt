@@ -13,7 +13,7 @@ Added functionality
 [-] Integrate LUA for game logic
 [-] Create nice buttons and stuff for debug UI
 
-Cleanup:
+Engine cleanup:
 [x] Create one template Vector class, instead of 4
 [x] Replace Point by Vec2<int>
 [x] Create one template Matrix class, instead of 1 for only fx12
@@ -36,7 +36,7 @@ Cleanup:
 [-] Improve tile handling performance. Maybe add support for caching of tile locations.
 [-] Bring comments up to standards (look at FileStream.h for example)
 [-] Fix or remove all the tests
-
+[-] Cleanup and optimize ContentManager
 [-] Fix console (efficiency (maybe automate less?)
 [-] Fix bug where text gets displayed lower when switching log views in DebugUI
 [-] Make a good folder structure for the source code
@@ -52,3 +52,11 @@ Cleanup:
 	[-] Strongly typed enums: 		Where it makes sense
 	[-] Deleted functions:			When you want to avoid implicit calling of a function with implicit type conversion, e.g a function only intended for floats is also called for an integer argument.
 	[-] Override and final:			Where it makes sense
+	
+Tools cleanup:
+[-] Map editor: Export collision map headers
+[-] Map editor: Export palette, or at least "p none"
+[-] Map editor: Improve map and tileset redrawing, performance and function
+
+Other:
+[-] Use an issue tracker

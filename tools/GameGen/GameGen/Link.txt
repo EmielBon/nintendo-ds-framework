@@ -1,0 +1,29 @@
+﻿Link : GameObject
+{
+	
+}
+
+
+
+
+
+
+Room
+	Add game object;
+	Background
+	Collisions
+	Events
+
+GameObject
+
+	Variables
+		x
+		y
+		sprites
+		currentroom
+	Move(x, y);
+	KeyHandling
+	Handle collision
+	Switch active room
+	Draw
+	Update

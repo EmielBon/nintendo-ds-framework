@@ -67,21 +67,6 @@
     <ClInclude Include="include\Game2D.h">
       <Filter>Framework2D</Filter>
     </ClInclude>
-    <ClInclude Include="include\Chicken.h">
-      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Cyclops.h">
-      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Enemy.h">
-      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Guard.h">
-      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ShadowLink.h">
-      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="include\TouchScreen.h">
       <Filter>Input</Filter>
     </ClInclude>
@@ -108,12 +93,6 @@
     </ClInclude>
     <ClInclude Include="include\Test2D.h">
       <Filter>Test\Test 2D</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ZeldaStuff.h">
-      <Filter>Test\Test 2D\Zelda</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Bullet.h">
-      <Filter>Test\Test 2D\Zelda</Filter>
     </ClInclude>
     <ClInclude Include="include\Link.h">
       <Filter>Test\Test 2D\Zelda</Filter>
@@ -415,12 +394,6 @@
     <ClInclude Include="include\MatrixPerformanceTest.h">
       <Filter>Test</Filter>
     </ClInclude>
-    <ClInclude Include="include\CollisionTest.h">
-      <Filter>Test</Filter>
-    </ClInclude>
-    <ClInclude Include="include\ColorPickerTest.h">
-      <Filter>Test</Filter>
-    </ClInclude>
     <ClInclude Include="include\ConsoleTest.h">
       <Filter>Test</Filter>
     </ClInclude>
@@ -439,13 +412,13 @@
     <ClInclude Include="include\ProfilingTest.h">
       <Filter>Test</Filter>
     </ClInclude>
-    <ClInclude Include="include\SpriteTest.h">
-      <Filter>Test</Filter>
-    </ClInclude>
     <ClInclude Include="include\TextRenderingTest.h">
       <Filter>Test</Filter>
     </ClInclude>
     <ClInclude Include="include\TimerTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FixedPointUnitTest.h">
       <Filter>Test</Filter>
     </ClInclude>
   </ItemGroup>
@@ -501,21 +474,6 @@
     <ClCompile Include="source\Game2D.cpp">
       <Filter>Framework2D</Filter>
     </ClCompile>
-    <ClCompile Include="source\Chicken.cpp">
-      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Cyclops.cpp">
-      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Guard.cpp">
-      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ShadowLink.cpp">
-      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Enemy.cpp">
-      <Filter>Test\Test 2D\Zelda\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="source\TouchScreen.cpp">
       <Filter>Input</Filter>
     </ClCompile>
@@ -535,9 +493,6 @@
       <Filter>Test\Test 2D</Filter>
     </ClCompile>
     <ClCompile Include="source\Link.cpp">
-      <Filter>Test\Test 2D\Zelda</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Bullet.cpp">
       <Filter>Test\Test 2D\Zelda</Filter>
     </ClCompile>
     <ClCompile Include="source\Path.cpp">
@@ -678,9 +633,6 @@
     <ClCompile Include="source\ContentManager.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
-    <ClCompile Include="source\CollisionTest.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
     <ClCompile Include="source\ConsoleTest.cpp">
       <Filter>Test</Filter>
     </ClCompile>
@@ -699,9 +651,6 @@
     <ClCompile Include="source\ProfilingTest.cpp">
       <Filter>Test</Filter>
     </ClCompile>
-    <ClCompile Include="source\SpriteTest.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
     <ClCompile Include="source\TextRenderingTest.cpp">
       <Filter>Test</Filter>
     </ClCompile>
@@ -709,6 +658,9 @@
       <Filter>Test</Filter>
     </ClCompile>
     <ClCompile Include="source\MatrixPerformanceTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FixedPointUnitTest.cpp">
       <Filter>Test</Filter>
     </ClCompile>
   </ItemGroup>
@@ -790,9 +742,6 @@
     </Filter>
     <Filter Include="Test\Test 2D\Zelda">
       <UniqueIdentifier>{527c6ede-0b99-49e9-a7ae-5a1d3905d5e9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Test\Test 2D\Zelda\Enemies">
-      <UniqueIdentifier>{5ec68015-d1b7-46d5-ae06-7a16b883bb59}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

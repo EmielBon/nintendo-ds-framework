@@ -1,0 +1,15 @@
+Room2 : Room
+{
+	void Initialize()
+	{
+		Background0.Enable();
+		Background0.SetLayer(3);
+	
+		AddObject(Link, 100, 100);
+	}
+	
+	void LoadContent()
+	{
+		Background0 = LoadBackground("newGameMap2");
+	}
+}

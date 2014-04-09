@@ -32,5 +32,10 @@ namespace Test
 		/*fx12 x = 25.25f;
 		x /= 2.5f;
 		CRASH((float)x);*/
+
+		// Modulo correctness
+		fx24 x = 5;
+		fx24 y = 0.3f;
+		CRASH(float(x % y));
 	}
 }

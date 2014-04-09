@@ -28,19 +28,19 @@ namespace Framework
 
 	public:
 
-		List<Ptr<GameComponent>>::iterator Begin();
+		Set<Ptr<GameComponent>>::iterator Begin();
 
-		List<Ptr<GameComponent>>::iterator End();
+		Set<Ptr<GameComponent>>::iterator End();
 
 	protected:
 
-		List<Ptr<GameComponent>> Items;
+		Set<Ptr<GameComponent>> Items;
 	};
 
 	//-------------------------------------------------------------------------------------------------
 	inline void GameComponentCollection::Add(Ptr<GameComponent> component)
 	{
-		Items.push_back(component);
+		Items.insert(component);
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -52,8 +52,7 @@ namespace Framework
 	//-------------------------------------------------------------------------------------------------
 	inline void GameComponentCollection::Remove(Ptr<GameComponent> component)
 	{
-		ASSERT(false, "Unimplemented");
-		//Items.erase(component);
+		Items.erase(component);
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -63,13 +62,13 @@ namespace Framework
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline List<Ptr<GameComponent>>::iterator GameComponentCollection::Begin()
+	inline Set<Ptr<GameComponent>>::iterator GameComponentCollection::Begin()
 	{
 		return Items.begin();
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline List<Ptr<GameComponent>>::iterator GameComponentCollection::End()
+	inline Set<Ptr<GameComponent>>::iterator GameComponentCollection::End()
 	{
 		return Items.end();
 	}

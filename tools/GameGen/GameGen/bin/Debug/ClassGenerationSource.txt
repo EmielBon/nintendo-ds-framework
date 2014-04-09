@@ -1,0 +1,14 @@
+Room1 : Room
+{
+	Background = GameMap;
+
+	void Initialize()
+	{
+		AddGameObjectLink(link);
+	}
+
+	void Update()
+	{
+		bla();
+	}
+}

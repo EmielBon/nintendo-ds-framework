@@ -14,8 +14,8 @@
 
 int main(void) 
 {
-	//Test::Test2D test;
-	Test::Test3D test;
+	Test::Test2D test;
+	//Test::Test3D test;
 	//Test::CollisionTest test;
 	//Test::ConsoleTest test;
 	//Test::DebugUITest test;

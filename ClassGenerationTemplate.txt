@@ -1,0 +1,11 @@
+#pragma once
+
+#include "types.h"
+
+namespace Test
+{{
+	class {0} : public {1}
+	{{
+		{2}
+	}}
+}}

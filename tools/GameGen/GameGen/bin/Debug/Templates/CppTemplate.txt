@@ -1,0 +1,6 @@
+#include "{0}.h"
+
+namespace Test
+{{
+{1}
+}}

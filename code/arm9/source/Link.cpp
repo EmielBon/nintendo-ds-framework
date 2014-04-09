@@ -40,7 +40,10 @@ namespace Test
 	{
 		KeyState keys = KeyPad::GetState();
 
-		int dx = 0, dy = 0;
+		fx12 timeStep = gameTime.ElapsedGameTime.TotalSeconds();
+		fx12 speed = 96;
+
+		Vector2 direction(0, 0);
 		
 		if (!keys.IsKeyHeld(Keys::All))
 		{
@@ -48,54 +51,53 @@ namespace Test
 		}
 		if (keys.IsKeyHeld(Keys::Left) ) 
 		{
-			dx = -1;
+			direction.x = -1;
 			Sprite = spriteSet->Sprites["link_left"];
 		}
 		if (keys.IsKeyHeld(Keys::Right)) 
 		{
-			dx =  1;
+			direction.x = 1;
 			Sprite = spriteSet->Sprites["link_right"];
 		}
 		if (keys.IsKeyHeld(Keys::Up)   ) 
 		{
-			dy = -1;
+			direction.y = -1;
 			Sprite = spriteSet->Sprites["link_up"];
 		}
 		if (keys.IsKeyHeld(Keys::Down) ) 
 		{
-			dy =  1;
+			direction.y = 1;
 			Sprite = spriteSet->Sprites["link_down"];
 		}
 
-		if (dx != 0 || dy != 0)
-			ImageSpeed = 10;
+		if (direction.LengthSquared() > 0)
+			ImageSpeed = 8 * timeStep;
 		else
 			ImageSpeed = 0;
 
-		if(!Game.CurrentRoom().Map->CollisionMap->Collision(X + dx + 16, Y + 16))
-			X += Math::Random() > 0.8f ? dx : 0;
-		if(!Game.CurrentRoom().Map->CollisionMap->Collision(X + 16, Y + dy + 16))
-			Y += dy;
+		direction = direction.Normalize();
 
-		X = Max(X, 0);
-		X = Min(X, 256 - 32);
-		Y = Max(Y, 0);
-		Y = Min(Y, 192 - 32);
+		if(!Game.CurrentRoom().Map->CollisionMap->Collision(int(X + direction.x + 16), int(Y + 16)))
+			X += direction.x * speed * timeStep;
+		if(!Game.CurrentRoom().Map->CollisionMap->Collision(int(X + 16), int(Y + direction.y + 16)))
+			Y += direction.y * speed * timeStep;
+
+		X = Max(X, fx12(0));
+		X = Min(X, fx12(256 - 32));
+		Y = Max(Y, fx12(0));
+		Y = Min(Y, fx12(192 - 32));
 		
-		Sprite->X = X;
-		Sprite->Y = Y;
+		Sprite->X = (int)X;
+		Sprite->Y = (int)Y;
 	}
 
 	void Link::Draw(const GameTime &gameTime)
 	{
-		// Todo: use GameTime for speed
-		if (ImageSpeed != 0 && ++counter >= 60 / ImageSpeed)
-		{
-			//counter = (counter + 1) % (60 / ImageSpeed);
-			counter = 0;
-			if (++Sprite->SubImageIndex >= Sprite->SubImages.size())
-				Sprite->SubImageIndex = 0;
-		}
+		ImageIndex += ImageSpeed;
+		if ((int)ImageIndex >= Sprite->SubImages.size())
+			ImageIndex = 0;
+		Sprite->SubImageIndex = (int)ImageIndex;
+
 		if (Sprite)
 			GraphicsDevice::Main.ObjectAttributeMemory.DrawSprite(Sprite);
 	}

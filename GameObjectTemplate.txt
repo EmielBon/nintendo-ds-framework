@@ -1,0 +1,124 @@
+<classname> : <classname>
+{
+	variable = value | identifier;
+	
+	
+	
+	event | returntype functionname()
+	{
+		statements
+	}
+}
+
+
+Room1 : Room
+{
+	Background = gameMap;
+
+	Initialize()
+	{
+		AddGameObject(Link);
+	}
+}
+
+=== Room.cpp ===
+
+void Room::Initialize()
+{
+	GameObject obj;
+	
+	obj = AddGameObject("Link", New<Link>());
+	objects["Link"].Update = [&] { 
+	if (KeyPressed(Right))
+		obj.Move(1,0);
+	if (KeyPressed(Start))
+		StartMenu.Open();}
+	}
+}
+
+Link : GameObject
+{
+	sprite = link_spr;
+	x = 10;
+	y = 10;
+
+	void drawFunctie()
+	{
+		DrawSprite(sprite, x, y);
+	}
+
+	event Draw()
+	{
+		drawFunctie();
+	}
+
+	event Update()
+	{
+		object.Update();
+	}
+
+	event Update()
+	{
+		KeyState keys = KeyPad::GetState();
+	
+		if (KeyPressed(Right))
+			Move(1,0);
+		if (KeyPressed(Start))
+			StartMenu.Open();
+	}
+
+	event OnCollision(GameObject &other)
+	{
+		if (HasType<Link>(other))
+			DoStuff();
+		if (HasType<Tree>(other))
+			StopWalking();
+	}
+}
+
+=====================================================
+
+=== Link.h ===
+
+class Link : public GameObject
+{
+public:
+	
+	Link();
+	
+	void Initialize();
+	
+	void LoadContent();
+	
+	void Update();
+	
+	void Draw();
+
+	void OnCollision();
+	
+private:
+
+	void drawFunctie();
+};
+
+inline Link::Link() : GameObject("link_spr", 10, 10)
+{
+
+}
+
+=== Link.cpp ===
+
+void drawFunctie()
+{
+	Game::Instance()::DrawSprite(Sprite);
+}
+
+void Link::LoadContent()
+{
+	
+}
+
+void Link::Draw()
+{
+	drawFunctie();
+}

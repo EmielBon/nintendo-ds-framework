@@ -1,0 +1,75 @@
+PlaceFree includes(Game, Map, CollisionMap)
+
+Link : GameObject
+{
+	void Initialize()
+	{
+		counter = 0;
+	}
+
+	void LoadContent()
+	{
+		SpriteSet = LoadSprite("link");
+		Sprite = SpriteSet["link_down"];
+	}
+
+	void Update(const GameTime &gameTime)
+	{
+		fx12 timestep = ElapsedSeconds;
+		fx12 speed = 96;
+
+		Vector2 direction(0, 0);
+		
+		if (!IsKeyHeld(Keys::All))
+		{
+			Sprite.SubImageIndex = 0;
+		}
+		if (IsKeyHeld(Keys::Left)) 
+		{
+			direction.x = -1;
+			Sprite = SpriteSet["link_left"];
+		}
+		if (keys.IsKeyHeld(Keys::Right)) 
+		{
+			direction.x = 1;
+			Sprite = SpriteSet["link_right"];
+		}
+		if (keys.IsKeyHeld(Keys::Up)   ) 
+		{
+			direction.y = -1;
+			Sprite = SpriteSet["link_up"];
+		}
+		if (keys.IsKeyHeld(Keys::Down) ) 
+		{
+			direction.y = 1;
+			Sprite = SpriteSet["link_down"];
+		}
+
+		if (direction.LengthSquared() > 0)
+			ImageSpeed = 8 * timeStep;
+		else
+			ImageSpeed = 0;
+
+		direction = direction.Normalize();
+
+		if (PlaceFree(x + direction.x + 16, y + 16))
+			x += direction.x * speed * timeStep;
+		if (PlaceFree(x + 16, y + direction.y + 16))
+			y += direction.y * speed * timeStep;
+
+		x = Max(x, 0);
+		x = Min(x, 256 - 32);
+		y = Max(y, 0);
+		y = Min(y, 192 - 32);
+	}
+	
+	void Draw()
+	{
+		ImageIndex += ImageSpeed;
+		
+		if ((int)ImageIndex >= Sprite.SubImageCount)
+			ImageIndex = 0;
+		
+		DrawSprite(Sprite, ImageIndex, x, y);
+	}
+}

@@ -17,13 +17,13 @@
     <ClCompile Include="source\BoundingBox.cpp" />
     <ClCompile Include="source\BoundingSphere.cpp" />
     <ClCompile Include="source\Button.cpp" />
-    <ClCompile Include="source\CollisionTest.cpp" />
     <ClCompile Include="source\Color.cpp" />
     <ClCompile Include="source\ConsoleTest.cpp" />
     <ClCompile Include="source\DebugUI.cpp" />
     <ClCompile Include="source\DebugUITest.cpp" />
     <ClCompile Include="source\DisplayList.cpp" />
     <ClCompile Include="source\EfficientVectorsTest.cpp" />
+    <ClCompile Include="source\FixedPointUnitTest.cpp" />
     <ClCompile Include="source\FlyingCamera.cpp" />
     <ClCompile Include="source\FPSCounter.cpp" />
     <ClCompile Include="source\GameCamera.cpp" />
@@ -44,7 +44,6 @@
     <ClCompile Include="source\ProfilingTest.cpp" />
     <ClCompile Include="source\Scene.cpp" />
     <ClCompile Include="source\SceneObject.cpp" />
-    <ClCompile Include="source\SpriteTest.cpp" />
     <ClCompile Include="source\StreamReader.cpp" />
     <ClCompile Include="source\TilesManager.cpp" />
     <ClCompile Include="source\Timer.cpp" />
@@ -64,8 +63,6 @@
     <ClInclude Include="include\BasicEffect.h" />
     <ClInclude Include="include\BreakPoint.h" />
     <ClInclude Include="include\Button.h" />
-    <ClInclude Include="include\CollisionTest.h" />
-    <ClInclude Include="include\ColorPickerTest.h" />
     <ClInclude Include="include\ConsoleTest.h" />
     <ClInclude Include="include\Container.h" />
     <ClInclude Include="include\ContainmentType.h" />
@@ -80,6 +77,7 @@
     <ClInclude Include="include\EfficientVertex.h" />
     <ClInclude Include="include\fixed.h" />
     <ClInclude Include="include\FixedHelper.h" />
+    <ClInclude Include="include\FixedPointUnitTest.h" />
     <ClInclude Include="include\FlyingCamera.h" />
     <ClInclude Include="include\Font.h" />
     <ClInclude Include="include\FPSCounter.h" />
@@ -134,29 +132,23 @@
     <ClInclude Include="include\Sprites.h" />
     <ClInclude Include="include\SpriteSet.h" />
     <ClInclude Include="include\SpriteSubImage.h" />
-    <ClInclude Include="include\SpriteTest.h" />
     <ClInclude Include="include\StreamReader.h" />
     <ClInclude Include="include\StringHelper.h" />
     <ClInclude Include="include\Test2D.h" />
     <ClInclude Include="include\Test3D.h" />
     <ClInclude Include="include\Background.h" />
     <ClInclude Include="include\BackgroundMemory.h" />
-    <ClInclude Include="include\Bullet.h" />
     <ClInclude Include="include\Camera.h" />
-    <ClInclude Include="include\Chicken.h" />
     <ClInclude Include="include\CollisionMap.h" />
     <ClInclude Include="include\Color.h" />
     <ClInclude Include="include\Console.h" />
-    <ClInclude Include="include\Cyclops.h" />
     <ClInclude Include="include\ContentManager.h" />
-    <ClInclude Include="include\Enemy.h" />
     <ClInclude Include="include\GraphicsDevice.h" />
     <ClInclude Include="include\File.h" />
     <ClInclude Include="include\FileStream.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Game2D.h" />
     <ClInclude Include="include\GameObject.h" />
-    <ClInclude Include="include\Guard.h" />
     <ClInclude Include="include\IGameComponent.h" />
     <ClInclude Include="include\KeyPad.h" />
     <ClInclude Include="include\Keys.h" />
@@ -177,7 +169,6 @@
     <ClInclude Include="include\Room.h" />
     <ClInclude Include="include\Screen.h" />
     <ClInclude Include="include\ScreenBlockEntry.h" />
-    <ClInclude Include="include\ShadowLink.h" />
     <ClInclude Include="include\Sprite.h" />
     <ClInclude Include="include\SpriteMemory.h" />
     <ClInclude Include="include\TextRenderer.h" />
@@ -200,21 +191,15 @@
     <ClInclude Include="include\VertexBuffer.h" />
     <ClInclude Include="include\VideoRam.h" />
     <ClInclude Include="include\VideoRamBank.h" />
-    <ClCompile Include="source\Bullet.cpp" />
     <ClCompile Include="source\Camera.cpp" />
-    <ClCompile Include="source\Chicken.cpp" />
     <ClCompile Include="source\CollisionMap.cpp" />
-    <ClCompile Include="source\Cyclops.cpp" />
-    <ClCompile Include="source\Enemy.cpp" />
     <ClCompile Include="source\Game2D.cpp" />
-    <ClCompile Include="source\Guard.cpp" />
     <ClCompile Include="source\KeyPad.cpp">
       <FileType>CppHeader</FileType>
     </ClCompile>
     <ClInclude Include="include\VideoRamBankNames.h" />
     <ClInclude Include="include\ViewPort.h" />
     <ClInclude Include="include\X11Palette.h" />
-    <ClInclude Include="include\ZeldaStuff.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Background.cpp" />
@@ -238,7 +223,6 @@
     <ClCompile Include="source\Path.cpp" />
     <ClCompile Include="source\Room.cpp" />
     <ClCompile Include="source\Screen.cpp" />
-    <ClCompile Include="source\ShadowLink.cpp" />
     <ClCompile Include="source\Sprite.cpp" />
     <ClCompile Include="source\SpriteMemory.cpp" />
     <ClCompile Include="source\Test2D.cpp" />
