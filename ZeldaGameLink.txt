@@ -2,7 +2,7 @@ Link : GameObject2D
 {
 	void Initialize()
 	{
-		SpriteSet = Load("link");
+		SpriteSet = Load<SpriteSet>("link");
 		Sprite = SpriteSet["link_down"];
 	}
 	

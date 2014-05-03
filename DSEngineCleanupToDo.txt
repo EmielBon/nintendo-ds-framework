@@ -16,6 +16,10 @@ Added functionality
 GameGen functionality
 [-] TimeStep function
 [-] KeyHeld function
+[-] Load<T> function
+	[-] Load function (without need for <T>)
+[-] Replace function calls with . by ->
+[-] Replace . in enum member reference by ::
 
 GameGen functionality (Engine)
 [x] Change DrawSprite to use x and y as parameters
