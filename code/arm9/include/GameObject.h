@@ -7,11 +7,17 @@ namespace Framework2D
 {
 	class Game2D;
 
-	class GameObject : public Framework::DrawableGameComponent
+	class GameObject : public DrawableGameComponent
 	{
 	protected:
 
-		GameObject(Framework2D::Game2D &game);
+		GameObject();
+
+	public:
+
+		virtual void Update(const GameTime &gameTime);
+
+		void DrawSprite(Ptr<Graphics::Sprite> sprite, fx12 x, fx12 y, fx12 subImageIndex);
 
 	public:
 
@@ -19,13 +25,10 @@ namespace Framework2D
 		fx12 ImageSpeed;
 		fx12 ImageIndex;
 		Ptr<Graphics::Sprite> Sprite;
-
-	protected:
-
-		Framework2D::Game2D &Game;
+		Ptr<Graphics::SpriteSet> SpriteSet;
 	};
 
-	inline GameObject::GameObject(Framework2D::Game2D &game) : X(0), Y(0), ImageSpeed(1), Game(game)
+	inline GameObject::GameObject() : X(0), Y(0), ImageSpeed(1)
 	{
 
 	}

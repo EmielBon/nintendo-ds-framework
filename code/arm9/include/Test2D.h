@@ -1,27 +1,22 @@
 #pragma once
 
-#include "Game2D.h"
+#include "Game.h"
 #include "types.h"
 
 namespace Test
 {
-	class Test2D : public Framework2D::Game2D
+	class Test2D : public Framework::Game
 	{
 	private:
 
-		using super = Framework2D::Game2D;
+		using super = Framework::Game;
 
 	protected:
 
 		void Initialize();
-		void LoadContent();
-		void Update(const GameTime &gameTime);
-		void Draw(const GameTime &gameTime);
 
-	private:
+	public:
 
-		Ptr<Debug::DebugUI> debugUI;
-		Ptr<Debug::FPSCounter> fpsCounter;
-		Ptr<Graphics::SpriteSet> spriteSet;
+		Ptr<Framework2D::Room> CurrentRoom;
 	};
 }

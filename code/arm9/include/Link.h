@@ -9,11 +9,7 @@ namespace Test
 	{
 	private:
 
-		using super = Framework2D::GameObject;
-
-	public:
-
-		Link(Framework2D::Game2D &game);
+		using base = Framework2D::GameObject;
 
 	public:
 
@@ -24,10 +20,5 @@ namespace Test
 		void Update(const GameTime &gameTime);
 
 		void Draw(const GameTime &gameTime);
-
-	private:
-
-		int counter;
-		Ptr<SpriteSet> spriteSet;
 	};
 }

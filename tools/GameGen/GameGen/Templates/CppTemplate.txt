@@ -1,6 +1,8 @@
-#include "{0}.h"
+#include "[ClassName].h"
 
-namespace Test
-{{
-{1}
-}}
+[SourceIncludes]
+
+namespace [Namespace]
+{
+	[Functions]
+}

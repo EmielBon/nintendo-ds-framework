@@ -13,6 +13,17 @@ Added functionality
 [-] Integrate LUA for game logic
 [-] Create nice buttons and stuff for debug UI
 
+GameGen functionality
+[-] TimeStep function
+[-] KeyHeld function
+
+GameGen functionality (Engine)
+[x] Change DrawSprite to use x and y as parameters
+[x] SpriteSet as property of GameObject
+[x] Give SpriteSet a string indexer for Sprites
+[-] Make Background[0-3] properties of Room
+[x] Add auto increment functionality for ImageIndex with ImageSpeed in GameObject
+
 Engine cleanup:
 [x] Create one template Vector class, instead of 4
 [x] Replace Point by Vec2<int>
@@ -22,6 +33,7 @@ Engine cleanup:
 [x] Remove Pair in favor of Tuple
 [x] Switch to Git and GitHub
 [x] Proper support for calculations among multiple fixed-point formats
+[-] Improve Sprite's Convert method and possibly move parameters from DrawSprite over to Convert
 [-] Implement or throw away BinaryReader
 [-] Replace "super" with "base"
 [-] Implement proper loading of Paths

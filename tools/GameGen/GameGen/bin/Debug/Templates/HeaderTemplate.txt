@@ -1,16 +1,17 @@
 #pragma once
 
-#include "types.h"
+[HeaderIncludes]
 
-namespace Test
-{{
-	class {0} : public {1}
-	{{
+namespace [Namespace]
+{
+	class [ClassName] : public [BaseClass]
+	{
+	public:
+	
+	[FunctionDefinitions]
 
 	public:
-		
-{3}	public:
-		
-{2}
-	}}
-}}
+	
+	[Members]
+	}
+}

@@ -12,7 +12,7 @@ namespace GameGen
     {
         public string[] tokens;
         int tokenIndex = 0;
-        string[] presetTokens = { ";", "{", "}", "(", ")" };
+        string[] presetTokens = { ";", "{", "}", "(", ")", "<", ">", "[", "]" };
 
         public Lexer(string source)
         {

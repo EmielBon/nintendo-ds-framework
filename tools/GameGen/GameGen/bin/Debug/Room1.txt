@@ -1,0 +1,20 @@
+Room1 : Room
+{
+	Background = "newGameMap";
+
+	void Initialize()
+	{
+		Link link = new Link(0, 0)
+		AddGameObject(link);
+	}
+
+	void Update()
+	{
+		bla();
+	}
+
+	inline void Test()
+	{
+		bla();
+	}
+}

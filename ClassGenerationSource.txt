@@ -1,9 +1,18 @@
 Room1 : Room
 {
-	Background = gameMap;
-
-	void Initialize (  )
+	int c; 
+	int count = 5;
+	Link link;
+	List<int> counter = [5, 5, 2, 2, 4];
+	List<Link> links = [5];
+	
+	void Initialize()
 	{
-		AddGameObjectLink
+		
+	}
+	
+	inline void Inline(int bla, Link link)
+	{
+		bla();
 	}
 }

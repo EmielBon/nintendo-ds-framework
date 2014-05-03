@@ -4,6 +4,6 @@ C:\Programming\nintendo-ds-framework\tools\GameGen\GameGen\bin\Debug\GameGen.exe
 C:\Programming\nintendo-ds-framework\tools\GameGen\GameGen\bin\Debug\GameGen.pdb
 C:\Programming\nintendo-ds-framework\tools\GameGen\GameGen\obj\Debug\GameGen.exe
 C:\Programming\nintendo-ds-framework\tools\GameGen\GameGen\obj\Debug\GameGen.pdb
-C:\Programming\nintendo-ds-framework\tools\GameGen\GameGen\bin\Debug\ClassGenerationSource.txt
 C:\Programming\nintendo-ds-framework\tools\GameGen\GameGen\bin\Debug\Templates\CppTemplate.txt
 C:\Programming\nintendo-ds-framework\tools\GameGen\GameGen\bin\Debug\Templates\HeaderTemplate.txt
+C:\Programming\nintendo-ds-framework\tools\GameGen\GameGen\bin\Debug\Room1.txt

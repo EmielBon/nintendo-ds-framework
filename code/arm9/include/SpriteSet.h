@@ -9,5 +9,10 @@ namespace Graphics
 	public:
 
 		TreeMap<String, Ptr<Sprite>> Sprites;
+
+		Ptr<Sprite>& operator[](const String &key)
+		{
+			return Sprites.at(key);
+		}
 	};
 }

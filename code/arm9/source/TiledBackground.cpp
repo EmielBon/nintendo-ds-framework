@@ -2,6 +2,7 @@
 #include "TilesManager.h"
 #include "Tile.h"
 #include "Debug.h"
+#include "GraphicsDevice.h"
 
 namespace Graphics
 {
@@ -75,4 +76,12 @@ namespace Graphics
 		return uniqueIdentifiers;
 	}
 
+	void TiledBackground::CopyToHardwareMap(int mapIndex)
+	{
+		auto &map = GraphicsDevice::Main.BackgroundMemory.Maps[mapIndex];
+
+		for (int i = 0; i < GetSize().Width; ++i)
+		for (int j = 0; j < GetSize().Height; ++j)
+			map.SetTile(i, j, GetTile(i, j));
+	}
 }

@@ -56,16 +56,13 @@
       <Filter>Graphics\Tiles</Filter>
     </ClInclude>
     <ClInclude Include="include\Room.h">
-      <Filter>Framework2D</Filter>
+      <Filter>Framework\Framework2D</Filter>
     </ClInclude>
     <ClInclude Include="include\GameObject.h">
-      <Filter>Framework2D</Filter>
+      <Filter>Framework\Framework2D</Filter>
     </ClInclude>
     <ClInclude Include="include\CollisionMap.h">
-      <Filter>Framework2D</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Game2D.h">
-      <Filter>Framework2D</Filter>
+      <Filter>Framework\Framework2D</Filter>
     </ClInclude>
     <ClInclude Include="include\TouchScreen.h">
       <Filter>Input</Filter>
@@ -104,7 +101,7 @@
       <Filter>Graphics\Background</Filter>
     </ClInclude>
     <ClInclude Include="include\Framework2D.h">
-      <Filter>Framework2D</Filter>
+      <Filter>Framework\Framework2D</Filter>
     </ClInclude>
     <ClInclude Include="include\Framework.h">
       <Filter>Framework</Filter>
@@ -119,7 +116,7 @@
       <Filter>Graphics\3D</Filter>
     </ClInclude>
     <ClInclude Include="include\Path.h">
-      <Filter>Framework2D</Filter>
+      <Filter>Framework\Framework2D</Filter>
     </ClInclude>
     <ClInclude Include="include\File.h">
       <Filter>FileSystem</Filter>
@@ -296,10 +293,10 @@
       <Filter>GUI</Filter>
     </ClInclude>
     <ClInclude Include="include\Room3D.h">
-      <Filter>Framework3D</Filter>
+      <Filter>Framework\Framework3D</Filter>
     </ClInclude>
     <ClInclude Include="include\GameObjec3D.h">
-      <Filter>Framework3D</Filter>
+      <Filter>Framework\Framework3D</Filter>
     </ClInclude>
     <ClInclude Include="include\Light.h">
       <Filter>Graphics\3D</Filter>
@@ -374,16 +371,16 @@
       <Filter>Graphics\3D</Filter>
     </ClInclude>
     <ClInclude Include="include\FlyingCamera.h">
-      <Filter>Framework3D</Filter>
+      <Filter>Framework\Framework3D</Filter>
     </ClInclude>
     <ClInclude Include="include\GameCamera.h">
-      <Filter>Framework3D</Filter>
+      <Filter>Framework\Framework3D</Filter>
     </ClInclude>
     <ClInclude Include="include\Scene.h">
-      <Filter>Framework3D</Filter>
+      <Filter>Framework\Framework3D</Filter>
     </ClInclude>
     <ClInclude Include="include\SceneObject.h">
-      <Filter>Framework3D</Filter>
+      <Filter>Framework\Framework3D</Filter>
     </ClInclude>
     <ClInclude Include="include\ContentManager.h">
       <Filter>Framework</Filter>
@@ -420,6 +417,9 @@
     </ClInclude>
     <ClInclude Include="include\FixedPointUnitTest.h">
       <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Room1.h">
+      <Filter>Test\Test 2D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -466,13 +466,10 @@
       <Filter>Graphics\Tiles</Filter>
     </ClCompile>
     <ClCompile Include="source\CollisionMap.cpp">
-      <Filter>Framework2D</Filter>
+      <Filter>Framework\Framework2D</Filter>
     </ClCompile>
     <ClCompile Include="source\Room.cpp">
-      <Filter>Framework2D</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Game2D.cpp">
-      <Filter>Framework2D</Filter>
+      <Filter>Framework\Framework2D</Filter>
     </ClCompile>
     <ClCompile Include="source\TouchScreen.cpp">
       <Filter>Input</Filter>
@@ -496,7 +493,7 @@
       <Filter>Test\Test 2D\Zelda</Filter>
     </ClCompile>
     <ClCompile Include="source\Path.cpp">
-      <Filter>Framework2D</Filter>
+      <Filter>Framework\Framework2D</Filter>
     </ClCompile>
     <ClCompile Include="source\Tile.cpp">
       <Filter>Graphics\Tiles</Filter>
@@ -619,16 +616,16 @@
       <Filter>Graphics\3D</Filter>
     </ClCompile>
     <ClCompile Include="source\FlyingCamera.cpp">
-      <Filter>Framework3D</Filter>
+      <Filter>Framework\Framework3D</Filter>
     </ClCompile>
     <ClCompile Include="source\GameCamera.cpp">
-      <Filter>Framework3D</Filter>
+      <Filter>Framework\Framework3D</Filter>
     </ClCompile>
     <ClCompile Include="source\Scene.cpp">
-      <Filter>Framework3D</Filter>
+      <Filter>Framework\Framework3D</Filter>
     </ClCompile>
     <ClCompile Include="source\SceneObject.cpp">
-      <Filter>Framework3D</Filter>
+      <Filter>Framework\Framework3D</Filter>
     </ClCompile>
     <ClCompile Include="source\ContentManager.cpp">
       <Filter>Framework</Filter>
@@ -663,6 +660,12 @@
     <ClCompile Include="source\FixedPointUnitTest.cpp">
       <Filter>Test</Filter>
     </ClCompile>
+    <ClCompile Include="source\GameObject.cpp">
+      <Filter>Framework\Framework2D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Room1.cpp">
+      <Filter>Test\Test 2D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Graphics">
@@ -694,9 +697,6 @@
     </Filter>
     <Filter Include="Input">
       <UniqueIdentifier>{e2e62cf2-ebb7-482e-ae4a-8e870133b803}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Framework2D">
-      <UniqueIdentifier>{5d8974a5-cedf-4f62-a786-2821fe013949}</UniqueIdentifier>
     </Filter>
     <Filter Include="Graphics\Text">
       <UniqueIdentifier>{8f00a456-e5dd-4641-a1db-740d7bfe253b}</UniqueIdentifier>
@@ -731,9 +731,6 @@
     <Filter Include="GUI">
       <UniqueIdentifier>{723f2b19-ca35-4730-961b-687d308e10c3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework3D">
-      <UniqueIdentifier>{793a4158-f7fb-4ab2-b852-f76a5314190c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="LLR">
       <UniqueIdentifier>{74ff88e0-ca34-477c-a657-9862c0cea28c}</UniqueIdentifier>
     </Filter>
@@ -742,6 +739,12 @@
     </Filter>
     <Filter Include="Test\Test 2D\Zelda">
       <UniqueIdentifier>{527c6ede-0b99-49e9-a7ae-5a1d3905d5e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Framework2D">
+      <UniqueIdentifier>{5d8974a5-cedf-4f62-a786-2821fe013949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Framework3D">
+      <UniqueIdentifier>{793a4158-f7fb-4ab2-b852-f76a5314190c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

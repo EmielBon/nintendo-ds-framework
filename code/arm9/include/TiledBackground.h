@@ -49,6 +49,9 @@ namespace Graphics
 		///
 		void SetTile(int x, int y, const MapTile& mapTile);
 
+		///
+		void CopyToHardwareMap(int mapIndex);
+
 	public:
 
 		List<MapTile> MapTiles;

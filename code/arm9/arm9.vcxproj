@@ -27,6 +27,7 @@
     <ClCompile Include="source\FlyingCamera.cpp" />
     <ClCompile Include="source\FPSCounter.cpp" />
     <ClCompile Include="source\GameCamera.cpp" />
+    <ClCompile Include="source\GameObject.cpp" />
     <ClCompile Include="source\GameTime.cpp" />
     <ClCompile Include="source\GraphicsDeviceManager.cpp" />
     <ClCompile Include="source\Component.cpp" />
@@ -42,6 +43,7 @@
     <ClCompile Include="source\ProfilingManager.cpp" />
     <ClCompile Include="source\ProfilingResult.cpp" />
     <ClCompile Include="source\ProfilingTest.cpp" />
+    <ClCompile Include="source\Room1.cpp" />
     <ClCompile Include="source\Scene.cpp" />
     <ClCompile Include="source\SceneObject.cpp" />
     <ClCompile Include="source\StreamReader.cpp" />
@@ -123,6 +125,7 @@
     <ClInclude Include="include\ProfilingTest.h" />
     <ClInclude Include="include\RasterizerState.h" />
     <ClInclude Include="include\Rectangle.h" />
+    <ClInclude Include="include\Room1.h" />
     <ClInclude Include="include\Room3D.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\SceneObject.h" />
@@ -147,7 +150,6 @@
     <ClInclude Include="include\File.h" />
     <ClInclude Include="include\FileStream.h" />
     <ClInclude Include="include\Game.h" />
-    <ClInclude Include="include\Game2D.h" />
     <ClInclude Include="include\GameObject.h" />
     <ClInclude Include="include\IGameComponent.h" />
     <ClInclude Include="include\KeyPad.h" />
@@ -193,7 +195,6 @@
     <ClInclude Include="include\VideoRamBank.h" />
     <ClCompile Include="source\Camera.cpp" />
     <ClCompile Include="source\CollisionMap.cpp" />
-    <ClCompile Include="source\Game2D.cpp" />
     <ClCompile Include="source\KeyPad.cpp">
       <FileType>CppHeader</FileType>
     </ClCompile>

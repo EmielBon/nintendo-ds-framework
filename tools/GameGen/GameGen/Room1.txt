@@ -12,4 +12,9 @@ Room1 : Room
 	{
 		bla();
 	}
+
+	inline void Test()
+	{
+		bla();
+	}
 }

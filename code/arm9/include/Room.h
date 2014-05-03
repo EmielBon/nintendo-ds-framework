@@ -2,6 +2,7 @@
 
 #include "types.h"
 #include "DrawableGameComponent.h"
+#include "GraphicsDevice.h"
 
 namespace Framework2D
 {
@@ -12,9 +13,7 @@ namespace Framework2D
 	{
 	public:
 
-		Room(const String &name, Game2D &game);
-
-	public:
+		Room();
 
 		void Initialize();
 
@@ -26,30 +25,20 @@ namespace Framework2D
 
 	public:
 
-		template<class T>
-		Ptr<T> AddGameObject(int x, int y); 
-
-	public:
-
 		const String Name;
-		Framework2D::Game2D &Game;
-		Ptr<Graphics::TiledBackground> Map;
+		Graphics::Background &Background0, &Background1, &Background2, &Background3;
 
-	private:
+	protected:
 		
 		List< Ptr<GameObject> > objects;
 	};
 
-	//-------------------------------------------------------------------------------------------------
-	template<class T>
-	inline Ptr<T> Room::AddGameObject(int x, int y)
+	inline Room::Room() 
+		: Background0(Graphics::GraphicsDevice::Main.Background0),
+		  Background1(Graphics::GraphicsDevice::Main.Background1),
+		  Background2(Graphics::GraphicsDevice::Main.Background2),
+		  Background3(Graphics::GraphicsDevice::Main.Background3)
 	{
-		Ptr<T> object = New<T>(Game);
-		object->X = x;
-		object->Y = y;
-		objects.push_back(object);
 
-		return object;
 	}
-
 }

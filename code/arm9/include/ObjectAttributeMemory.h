@@ -29,7 +29,7 @@ namespace Graphics
 		void Update();
 
 		/// Adds a sprite to the Nintendo DS's OAM memory 
-		void DrawSprite(Ptr<Sprite> sprite);
+		void DrawSprite(Ptr<Sprite> sprite, fx12 x, fx12 y, fx12 subImageIndex);
 
 		/// Clears all sprite entries
 		void Reset();

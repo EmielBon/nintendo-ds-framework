@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace GameGen
 {
-    class Member
+    abstract class Member
     {
-        public String Type;
         public String Name;
-        public String InitialValue;
+        public Type Type;
+        protected Value initialValue;
+
+        abstract public Value InitialValue { get; set; }
     }
 }

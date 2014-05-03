@@ -12,5 +12,6 @@ namespace GameGen
         public String Arguments;
         public String Body;
         public String ReturnType;
+        public bool Inline = false;
     }
 }

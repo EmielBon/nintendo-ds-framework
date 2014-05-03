@@ -75,10 +75,16 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void ObjectAttributeMemory::DrawSprite(Ptr<Sprite> sprite)
+	void ObjectAttributeMemory::DrawSprite(Ptr<Sprite> sprite, fx12 x, fx12 y, fx12 subImageIndex)
 	{
 		ASSERT(sprites.size() < SPRITE_MAX, "Error: Sprite limit reached");
 		
+		if (!sprite) return;
+
+		sprite->X = (int)x;
+		sprite->Y = (int)y;
+		sprite->SubImageIndex = (int)subImageIndex;
+
 		sprites.push_back(sprite);
 
 		//if (oamSpriteMap.find(sprite) == oamSpriteMap.end())

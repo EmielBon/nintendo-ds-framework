@@ -11,10 +11,15 @@ namespace GameGen
     {
         static void Main(string[] args)
         {
-            GameObject obj = GameObject.Parse(File.ReadAllText("ClassGenerationSource.txt"));
+            GameObject obj = GameObject.Parse(File.ReadAllText(Environment.GetEnvironmentVariable("ARPIGI") + "/ZeldaGameLink.txt"));
 
-            Console.Write(obj.ExportCpp());
+            Console.WriteLine("-------" + obj.ClassName + ".h -------\n");
+            Console.WriteLine(obj.ExportHeader());
+            Console.WriteLine("\n-------" + obj.ClassName + ".cpp -------\n");
+            Console.WriteLine(obj.ExportCpp());
             Console.ReadKey();
+
+
         }
     }
 }

@@ -90,6 +90,8 @@ namespace FileSystem
 
 namespace Framework2D
 {
+	using namespace Framework;
+
 	class Room;
 	class CollisionMap;
 }
