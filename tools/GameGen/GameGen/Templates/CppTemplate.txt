@@ -2,7 +2,4 @@
 
 [SourceIncludes]
 
-namespace [Namespace]
-{
-	[Functions]
-}
+[Functions]

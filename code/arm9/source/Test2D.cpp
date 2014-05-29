@@ -1,4 +1,4 @@
-#include "Test2D.h"
+/*#include "Test2D.h"
 
 // Zelda specific stuff
 #include "Room1.h"
@@ -36,4 +36,4 @@ namespace Test
 		Components.Add(CurrentRoom);
 		super::Initialize();
 	}
-}
+}*/

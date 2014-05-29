@@ -4,7 +4,7 @@
 #include "types.h"
 #include "Mat.h"
 
-namespace Graphics
+namespace Framework3D
 {
 	class SceneObject : public DrawableGameComponent
 	{

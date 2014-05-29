@@ -1,6 +1,6 @@
 #include "SceneObject.h"
 
-namespace Graphics
+namespace Framework3D
 {
 	
 }

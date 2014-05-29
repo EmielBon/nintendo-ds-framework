@@ -1,4 +1,0 @@
-Zelda : Game
-{
-	Room currentRoom = Room1;
-}

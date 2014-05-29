@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace GameGen
 {
-    class Value
+    class EnumConstant
     {
-        public Value(Type type, String value)
-        {
-            Type  = type;
-            Val = value;
-        }
+        public String Name;
 
-        public Type Type;
-        public String Val;
+        public EnumConstant(String name)
+        {
+            Name = name;
+        }
     }
 }

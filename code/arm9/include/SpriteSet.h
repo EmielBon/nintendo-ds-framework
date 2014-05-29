@@ -12,6 +12,11 @@ namespace Graphics
 
 		Ptr<Sprite>& operator[](const String &key)
 		{
+			return at(key);
+		}
+
+		Ptr<Sprite>& at(const String &key)
+		{
 			return Sprites.at(key);
 		}
 	};

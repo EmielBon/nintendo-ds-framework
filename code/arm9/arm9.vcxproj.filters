@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="include\FileStream.h">
-      <Filter>FileSystem</Filter>
-    </ClInclude>
     <ClInclude Include="include\Memory2D.h">
       <Filter>Graphics</Filter>
     </ClInclude>
@@ -91,9 +88,6 @@
     <ClInclude Include="include\Test2D.h">
       <Filter>Test\Test 2D</Filter>
     </ClInclude>
-    <ClInclude Include="include\Link.h">
-      <Filter>Test\Test 2D\Zelda</Filter>
-    </ClInclude>
     <ClInclude Include="include\Sprites.h">
       <Filter>Graphics\Sprite</Filter>
     </ClInclude>
@@ -117,9 +111,6 @@
     </ClInclude>
     <ClInclude Include="include\Path.h">
       <Filter>Framework\Framework2D</Filter>
-    </ClInclude>
-    <ClInclude Include="include\File.h">
-      <Filter>FileSystem</Filter>
     </ClInclude>
     <ClInclude Include="include\BoundingSphere.h">
       <Filter>Framework</Filter>
@@ -201,12 +192,6 @@
     </ClInclude>
     <ClInclude Include="include\Material.h">
       <Filter>Graphics\3D</Filter>
-    </ClInclude>
-    <ClInclude Include="include\BinaryReader.h">
-      <Filter>FileSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="include\StreamReader.h">
-      <Filter>FileSystem</Filter>
     </ClInclude>
     <ClInclude Include="include\StringHelper.h">
       <Filter>Util</Filter>
@@ -421,11 +406,47 @@
     <ClInclude Include="include\Room1.h">
       <Filter>Test\Test 2D</Filter>
     </ClInclude>
+    <ClInclude Include="include\Link.h">
+      <Filter>Test\Test 2D\Zelda</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BinaryReader.h">
+      <Filter>System\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FileStream.h">
+      <Filter>System\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="include\StreamReader.h">
+      <Filter>System\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="include\File.h">
+      <Filter>System\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Framework3D.h">
+      <Filter>Framework\Framework3D</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Graphics.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GUI.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LLR.h">
+      <Filter>LLR</Filter>
+    </ClInclude>
+    <ClInclude Include="include\System.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Util.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameGenProject.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GlobalFunctions.h">
+      <Filter>Util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\FileStream.cpp">
-      <Filter>FileSystem</Filter>
-    </ClCompile>
     <ClCompile Include="source\Memory2D.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
@@ -489,9 +510,6 @@
     <ClCompile Include="source\Test2D.cpp">
       <Filter>Test\Test 2D</Filter>
     </ClCompile>
-    <ClCompile Include="source\Link.cpp">
-      <Filter>Test\Test 2D\Zelda</Filter>
-    </ClCompile>
     <ClCompile Include="source\Path.cpp">
       <Filter>Framework\Framework2D</Filter>
     </ClCompile>
@@ -537,9 +555,6 @@
     <ClCompile Include="source\Material.cpp">
       <Filter>Graphics\3D</Filter>
     </ClCompile>
-    <ClCompile Include="source\BinaryReader.cpp">
-      <Filter>FileSystem</Filter>
-    </ClCompile>
     <ClCompile Include="source\StringHelper.cpp">
       <Filter>Util</Filter>
     </ClCompile>
@@ -563,9 +578,6 @@
     </ClCompile>
     <ClCompile Include="source\NDSGameHost.cpp">
       <Filter>Framework\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="source\StreamReader.cpp">
-      <Filter>FileSystem</Filter>
     </ClCompile>
     <ClCompile Include="source\Profiler.cpp">
       <Filter>Debug</Filter>
@@ -666,6 +678,18 @@
     <ClCompile Include="source\Room1.cpp">
       <Filter>Test\Test 2D</Filter>
     </ClCompile>
+    <ClCompile Include="source\Link.cpp">
+      <Filter>Test\Test 2D\Zelda</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BinaryReader.cpp">
+      <Filter>System\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FileStream.cpp">
+      <Filter>System\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="source\StreamReader.cpp">
+      <Filter>System\IO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Graphics">
@@ -673,9 +697,6 @@
     </Filter>
     <Filter Include="Test">
       <UniqueIdentifier>{76bda93c-5ef3-4c72-b1c4-92014f6f0986}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FileSystem">
-      <UniqueIdentifier>{7794f963-bab0-448b-ad56-24483ed14e54}</UniqueIdentifier>
     </Filter>
     <Filter Include="Framework">
       <UniqueIdentifier>{407a6495-0013-43be-b3ff-d17f66e5294e}</UniqueIdentifier>
@@ -745,6 +766,9 @@
     </Filter>
     <Filter Include="Framework\Framework3D">
       <UniqueIdentifier>{793a4158-f7fb-4ab2-b852-f76a5314190c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\IO">
+      <UniqueIdentifier>{ddef039e-11a9-4830-902e-03256ffe0e85}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

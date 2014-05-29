@@ -2,16 +2,17 @@
 
 [HeaderIncludes]
 
-namespace [Namespace]
+class [ClassName] : public [BaseClass]
 {
-	class [ClassName] : public [BaseClass]
-	{
-	public:
-	
-	[FunctionDefinitions]
+private:
 
-	public:
+	using base = [BaseClass];
+
+public:
 	
-	[Members]
-	}
-}
+[FunctionDefinitions]
+
+public:
+	
+[Members]
+};

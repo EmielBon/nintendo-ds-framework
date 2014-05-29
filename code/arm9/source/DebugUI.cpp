@@ -29,6 +29,7 @@ namespace Debug
 	using namespace Input;
 	using namespace Graphics;
 	using namespace Framework;
+	using namespace Framework3D;
 
 	Ptr<System::Console> DebugUI::Console;
 

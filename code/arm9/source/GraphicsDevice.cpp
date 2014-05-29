@@ -109,15 +109,11 @@ namespace Graphics
 		ObjectAttributeMemory.Update();
 	}
 
-
-
 	//-------------------------------------------------------------------------------------------------
 	void GraphicsDevice::SetBackgroundColor(u16 color)
 	{
 		BackgroundMemory.PaletteMemory.SetTransparentColor(color);
 	}
-
-
 
 	//-------------------------------------------------------------------------------------------------
 	void GraphicsDevice::DrawIndexedPrimitives( PrimitiveType type, int vertexOffset, int minVertexIndex, int numVertices, int startIndex, int primitiveCount )
@@ -142,8 +138,6 @@ namespace Graphics
 
 		glPopMatrix(1);
 	}
-
-
 
 	//-------------------------------------------------------------------------------------------------
 	void GraphicsDevice::DrawUserIndexedPrimitives( PrimitiveType type, const List<Vertex>& vertices, int vertexOffset, int numVertices, const List<u16> &indices, int indexOffset, int primitiveCount )
@@ -171,8 +165,6 @@ namespace Graphics
 		glPopMatrix(1);
 	}
 
-
-
 	//-------------------------------------------------------------------------------------------------
 	void GraphicsDevice::Clear( ClearOptions options, Color color/*, float depth, int stencil*/ )
 	{
@@ -190,6 +182,4 @@ namespace Graphics
 		//if (options & ClearOptions::Stencil)
 		// Todo: DS has a stencil buffer for shadow volumes
 	}
-
-
 }

@@ -11,15 +11,9 @@ namespace GameGen
     {
         static void Main(string[] args)
         {
-            GameObject obj = GameObject.Parse(File.ReadAllText(Environment.GetEnvironmentVariable("ARPIGI") + "/ZeldaGameLink.txt"));
-
-            Console.WriteLine("-------" + obj.ClassName + ".h -------\n");
-            Console.WriteLine(obj.ExportHeader());
-            Console.WriteLine("\n-------" + obj.ClassName + ".cpp -------\n");
-            Console.WriteLine(obj.ExportCpp());
-            Console.ReadKey();
-
-
+            string path = args[0];// Environment.GetEnvironmentVariable("ARPIGI");
+            DSLProject project = new DSLProject(path);
+            project.Generate();
         }
     }
 }

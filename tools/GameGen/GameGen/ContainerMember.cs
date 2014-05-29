@@ -21,6 +21,5 @@ namespace GameGen
             throw new Exception("Parse error: Unknown container type in type \"" + Type + "\"");
         }
 
-        public override Value InitialValue { get; set; }
     }
 }

@@ -1,0 +1,19 @@
+Link
+x SpriteSet[i], replace indexer with .at(i) and create that function in SpriteSet 
+x Sprite.SubImageIndex = 0, Sprite->SubImageIndex = 0
+
+Load<T>
+x Resolve namespace of T (resolved by only allowing member names unqual to type names)
+	
+For the above:
+x Scan for all complex members for member., e.g. Sprite.
+x Replace . with ->
+- Todo: Lists
+
+x Output generated classes to nintendo-ds-engine/code/armx/[include|source]
+- Optional inheritance
+- Fix projectwide unique membername constraint in . for -> replace pass 
+- Multiple member, single type definitions (e.g. fx12 x, y;)
+- Use UniversalIndentGUI for formatting the generated files
+- Add support for constructors
+- Proper Initialization order 

@@ -1,0 +1,31 @@
+1. Reference types
+
+1.1 C++ pointers / references are not available in DSL. 
+1.2 Primitive types are value types. Primitive types are unsigned integers (byte/u8, u16, u32, u64), signed integers (s8/char, s16/short, s32/int, s64/long), fixed point numbers (fx8, fx12, fx24) and floating point numbers (float32/float, float64/double).
+1.3 All non-primitive types are pointer types.
+
+2. Namespaces
+
+2.1 Namespaces are not available. DSL source code compiles to the C++ default namespace.
+
+3. Method visibility
+
+3.1 All methods and members in a class definition are implicitly public.
+
+4. Class definition
+
+4.1 A class definition has the following syntax. [ClassName] : [BaseClassName]
+
+5. Class member/method definition
+
+5.1 Class members can be defined with the following syntax. [Type] [MemberName], optionally followed by an initialization value. Examples: int x, int y = 5;
+
+5.2 Class methods can be defined with the following syntax. [ReturnType] [FunctionName] ([Arguments]) { [MethodBody] }
+
+6. Preprocessor directives
+
+6.1 The C++ #include directive is not available. Dependencies are resolved automatically by scanning the entire DSL project.
+
+7. Statements
+
+7.1 All statements must be terminated with the semicolon (;) symbol.

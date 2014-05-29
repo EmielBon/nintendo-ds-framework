@@ -5,7 +5,7 @@
 #include "SceneObject.h"
 #include "Light.h"
 
-namespace Graphics
+namespace Framework3D
 {
 	class Scene : public DrawableGameComponent
 	{

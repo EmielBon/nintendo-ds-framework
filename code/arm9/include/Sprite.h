@@ -15,6 +15,8 @@ namespace Graphics
 
 	public:
 
+		Sprite() = default;
+
 		/// Constructor
 		Sprite(const List<SpriteSubImage> &subImages);
 

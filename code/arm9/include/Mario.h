@@ -6,9 +6,7 @@
 
 namespace Test
 {
-	class Test3D;
-
-	class Mario : public Graphics::SceneObject
+	class Mario : public Framework3D::SceneObject
 	{
 	public:
 
@@ -52,7 +50,7 @@ namespace Test
 		List<Ptr<Texture>> walkBackSprite;
 		Ptr<Texture> jumpFrontSprite;
 		Ptr<Texture> jumpBackSprite;
-		Ptr<Scene> scene;
+		Ptr<Framework3D::Scene> scene;
 
 		bool CollisionsEnabled;
 	};

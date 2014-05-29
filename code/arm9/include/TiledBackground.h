@@ -57,6 +57,7 @@ namespace Graphics
 		List<MapTile> MapTiles;
 		Ptr<Framework2D::CollisionMap> CollisionMap;
 
+		// todo: remove const
 		const Framework::Size Size;
 		TreeMap<u32, int> IdentifierReferenceCount;
 		int Bpp;
@@ -66,7 +67,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	inline TiledBackground::TiledBackground() : Bpp(0)
 	{
-	
+		
 	}
 
 	//-------------------------------------------------------------------------------------------------

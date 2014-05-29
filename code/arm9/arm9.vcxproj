@@ -85,12 +85,17 @@
     <ClInclude Include="include\FPSCounter.h" />
     <ClInclude Include="include\Framework.h" />
     <ClInclude Include="include\Framework2D.h" />
+    <ClInclude Include="include\Framework3D.h" />
     <ClInclude Include="include\GameCamera.h" />
     <ClInclude Include="include\GameComponent.h" />
     <ClInclude Include="include\GameComponentCollection.h" />
+    <ClInclude Include="include\GameGenProject.h" />
     <ClInclude Include="include\GameObjec3D.h" />
     <ClInclude Include="include\GameTime.h" />
+    <ClInclude Include="include\GlobalFunctions.h" />
+    <ClInclude Include="include\Graphics.h" />
     <ClInclude Include="include\GraphicsDeviceManager.h" />
+    <ClInclude Include="include\GUI.h" />
     <ClInclude Include="include\IGraphicsResource.h" />
     <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\IActionListener.h" />
@@ -100,6 +105,7 @@
     <ClInclude Include="include\IGameHost.h" />
     <ClInclude Include="include\IndexBuffer.h" />
     <ClInclude Include="include\Input.h" />
+    <ClInclude Include="include\LLR.h" />
     <ClInclude Include="include\Map.h" />
     <ClInclude Include="include\Light.h" />
     <ClInclude Include="include\Logging.h" />
@@ -137,6 +143,7 @@
     <ClInclude Include="include\SpriteSubImage.h" />
     <ClInclude Include="include\StreamReader.h" />
     <ClInclude Include="include\StringHelper.h" />
+    <ClInclude Include="include\System.h" />
     <ClInclude Include="include\Test2D.h" />
     <ClInclude Include="include\Test3D.h" />
     <ClInclude Include="include\Background.h" />
@@ -187,6 +194,7 @@
     <ClInclude Include="include\TouchScreen.h" />
     <ClInclude Include="include\TouchState.h" />
     <ClInclude Include="include\types.h" />
+    <ClInclude Include="include\Util.h" />
     <ClInclude Include="include\Vec2.h" />
     <ClInclude Include="include\Vec3.h" />
     <ClInclude Include="include\Vertex.h" />

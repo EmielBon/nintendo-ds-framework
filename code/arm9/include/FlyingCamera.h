@@ -3,7 +3,7 @@
 #include "Camera.h"
 #include "types.h"
 
-namespace Graphics
+namespace Framework3D
 {
 	class FlyingCamera : public Camera
 	{

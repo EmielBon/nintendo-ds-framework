@@ -39,6 +39,7 @@ namespace Framework
 	using namespace FileSystem;
 	using namespace Framework;
 	using namespace Framework2D;
+	using namespace Framework3D;
 
 	// Todo: code duplications in TileSet16 and TileSet256
 	//-------------------------------------------------------------------------------------------------

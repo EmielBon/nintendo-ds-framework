@@ -8,6 +8,7 @@
 #include "DrawableGameComponent.h"
 #include "Game.h"
 #include "GameComponent.h"
+#include "GameTime.h"
 #include "GraphicsDeviceManager.h"
 #include "IDisposable.h"
 #include "IGameComponent.h"

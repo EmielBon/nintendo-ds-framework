@@ -1,6 +1,8 @@
 code/aRPiGi.nds
 code/aRPiGi.arm7
 code/aRPiGi.arm9
+code/aRPiGi.sdf
+code/aRPiGi.opensdf
 code/arm7/aRPiGi.arm7.elf
 code/arm7/build/
 code/arm9/aRPiGi.arm9.elf

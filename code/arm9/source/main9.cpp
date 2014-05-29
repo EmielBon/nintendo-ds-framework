@@ -9,10 +9,11 @@
 #include "ProfilingTest.h"
 #include "MatrixPerformanceTest.h"
 #include "FixedPointUnitTest.h"
+#include "GameGenProject.h"
 
 int main(void) 
 {
-	Test::Test2D test;
+	//Test::Test2D test;
 	//Test::Test3D test;
 	//Test::CollisionTest test;
 	//Test::ConsoleTest test;
@@ -25,6 +26,7 @@ int main(void)
 	//Test::ProfilingTest test;
 	//Test::MatrixPerformanceTest test;
 	//Test::FixedPointUnitTest test;
+	GameGenProject test;
 
 	test.Run();
 

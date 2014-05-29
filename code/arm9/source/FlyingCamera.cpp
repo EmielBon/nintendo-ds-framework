@@ -4,7 +4,8 @@
 #include "GameTime.h"
 #include "Logging.h"
 #include "Vec2.h"
-namespace Graphics
+
+namespace Framework3D
 {
 	using namespace Input;
 

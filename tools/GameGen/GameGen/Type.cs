@@ -6,29 +6,36 @@ using System.Threading.Tasks;
 
 namespace GameGen
 {
-    class Type
+    enum MetaType
     {
-        public static String[] PrimitiveTypes = { "int", "bool", "float", "float12", "float16", "float24", "string", "Vector2", "Vector3" };
-        public static String[] DefaultValues = { "0", "false", "0", "0", "0", "0", String.Empty, "Vector2(0, 0)", "Vector3(0, 0, 0)" };
+        ReferenceType,
+        ValueType,
+    }
 
-        public String Name;
+    enum DeclarationType
+    {
+        Local,
+        Extern,
+    }
 
-        public Type(String name)
+    class Type : IEquatable<Type>
+    {
+        public MetaType MetaType;
+        public DeclarationType DeclarationType;
+        public String   Name;
+        public String   DefaultValue;
+
+        public Type(String name, String defaultValue, MetaType type = MetaType.ReferenceType, DeclarationType declarationType = DeclarationType.Local)
         {
+            MetaType = type;
             Name = name;
+            DefaultValue = defaultValue;
+            DeclarationType = declarationType;
         }
 
-        public Value DefaultValue
+        public bool Equals(Type other)
         {
-            get 
-            { 
-                return new Value(this, IsPrimitive() ? DefaultValues[PrimitiveTypes.ToList().IndexOf(Name)] : "nullptr");
-            }
-        }
-
-        public bool IsPrimitive()
-        {
-            return (PrimitiveTypes.Contains(Name));
+            return Name == other.Name;
         }
     }
 }

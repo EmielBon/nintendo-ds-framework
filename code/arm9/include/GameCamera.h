@@ -4,9 +4,9 @@
 #include "Mario.h"
 #include "types.h"
 
-namespace Graphics
+namespace Framework3D
 {
-	class GameCamera : public Camera
+	class GameCamera : public Graphics::Camera
 	{
 	private:
 

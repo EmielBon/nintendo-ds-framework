@@ -1,6 +1,6 @@
 #include "GameCamera.h"
 
-namespace Graphics
+namespace Framework3D
 {
 	//-------------------------------------------------------------------------------------------------
 	void GameCamera::Update(const GameTime &gameTime)

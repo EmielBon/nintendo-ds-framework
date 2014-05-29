@@ -33,12 +33,6 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void Background::ShowTiledBackground( Ptr<TiledBackground> tiledBackground )
-	{
-
-	}
-
-	//-------------------------------------------------------------------------------------------------
 	void Background::Clear()
 	{
 		ASSERT2(mapIndex >= 0, "No map for Background" << index);

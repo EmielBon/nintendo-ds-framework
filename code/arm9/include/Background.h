@@ -1,6 +1,5 @@
 #pragma once
 
-#include "TiledBackground.h"
 #include "TileSet.h"
 #include "types.h"
 #include "Assert.h"
@@ -47,9 +46,6 @@ namespace Graphics
 
 		/// 
 		Graphics::BackgroundMemory& BackgroundMemory() const;
-
-		/// 
-		void ShowTiledBackground(Ptr<TiledBackground> tiledBackground);
 
 		///
 		void Clear();

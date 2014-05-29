@@ -41,6 +41,7 @@ namespace Test
 	using namespace Debug;
 	using namespace Input;
 	using namespace System;
+	using namespace Framework3D;
 
 	//-------------------------------------------------------------------------------------------------
 	EVTest::EVTest()

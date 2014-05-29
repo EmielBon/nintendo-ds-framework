@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 #include "Game.h"
 #include "types.h"
@@ -19,4 +19,4 @@ namespace Test
 
 		Ptr<Framework2D::Room> CurrentRoom;
 	};
-}
+}*/

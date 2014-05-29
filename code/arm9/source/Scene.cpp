@@ -7,7 +7,7 @@
 #include "Debug.h"
 #include "StringHelper.h"
 
-namespace Graphics
+namespace Framework3D
 {
 	//-------------------------------------------------------------------------------------------------
 	void Scene::Initialize()

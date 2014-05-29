@@ -72,15 +72,13 @@ namespace Graphics
 
 	class Model;
 	class Camera;
-	class FlyingCamera;
-	class GameCamera;
+	
 	class Vertex;
 	class Texture;
 	class BasicEffect;
 	class GraphicsDevice;
 	class VertexBuffer;
 	class IndexBuffer;
-	class Scene;
 }
 
 namespace FileSystem
@@ -94,6 +92,21 @@ namespace Framework2D
 
 	class Room;
 	class CollisionMap;
+}
+
+namespace Framework3D
+{
+	using namespace Framework;
+	using namespace Graphics;
+
+	class FlyingCamera;
+	class GameCamera;
+	class Scene;
+}
+
+namespace Input
+{
+
 }
 
 namespace LLR
@@ -127,6 +140,7 @@ namespace Util
 {
 	class IActionListener;
 }
+
 
 /// Aliases
 using String = std::string;

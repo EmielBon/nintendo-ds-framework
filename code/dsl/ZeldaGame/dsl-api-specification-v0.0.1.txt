@@ -1,0 +1,37 @@
+1. Application flow
+
+1.1 Initialize()
+
+All objects have an Initialize() method. When no inline member initialization is performed and the Initialize() method is not overridden, the body of the method is empty. When inline member initialization is present, the assignment statement is compiled into the Initialize() method. The Initialize() method of the base class is always implicitly called.
+
+1.2 LoadContent()
+
+All objects have a LoadContent() method.
+
+1.3 Update()
+
+All objects have an Update() method. A parameter called ElapsedTime is implicitly passed into this method (cf. section 2.1).
+
+1.4 Draw()
+
+2 Implicit parameters
+
+2.1 ElapsedTime
+
+An object called ElapsedTime is implicitly passed as a parameter into the Update and Draw methods (like the "this" parameter in C++ methods), allowing the user to assess the amount of time passed since the last call to this method. The members of this object are Milliseconds, Seconds, Minutes, Hours and Days, which are all float numbers (todo: type will change for performance reasons).
+
+Example: 
+
+float walkSpeed = 5; 
+walkSpeed *= ElapsedTime.Seconds;
+mario.position += mario.direction * walkSpeed;
+
+This will make mario walk at 5px per second.
+
+3 Built-in functions / methods
+
+3.1 Room class
+
+3.1.1 AddObject()
+
+Adds a GameObject to this Room. After adding, the Room wil make sure Initialize() and LoadContent() are called, and Room calls Update() and Draw() every frame.
