@@ -1,0 +1,294 @@
+#!/usr/bin/perl
+#
+# hindent 1.1.2
+#
+# Properly indent HTML code and convert tags to uppercase like the Gods intended.
+# Understands all nesting tags defined under the HTML 3.2 standard.
+#
+# by Paul Balyoz <pab@domtools.com>
+#
+# Usage:
+#	hindent [-fslcv] [-i num] [file ...] > newfile
+#
+# Options:
+#	-f	Flow - just prints tags _without_args_, for visual checking.
+#		NOTE: This option DAMAGES the HTML code.  The output is for
+#		human debugging use ONLY.  Keep your original file!!
+#	-s	Strict - prints 1 tag per line with proper indenting.
+#		Helpful for deciphering HTML code that's all on one line.
+#		NOTE: This slightly DAMAGES the HTML code because it introduces
+#		whitespace around tags that had none before, which will mess up
+#		formatting somewhat on the page (links will have extra spaces, etc).
+#	-i num	Set indentation to this many characters.
+#	-l	List all the tags we recognize and exit.
+#	-c      Lowercase HTML tags. (Uppercase is default)
+#	-v	Print version of hindent and exit.
+#
+# Copyright (C) 1993-1999 Paul A. Balyoz <pab@domtools.com>
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+
+
+# How many spaces to indent per level?
+# (sets of 8-spaces will be automatically converted to tabs intelligently).
+# You can use any value here, some recommendations:  8, 4, 3, or 2
+$spacesperlevel = 2;
+
+# How many spaces does a "tab" occupy on your screen?
+# Unix generally uses 8-space-tabs, but it's user-configurable in most editors.
+# If tabs are not turned off (-t0) then we output 1 tab character for every
+# $tabstop spaces we need to output.
+$tabstop = 8;
+
+# Tags that require their own end tag <TAG>...</TAG> we will nest them
+# properly:   (WARNING, you must use lower-case here)
+# All other tags (not on this list) will be ignored for indenting purposes.
+%nesttag = (
+	'html' => 1,
+	'head' => 1,
+	'body' => 1,
+	'title' => 1,
+
+	'a' => 1,
+
+	'table' => 1,
+	'tr' => 1,
+	'th' => 1,
+	'td' => 1,
+
+	'form' => 1,
+	'select' => 1,
+	'textarea' => 1,
+
+#	'p' => 1,      Don't do this one because many people use <P> but not </P>
+	'ul' => 1,
+	'ol' => 1,
+	'dl' => 1,
+	'blockquote' => 1,
+	'center' => 1,
+	'div' => 1,
+
+	'font' => 1,
+	'pre' => 1,
+	'tt' => 1,
+	'i' => 1,
+	'b' => 1,
+	'u' => 1,
+	'strike' => 1,
+	'big' => 1,
+	'small' => 1,
+	'sub' => 1,
+	'sup' => 1,
+	'em' => 1,
+	'strong' => 1,
+	'dfn' => 1,
+	'code' => 1,
+	'samp' => 1,
+	'kbd' => 1,
+	'var' => 1,
+	'cite' => 1,
+
+	'h1' => 1,
+	'h2' => 1,
+	'h3' => 1,
+	'h4' => 1,
+	'h5' => 1,
+	'h6' => 1,
+
+	'applet' => 1,
+
+	'map' => 1,
+
+	'frameset' => 1,
+	'noframes' => 1,
+);
+
+
+#-------------------\
+# END CONFIGURATIONS ===================================================================
+#-------------------/
+
+use Getopt::Std;
+
+
+#
+# Parse args
+#
+
+sub usageexit {
+	print STDERR "usage: hindent [-fslcv] [-i num] [-t num] [file ...] > newfile\n";
+	exit 1;
+}
+
+getopts('fsi:lvt:c') || &usageexit;
+if (defined $opt_i) {
+	if ($opt_i < 0 || $opt_i > 10) {
+		print STDERR "$0: error: indentation factor '$opt_i' not in range 0..10.\n";
+		&usageexit;
+	} else {
+		$spacesperlevel = $opt_i;
+	}
+}
+if (defined $opt_t) {
+	if ($opt_t < 0 || $opt_t > 12) {
+		print STDERR "$0: error: indentation factor '$opt_i' not in range 0..12.\n";
+		&usageexit;
+	} else {
+		$tabstop = $opt_t;
+	}
+}
+
+
+#
+# If -l option, just list tags and exit.
+#
+
+if ($opt_l) {
+	print "hindent recognizes these HTML tags:\n";
+	for $tag (sort(keys(%nesttag))) {
+		$tag =~ tr/a-z/A-Z/;
+		print "$tag\n";
+	}
+	exit 0;
+}
+
+
+#
+# If -v option, just print version and exit.
+#
+
+if ($opt_v) {
+	print "hindent version 1.1.2\n";
+	exit 0;
+}
+
+
+#
+# Main HTML parsing code
+#
+
+$level = 0;			# indentation level
+$changelevel = 0;		# change in indentation level (delta)
+$out = "";			# accumulated output string
+while (<>) {
+	chomp;			# some HTML has no newline on last line, chop mangles it.
+	s/^\s+//;		# remove ALL preceding whitespace, we rebuild it ourselves
+	$line++;
+
+	$end = -1;
+	$start = $len = 0;
+	while (/<(.*?)>/g) {
+		$end = $start+$len-1;	# of previous values
+		$start = length($`);
+		$len = 1 + length($1) + 1;
+		($tag,$arg) = split(/\s+/,$1,2);
+		if (!$opt_f) {
+			$out .= substr($_, $end+1, $start-($end+1));   # print stuff from last tag to here
+		}
+		if ($opt_c) {
+			$tag =~ tr/A-Z/a-z/;
+		} else {
+			$tag =~ tr/a-z/A-Z/;
+		}
+		if ($arg && !$opt_f) {
+			$out .= "<$tag $arg>";
+		} else {
+			$out .= "<$tag>";
+		}
+
+		# if regular tag, push it on stack; if end-tag, pop it off stack.
+		# but don't do any of this if it's not a special "nesting" tag!
+		if ($tag !~ m,^/,) {
+			if ($nesttag{lc($tag)}) {
+				push @tagstack,$tag;
+				$changelevel++;		# remember how much for later
+			}
+		} else {
+			$tag =~ s,^/,,;		# convert this end-tag to a begin-tag
+			$tag = lc($tag);
+			if ($nesttag{lc($tag)}) {
+				# throw away tags until we find a match
+				if ($#tagstack > -1) {
+					while ($tag ne lc(pop @tagstack)) {
+						$changelevel--;	# we threw away extra tags
+						last if $#tagstack <= 0;
+					}
+					$changelevel--;	# we threw away extra tags
+					if ($level+$changelevel < 0) {
+						print STDERR "line $line: saw more end tags than begin ones!\n";
+						$changelevel = -$level;
+					}
+				}
+			}
+		}
+		&printout if $opt_s;		# -s -> print every tag on new line
+	}
+
+	#
+	# Print rest of line after the last match, and newline.
+	# (not part of Flow)
+	#
+	if (!$opt_f) {
+		$end = $start+$len-1;
+		$out .= substr($_,$end+1,length($_)-($end+1));
+	}
+
+	&printout;
+}
+
+# Any tags left on the stack?
+if ($level > 0) {
+	print STDERR "WARNING: level=$level, ", $#tagstack+1," tags left on stack after done parsing!  Specifically:\n";
+	while ($tag = pop @tagstack) {
+		print STDERR "\t$tag";
+	}
+}
+
+exit 0;
+
+
+#
+# Print this line of data indented properly.
+#
+sub printout {
+	my($numtabs) = 0;
+
+	#
+	# To OUTdent, do that BEFORE printing.
+	#
+	if ($changelevel < 0) {
+		$level += $changelevel;
+		$changelevel = 0;
+	}
+
+	#
+	# Print indents and this line of output
+	#
+	$spaces = " " x ($level * $spacesperlevel);
+	$numtabs = int(length($spaces)/$tabstop) if $tabstop;
+	print "\t" x $numtabs;				 # print the tabs
+	print " " x (length($spaces)-$numtabs*$tabstop); # print the spaces
+	print "$out\n";
+	$out = "";
+
+	#
+	# To INdent, do that AFTER printing.
+	#
+	if ($changelevel > 0) {
+		$level += $changelevel;
+		$changelevel = 0;
+	}
+}

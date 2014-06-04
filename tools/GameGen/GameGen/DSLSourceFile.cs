@@ -55,32 +55,11 @@ namespace GameGen
 
         public String Postprocess(String source)
         {
-            String output = CompactWhitespace(source);
-            output = output.Replace("#pragma once", "#pragma once\n\n"); 
-            output = output.Replace(".h\"", ".h\"\n");
-            output = output.Replace("namespace", "\nnamespace");
-            output = output.Replace("public:", "public:\n"); 
-            output = output.Replace(";", ";\n");
+            String output = source;
             output = output.Replace(" ( ", "(").Replace(" ) ", ")");
             output = output.Replace(" [ ", "[").Replace(" ] ", "]");
             output = output.Replace(" < ", "<").Replace(" >", ">");
             output = output.Replace(" ;", ";");
-            output = output.Replace("{", "\n{\n");
-            output = output.Replace("}", "}\n");
-            output = output.Replace("\n ", "\n");
-
-            String[] lines = output.Split('\n');
-            output = "";
-            int depth = 0;
-            foreach(String line in lines)
-            {
-                if (line == "}") depth--;
-                output += new String('\t', (line == "public:") ? depth-1 : depth);
-                output +=  line + "\n";
-                if (line == "{") depth++;
-            }
-            //output = output.Replace("[", "{");          // Correct the formatting for lists
-            //output = output.Replace("]", "}");
             
             // Replace all enums . with ::
             foreach (var enumConstant in Project.Enums)
@@ -196,10 +175,10 @@ namespace GameGen
                 functions += String.Format("{0} {1}({2}){3}", function.ReturnType, function.Name, function.Arguments, function.Inline ? ("{" + function.Body + "}") : ";");
 
             String output = Preprocess(File.ReadAllText("Templates/HeaderTemplate.txt"));
-            string includes = "";
+            string includes = "#pragma once\n\n";
             foreach (Include include in HeaderIncludes)
-                includes += String.Format("#include \"{0}.h\"", include.FileName);
-            output = output.Replace("[HeaderIncludes]", includes);
+                includes += String.Format("#include \"{0}.h\"\n", include.FileName);
+            output = output.Replace("[HeaderIncludes]", includes + "\n");
             output = output.Replace("[ClassName]", ClassName);
             output = output.Replace("[BaseClass]", BaseClassName);
             output = output.Replace("[FunctionDefinitions]", functions);
@@ -256,17 +235,15 @@ namespace GameGen
                     function.Body += String.Format("base::{0}(gameTime);", function.Name);
                 }
 
-                functions += String.Format("{0} {1}::{2}({3}){{{4}}}", function.ReturnType, ClassName, function.Name, function.Arguments, function.Body);
+                functions += String.Format("{0} {1}::{2}({3}){{{4}}}\n\n", function.ReturnType, ClassName, function.Name, function.Arguments, function.Body);
             }
 
             string output = Preprocess(File.ReadAllText("Templates/CppTemplate.txt"));
             
-            string includes = "";
+            string includes = String.Format("#include \"{0}.h\"\n", ClassName);
             foreach (Include include in SourceIncludes)
-                includes += String.Format("#include \"{0}.h\"", include.FileName);
-            output = output.Replace("[SourceIncludes]", includes);
-            output = output.Replace("[ClassName]", ClassName);
-            output = output.Replace("[BaseClass]", BaseClassName);
+                includes += String.Format("#include \"{0}.h\"\n", include.FileName);
+            output = output.Replace("[SourceIncludes]", includes + "\n");
             output = output.Replace("[Functions]", functions);
 
             return Postprocess(output);

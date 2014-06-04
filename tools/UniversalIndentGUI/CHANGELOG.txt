@@ -1,0 +1,298 @@
+2012-01-01 Version 1.2.0
+[add] The Linux version has a menu entry in the application development menu now.
+[add] The Linux version has a mime type association to some code files now, so that UiGUI is available as "open with".
+[add] Added support for the Visual Basic beautifier VBSBeautifier.
+[add] Added support for the SQL beautifier Pl/Sql tidy.
+[add] Updated the Artistic Style configuration to support Artistic Style version 2.02.1.
+[add] Updated the Uncrustify configuration to support Uncrustify version 0.59.
+[add] Updated the PerlTidy configuration to support PerlTidy version 1.74.
+[add] Updated the Ruby Script Beautifier to version 2.9.
+[fix] Bug ID 3021933: Updated the Artistic Style configuration to support Artistic Style version 2.01.
+[fix] Bug ID 3021931: Fixed calling of Artistic Style version 1.22 and later.
+[fix] Bug ID 3006513: Fixed compiling UiGUI using GCC 4.5 and later.
+[fix] Bug ID 2942381: When loading an indenter configuration file, the settings displayed in the docking widget were correctly updated, but the code wasn't.
+[fix] Bug ID 2135872: A zombie process kept on running if UiGUI was quit during the update check in background if no internet connection is available.
+[fix] Bug ID 3175027: Uncrustify had wrong pop-up comments for two check-boxes.
+[fix] Bug ID 2916163: The proxy settings are properly used and applied now.
+[fix] Made the JsDecoder integration be compatible with recent Qt versions.
+[change] Changed the created shell scripts indenter config file reference. Now each created shell script has a corresponding config file being created in the same dir as the shell script, with the same name but different suffix. But since the config file is referenced by "./", when calling the script the working directory must be the same as the directory containing the config file.
+[change] Using TCLAP as command line parser instead of own command line parsing.
+[change] Setting a file name as parameter on the command line without any prefix will load this file instead of the last opened one.
+[change] Rewritten and improved the internal way how settings are connected to the UI.
+[change] Refactored and cleaned up the code.
+[change] Will no longer deliver binary bundles linked against Qt statically. Instead delivering all dependent DLLs and libs.
+
+2009-07-16 Version 1.1.0
+[add] Added a logging class, that can catch debug output and make trace backs if any problems occur possible.
+[add] Added an application icon for Mac OS X.
+[change] Feature Request ID 2596302 : Updated the greatcode.ini. Thanks to adxadx who has done this work!
+[change] Feature Request ID 2793216: Updated to Uncrustify 0.53.
+[change] Updated to JsDecoder version 1.1.0
+[fix] Bug ID 2791229: If UiGUI was located in a path containing Unicode characters or such a path needed to be handed over to a called indenter, the indenter could get confused on Windows. So using the Windows 8.3 short path notation.
+[fix] On Mac OS X the used default font wasn't monospaced. Switched back to use Courier on Mac.
+
+2009-02-12 Version 1.0.2
+[add] Feature Request ID 2498654 : Added support for the Fortran indenter F90ppr. http://universalindent.sf.net/issue/feature/2498654
+[add] Made it possible to define "stdin" to be used for an indenter calling.
+[change] Made the source code be compilable with the slightly older QScintilla version 2.2.
+[change] When starting the very first time without any existing application settings, do not show the mainwindow at position 0,0. On Mac the window couldn't be moved because the window title bar was hidden under the Mac menu bar.
+[change] When using a non Windows system the default editor font type is now Monospace instead of Courier. The latter was not found properly.
+[change] For security reason using a randomly generated temporary directory name on Unix based systems.
+[change] Improved the GUI updates for the Notepad++ plugin a bit. Not what I would call "good" yet.
+[fix] Bug ID 2284777 : The Notepad++ plugin was falsely linked against Qt debug dlls, which were not included. http://universalindent.sf.net/issue/bug/2284777
+[fix] Bug ID 2594251 : The new version available check didn't work anymore since version 1.0.1. http://universalindent.sf.net/issue/bug/2594251
+[fix] Avoid a crash if an uigui ini file with faulty header info is read, where the indenter executable was empty.
+[fix] Some application settings were tried to be read from a wrong directory when running in multi user mode.
+
+2008-10-14 Version 1.0.1
+[add] Feature Request ID 2161471 : Added support for the Python indenter pindent.
+[add] Feature Request ID 1883444 : Added support for the JSP indenter JSPPP.
+[add] Feature Request ID 1867563 : Added support for the XML indenter XML Indent.
+[add] Support for French language. Thanks to Erwan "leg".
+[change] Some small translation corrections.
+[change] Improved the "new version available" check.
+[change] On Mac and Linux a one pixel frame was shown around the whole screen when about dialog is visible. Removed that.
+[change] Updated to Uncrustify version 0.49 from SVN repository.
+[change] Using a new logo icon for UniversalIndentGUI. The logo was created by Erwan "leg". Thanks!
+[fix] Bug ID 2173527 : Could not load Artistic Style config file properly if both parameters "--brackets=linux" and "--brackets=break-closing" were set. http://universalindent.sf.net/issue/2173527
+[fix] The distributed version of GNU Indent was using a misspelled configuration file, thus lieve preview didn't correctly work. Using original GNU Win32 version now.
+[fix] In version 1.0.0 the creation of batch files for indenters undet Windows always created a bash/shell script instead of batch.
+[fix] Keyboard shortcuts for enabling/disabling "Live Preview" and syntax highlighting didn't work.
+
+2008-09-30 Version 1.0.0 non public release. Only presented for Qt Centre programming contest.
+[add] Made it possible to start UiGUI in different modes via parameters: Normal (full UI), plugin (only indenter menu, server active), server only.
+[add] Added a server functionality. Future plan is to let UiGUI run also as server so plugins from other editors can send indent requests over TCP/IP to it. Very early state right now.
+[add] Created a plugin for Notepad++. This plugin shows the indenter parameter menu and lets the user indent the selected or whole text. Live preview works also. Still has some eventloop graphic update problems.
+[add] Added support for two (rather simple) Ruby beautifiers, ruby_formatter and rbeautify.
+[add] Feature Request ID 1985475 : Added the possibility to reset all indenter parameters to default values. http://universalindent.sf.net/issue/1985475
+[add] Feature Request ID 1989585 : Added a context menu in indenter parameters widget and moved all functions handling these actions from the main window to the indent handler. http://universalindent.sf.net/issue/1989585
+[add] Feature Request ID 1977033 : Now supporting the Cobol intender Cobol Beautifier. http://universalindent.sf.net/issue/1977033
+[add] Feature Request ID 2080832 : Now showing the cursors current line and column number in the statusbars down right corner. http://universalindent.sf.net/issue/2080832
+[change] Using Qt >= 4.4.x now and thereby implemented an animated 3D about dialog.
+[change] Using QScintilla >= 2.3 now and thereby added support for Cmake, Fortran[77], Pascal, PostScript, TCL, VHDL, XML and YAML.
+[change] Reformatted the about dialog to only contain one QTextEdit. Also added some more links to that text.
+[change] Limited the size of the combobox showing the indenters because with the supported programming languages in the name, the comobox was to large in width.
+[change] Prevent php file from being tried to be executed directly. That could happen if the file has the execution flag set. However that should never be the case, so this is a workaround.
+[change] Added a new class UiguiIniFileParser which will replace the currently used QSettings for reading the indenter parameters. Thus parameters appear in the menu in the same order as in the ini file and are no longer alphabetically sorted.
+[change] Redesigned the user interface and code a bit. The indenter selection combo box along with the manual button are now placed in docking widget where all indenter parameters are placed. This is done in preparation to pull out the complete indent handler, so it can be used as plugin for Notepad++ or Eclipse etc.]
+[change] Made reading the indenter config files more tolerant. If the user disobeys case sensitivity when editing the config file by hand, the values are correctly parsed anyway.
+[change] Feature Request ID 1989587 : There is no longer any need to have a current value setting in the ini files. A default value is enough. http://universalindent.sf.net/issue/1989587
+[change] Completely removed QT3Support functions.
+[change] Removed all compiler warnings.
+[change] Changed the way internal settings are handled. Using QObject propertys for connected setting name now.
+[fix] The by each indenter supported programming languages, written in braces, are removed from the created shell scripts name.
+[fix] Corrected the move/mv commands parameter in the created shell and batch script when calling recursive.
+[fix] Bug ID 1986471 : The file modification flag did not work properly. Reason was that QScintilla can not set its textedit component modified flag to true by a function call. http://universalindent.sf.net/issue/1986471
+
+2008-05-26 Version 0.8.2
+[add] Feature Request ID 1971206 : Now showing by the indenter supported programming languages next to indenter name.
+[add] Feature Request ID 1971181 : Added support for the HTML indenter HTB.
+[add] Feature Request ID 1867562 : Added support for the HTML indenter hindent.
+[add] Added support for the php indenter phpStylist version 1.0.
+[add] Added the possibility to directly setting php files as indenter. The suffix .php is recognized and php used as default interpreter.
+[add] Extended the created batch/shell script so it is able to indent only one file given as parameter or a whole directory recursively with a defined file suffix.
+[add] Feature Request ID 1885911 : Added the possibility to open a file on applications start, that is handed over as parameter on the command line.
+[add] Feature Request ID 1729429 : Added the possibility to drag'n drop in any source code file for opening it.
+[change] Created indenter shell scripts now automatically have the executable flag set to true.
+[change] Completed the support for all perl tidy parameters.
+[change] Updated to uncrustify version 0.46.
+[fix] Bug ID 1933074 : On Unix systems the user config files were stored in his home dir in the subfolder ".config". Now they are directly stored in ".universalindentgui".
+[fix] Fixed a bug where the string "<html><body>" was prepended to the output code. Occurred for example when using the shell indenter.
+
+2008-03-27 Version 0.8.1
+[add] Feature Request ID 1909450 : Added support for the PEAR PHP beautifier. Thus PHP beautifying is also possible on Linux and Mac OS X. (Needs the PEAR package "PHP_Beautifier" to be installed and a path entry pointing to the PHP dir.)
+[add] Added support and translations for Russian and Ukrainian language. Thanks to Oleksandr (http://korytskyy.lviv.ua).
+[add] Feature Request ID 1901935 : From now on files are saved with the same encoding as they were opened and no longer always UTF-8. Also it is possible to save the file with any other encoding.
+[change] The detection whether to run in portable mode now depends on where the "config" folder resides and no longer the "indenters" folder. This is needed to be able to correctly run on Windows multiuser systems.
+[change] Removed the word "beta" whereever it occurred, since UiGUI isn't that beta anymore.
+[fix] Bug ID 1910773 : On Unix systems the globally available files, like indenters, translations etc are not longer installed to /etc/universalindentgui but to /usr/share/universalindentgui.
+
+2008-01-17 Version 0.8.0 Beta
+[add] Feature Request ID 1849297 : Added support for indenters written in JavaScript using an internal interpreter. Have a look into the README.txt to get to know, what steps are needed for that.
+[add] Added support for a simple JavaScript indenter written in JavaScript itself.
+[add] Added support for a simple shell code indenter written in awk.
+[add] Feature Request ID 1736946 : It is now possible to run any indenter that is available in the global environment via a path entry.
+[add] Feature Request ID 1852483 : Indenters written in script languages, like perl, are now also supported, if they have a correct shebang.
+[add] Added support for the well known perltidy. The uigui ini file is completed up to the category and including "Line Break Control". Rest needs to be done.
+[add] Feature Request ID 1866599 : Adapted the used paths for settings, temporary files and the one containing indenter ini files to be conform with systems that use strict user rights management. Most this concerns Linux, where the binary resides inside a bin dir and user specific settings are stored in his home dir. Short: now supporting multiuser systems and also have a portable mode, where modifications are only on local media.
+[add] Feature Request ID 1730360 : Along with real support for multiuser systems, each user can have his own indenter settings. These won't be overwritten by an update, what was the case before.
+[add] Feature Request ID 1867628 : Added a button to the toolbar near the indenter selection that opens the indenters online manual.
+[add] Feature Request ID 1867660 : Created a simple man page for unix based systems.
+[add] The by the qmake projekt file resulting makefile has a directive for install on unix based systems now.
+[add] Added example files for most supported programming languages, so each indenter can be tested.
+[change] The source code archive is now in a Unix conform format and naming convention.
+[change] The used paths have changed. The "data" directory has been renamed to indenters and includes only the uigui ini files and maybe some indenter binaries. Futher a config and a temp directory are used.
+[change] In case of an error during calling the indenter, its standard output is appended to the error dialog.
+[change] Corrected some misspelling.
+[change] Renamed htmltidy to tidy because that is its official name and also the name of the binary in all Linux packages.
+[fix] Bug ID 1855460 : The parameter settings of the indenter were only saved, if preview is turned on. Now the settings are always remembered.
+[fix] Bug ID 1854156 : The syntax highlighter did not switch to perl if a file with suffix .pl or .pm was loaded.
+
+2007-11-22 Version 0.7.1 Beta
+[add] Feature Request ID 1833814 : Added support for building on MacOSX.
+[change] Feature Request ID 1836486 : Update to latest version of Uncrustify.
+[change] Update to latest version of Artistic Styler.
+
+2007-11-11 Version 0.7.0 Beta
+[add] Feature Request ID 1826733 : If the called indenter returns an error message, you can chose to not show the same error again. Helpful for HTMLtidy since it often shows a long, repeating error list.
+[add] Feature Request ID 1805974 : Added an option to clear the list of recently opened files.
+[add] Feature Request ID 1760997 : Added some code lines to example.cpp to test whether an indenter correctly handles preprocessor defines.
+[add] Feature Request ID 1752551 : If the user manually checks for updates a progress/busy dialog will be shown.
+[add] Feature Request ID 1736932 : The user gets shown a dialog if he has manually checked for an update and no new one is available.
+[change] The update check is now enabled by default.
+[change] Slighty changes made to the settings dialog; put texts in front of the changed value.
+[fix] Bug ID 1807179 : GNU Indent didn't work properly on Windows system, after the dlls libiconv-2.dll and libintl-2.dll were removed. Readded them.
+[fix] Bug ID 1805976 : The HTML export didn't produce any output. Fixed that, but still has not syntax formatting.
+[fix] Bug ID 1815023 : Mixed traditional with simplified chinese translation. Now preferring to use english text instead of mixing if no traditional translation is available.
+[fix] Bug ID 1815120 : The font of the editor component was wrong (not monospaced), if syntax highlighting was turned off.
+
+2007-06-13 Version 0.6.1 Beta
+[add] Feature Request ID 1729433 : Added a recently opened file menu.
+[add] Feature Request ID 1704290 : Added possibiltiy to integrate into an IDE, editor or other as external tool. This is donw by creating a batch/shell script which accepts a file as parameter and calls the indenter with the in UniversalIndentGUI made settings.
+[add] Feature Request ID 1673659 : The string parameter in the uigui ini files for each indenter can now also be a list of strings divided by "|" sign. As result the parameter name with value will be written to the indenter config file for each of the values.
+[add] Feature Request ID 1730180 : UniversalIndentGUI can automatically check on start, whether a new version is available. This setting is disabled by default and can be enabled in the settings.
+[add] Added support for HTML Tidy. The executable is contained in the release package.
+[add] Feature Request ID 1736432 : The width of the dock widget containing  the indenter parameters is now restored on program start.
+[change] The about dialog shows now a credits scroller to say thanks to all people, who have helped me somehow.
+[fix] Bug ID 1733499 : UniversalIndentGui crashed if inside of an indenter ini file the category number of one parameter was higher than the available categories.
+[fix] Bug ID 1735586 : Some dialogs had untranslated buttons. For example yes, no, cancel were not translated.
+
+2007-06-03 Version 0.6.0 Beta
+[add] Feature Request ID 1700557 : Added a settings dialog for handling more possible settings with better usabiltiy.
+[add] Feature Request ID 1700556 : Added option to load last file or not on startup.
+[add] Feature Request ID 1684011 : Added option to set the width used to display tabs (default is four spaces).
+[add] Feature Request ID 1651718 : Added multiple choices, for the indenter configuration, with for the user readable text. Before the text inside of the combo boxes for the indenter parameters was exactly the same text as the command line parameter of the indenter. Now with "ChoicesReadable" a list with the same length as "Choices" can be used to insert readable text into the combo box. If this list is not set, the content of "Choices" will be used.
+[add] Partly Japanese translation. Thanks to Nirvash.
+[add] The language selection show the countries flag in front of its name to identify the language faster.
+[add] Feature Request ID 1657253 : If now configuration ini file for any indenter can be found, a warning will be displayed.
+[change] Feature Request ID 1723228 : The default font for all syntax highlighters is now mono spaced, Courier.
+[change] Along with the settings dialog cleaned up the user interface. Moved some not that often needed settings away to the settings dialog.
+[change] The full text of the GPL in the about dialog did slow down the program startup and translation. Now only a hint and link to the GPL is given in the about dialog.
+[fix] Bug ID 1692511 : UniversalIndentGui crashed, if a by the syntax highlighter unsupported file extension was opened.
+[fix] Bug ID 1727538 : The setting for syntax highlighting was allways enabled on startup, even if disabled on closing.
+[fix] Bug ID 1729026 : The highlighting style was not correct when changed to another highlighter than the current. Only after toggling preview for example the style was correct.
+[fix] The editors column showing the line numbers did not adapt its width to the maximum line number.
+
+2007-03-19 Version 0.5.1 Beta
+[add] Supporting syntax highlightning for the programming language D.
+[change] The live typing and indenting feature was not adapted to QScintilla. Now works again (depending on the used indenter).
+[fix] Bug ID 1678783 : Files other encoded than ascii were not displayed correctly. Now allways displaying files using UTF-8 encoding.
+[fix] Bug ID 1678783 : The new syntax highlighter selection menu was not translated.
+[fix] When file was reloaded with other encoding the file was allways set to be modified even if it wasn't.
+
+2007-03-14 Version 0.5.0 Beta
+[add/change] Using QScintilla as editing component, which is by far more mighty than the before uses QTextEdit. Have a look inside the development area for details.
+[add] Because of QScintilla, added syntax highlightning for bash, batch, cpp, csharp, css, diff, html, idl, java, javascript, lua, makefile, perl, pov, ini, python, ruby, sql and tex.
+[add] Also added code folding for previously mentioned languages.
+[add] Added support for the indenter "phpCB" phpCodeBeatufier. (Thanks to Nelson Tai) The executable is not included in the UiGui release, because I am not sure about the license of phpCB right now.
+[add] The output of an indenter can now be read from stdout, by setting "stdout" for "outputFileParameter".
+[add] Feature Request ID 1673549 : The order of the indenter call parameters for input file, output file and options[file] is now selectable in three states: pio, ipo, iop.
+[add] Feature Request ID 1675503 : The last set encoding is being remembered and used on loading last file.
+[add] Feature Request ID 1669822 : The last window position, size and maximized state is stored in the settings and restored.
+[add] Feature Request ID 1673670 : Made it possible to switch between visible and invisible white space characters, like spaces and tabs.
+[change] The "personal" configuration files of each indenter (like gc.cfg) are no longer included in a release, so these settings can be loaded into UiGui after updating.
+[fix] Bug ID 1678783: If the current opened file had no save name yet, only the path was written to the settings file, causing an error on next start.
+
+2007-02-25 Version 0.4.2 Beta
+[add] Support for the indenter CSSTidy has been added.
+[add] Support for new language: Taiwan (Chinese).
+[change] For easier translation the about dialog has been redesigned a bit.
+2007-02-11 Version 0.4.1 Beta
+[add] Support for the indenter Uncrustify has been added.
+[add] Feature Request ID 1651719: A binary release for Linux AMD64 is now available.
+[add] Feature Request ID 1657251: If only a win32 executable exists under Linux, wine will be used to call it. Now a test will be mad if wine is installed and an error message will show up if not installed.
+[change] Some changes mad to the Artistic Styler ini file as suggested by its author Jim Pattee.
+[change] Put the file open button at first position in the toolbar, because normally this is the first step one would do, if he tries to find the optimal indenter and settings for himself.
+[change] The background in the about dialog has been changed to look equal on all systems.
+[change] The error message dialogs had small optical enhancements to be more readable.
+[fix] Bug ID 1657255: If an error occurred during the try to call the indenter, a message box is being shown, but the mouse cursor still indicated that the application is being busy.
+[fix] Bug ID 1651071: Changing the file encoding did not affect the code sent to the indenter, so the code while preview turned on, had wrong encoding (still seems to have some encoding problems under Linux).
+[fix] Bug ID 1650222: On Windows systems there were two DLLs missing to run GNU Indent ("libiconv-2.dll" and "libintl-2.dll")
+[fix] Bug ID 1649918: The indenter was not called after first program start, so preview updated first after changing a setting or the code.
+
+2007-02-01 Version 0.4 Beta
+[add] All parameters of GNU Indent have been added.
+[add] From now on the indenter BCPP is included.
+[add] The loaded source file encoding is now convertable by the menu entry "Reopen File with other Encoding". This way chinese encoding etc. is possible to load. (Suggest for this submitted by Nelson, Bug ID 1643541)
+[add] A subdirectory "doc" has been added, containing the file "iniFileFormat.html" with info how to write ini files for new indenters.
+[change] Updated the astyle executable and the ini file to version 1.20.1
+[change] Restructured the gui design a little bit. Using a moveable dock widget for the indenter settings now. Using a toolbar that can also be placed at the bottom.
+[change] Made it possible to change the language without the need to restart the application.
+[change] Line numbers are now geyed out, because this is more decent and selecting the numbers is no longer possible.
+[change] The link to the homepage in the about dialog now really opens the website.
+[change] The linux version is now statically linked against Qt so there should be no problems with wrong Qt versions installed or even no Qt libraries installed.
+[fix] Bug ID 1553601: If no uigui ini file was found the application stopped with an exception.
+
+2006-09-04 Version 0.3.1 Beta
+[add] Language selector and german translation added.
+
+2006-08-25 Version 0.3 Beta
+[add] A message box will show up at opening a source file or program exit, if the source code has been changed, and ask whether to save the file or not.
+[add] The symbol "*" will be shown in the window title in front of the source file name if the source code has been changed.
+[add] By a settings menu entry the tool tips for the indenter parameter settings can be en/disabled because they can be annoying.
+[add] A settings file is from now on used to remember the last selected indenter and last opened source code file.
+[add] The source code can now be exported as a PDF or HTML document.
+[add] Some commands are now faster available by keyboard shortcuts.
+[fix] The calling name in the indenter ini file for GreatCode was written lower case while the real file name was upper case, which resulted in a program calling error.
+[fix] Corrected the tab order for the gui elements.
+[change] Optimized speed when switching between the available indenters. If the indenters ini file is large, this still takes some time.
+
+2006-08-11 Version 0.2.5 Alpha
+[add] when loading or saving either a source code or config file the load/save dialog will open in the files directory and not allways in the UniversalIndentGUI dir
+[add] currently made settings for the indenter can be saved to any file
+[add] the menue entries for loading and saving the indenter config file have now icons
+[add] the currently opened source code file name and path will be shown in the window title bar
+[add] a error dialog that will be shown once if the indenter executable for the selected indenter does not exist
+[fix] turning syntax highlight on/off did first take effect after toggle of preview
+[fix] the image in the about dialog box was not allways visible
+
+2006-08-03 Version 0.2.4 Alpha
+[change] the windows version does no longer need any dlls due to static linking and removing bind to mingwm10.dll
+[change] the windows version of the GNU Indent is replaced by a DJGPP compiled GNU Indent version, that needs no further DLLs
+[add] possibility to save the shown/indented source code
+[fix] the file extension used to call the selected indenter. It is now equal to the loaded source file extension so the indenter recognizes the source code language
+[fix] unnecessary calls of the indenter removed
+[fix] indenter was not called if preview was activated and indenter changed
+[fix] under linux the file mask for the open source file dialog did not work correctly 
+
+2006-07-16 Version 0.2.3 Alpha
+[add] possibility to edit the source code while preview is active and see how it is formatted. So that is real live ;-)
+
+2006-07-14 Version 0.2.2 Alpha
+[add] ini file for GNU Indent with some first settings (if any one wants to write more in it let me know)
+[add] a menu bar for more pleasent and common use of the program (some not yet used menu items are disabled)
+[add] an about dialog
+[add] some icons for better look and feel (can you feel it ;-) )
+[fix] a bug under linux which caused an endless loop if text was edited
+
+2006-07-07 Version 0.2.1.1 Alpha (win32 only)
+- previously compiled using Visual Studio 2005 Express, whereby an additional installation of a redistributable package was needed to run UniversalIndentGUI. To avoid this and not force the user to install anything, now using mingw to compile.
+
+2006-07-04 Version 0.2.1 Alpha
+[add] function to load config file (not the uigui ini file) of every indenter (and reenabled load config file button)
+[add] use of a default value when loading a indenter config file and not all parameters are set.
+[add] all documented default parameters of GreatCode and Astyle to their ini files.
+[fix] loading of file mask for source code file after changing indenter
+[fix] call of indenter failed under win32 if a linux binary exists.
+
+2006-06-30 Version 0.2.0 Alpha
+[add] missing parameters for flexible indenter ini file format
+[add] complete Astyle ini file
+[add] multiple choice combobox for parameters
+[add] checkbox in front of numeric and string parameters to enable/disable them. If disabled indenters default value is used
+
+2006-06-28
+[add] working ini file for Astyle (right now only few boolean parameters)
+[change] ini file format for booleans to reach the planned flexibility
+
+2006-06-23
+[add] combobox in the upper left showing available indenters (found by searching for uigui_*.ini file). at the moment only GreatCode and testwise Astyle
+[add] more detailed info if the indenter call results in an error
+[add] icon for executable
+[change] style/format of the ini file. Still not all planned features implemented
+- some bugfixes, as you can say this in a preAlpha
+
+2006-06-07
+[change] unnecessary gui menu removed
+[fix] corrected ini file for great code (only in executable release)
+[add] made call of windows version of GreatCode under Linux possible by using wine

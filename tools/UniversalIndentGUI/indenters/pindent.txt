@@ -1,0 +1,75 @@
+# This file contains a class and a main program that perform three
+# related (though complimentary) formatting operations on Python
+# programs.  When called as "pindent -c", it takes a valid Python
+# program as input and outputs a version augmented with block-closing
+# comments.  When called as "pindent -d", it assumes its input is a
+# Python program with block-closing comments and outputs a commentless
+# version.   When called as "pindent -r" it assumes its input is a
+# Python program with block-closing comments but with its indentation
+# messed up, and outputs a properly indented version.
+
+# A "block-closing comment" is a comment of the form '# end <keyword>'
+# where <keyword> is the keyword that opened the block.  If the
+# opening keyword is 'def' or 'class', the function or class name may
+# be repeated in the block-closing comment as well.  Here is an
+# example of a program fully augmented with block-closing comments:
+
+# def foobar(a, b):
+#    if a == b:
+#        a = a+1
+#    elif a < b:
+#        b = b-1
+#        if b > a: a = a-1
+#        # end if
+#    else:
+#        print 'oops!'
+#    # end if
+# # end def foobar
+
+# Note that only the last part of an if...elif...else... block needs a
+# block-closing comment; the same is true for other compound
+# statements (e.g. try...except).  Also note that "short-form" blocks
+# like the second 'if' in the example must be closed as well;
+# otherwise the 'else' in the example would be ambiguous (remember
+# that indentation is not significant when interpreting block-closing
+# comments).
+
+# The operations are idempotent (i.e. applied to their own output
+# they yield an identical result).  Running first "pindent -c" and
+# then "pindent -r" on a valid Python program produces a program that
+# is semantically identical to the input (though its indentation may
+# be different). Running "pindent -e" on that output produces a
+# program that only differs from the original in indentation.
+
+# Other options:
+# -s stepsize: set the indentation step size (default 8)
+# -t tabsize : set the number of spaces a tab character is worth (default 8)
+# -e         : expand TABs into spaces
+# file ...   : input file(s) (default standard input)
+# The results always go to standard output
+
+# Caveats:
+# - comments ending in a backslash will be mistaken for continued lines
+# - continuations using backslash are always left unchanged
+# - continuations inside parentheses are not extra indented by -r
+#   but must be indented for -c to work correctly (this breaks
+#   idempotency!)
+# - continued lines inside triple-quoted strings are totally garbled
+
+# Secret feature:
+# - On input, a block may also be closed with an "end statement" --
+#   this is a block-closing comment without the '#' sign.
+
+# Possible improvements:
+# - check syntax based on transitions in 'next' table
+# - better error reporting
+# - better error recovery
+# - check identifier after class/def
+
+# The following wishes need a more complete tokenization of the source:
+# - Don't get fooled by comments ending in backslash
+# - reindent continuation lines indicated by backslash
+# - handle continuation lines inside parentheses/braces/brackets
+# - handle triple quoted strings spanning lines
+# - realign comments
+# - optionally do much more thorough reformatting, a la C indent

@@ -1,0 +1,13 @@
+===========================================================
+Pl/Sql Tidy
+Idea/programmed by Marton Papp ((c)2003-2008 )
+End User License Agreement (EULA)
+THIS IS FREEWARE AND IS TO BE DISTRIBUTED AS THAT ONLY
+===========================================================
+You will agree to these terms in order to continue:
+1. If you distribute this software, you are to (a) Distribute it in it's original condition (b) You will send it with all and only the files that came with it.
+2. You will not alter this file or any of the contained files
+3. You will not use this application for any illegal activities
+4. You will install this application at your own risk.  Any damage done is the responsibility of the end-user
+This software contains ABSOLUTELY NO ADWARE, SPYWARE, VIRUSES or other harmful applications. 
+

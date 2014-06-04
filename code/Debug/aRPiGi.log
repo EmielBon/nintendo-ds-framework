@@ -1,5 +1,5 @@
-﻿Build started 29-5-2014 19:05:45.
-     1>Project "C:\Programming\nintendo-ds-framework\code\aRPiGi.vcxproj" on node 2 (Build target(s)).
+﻿Build started 4-6-2014 17:16:24.
+     1>Project "C:\Programming\nintendo-ds-framework\code\aRPiGi.vcxproj" on node 4 (Build target(s)).
      1>Build:
          make -j 2>&1 | sed -e 's/\(\w\+\):\([0-9]\+\):/\1(\2):/'
          make -C arm7
@@ -8,7 +8,20 @@
          make[1]: Entering directory `/c/Programming/nintendo-ds-framework/code/arm9'
          make[2]: `/c/Programming/nintendo-ds-framework/code/aRPiGi.arm7' is up to date.
          make[1]: Leaving directory `/c/Programming/nintendo-ds-framework/code/arm7'
-         make[2]: `/c/Programming/nintendo-ds-framework/code/aRPiGi.arm9' is up to date.
+         GameObject.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/GameObject.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/GameObject.cpp -o GameObject.o 
+         Link.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/Link.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/Link.cpp -o Link.o 
+         Room.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/Room.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/Room.cpp -o Room.o 
+         Room1.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/Room1.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/Room1.cpp -o Room1.o 
+         ZeldaGame.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/ZeldaGame.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/ZeldaGame.cpp -o ZeldaGame.o 
+         main9.cpp
+         arm-none-eabi-g++ -MMD -MP -MF /c/Programming/nintendo-ds-framework/code/arm9/build/main9.d -g -Wall -O3 -std=c++11 -march=armv5te -mtune=arm946e-s -fomit-frame-pointer -ffast-math -finline-functions -mthumb -mthumb-interwork -I/c/Programming/nintendo-ds-framework/code/arm9/include -I/c/Programming/devkitPro/libnds/include -I/c/Programming/nintendo-ds-framework/code/arm9/build -DARM9 -DDEBUG -c /c/Programming/nintendo-ds-framework/code/arm9/source/main9.cpp -o main9.o 
+         linking aRPiGi.arm9.elf
+         built ... aRPiGi.arm9
          make[1]: Leaving directory `/c/Programming/nintendo-ds-framework/code/arm9'
          ndstool	-c aRPiGi.nds -7 aRPiGi.arm7 -9 aRPiGi.arm9 -d ../gamedata
          Nintendo DS rom tool 1.50.1 - Jun 19 2012
@@ -17,4 +30,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.26
+Time Elapsed 00:00:06.59

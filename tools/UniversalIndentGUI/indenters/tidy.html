@@ -1,0 +1,787 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content=
+"HTML Tidy for Mac OS X (vers 1st February 2005), see www.w3.org" />
+  <title>HTML Tidy Project Page</title>
+  <meta http-equiv="Content-Type" content="text/xhtml; charset='us-ascii'" />
+  <link rel="stylesheet" href="tidy.site.css" type="text/css" />
+  <style type="text/css">
+  /*<![CDATA[*/
+  table.info
+  {
+    border-style: none
+  }
+  div.content
+  {
+    text-align: left;
+    vertical-align: text-top;
+    width: 67%;
+    top: 0;
+  }
+  div.links
+  {
+    vertical-align: text-top;
+    /* margin-left: 0%;
+    ** margin-right: 2%;
+    */
+    width: 30%;
+    position: absolute;
+    top: 0;
+    left: 70%;
+  }
+  code
+  {
+    font-weight: bold
+  }
+  .shadedlib
+  {
+    font-family: Arial, Helvetica, "Trebuchet MS", sans-serif;
+    font-size: 12pt;
+    color: #000000;
+    font-weight: normal;
+    background-color: gold
+  }
+  /*]]>*/
+  </style>
+</head>
+
+<body>
+    <div class="content">
+        <h1 id="top">HTML Tidy Library Project</h1>
+
+        <p>A quorum of developers have pitched in on a SourceForge
+        project to maintain and further develop
+        <a href="http://www.w3.org/People/Raggett/">Dave
+        Raggett's</a> excellent HTML Tidy program. We have two
+        primary goals. First, to provide a home where all the
+        patches and fixes that folks contribute can be collected
+        and incorporated into the program.  Second, a library form
+        of Tidy has been created to make it easier to incorporate Tidy
+        into other software.</p>
+
+        <h2 id="toc">Table of Contents</h2>
+
+        <ul>
+          <li><a href="#news">News</a></li>
+          <li><a href="#docs">Documentation</a></li>
+          <li><a href="#support">Support</a></li>
+          <li><a href="#binaries">Executable binaries</a></li>
+          <li><a href="#license">License</a></li>
+          <li><a href="#source">Source code</a></li>
+          <li><a href="#test">Test cases</a></li>
+          <li><a href="#release-process">Release Process</a></li>
+        </ul>
+
+        <h2 id="news">News</h2>
+
+	<p>The latest version of tidy is <em>exclusively</em> available 
+        through CVS.</p>
+
+        <p><em>26 February 2007</em></p>
+
+        <p>The executables built by the sourceforge compile farm are not 
+        provided anymore. Likewise for the annotated source code by LXR.
+        A reference to Dirk Paehl's Windows build has been added.</p>
+
+        <p><em>11 February 2007</em></p>
+
+        <p>The configuration option <a href="docs/quickref.html#preserve-entities"><code>preserve-entities</code></a>
+        has been added.</p>
+
+        <p><em>23 January 2007</em></p>
+
+        <p>With the current version of tidy, tidylib users using 
+        <code>tidyBuffer</code> need to recompile their code. From tidy dated 
+        "23 January 2007", source compatibility should work although 
+        explicitly calling <code>tidyBufInit</code> is recommended.</p>
+
+        <p><em>30 December 2006</em></p>
+
+        <p>A Windows ".def" file is now provided in the distribution (issue
+        <a href="/issue/1459819">1459819</a>). All internal symbols are 
+        now mangled (issue <a href="/issue/1533253">1533253</a>). 
+        These should simplify the use of tidylib.</p>
+
+        <p><em>29 December 2006</em></p>
+
+        <p>From tidy dated "29 December 2006", new APIs are available to use 
+        user-defined allocators (issue <a href="/issue/1160008">1160008</a>).
+        The interface of <code>tidyFileExists</code> has changed.</p>
+
+        <p><em>12 October 2006</em></p>
+
+        <p>From tidy dated "12 October 2006", tidy uses memory mapped i/o by 
+        default (issue <a href="/issue/1551769">1551769</a>).</p>
+
+        <p><em>14 February 2006</em></p>
+
+        <p>From tidy dated "14 February 2006", ports on Windows 64 should work
+        out-of-the-box.</p>
+
+        <p><em>20 January 2006</em></p>
+
+        <p>The automated build is currently broken. The latest source can be 
+         obtained using CVS.</p>
+
+        <p><em>11 November, 2005</em></p>
+
+        <p>From tidy dated "11 November 2005", hash lookup is used by default 
+        (issue <a href="/issue/1331849">1331849</a>). This can be disabled at 
+        build time. Please report any bug. Along with issue
+        <a href="/issue/1345637">1345637</a> being fixed, tidy should handle
+        large documents faster.</p>
+
+        <p><em>21 July, 2005</em></p>
+
+        <p>The man page is now available online (formatted using 
+        <kbd>groff -Thtml -mandoc</kbd>).</p>
+
+        <p><em>14 June, 2005</em></p>
+
+        <p>The quick reference card and the man page are now automatically 
+        generated as part of the build process using the TidyLib APIs.
+        Use 'make doc' to generate them.</p>
+
+        <p><em>21 November, 2004</em></p>
+        
+                <p>The source code is now <a href="http://tidy.sourceforge.net/cgi-bin/lxr/source/"> 
+                searchable and cross-referenced using LXR</a>.</p>
+        
+        <p><em>18 September, 2004</em></p>
+        
+        <!--
+        <p>( 2004-09-17 10:27:57 - Project CVS Service ) 
+        As of 2004-09-17 there is a problem with the CVS host serving anonymous CVS, 
+        nightly tarballs and ViewCVS for projects that start with the letters m, n, p, q, t, y and z. 
+        We currently do not have an estimate on when they will be back up.</p>
+        -->
+        
+        <p>Also added <a href="#web-badge">Checked by Tidy</a> icon (courtesy of Marc Gueury).</p>
+        
+        <p><em>1 August, 2004</em></p>
+        
+        <p>Automatic updates of the source, documentation, and SourceForge compile farm machine builds 
+        to this web site are temporarily disabled, due to 
+        <a href="http://sourceforge.net/docman/display_doc.php?docid=2352&amp;group_id=1#section1">SourceForge removing support for the 'cron' jobs</a> 
+        that automate this process.</p>
+        
+        <p>Please bear with us during this period - manual updates may be made on an ad-hoc basis, 
+        source is always available through <a href="http://tidy.cvs.sourceforge.net/tidy/">CVS</a>.</p>
+        
+        <p><em>5 July, 2004</em></p>
+        
+        <p>Updated the list of available SourceForge compile farm machine builds.</p>
+
+        <p><em>26 June, 2004</em></p>
+        
+        <p>Updated some links to third-party products.</p>
+
+        <h2 id="docs">Documentation</h2>
+
+        <p><a href="http://www.w3.org/People/Raggett/tidy/">Dave
+        Raggett's Overview</a></p>
+
+        <p><a href="docs/quickref.html">Quick Reference</a></p>
+
+        <p><a href="docs/tidy_man.html">Man Page</a></p>
+
+        <p><a href="libintro.html">Introduction to TidyLib</a></p>
+
+        <p><a href="/docs/api/">TidyLib API Docs</a></p>
+
+        <p>Also, try the <code>-help-config</code> command
+        line option to get a brief listing of Tidy configuration
+        options. Try <code>-show-config</code> to get a
+        listing of all options in effect.</p>
+
+        <p><a href="docs/faq.html">Frequently Asked Questions</a></p>
+        <!--
+          Do NOT change the text "&gt;a href="docs/tidy_docs.tgz"&lt;xxx&gt;/a&lt;."
+          in the line below. The date of last modification is changed by 'sed'
+          editing commands in the nightly build script.
+          Terry Teague - 31 Dec 01
+        -->
+        <a name="doctar" id="doctar"></a>
+
+        <p>The source code of the documentation can be found in the 
+        <em>htmldoc</em> directory in the distribution available through 
+        CVS.</p>
+
+<!--
+        <p>The Download the documentation last updated on
+        <a href="docs/tidy_docs.tgz">20 October, 2005</a>.</p>
+-->
+       <!-- temporary -->
+
+        <p><a href="docs/Overview.html">The original 04 Aug 00 Tidy
+        documentation</a>.</p>
+
+        <h2 id="support">Support</h2>
+
+        <p>For information on getting support for HTML Tidy, please
+        see the FAQ item on <a href="docs/faq.html#support">How To
+        Get Support</a>.</p>
+
+        <h2 id="binaries">Executable binaries</h2>
+
+        <p>If you are a beginner using Windows you may want this 
+        <a href="http://dev.int64.org/tidy.html">installer</a> 
+        (provided as a service by Cory Nelson) that includes Dave Raggett's overview and a 
+        quick reference to all of Tidy's options.</p>
+
+        <p>If you don't find a pre-built executable version of Tidy to download for your 
+        machine/OS in the tables below, look at the links on the right side of this page for 
+        versions of Tidy provided by various people.</p>
+        
+        <p>Documentation and source code are not included. You may download 
+        <a href="#doctar">documentation</a> and
+        <a href="#source">source code</a> separately.</p>
+
+        <p>To better safeguard the TidyLib source code and pre-built
+        binaries against hacker attacks, MD5 hash sums are automatically
+        generated for the source code archive and all pre-built binary
+        archives, and displayed on this web page. You can use the
+        appropriate command on your platform (e.g. "md5sum archive.tgz")
+        to verify that files you have downloaded from this site have not
+        been tampered with.</p>
+
+          <!-- manually built binaries -->
+        <a name="other-builds" id="other-builds"></a>
+        <h3>Other Builds</h3>
+
+        <p>These are manually built by various people on an ad hoc
+        basis, and are generally unsupported.</p>
+
+        <table class="info" cellpadding="2"
+               summary="Links to tarred/zipped binary executable files">
+            
+         <!--
+         <tr>
+            <td rowspan="4" class="shaded"><img src="asianenc.gif"
+                 alt="Supports Asian Character Encodings" /><img src="utf16.gif"
+                 alt="Supports UTF-16 Character Encodings" /><img src="wai.gif"
+                 alt="Supports WAI Accessibility checks" /></td>
+          </tr>
+          -->
+          <tr>
+            <th width="25%" align="left">Platform</th>
+            <th width="25%" align="left">Last Updated</th>
+            <th width="50%" align="left">Author</th>
+          </tr>
+
+          <!-- Horribly out of date.  Leave out
+          <tr>
+            <td class="shaded"><a href="other/tidy.zip">Windows
+            95/98/ME/2000/XP</a></td>
+            <td class="shaded">
+              <p>27 February, 2003</p>
+            </td>
+            <td class="shaded">
+              <p><a href="http://users.rcn.com/creitzel/tidy.html">Charlie Reitzel</a></p>
+            </td>
+          </tr>
+          -->
+
+          <tr>
+            <td class="shaded"><a href="http://www.paehl.com/open_source/?HTML_Tidy_for_Windows">Windows
+            95/98/ME/2000/XP exe</a></td>
+            <td class="shaded">
+              <p><em>Current</em></p>
+            </td>
+            <td class="shaded">
+              <p>Dirk Paehl</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="shaded"><a href="http://dev.int64.org/tidy.html">Windows
+            95/98/ME/2000/XP exe/lib/dll</a></td>
+            <td class="shaded">
+              <p><em>April 2006</em></p>
+            </td>
+            <td class="shaded">
+              <p>Cory Nelson</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="shaded"><a href="other/tidy-os2.zip">OS/2</a></td>
+            <td class="shaded">
+              <p>13 December, 2002</p>
+            </td>
+            <td class="shaded">
+              <p>Christian Hennecke</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="shaded"><a href="trt/tidy_mklinux.tgz">MkLinux</a></td>
+            <td class="shaded" rowspan="4">
+              <p>5 July, 2004</p>
+            </td>
+            <td class="shaded" rowspan="4">
+              <p><a href="http://www.geocities.com/terry_teague/tidy.html">Terry Teague</a></p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="shaded"><a href="trt/tidy_macos.sit">Mac OS
+            (Classic)</a></td>
+          </tr>
+
+          <tr>
+            <td class="shaded"><a href="trt/tidy_mosx.tgz">Mac OS
+            X</a></td>
+          </tr>
+          
+          <tr>
+            <td class="shaded"><a href="trt/tidy_win32.zip">Windows
+            95/98/ME/2000/XP</a></td>
+          </tr>
+        </table>
+
+        <!--
+        <h3>Legend</h3>
+
+        <ul>
+          <li><img src="TidyClassic.gif"
+          alt="Tidy Classic" /> Tidy Classic, i.e. <em>Not</em> 
+          based on TidyLib</li>
+
+          <li><img src="asianenc.gif"
+          alt="Supports Asian Character Encodings" /> Supports
+          Asian Character Encodings</li>
+
+          <li><img src="utf16.gif"
+          alt="Supports UTF-16 Character Encodings" /> Supports
+          UTF-16 Character Encodings</li>
+
+          <li><img src="wai.gif"
+          alt="Supports WAI Accessibility checks" /> Supports WAI
+          Accessibility checks</li>
+        </ul>
+        -->
+
+        <!--
+        <p>Here is Bj&ouml;rn's command-line version (last updated 7 April,
+        2002) for <a href="other/tidy.zip">Win32</a>.</p>
+        <p>Here is Charlie's command-line version (last updated 29 November,
+        2002) for <a href="other/tidy.zip">Win32</a>.</p>
+
+        <p>Here are Terry's command-line versions (last updated 4 May,
+        2002) for <a href="trt/tidy_win32.zip">Win32</a>, <a
+        href="trt/tidy_mklinux.tgz">MkLinux</a>, <a
+        href="trt/tidy_macos.sit">Mac OS (Classic)</a>, <a
+        href="trt/tidy_mosx.tgz">Mac OS X</a>. These executables include support
+        for Asian and UTF16 character encodings, as well as support for
+        additional accessibility checking.</p>
+
+        <p>Christian Hennecke has built a command line version (last
+        updated 22 August, 2002) for <a href="other/tidy-os2.zip">OS/2</a>.
+        Support for Asian and UTF16 <em>not</em> included.</p>
+        -->
+        
+        <h2 id="license">License</h2>
+
+        <p>HTML Tidy, including both TidyLib and the command line
+        utility, uses the W3C license.  This license allows you to
+        do almost anything with the code, except to represent your
+        changes as coming from the W3C.  For details, read the
+        <a href="license.html">license</a>.</p>
+        
+        <h2 id="source">Source code</h2>
+        <p>
+        The TidyLib source code is the main trunk in 
+        <a href="http://sourceforge.net/cvs/?group_id=27659">CVS</a>.</p>
+        
+        <p>As well as the standard GNU make Makefile provided, there are 
+        additional tools available to build TidyLib, including GNU autoconf and 
+        Microsoft Visual C; these are available in the "build" directory.</p>
+        
+        <p>Feel free to <a href="http://tidy.cvs.sourceforge.net/tidy/">browse
+        the CVS repository</a>.</p>
+        
+        <p><b>The source code distribution is not generated anymore.</b> 
+        To better safeguard the TidyLib source code and pre-built
+        binaries against hacker attacks, MD5 hash sums are automatically
+        generated for the source code archive and all pre-built binary
+        archives, and displayed on this web page. You can use the
+        appropriate command on your platform (e.g. "md5sum archive.tgz")
+        to verify that files you have downloaded from this site have not
+        been tampered with.</p>
+        
+        <!--
+          Do NOT change the text "&gt;a href="src/tidy_src.tgz"&lt;xxx&gt;/a&lt;."
+          in the line below. The date of last modification is changed by 'sed'
+          editing commands in the nightly build script.
+          Terry Teague - 23 Dec 01
+        -->
+
+<!--
+        <p>Download the source code last updated on
+        <a href="src/tidy_src.tgz">26 October, 2005</a>.</p>
+-->
+        <!--
+          Do NOT change the text "xxx hash" in the comment below.
+          The hash value is changed by 'sed' editing commands in the
+          nightly build script.
+          Terry Teague - 19 Feb 03
+        -->
+
+        <!-- source hash --><!--MD5 hash: 1e39fafd6808978871346658c8da1454
+-->
+
+        <p>Download <a href="src/old/">older</a> versions of the
+        source code.</p>
+
+        <h2 id="test">Test cases</h2>
+        <!--
+          Do NOT change the text "&gt;a href="test/tidy_test.tgz"&lt;xxx&gt;/a&lt;."
+          in the line below. The date of last modification is changed by 'sed'
+          editing commands in the nightly build script.
+          Terry Teague - 21 Dec 02
+        -->
+
+        <p>The test suite can be found in the <em>test</em> directory in the 
+        distribution available through CVS.</p>
+<!--
+        <p>Download test cases for testing Tidy, last updated on
+        <a href="test/tidy_test.tgz">26 October, 2005</a>.</p>
+-->
+
+        <h2 id="release-process">Release Process</h2>
+
+        <p>If you are not comfortable working with the latest
+        versions of Tidy, you can stay with the last official
+        release of Tidy, by Dave Raggett on 04 Aug 00. However,
+        there have been many changes and bugs fixed in Tidy since
+        that release, and you are encouraged to use the latest
+        versions. If you need the original 04 Aug 00 executable for
+        Win32, you can download that
+        <a href="other/tidy04aug00.exe">here</a>.</p>
+
+        <p>For more information on the HTML Tidy <em>release
+        process</em>, please see the FAQ item on
+        <a href="docs/faq.html#version">Tidy versions</a>.</p>
+
+        <a name="web-badge" id="web-badge"></a>
+
+        <p><a href="http://validator.w3.org/check/referer"><img
+        src="http://www.w3.org/Icons/valid-xhtml10" border="0"
+        alt="Valid XHTML 1.0!" height="31" width="88" /></a>
+
+        <a href="http://tidy.sourceforge.net"><img src="checked_by_tidy.gif" 
+        border="0" alt="Checked by Tidy!" height="32" width="32" /></a></p>
+
+    </div>
+
+    <div class="links">
+        <a name="links" id="links"></a>
+
+        <table width='100%' cellpadding='3' cellspacing='0'
+               border='0' summary='right hand side'>
+          <tr>
+            <td><!-- SourceForge Logo --><br />
+            <a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=27659&amp;type=5"
+                 width="210" height="62" border="0"
+                 alt="SourceForge" /></a></td>
+          </tr><!-- this page last modified -->
+
+          <tr>
+            <td class="text">Last Modified: 27 February, 2005<br /><br /></td>
+          </tr>
+
+          <tr>
+            <td class="tabletitle">Tidy User Links</td>
+          </tr>
+
+          <tr>
+            <td class="shaded">
+              <p>These links are available to anyone to submit a
+              Tidy bug report or to view the Tidy mailing
+              list archives.</p>
+              <a href="http://sourceforge.net/tracker/?group_id=27659">Bug
+              Reports / Feature Requests</a><br />
+              <a href="http://lists.w3.org/Archives/Public/html-tidy/">
+              User List Archives</a><br />
+              <a href="http://sourceforge.net/mailarchive/forum.php?forum_name=tidy-develop">
+              Developer List Archives</a><br />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="text">&nbsp;</td>
+          </tr>
+
+          <tr>
+            <td class="tabletitle">Source Forge Projects</td>
+          </tr>
+
+          <tr>
+            <td class="shaded">
+            <a href="http://sourceforge.net/projects/tidy">HTML
+            Tidy</a><br />
+            <a href="http://sourceforge.net/projects/jtidy">Java
+            version of Tidy</a><br />
+            <a href="http://sourceforge.net/projects/ptidy">Perl XS
+            version of Tidy</a><br />
+            <a href="http://utidylib.berlios.de/">Python wrapper 
+            for TidyLib</a><br />
+            <a href="http://int64.sourceforge.net/tidy.html">HTMLTrim is a 
+            highly customizable X(HTML)/XML pretty-printer and fixer for Windows
+            </a><br />
+            <a href="http://sourceforge.net/projects/jase">Jase: a simple editor with 
+            TidyLib integration</a><br />
+            <a href="http://mod-tidy.sourceforge.net/">mod_tidy for Apache2</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="text">&nbsp;<a name="accessibility"
+                                id="accessibility"></a></td>
+          </tr>
+
+          <tr>
+            <td class="tabletitle">Accessibility</td>
+          </tr>
+
+          <tr>
+            <td class="shaded">Tools and Resources:<br />
+            <a href="http://www.utoronto.ca/atrc/">ATRC</a><br />
+            <a href="http://www.aprompt.ca/Tidy/">ATRC Tidy Info</a><br />
+            <a href="http://www.aprompt.ca/">A-Prompt</a><br />
+            <br />
+            Specifications:<br />
+            <a href="http://www.section508.gov">Section 508</a><br />
+            <a href="http://www.w3.org/WAI">W3C WAI</a><br />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="text">&nbsp;</td>
+          </tr>
+
+          <tr>
+            <td class="tabletitle">Dave Raggett's Original</td>
+          </tr>
+
+          <tr>
+            <td class="shaded">
+            <a href="http://www.w3.org/People/Raggett/tidy/">HTML
+            Tidy</a><br />
+            <a href="other/tidy04aug00.exe">04 Aug 00 Win32
+            executable</a><br />
+            <a href="http://www.w3.org/People/Raggett/tidy/pending.html">
+            Dave Raggett's "Pending"</a><br /></td>
+          </tr>
+
+          <tr>
+            <td class="text">&nbsp;<a name="tidylibapps"
+                                id="tidylibapps"></a></td>
+          </tr>
+
+          <tr>
+            <td class="tabletitle">TidyLib Applications</td>
+          </tr>
+          <tr>
+            <td class="shaded">
+              <a href="http://tswebeditor.net.tc/">tsWebEditor</a> 
+               - integrated editor<br />
+
+              <a href="http://users.rcn.com/creitzel/tidy.html#tidyui">Tidy UI</a>
+               - basic GUI for Win32<br />
+
+              <a href="http://wxtidy.sourceforge.net/">wxTidy</a>
+               - editor based on wxWindows<br />
+
+              <a href="http://www.balthisar.com/tidy/">Balthisar Tidy</a>
+               - for Mac OS X<br />
+
+              <p>Web interfaces to TidyLib:<br />
+              <a href="http://validator.aborla.net">validator using PHP</a>
+              - by Nuno Lopes<br />
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="text">&nbsp;<a name="tidylibbindings"
+                                id="tidylibbindings"></a></td>
+          </tr>
+
+          <tr>
+            <td class="tabletitle">TidyLib Bindings</td>
+          </tr>
+          <tr>
+            <td class="shaded">
+              By Charles Reitzel:<br />
+              <a href="http://users.rcn.com/creitzel/tidy.html#cplusplus">C++</a><br />
+              <a href="http://users.rcn.com/creitzel/tidy.html#tidyperl">Perl</a><br />
+              <a href="http://users.rcn.com/creitzel/tidy.html#comatl">COM</a><br />
+              <a href="http://users.rcn.com/creitzel/tidy.html#dotnet">.NET</a><br />
+
+              <br />By Jeffrey Pohlmeyer:<br />
+              <a href="http://www.geocities.com/yetanothergeek/tidypas.tar.gz">Delphi/Object
+              Pascal</a><br />
+
+              <br />By Matt Stanfield:<br />
+ <a href="http://www.mattstan.pwp.blueyonder.co.uk/tidy/tidycs.html">.NET</a> 
+              - another take<br />
+              
+              <br />By Michael Elsd&ouml;rfer:<br />
+              <a href="http://www.elsdoerfer.info/delphi/?page=libtidy">Delphi/Object
+              Pascal</a><br />
+
+              <br />By John Coggeshall:<br />
+              <a href="http://www.coggeshall.org/tidy.php">PHP</a><br />
+
+            </td>
+          </tr>
+
+          <tr>
+            <td class="text">&nbsp;<a name="tidylibports"
+                                id="tidylibports"></a></td>
+          </tr>
+
+          <tr>
+            <td class="tabletitle">Other TidyLib Ports</td>
+          </tr>
+          <tr>
+            <td class="shaded">
+              <a href="http://west-penwith.org.uk/misc/tidy.html">MinGW</a><br />
+              <a href="http://tidy.atari.org">Atari</a><br />
+              <a href="http://www.cygwin.com/packages/tidy/">CygWin</a><br />
+              <a href="http://www.intuiware.com/Products/HTMLTidy/">
+              Tidy for BeOS</a><br />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="text">&nbsp;<a name="tidyclassicapps"
+                                id="tidyclassicapps"></a></td>
+          </tr>
+
+          <tr>
+            <td class="tabletitle">Tidy <em>Classic</em> Applications</td>
+          </tr>
+          <tr>
+            <td class="shaded">
+              <a href="http://www.geocities.com/terry_teague/tidy.html">
+              Tidy for Mac OS</a> - various GUI clients<br />
+
+              <a href="http://vim.sourceforge.net/">Tidy plugin
+              for Vim</a><br /><br />
+
+              <a href="http://www.chami.com/html-kit/">HTML-Kit</a>
+              - integrated editor<br />
+
+              <a href="http://www.notetab.com/">NoteTab</a> -
+              integrated editor<br />
+
+              <a href="http://www.suodenjoki.dk/produktioner/artikler/tidy_integration_article.asp">
+              For MS FrontPage 2000</a><br />
+
+              <a href="http://perso.wanadoo.fr/ablavier/TidyGUI/">TidyGUI</a>
+              - GUI front end<br />
+
+              <p>Web interfaces to Tidy:<br />
+              <a href="http://www.thedumbterminal.co.uk/services/tidy.shtml">
+              The Dumb Terminal</a><br />
+              <a href="http://infohound.net/tidy/">
+              Jonathan Hedley's</a><br /></p>
+
+              <p>Tidy for Emacs/XEmacs:<br />
+              <a href="http://www.hollenback.net/index.php?EmacsTidy">
+              from Philip J. Hollenback</a><br />
+              <a href="http://dublincore.org/2000/09/13/tidy.el">from
+              Tod Matola</a><br />
+              <a href="http://lists.w3.org/Archives/Public/html-tidy/2002OctDec/0262.html">
+              from Kal Hodgson</a><br /></p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="text">&nbsp;<a name="tidyclassicbindings"
+                                id="tidyclassicbindings"></a></td>
+          </tr>
+
+          <tr>
+            <td class="tabletitle">Tidy <em>Classic</em> Bindings</td>
+          </tr>
+          <tr>
+            <td class="shaded">
+              <a href="http://www.dysfunctionals.org/~lee/TidyCPP.zip">
+              C++ version</a> by Lee Passey<br />
+
+              <a href="http://www.lemburg.com/files/python/mxTidy.html">
+              Python Interface</a> by Marc-And&eacute; Lemburg<br />
+
+              <a href="http://perso.wanadoo.fr/ablavier/TidyCOM/">TidyCOM</a>
+              - COM wrapper<br />
+
+            </td>
+          </tr>
+
+          <tr>
+            <td class="text">&nbsp;<a name="tidyclassicports"
+                                id="tidyclassicports"></a></td>
+          </tr>
+
+          <tr>
+            <td class="tabletitle">Other <em>Classic</em> Ports</td>
+          </tr>
+          <tr>
+            <td class="shaded">
+
+              <a href="http://ca.geocities.com/nickbeee/tidy386/">Tidy386
+              for MS-DOS</a> - uses DPMI<br />
+
+              <!-- broken link 
+              <a href="http://wh58-508.st.uni-magdeburg.de/sparemint/html/packages/tidy.html">
+              Tidy for MiNT (Atari)</a><br /> -->
+
+              <a href="http://www.Blakemore-Noble.net/Software/Tidy.html">
+              Tidy for Amiga</a><br />
+
+              <!-- broken link 
+              <a href="http://freeware.bull.net/cgi-bin/list_dir.cgi/download/">
+              Tidy for AIX</a> - AIX v4.3.2 and later<br /> -->
+
+              <a href="http://rpmfind.net/linux/rpm2html/search.php?query=tidy">Tidy
+              for various Linux distributions</a><br />
+
+              <!-- broken link
+              <a href="http://www.ocston.org/~simon/tidy/">Tidy
+              for UnixWare</a><br /> -->
+
+              <a href="http://www.informatik.uni-stuttgart.de/ifi/gr/mitarbeiter/hopp/tidy/tidy.html">
+              Tidy for HP-UX</a> - from Olaf Hopp<br />
+
+              <a href="http://geocities.com/ian_springer/hpux_tidy.html">
+              Tidy for HP-UX</a> - from Ian Springer<br />
+
+              <a href="http://www.hep.utexas.edu/~sfuqua/unix">Tidy
+              for Solaris</a><br />
+
+              <!-- broken link
+              <a href="http://www.fogey.com/Tidy/tidy.html">Tidy
+              for FreeBSD</a><br /> -->
+
+              <a href="http://www.archifishal.co.uk/software/riscos/tidy.shtml">
+              Tidy for RISC OS</a><br />
+
+              <a href="http://home.wanadoo.nl/erens/openvms/tidy.htm">
+              Tidy for OpenVMS</a><br />
+
+              <!-- Virus reported in distribution
+              <a href="http://www.evrsoft.com/">1st Page 2000</a> -
+              integrated editor<br /> -->
+            </td>
+          </tr>
+        </table>
+    </div>
+</body>
+</html>

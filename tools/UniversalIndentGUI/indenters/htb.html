@@ -1,0 +1,1138 @@
+<html>
+<head>
+   <title>htb - HTML/XML/XSL Beautifier 2.0</title>
+</head>
+<body bgcolor="#8CADBD"><a name="contents"></a><br><center> 
+<h2><font face="helvetica">HTB 2.0 - HTML/XML/XSL Beautifier and Re-formatter</font></h2></center> <center> 
+<p>
+<hr> 
+<h2>Table of Contents</h2>
+<table>
+   <tr>
+      <td>
+         <ul>
+            <li><a href="#Author"><b>Author</b></a> 
+            <ul>
+            </ul>
+            <li><a href="#Files"><b>Files</b></a> 
+            <ul>
+            </ul>
+            <li><a href="#Overview"><b>Overview</b></a>
+            <ul>
+               <li><a href="#overview_a">License</a> 
+               <li><a href="#overview_b">Installation</a> 
+               <li><a href="#overview_c">Execution</a> 
+               <li><a href="#overview_d">Errors &amp; Verification</a> 
+               <li><a href="#overview_e">Version 2.0</a> 
+               <li><a href="#overview_f">XML Support (including XHTML &amp; XSL)</a> 
+            </ul>
+            <li><a href="#Default"><b>Default Behavior</b></a>
+            <ul>
+            </ul>
+            <li><a href="#Options"><b>Options</b></a> 
+            <ul>
+               <li><a href="#option_a"><code><b>-a: </b></code> Multi-Attribute Tag Break</a> 
+               <li><a href="#option_b"><code><b>-b: </b></code> All Attribute Tag Break</a> 
+               <li><a href="#option_c"><code><b>-c: </b></code> Add Carriage Returns</a> 
+               <li><a href="#option_d"><code><b>-d: </b></code> Omit Carriage Returns</a> 
+               <li><a href="#option_e"><code><b>-e: </b></code> Escaped Tag Conversion</a> 
+               <li><a href="#option_f"><code><b>-f: </b></code> Run as Filter (use <i>stdin</i> &amp; <i>stdout</i>)</a> 
+               <li><a href="#option_h"><code><b>-h: </b></code> Help Screen</a> 
+               <li><a href="#option_j"><code><b>-j: </b></code> Join Lines - Compress Output</a> 
+               <li><a href="#option_k"><code><b>-k: </b></code> Keep Layout - Case Changes Only</a> 
+               <li><a href="#option_l"><code><b>-l: </b></code> Tag Names Lower Case</a> 
+               <li><a href="#option_m"><code><b>-m: </b></code> Tag Attributes Opposite Case</a> 
+               <li><a href="#option_n"><code><b>-n: </b></code> Never Break Tags Between Lines</a> 
+               <li><a href="#option_r"><code><b>-r: </b></code> Remove Non-HTML Tags</a> 
+               <li><a href="#option_s"><code><b>-s: </b></code> Remove Tabs From SCRIPTs</a> 
+               <li><a href="#option_t"><code><b>-t: </b></code> Convert to Plain Text</a> 
+               <li><a href="#option_u"><code><b>-u: </b></code> Tag Names Upper Case</a> 
+               <li><a href="#option_x"><code><b>-x: </b></code> Unknown Tags are XML</a> 
+               <li><a href="#option_y"><code><b>-y: </b></code> Turn Off XML Detection</a> 
+               <li><a href="#option_z"><code><b>-z: </b></code> Remove Comments</a> 
+               <li><a href="#option_0"><code><b>0-9: </b></code> Spaces for Indenting</a> 
+            </ul>
+         </ul>
+      </td>
+   </tr>
+</table>
+
+<p></center> <a name="Author"></a> 
+<hr> 
+<dl><dt> 
+   <h2>Author</h2>
+<pre>
+   <b>T.G. Schramer Consulting</b>
+   (949) 249-1824 
+   lastimo@cox.net 
+</pre><a name="Files"></a> 
+   <br> <a href="#contents">Back to Table of Contents</a> 
+</dl>
+<hr> 
+<dl><dt> 
+   <h2>Files</h2>
+   <dd>HTB is a stand-alone command-line binary program and nothing more
+   is required.
+
+   <p>The following files are included in this package: 
+<pre>
+ htb_docs.html      -  This file.
+ license.txt        -  License agreement.
+ readme.txt         -  General info.
+ linux
+   htb              -  Linux kernel binary. (TBD)
+ sun                
+   htb              -  SunOS binary.
+ windows
+   htb.exe          -  Win32 binary, Win95, Win98, WinNT, Win2000, WinXP.
+   htb.ico          -  Windows icon. Use with runhtb.bat or as desired.
+   runhtb.bat       -  Batch file for WinNT/2000/XP to allow drag and drop
+                        processing from Desktop.
+</pre>
+<a name="Overview"><a href="#contents">Back to Table of Contents</a> 
+</dl>
+<hr> 
+<dl><dt> 
+   <h2>Overview</h2>
+   <dd>HTB is a command-line program that reformats HTML and XML (including
+   XHTML &amp; XSL) source for consistency and better readability. Although
+   the problem of cleaning-up tagged files may seem straight-forward, in
+   actuality it is a surprisingly subjective problem, depending on which tags
+   were used, their intent, and the complexity of the overall document. HTB
+   leverages the experience and intent of HTML usage in the rendering of each
+   tag and extends the official HTML specification with commonly used legacy
+   tags. One of nine logical behaviors was assigned to each tag based not
+   only on the HTML specification, but on how the tag is commonly used in the
+   field. Because this subjectivity may not appeal to all, a comprehensive
+   set of other rendering options is available to suit other tastes and 
+   document styles. 
+   <br>
+   <br>
+   <a name="overview_a"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3>License</h3>
+
+   <p>HTB is free and may be freely distributed with adherence to the following
+   license agreement:
+   <dl><dt><dd>
+      <p align="center"><font face="Arial,Helvetica" size="4">License Agreement</font>
+      <br>
+      <br>
+      <font face="Arial,Helvetica" size="2">By downloading this software, you indicate<br>that you agree with the terms of this agreement.</font></p> 
+
+
+      <p><font face="Arial,Helvetica"><b>Important - Please read this agreement carefully.</b></font></p> 
+
+      <p><font face="Arial,Helvetica"><b>Copyright:</b></font><br> 
+      <font face="Arial,Helvetica">This software program and any associated material are protected by copyright law. The HTB program is a proprietary product of T.G. Schramer Consulting. T.G. Schramer Consulting retains title to and ownership in the copyright of the HTB software program and the associated materials. </font></p>
+
+      <p><font face="Arial,Helvetica">Redistribution and use of the HTB binary and accompanying documentation, with or without modification, are permitted provided that the following conditions are met: </font></p> <ul type="square">
+        <li>
+
+        <p><font face="Arial,Helvetica">Redistribution of documentation and/or HTB binary program must retain the above copyright notice, this list of conditions and the disclaimer below. </font></p></li>
+        <li>
+
+        <p><font face="Arial,Helvetica">Redistribution must be free of charge whether stand-alone or part of a larger package such as a CD-ROM archive.</font></p></li>
+      </ul>
+
+      <p><font face="Arial,Helvetica"></font></p>
+
+      <p><font face="Arial,Helvetica"><b>Disclaimer:</b></font><br> 
+      <font face="Arial,Helvetica">THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDER ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</font></p> 
+   </dl>
+   <br>
+   <a name="overview_b"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3>Installation</h3>
+
+   <p>Simply copy the correct binary file to your system's program directory
+   (<nobr>c:\windows\system32</nobr>, <nobr>c:\win98\command,</nobr> <nobr>/usr/bin,</nobr> etc.) or create a directory for 
+   HTB and run it directly from there. For Windows NT ,2000, and XP, optionally
+   create a Desktop shortcut to "runhtb.bat", and files may be processed directly from a
+   drag-and-drop operation. If using this drag-and-drop method, reformated files
+   are co-located with the originals but have the extension ".htb". Rename the files to have
+   the correct extension or associate the ".htb" extension with a Web browser to open directly.
+   <br>
+   <br>
+   <a name="overview_c"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3>Execution</h3>
+
+   <p>To run HTB, type "htb" from a command-line prompt. Running HTB without 
+   arguments will display a <a href="#option_h">summary screen</a> of the
+   options. Specifying a single filename containing markup tags will send
+   the re-formatted output to the screen. Specify a second file or redirect
+   "standard output" to save the output to a new file. The original file
+   is never altered. The single character command-line options may be
+   preceded with either "-" or  "/" and may be combined into one argument.
+   The order of the options is not important, but only the last value in
+   a set of conflicting options will be effective. 
+   The <a href="#Default">default behavior</a> may not provide the best 
+   cleanup, so try different command-line options to get the desired results.
+   Option combinations -<a href="#option_a">a</a><a href="#option_s">s</a>, 
+   -<a href="#option_a">a</a><a href="#option_m">m</a><a href="#option_s">s</a>,
+   -<a href="#option_n">n</a> have given good results also. 
+
+   <p>One other way to run HTB is with the new 
+   <a href="#option_f">-f option</a>. This forces HTB to run as a "filter"
+   which reads from the "standard input" stream and sends results to the
+   "standard output" stream. This allows HTB to be embedded into other
+   programs and processes.
+   <br>
+   <br>
+   <a name="overview_d"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3>Errors &amp; Verification</h3>
+
+   <p>Modern browsers are amazingly forgiving of poorly written HTML. HTB
+   will usually report the line number and text of offending tags and ignores
+   them in the re-formatting process.  Occasionally with quoting 
+   inconsistencies, HTB will stop re-formatting at the point the problem was
+   found. This reporting mechanism makes HTB useful as a simple syntax 
+   validator, even if the generated output is not saved. HTB does not attempt
+   to correct invalid files and in most cases still does a good job of
+   re-formatting. If syntax correction is needed, try 
+   <a href="http://www.w3.org/People/Raggett/tidy/">Tidy</a> from 
+   <a href="http://www.w3c.org">W3C</a> which is a very good cleanup program.
+   Tidy may even be used in combination with HTB using command-line piping
+   and the HTB <a href="#option_f">-f option</a>.
+
+   <p>All HTB error messages sent to the "standard error" stream which can be
+   captured to a file using "standard error" redirection ("2&gt;" or "2&gt;&gt;").
+   <br> 
+   <br> <b>Example 1:</b>
+   <br> 
+   <br> 
+    - Beautify <i>myfile.htm</i> and save the output to <i>newfile.htm</i>
+    but save error messages in another file called <i>error.txt</i>
+    by redirecting the "standard error" stream to a file.
+   <br> 
+   <br> 
+   <center> 
+   <table cellspacing="0" cellpadding="5" border="0">
+     <tr><td align="left" nowrap><nobr>
+       <code>htb myfile.htm newfile.htm 2&gt; error.txt</code></nobr>
+       </td> 
+       <td align="left" nowrap><nobr>
+         (<i>error.txt</i> will be created or overwritten)
+       </td> 
+     </tr>
+     <tr><td align="left" nowrap><nobr>
+       <code>htb myfile.htm newfile.htm 2&gt;&gt; error.txt</code></nobr>
+       </td> 
+       <td align="left" nowrap><nobr>
+         (<i>error.txt</i> will be created or appended to)
+       </td> 
+     </tr>
+   </table>
+   </center> 
+   <br> <b>Example 2:</b>
+   <br> 
+   <br> 
+    - Correct syntax errors using Tidy from W3C and then beautify 
+      <i>myfile.htm</i> and save the output to <i>newfile.htm</i>. Save 
+    error messages from both programs to a file called <i>error.txt</i>
+    by redirecting the "standard error" stream to a file.
+   <br> 
+   <br> 
+   <center> 
+   <table cellspacing="0" cellpadding="5" border="0">
+     <tr><td align="left" nowrap><nobr>
+       <code>tidy myfile.htm 2&gt; error.txt | htb -f &gt; newfile.htm 2&gt;&gt; error.txt</code></nobr>
+       </td> 
+     </tr>
+   </table>
+   </center> 
+   <br>
+   <a name="overview_e"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3>Version 2.0</h3>
+
+   <p>HTB 2.0 is a major enhancement over 1.0 which has been available for
+   several years. In addition to options -a, -e, -f, -j, -r, -t, -x, -y, -z,
+   many bug fixes and enhancements have been added.  Among them, are correct
+   handling of APPLET, OBJECT, SCRIPT &amp; STYLE tags and much better
+   handling of errors, comments and nested TABLES with their rows and cells.
+   Many of the new options allow separation of HTML from other data in the
+   document, like <a href="#option_t">text</a>,
+   <a href="#option_z">comments</a>, or <a href="#option_r">non-HTML tags</a>.
+   <br>
+   <br>
+   <a name="overview_f"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3>XML Support (including XHTML &amp; XSL)</h3>
+
+   <p>In the new hybrid world of Server Pages and XSL, HTB 2.0 was also
+   expanded to support XML compliant syntax including XHTML &amp; XSL and 
+   be forgiving of custom markup tags often added by HTML extensions and
+   third party Web applications. XSL beautification is now fully supported
+   with logical rendering behaviors assigned to every element in the XSL 1.0
+   specification. Hybrid XHTML/XML documents can still be beautified with
+   HTML case changes, since the likely case sensitive XML tags are handled
+   independently of HTML which are not case sensitive. This special XML tag
+   handling is done automatically whenever an XML compliant file is detected
+   or may be forced on using the <a href="#option_x">-x option</a> for files
+   containing "well-formed" XML, but may not strictly adhere to the XML
+   specification. XML auto detection extends to ASP and JSP files, although
+   these formats are not strictly XML compliant. The 
+   <a href="#option_y">-y option</a> has been added to switch off special
+   XML handling and treat all tags the same whether HTML or not.
+
+   <br> <a name="Default"></a> 
+   <br> <a href="#contents">Back to Table of Contents</a> 
+</dl>
+<hr> 
+<dl><dt> 
+   <h2>Default Behavior</h2>
+   <dd>When running HTB without options, the default behavior is to indent
+   with increments of 3 spaces, make all tags and their attributes upper-case,
+   and break tags exceeding the 80 column limit. (It should be noted, the
+   output will often exceed 80 columns since whitespace integrity places
+   a restriction on line-break insertion). Tag attribute values are always 
+   rendered within quotes to correct this common omission and in sorted order
+   within the tag. In addition, XML auto-detection is active. If an XML file
+   is detected, non-HTML tags are assumed to be "well-formed" XML 
+   (including XSL) and the correct indenting is applied. Case changes are not
+   applied to these unknown XML tags, since they are often case sensitive. 
+   XML attributes are also kept in their original order within the tag
+   instead of being sorted as with HTML attributes. If XML is not detected,
+   unknown tags are ignored.
+   <br> 
+   <br> <b>Before:</b> 
+
+<pre>
+&lt;body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" botmargin="0" marginwidth="0" marginheight="0" link="#666666" vlink="#666666" alink="#000000"&gt;
+&lt;table width="800" border="0" cellpadding="0" cellspacing="0"&gt;
+&lt;tr&gt;
+&lt;td colspan="2" width="196" bgcolor="cccccc" valign="top"&gt;&lt;img src="/images/homepage/rev/logo_06.gif" width="196" height="63"&gt;&lt;/td&gt;
+&lt;td bgcolor="cccccc" width="600" valign="top"&gt;
+&lt;table width="600" border="0" cellpadding="0" cellspacing="0" valign="top"&gt;
+&lt;tr&gt;
+&lt;td valign="top" height="17" bgcolor="#CCCCCC"&gt;&lt;img src="/images/homepage/rev/comp8_07.gif" width="600" height="17"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+</pre>
+
+   <b>After:</b> 
+<pre>
+&lt;BODY ALINK="#000000" BGCOLOR="#FFFFFF" BOTMARGIN="0" LEFTMARGIN="0" 
+      LINK="#666666" MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" 
+      VLINK="#666666"&gt;
+&lt;TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH="800"&gt;
+   &lt;TR&gt;
+      &lt;TD BGCOLOR="cccccc" COLSPAN="2" VALIGN="top" WIDTH="196"&gt;&lt;IMG HEIGHT="63"
+                                                                     SRC="/images/homepage/rev/logo_06.gif"
+                                                                     WIDTH="196"&gt;&lt;/TD&gt;
+      &lt;TD BGCOLOR="cccccc" VALIGN="top" WIDTH="600"&gt; 
+         &lt;TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" VALIGN="top" 
+                WIDTH="600"&gt;
+            &lt;TR&gt;
+               &lt;TD BGCOLOR="#CCCCCC" HEIGHT="17" VALIGN="top"&gt;&lt;IMG HEIGHT="17"
+                                                                   SRC="/images/homepage/rev/comp8_07.gif"
+                                                                   WIDTH="600"&gt;&lt;/TD&gt;
+            &lt;/TR&gt;
+</pre>
+   <a name="Options"></a><a name="option_a"></a> 
+   <br> <a href="#contents">Back to Table of Contents</a> 
+</dl>
+<hr> 
+<dl><dt> 
+   <h2>Options</h2>
+   <dd><h3><b>-a</b>:&nbsp;&nbsp;&nbsp;Multi-Attribute Tag Break</h3>
+
+   <p>The -a command-line option causes all tags containing more that one
+      attribute to be broken over multiple lines, each with a single
+      attribute. The attributes are aligned vertically with the first
+      attribute. A similar attribute break will occur by default, but only 
+      on tags exceeding the column 80 limit, and each line may contain more
+      than one attribute.
+   <br> 
+   <br> <b>Before:</b> 
+
+<pre>
+&lt;BODY BGCOLOR="#FFFFFF" MARGINWIDTH="0" MARGINHEIGHT="0" LINK="#666666" VLINK="#666666" ALINK="#000000"&gt;
+&lt;TABLE WIDTH="800" BORDER="0" CELLPADDING="0" CELLSPACING="0"&gt;
+&lt;TR&gt;
+&lt;TD COLSPAN="2" WIDTH="196" BGCOLOR="cccccc" VALIGN="top"&gt;&lt;IMG SRC="/images/homepage/rev/logo_06.gif" WIDTH="196" HEIGHT="63"&gt;&lt;/TD&gt;
+&lt;TD BGCOLOR="cccccc" WIDTH="600" VALIGN="top"&gt;
+&lt;TABLE WIDTH="600" BORDER="0" CELLPADDING="0" CELLSPACING="0" VALIGN="top"&gt;
+&lt;TR&gt;
+&lt;TD VALIGN="top" HEIGHT="17" BGCOLOR="#CCCCCC"&gt;&lt;IMG SRC="/images/homepage/rev/comp8_07.gif" WIDTH="600" HEIGHT="17"&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+</pre>
+
+   <b>After:</b> 
+<pre>
+&lt;BODY ALINK="#000000"
+      BGCOLOR="#FFFFFF"
+      LINK="#666666"
+      MARGINHEIGHT="0"
+      MARGINWIDTH="0"
+      VLINK="#666666"&gt;
+&lt;TABLE BORDER="0"
+       CELLPADDING="0"
+       CELLSPACING="0"
+       WIDTH="800"&gt;
+   &lt;TR&gt;
+      &lt;TD BGCOLOR="cccccc"
+          COLSPAN="2"
+          VALIGN="top"
+          WIDTH="196"&gt;&lt;IMG HEIGHT="63"
+                           SRC="/images/homepage/rev/logo_06.gif"
+                           WIDTH="196"&gt;&lt;/TD&gt;
+      &lt;TD BGCOLOR="cccccc"
+          VALIGN="top"
+          WIDTH="600"&gt; 
+         &lt;TABLE BORDER="0"
+                CELLPADDING="0"
+                CELLSPACING="0"
+                VALIGN="top"
+                WIDTH="600"&gt;
+            &lt;TR&gt;
+               &lt;TD BGCOLOR="#CCCCCC"
+                   HEIGHT="17"
+                   VALIGN="top"&gt;&lt;IMG HEIGHT="17"
+                                    SRC="/images/homepage/rev/comp8_07.gif"
+                                    WIDTH="600"&gt;&lt;/TD&gt;
+            &lt;/TR&gt;
+</pre>
+   <a name="option_b"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3><b>-b</b>:&nbsp;&nbsp;&nbsp;All Attribute Tag Break</h3>
+
+   <p>The -b command-line option causes all tag attributes to be broken
+   on succeeding lines. The attributes are aligned vertically with the last
+   character in the tag name.
+   <br> 
+   <br> <b>Before:</b> 
+
+<pre>
+&lt;BODY BGCOLOR="#FFFFFF" MARGINWIDTH="0" MARGINHEIGHT="0" LINK="#666666" VLINK="#666666" ALINK="#000000"&gt;
+&lt;TABLE WIDTH="800" BORDER="0" CELLPADDING="0" CELLSPACING="0"&gt;
+&lt;TR&gt;
+&lt;TD COLSPAN="2" WIDTH="196" BGCOLOR="cccccc" VALIGN="top"&gt;&lt;IMG SRC="/images/homepage/rev/logo_06.gif" WIDTH="196" HEIGHT="63"&gt;&lt;/TD&gt;
+&lt;TD BGCOLOR="cccccc" WIDTH="600" VALIGN="top"&gt;
+&lt;TABLE WIDTH="600" BORDER="0" CELLPADDING="0" CELLSPACING="0" VALIGN="top"&gt;
+&lt;TR&gt;
+&lt;TD VALIGN="top" HEIGHT="17" BGCOLOR="#CCCCCC"&gt;&lt;IMG SRC="/images/homepage/rev/comp8_07.gif" WIDTH="600" HEIGHT="17"&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+</pre>
+
+   <b>After:</b> 
+<pre>
+&lt;BODY
+    ALINK="#000000"
+    BGCOLOR="#FFFFFF"
+    BOTMARGIN="0"
+    MARGINHEIGHT="0"
+    MARGINWIDTH="0"
+    LEFTMARGIN="0"
+    LINK="#666666"
+    TOPMARGIN="0"
+    VLINK="#666666"&gt;
+&lt;TABLE
+     BORDER="0"
+     CELLPADDING="0"
+     CELLSPACING="0"
+     WIDTH="800"&gt;
+   &lt;TR&gt;
+      &lt;TD
+        BGCOLOR="cccccc"
+        COLSPAN="2"
+        VALIGN="top"
+        WIDTH="196"&gt;&lt;IMG
+                       HEIGHT="63"
+                       SRC="/images/homepage/rev/logo_06.gif"
+                       WIDTH="196"&gt;&lt;/TD&gt;
+      &lt;TD
+        BGCOLOR="cccccc"
+        VALIGN="top"
+        WIDTH="600"&gt; 
+         &lt;TABLE
+              BORDER="0"
+              VALIGN="top"
+              CELLPADDING="0"
+              CELLSPACING="0"
+              WIDTH="600"&gt;
+            &lt;TR&gt;
+               &lt;TD
+                 BGCOLOR="#CCCCCC"
+                 HEIGHT="17"
+                 VALIGN="top"&gt;&lt;IMG
+                                HEIGHT="17"
+                                SRC="/images/homepage/rev/comp8_07.gif"
+                                WIDTH="600"&gt;&lt;/TD&gt;
+            &lt;/TR&gt;
+</pre>
+   <a name="option_c"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3><b>-c</b>:&nbsp;&nbsp;&nbsp;Add Carriage Returns</h3>
+
+   <p>The -c command-line option adds an extra carriage return character to 
+   each output line of reformatted data. This allows Unix versions of HTB to
+   create a DOS/Windows compatible text files directly.
+
+   <br>
+   <br>
+   <a name="option_d"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3><b>-d</b>:&nbsp;&nbsp;&nbsp;Omit Carriage Returns</h3>
+
+   <p>The -d command-line option inhibits extra carriage return character
+   output even if present in the source data. This allows the Windows version
+   of HTB to create a Unix compatible text file directly. This is the default 
+   behavior and correctly creates a natively compatible format whether Unix
+   or Windows.
+   <br>
+   <br>
+   <a name="option_e"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3><b>-e:</b>&nbsp;&nbsp;&nbsp;Escaped Tag Conversion</h3>
+
+   <p>The -e command-line option replaces the special markup characters "&lt;",
+   "&gt;", and "&amp;" with escape strings "&amp;lt;", "&amp;gt;", and 
+   "&amp;amp;" respectively.  Also, the tag sequence "&lt;HTML&gt;&lt;BODY&gt;&lt;PRE&gt;"
+   is added to the beginning of the output data and the sequence
+   "&lt;/PRE&gt;&lt;/BODY&gt;&lt;/HTML&gt;" is appended to the end of the data.
+   This creates an entirely new HTML document, which when viewed with a Web
+   Browser, will appear as source instead of normal rendering.  This is useful
+   in creating markup tag documentation and is the mechanism used to create
+   the examples in this document. Use in combination with the
+   <a href="#option_k">-k option</a> to do the conversion without applying
+   other reformatting options.
+
+   <br>
+   <br>
+   <a name="option_f"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3><b>-f</b>:&nbsp;&nbsp;&nbsp;Run as Filter (use <i>stdin</i> &amp; <i>stdout</i>)</h3>
+
+   <p>The -f command-line option will cause HTB to read from the "standard
+   input" stream and write to "standard output".  This makes HTB a filter
+   program and allows embedding HTB within other stream manipulation processes
+   and programs like command-line "piping".  Other options may be combined
+   with the filter option, but all file names specified with HTB are ignored.
+   <br> 
+   <br> <b>Example Usage:</b>
+   <br> 
+   <br> 
+    - Display only lines containing the text string, "hidden" in <i>myfile.htm</i>
+    (most likely <nobr><code><i>&lt;INPUT TYPE="hidden"...&gt;</i></code></nobr> tags) and beautify them with HTB attribute break (<a href="#option_a">-a option</a>) using command-line piping...
+   <br> 
+   <br> 
+   <center> 
+   <table cellspacing="0" cellpadding="5" border="0">
+     <tr><td align="left" nowrap><nobr>
+       <code>findstr "hidden" myfile.htm | htb -af</code></nobr>
+       </td> 
+       <td align="right" nowrap><nobr>
+         (Windows command-line)
+       </td> 
+     </tr>
+     <tr><td align="left" nowrap><nobr>
+       <code>grep -i hidden myfile.htm | htb -af</code></nobr>
+       </td> 
+       <td align="right" nowrap><nobr>
+         (Unix command-line)
+       </td> 
+     </tr>
+   </table>
+   </center> 
+   <p>See the <a href="#overview_d"><b>Errors &amp; Verification</b></a>
+    section for another example of the HTB -f option when used in combination
+    with the <a href="http://www.w3.org/People/Raggett/tidy/">Tidy</a> HTML
+    cleanup program.
+   <br>
+   <br>
+   <a name="option_h"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3><b>-h</b>:&nbsp;&nbsp;&nbsp;Help Screen</h3>
+
+   <p>The -h command-line option (or incomplete/invalid command-line options)
+   will display the following Help Screen:
+<pre>
+ htb - HTML/XML Beautifier 2.0, TG Schramer Consulting, lastimo@cox.net
+
+  "htb" is a program to beautify HTML/XML files and has the following format:
+              "htb -(options) &lt;input filename&gt; &lt;new filename&gt;"
+
+ Options:
+   a: Force break of all multi-attribute Tags with alignment on the 1st one
+        (default for Tags going over 80 columns as whitespace permits).
+   b: Force break of every Tag Attribute onto a new line with alignment on the
+        last character in the Tag.
+   c: Force extra Carriage Return character after each line (allows creation
+        of DOS compatible file from Unix system).
+   d: Never add extra Carriage Return character after each line (default).
+   e: Escape Tag characters &amp; create browser viewable source conversion
+        (ie. "&lt;" to "&amp;lt;", "&gt;" to "&amp;gt;", etc.).
+   f: Run as filter - read from standard input and write to standard output
+        (any file names also specified are ignored).
+   h: This screen.
+   j: Join lines wherever possible and remove comments &amp; extra whitespace.
+        (overrides re-formatting options and compresses output).
+   k: Keep current layout, just apply upper/lower case (overrides non-case 
+        related options).
+   l: Make Tag names lower case.
+   m: Make Tag Attribute case the opposite of the Tag name.
+   n: Never break Tag Attributes onto separate lines.
+   r: Remove Non-HTML tags. HTML 4.01 and common legacy Tags remain
+        (overrides x option).
+   s: Remove tabs from SCRIPTS and indent using blanks. Scripts could look
+        worse, but the tabs are gone. By default scripts are not changed.
+   t: Strip all but plain text content from input. No tags or comments remain.
+   u: Make Tag names upper case (default).
+   x: Treat unknown tags as "well-formed" XML. Case changes &amp; attribute 
+        sorting only applied to known HTML tags (default if XML detected).
+   y: Turn off XML detection (overrides x option, case changes go on all Tags).
+   z: Remove stand-alone comments (not within SCRIPT, STYLE, etc).
+ 0-9: Use (number) of spaces for indenting (default = 3).
+
+ Options may be combined into one argument and any order (ie. -l -m -5 = -lm5).
+ If output file is not defined, re-formatted data is sent to "standard out".
+ Defaults: Tags/Attributes upper case, break Tags over 80 &amp; indent by 3.
+
+ Examples:
+ - Make Tags and Attributes lower case and use 4 for indenting:
+                       "htb -l4 index.html newindx.html"
+
+ - Defaults + no Tag breaking, remove comments &amp; treat non-HTML tags as XML.
+                       "htb -nxz index.html newindx.html"    
+</pre>
+   <a name="option_j"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3><b>-j</b>:&nbsp;&nbsp;&nbsp;Join Lines - Compress Output</h3>
+
+   <p>The -j command-line option removes all unnecessary whitespace &amp;
+   comments and joins the output lines together whenever possible. The result
+   is totally "unbeautified" output, but the size will be reduced from 10-40%
+   for quicker transfer over the network. Use this option whenever performance
+   is more important than readability. 
+   <br>
+   <br>
+   <a name="option_k"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3><b>-k</b>:&nbsp;&nbsp;&nbsp;Keep Layout - Case Changes Only</h3>
+
+   <p>When the current indenting and appearance of your tagged document is 
+   acceptable, the -k command-line option may be used to change only the case
+   of the tag names and attributes with no other changes applied.
+   <br> 
+   <br> <b>Example:</b>
+   <br> 
+   <br> 
+    - Keep the current layout of an HTML document, but change the tag attribute
+    names to lower case (<a href="#option_m">-m option</a>, opposite of tag name case which by default is upper)...
+   <br> 
+   <br> 
+   <center> 
+       <code>htb -km myfile.html</code>
+   </center> 
+   <br> <b>Before:</b> 
+
+<pre>
+&lt;FORM ENCTYPE="multipart/form-data" NAME="coreform" METHOD="POST"&gt;
+&lt;INPUT TYPE="submit" VALUE="Submit Request"&gt; 
+&lt;INPUT NAME="cgi" TYPE="button" VALUE="cgi2xml"&gt;cgi2xml 
+&lt;TABLE BORDER="5" CELLPADDING="5"&gt;
+   &lt;TR&gt;
+      &lt;TD&gt; &lt;FONT COLOR="purple"&gt; 
+         &lt;H4&gt;Output formatting:&lt;/H4&gt; &lt;/FONT&gt;Debug: 
+         &lt;INPUT NAME="debug"&gt;&lt;BR&gt; 
+         &lt;BR&gt; Filter: 
+         &lt;INPUT NAME="filter"&gt;&lt;BR&gt; Output: 
+         &lt;INPUT NAME="output"&gt;&lt;BR&gt; 
+         &lt;BR&gt; Pagestart: 
+         &lt;INPUT SIZE="4" NAME="pagestart"&gt;&lt;BR&gt; Pagesize: 
+         &lt;INPUT SIZE="4" NAME="pagesize"&gt;&lt;BR&gt; 
+      &lt;/TD&gt;
+   &lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;/FORM&gt;
+</pre>
+
+   <b>After:</b> 
+<pre>
+&lt;FORM enctype="multipart/form-data" name="coreform" method="POST"&gt;
+&lt;INPUT type="submit" value="Submit Request"&gt; 
+&lt;INPUT name="cgi" type="button" value="cgi2xml"&gt;cgi2xml 
+&lt;TABLE border="5" cellpadding="5"&gt;
+   &lt;TR&gt;
+      &lt;TD&gt; &lt;FONT color="purple"&gt; 
+         &lt;H4&gt;Output formatting:&lt;/H4&gt; &lt;/FONT&gt;Debug: 
+         &lt;INPUT name="debug"&gt;&lt;BR&gt; 
+         &lt;BR&gt; Filter: 
+         &lt;INPUT name="filter"&gt;&lt;BR&gt; Output: 
+         &lt;INPUT name="output"&gt;&lt;BR&gt; 
+         &lt;BR&gt; Pagestart: 
+         &lt;INPUT size="4" name="pagestart"&gt;&lt;BR&gt; Pagesize: 
+         &lt;INPUT size="4" name="pagesize"&gt;&lt;BR&gt; 
+      &lt;/TD&gt;
+   &lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;/FORM&gt;
+</pre>
+   <a name="option_l">
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3></a><b>-l</b>:&nbsp;&nbsp;&nbsp;Tag Names Lower Case</h3>
+
+   <p>The -l command-line option changes all HTML tag names and their
+   attributes to lower case. Combine with the <a href="#option_m">-m (mixed case) option</a> to keep the tag names lower case, but make the attribute names
+   upper case.
+   <br>
+   <br> <b>Before:</b> 
+
+<pre>
+&lt;FORM ENCTYPE="multipart/form-data" NAME="coreform" METHOD="POST"&gt;
+&lt;INPUT TYPE="submit" VALUE="Submit Request"&gt; 
+&lt;INPUT NAME="cgi" TYPE="button" VALUE="cgi2xml"&gt;cgi2xml 
+&lt;TABLE BORDER="5" CELLPADDING="5"&gt;
+   &lt;TR&gt;
+      &lt;TD&gt; &lt;FONT COLOR="purple"&gt; 
+         &lt;H4&gt;Output formatting:&lt;/H4&gt; &lt;/FONT&gt;Debug: 
+         &lt;INPUT NAME="debug"&gt;&lt;BR&gt; 
+         &lt;BR&gt; Filter: 
+         &lt;INPUT NAME="filter"&gt;&lt;BR&gt; Output: 
+         &lt;INPUT NAME="output"&gt;&lt;BR&gt; 
+         &lt;BR&gt; Pagestart: 
+         &lt;INPUT SIZE="4" NAME="pagestart"&gt;&lt;BR&gt; Pagesize: 
+         &lt;INPUT SIZE="4" NAME="pagesize"&gt;&lt;BR&gt; 
+      &lt;/TD&gt;
+   &lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;/FORM&gt;
+</pre>
+
+   <b>After:</b> 
+<pre>
+&lt;form enctype="multipart/form-data" method="post" name="coreform"&gt;
+&lt;input type="submit" value="Submit Request"&gt; 
+&lt;input name="cgi" type="button" value="cgi2xml"&gt;cgi2xml 
+&lt;table border="5" cellpadding="5"&gt;
+   &lt;tr&gt;
+      &lt;td&gt; &lt;font color="purple"&gt; 
+         &lt;h4&gt;Output formatting:&lt;/h4&gt; &lt;/font&gt;Debug: 
+         &lt;input name="debug"&gt;&lt;br&gt; 
+         &lt;br&gt; Filter: 
+         &lt;input name="filter"&gt;&lt;br&gt; Output: 
+         &lt;input name="output"&gt;&lt;br&gt; 
+         &lt;br&gt; Pagestart: 
+         &lt;input name="pagestart" size="4"&gt;&lt;br&gt; Pagesize: 
+         &lt;input name="pagesize size="4"&gt;&lt;br&gt; 
+      &lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/form&gt;
+</pre>
+   <a name="option_m">
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3></a><b>-m</b>:&nbsp;&nbsp;&nbsp;Tag Attributes Opposite Case</h3>
+
+   <p>The -m command-line option makes the tag attribute case the opposite
+   of the tag name. Since the HTB default is to make tag names upper case, 
+   the addition of this option will make the tag attributes lower case.  If
+   combined with the <a href="#option_l">-l option</a> (lower case) the tag
+   names will be lower case, and the tag attributes will be upper case. See
+   the <a href="#option_k">-k option</a> for an example.
+   <br>
+   <br>
+   <a name="option_n"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3><b>-n:</b>&nbsp;&nbsp;&nbsp;Never Break Tags Between Lines</h3>
+
+   <p>The -n command-line option cancels the default behavior of breaking tags
+   which exceed the 80 column limit and keeps tags intact within a single
+   line of output regardless of their length. This is often desirable,
+   especially on XSL files.
+   <br>
+   <br>
+   <a name="option_r"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3><b>-r:</b>&nbsp;&nbsp;&nbsp;Remove Non-HTML Tags</h3>
+
+   <p>The -r command-line option strips any tag which is not part of the
+   HTML 4.01 specification (and a group of widely recognized, commonly used
+   legacy tags) from the output. Its a convenient way to separate HTML from 
+   hybrid files like ASP, JSP, XSL or files containing custom tags. The 
+   stripped tags are reported along with any errors to "standard error".
+   <br> 
+   <br> <b>Example:</b>
+   <br> 
+   <br> 
+    - Remove all non-HTML tags from an XSL/XHTML file... 
+   <br> 
+   <br> 
+   <center> 
+       <code>htb -r myfile.xsl</code>
+   </center> 
+   <br> <b>Before:</b> 
+
+<pre>
+   &lt;xsl:for-each select="ELEMENT/NODE1"&gt; 
+      &lt;xsl:variable select="position()-1" name="vpos" /&gt; 
+      &lt;TR VALIGN="top"&gt;
+         &lt;TD ALIGN="center"&gt;&lt;FONT SIZE="1" FACE="Helvetica"&gt;&lt;xsl:value-of select="$vpos" /&gt;&lt;/FONT&gt; 
+         &lt;/TD&gt;
+         &lt;TD ALIGN="center"&gt;&lt;FONT FACE="Helvetica"&gt; 
+            &lt;INPUT NAME="ELEM{$vpos}" TYPE="text" VALUE="Element {$vpos}" /&gt;&lt;/FONT&gt; 
+         &lt;/TD&gt;
+         &lt;TD ALIGN="center"&gt;&lt;FONT FACE="Helvetica"&gt; 
+            &lt;INPUT NAME="NUMB{$vpos}" TYPE="text" VALUE="2" /&gt;&lt;/FONT&gt; 
+         &lt;/TD&gt;
+         &lt;TD ALIGN="center"&gt;&lt;FONT FACE="Helvetica"&gt; 
+            &lt;xsl:variable select="count(//NODE1[@id &amp;gt; -1)" name="pcnt" /&gt; 
+            &lt;xsl:variable name="selsize"&gt; 
+               &lt;xsl:choose&gt;&lt;xsl:when test="$pcnt &amp;lt; 5"&gt; 
+                  &lt;xsl:value-of select="$pcnt" /&gt; 
+               &lt;/xsl:when&gt;&lt;xsl:otherwise&gt; 
+                  &lt;xsl:value-of select="'5'" /&gt; 
+               &lt;/xsl:otherwise&gt;&lt;/xsl:choose&gt; 
+            &lt;/xsl:variable&gt; 
+            &lt;SELECT SIZE="{$selsize}" NAME="VALU{$vpos}"&gt;
+               &lt;xsl:for-each select="//VALUE[@id &amp;gt; -1]"&gt; 
+                  &lt;OPTION VALUE="{@id}"&gt;
+                  &lt;xsl:value-of select="NAME" /&gt;&lt;/OPTION&gt; 
+               &lt;/xsl:for-each&gt; 
+            &lt;/SELECT&gt;&lt;/FONT&gt; 
+         &lt;/TD&gt;
+      &lt;/TR&gt;
+   &lt;/xsl:for-each&gt; 
+</pre>
+
+   <b>After:</b> 
+<pre>
+   &lt;TR VALIGN="top"&gt;
+      &lt;TD ALIGN="center"&gt;&lt;FONT FACE="Helvetica" SIZE="1"&gt;&lt;/FONT&gt; 
+      &lt;/TD&gt;
+      &lt;TD ALIGN="center"&gt;&lt;FONT FACE="Helvetica"&gt; 
+         &lt;INPUT NAME="ELEM{$vpos}" TYPE="text" VALUE="Element {$vpos}" /&gt;&lt;/FONT&gt; 
+      &lt;/TD&gt;
+      &lt;TD ALIGN="center"&gt;&lt;FONT FACE="Helvetica"&gt; 
+         &lt;INPUT NAME="NUMB{$vpos}" TYPE="text" VALUE="2" /&gt;&lt;/FONT&gt; 
+      &lt;/TD&gt;
+      &lt;TD ALIGN="center"&gt;&lt;FONT FACE="Helvetica"&gt; 
+         &lt;SELECT NAME="VALU{$vpos}" SIZE="{$selsize}"&gt;
+            &lt;OPTION VALUE="{@id}"&gt;&lt;/OPTION&gt;
+         &lt;/SELECT&gt;&lt;/FONT&gt; 
+      &lt;/TD&gt;
+   &lt;/TR&gt;
+</pre>
+   <a name="option_s">
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3><b>-s:</b>&nbsp;&nbsp;&nbsp;Remove Tabs from SCRIPTs</h3>
+
+   <p>HTB automatically removes any tab characters found in the source
+   document during the indenting process, but by default SCRIPTs are kept
+   intact. To completely remove all tabs, specify the -s option and tab
+   characters found within SCRIPT elements will be replaced with sets if
+   of indented spaces. This could make the indented script statements look
+   slightly worse and may require minor editing, but the beautified output
+   is clear of any tab characters.
+   <br>
+   <br>
+   <a name="option_t">
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3><b>-t:</b>&nbsp;&nbsp;&nbsp;Convert to Plain Text</h3>
+
+   <p>The -t command-line option strips all markup tags, comments and converts 
+   the input to plain text. All ASCII and ISO8859-1 HTML escape strings are
+   converted back to the characters they represent. An attempt is made to
+   compress extra whitespace, but in general the text will require additional
+   re-formatting to be made presentable. Use this option to isolate the textual
+   content within tagged documents (not necessarily HTML) for use in other
+   documentation.
+   <br>
+   <br>
+   <a name="option_u"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3></a><b>-u</b>:&nbsp;&nbsp;&nbsp;Tag Names Upper Case</h3>
+
+   <p>The -u command-line option changes all HTML tag names and their
+   attributes to upper case. Since this is the default behavior of HTB, it
+   is not required.  Use the <a href="#option_m">-m (mixed case) option</a> to
+   keep the tag names upper case, but make the attribute names lower case.
+   <br>
+   <br> <b>Before:</b> 
+
+
+<pre>
+&lt;form enctype="multipart/form-data" name="coreform" method="POST"&gt;
+&lt;input type="submit" value="Submit Request"&gt; 
+&lt;input name="cgi" type="button" value="cgi2xml"&gt;cgi2xml 
+&lt;table border="5" cellpadding="5"&gt;
+   &lt;tr&gt;
+      &lt;td&gt; &lt;font color="purple"&gt; 
+         &lt;h4&gt;Output formatting:&lt;/h4&gt; &lt;/font&gt;Debug: 
+         &lt;input name="debug"&gt;&lt;br&gt; 
+         &lt;br&gt; Filter: 
+         &lt;input name="filter"&gt;&lt;br&gt; Output: 
+         &lt;input name="output"&gt;&lt;br&gt; 
+         &lt;br&gt; Pagestart: 
+         &lt;input size="4" name="pagestart"&gt;&lt;br&gt; Pagesize: 
+         &lt;input size="4" name="pagesize"&gt;&lt;br&gt; 
+      &lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/form&gt;
+</pre>
+
+   <b>After:</b> 
+
+<pre>
+&lt;FORM ENCTYPE="multipart/form-data" METHOD="POST" NAME="coreform"&gt;
+&lt;INPUT TYPE="submit" VALUE="Submit Request"&gt; 
+&lt;INPUT NAME="cgi" TYPE="button" VALUE="cgi2xml"&gt;cgi2xml 
+&lt;TABLE BORDER="5" CELLPADDING="5"&gt;
+   &lt;TR&gt;
+      &lt;TD&gt; &lt;FONT COLOR="purple"&gt; 
+         &lt;H4&gt;Output formatting:&lt;/H4&gt; &lt;/FONT&gt;Debug: 
+         &lt;INPUT NAME="debug"&gt;&lt;BR&gt; 
+         &lt;BR&gt; Filter: 
+         &lt;INPUT NAME="filter"&gt;&lt;BR&gt; Output: 
+         &lt;INPUT NAME="output"&gt;&lt;BR&gt; 
+         &lt;BR&gt; Pagestart: 
+         &lt;INPUT NAME="pagestart" SIZE="4"&gt;&lt;BR&gt; Pagesize: 
+         &lt;INPUT NAME="pagesize" SIZE="4"&gt;&lt;BR&gt; 
+      &lt;/TD&gt;
+   &lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;/FORM&gt;
+</pre>
+   <a name="option_x">
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3><b>-x:</b>&nbsp;&nbsp;&nbsp;Unknown Tags are XML</h3>
+
+   <p>HTB automatically detects XML compliant files and is able to apply
+   reformatting to unknown tags since they meet the predictable behavior
+   of the XML specification.  If the input document is not strictly XML
+   compliant, but does contain custom tagging which may be considered
+   "well-formed" XML, the -x option may be used to apply XML handling on 
+   these otherwise ignored tags. If XML is detected, either automatically,
+   or with the -x option, the tag case is NOT changed for these non-HTML tags,
+   since they are often case-sensitive.  Also, the attributes of unknown tags
+   will remain in original order instead of being sorted as with HTML 
+   attributes.  To turn off XML auto-detection and apply case changes and
+   attribute sorting to all tags known and unknown, use the
+   <a href="#option_y">-y option</a>.
+   <br> 
+   <br> <b>Example:</b>
+   <br> 
+   <br> 
+    - Make <a href="#option_l">tag names and attributes lower case</a>,
+    <a href="#option_n">never break tags</a>, and treat unknown tags in an
+    HTML file as well formed XML... 
+   <br> 
+   <br> 
+   <center> 
+       <code>htb -lnx myfile.html</code>
+   </center> 
+   <br> <b>Before:</b> 
+
+<pre>
+&lt;TR&gt;&lt;TD WIDTH=182 ALIGN=left BGCOLOR="#ffffff"&gt;
+&lt;NYT_HEADLINE&gt;
+&lt;A
+
+HREF="/onthisday/20020619.html"&gt;&lt;FONT SIZE="3" FACE="times"&gt;&lt;B&gt;On June 19 ...&lt;BR&gt;&lt;/B&gt;&lt;/FONT&gt;&lt;/A&gt;
+&lt;/NYT_HEADLINE&gt;
+&lt;NYT_BYLINE&gt;
+&lt;FONT SIZE="-1"&gt;&lt;/FONT&gt;
+&lt;/NYT_BYLINE&gt;
+&lt;NYT_SUMMARY&gt;
+&lt;FONT SIZE="-1"&gt;
+&lt;B&gt;1964:&lt;/B&gt; The Civil Rights Act of 1964 was approved.   (&lt;A 
+HREF="/onthisday/big/0619.html"&gt;See this front page.&lt;/A&gt;) &lt;BR&gt;
+&lt;B&gt;1903:&lt;/B&gt; Lou Gehrig was born.  &lt;A 
+HREF="/onthisday/bday/0619.html"&gt;(Read about his life.)&lt;/A&gt; &lt;BR&gt;
+&lt;B&gt;1886:&lt;/B&gt; Harper's Weekly featured a cartoon about the proposed annexation of Nova Scotia. &lt;A 
+HREF="/onthisday/harp/0619.html"&gt;(See the cartoon.)&lt;/A&gt;&lt;/FONT&gt;
+&lt;/TD&gt;&lt;/TR&gt;
+</pre>
+
+   <b>After:</b> 
+
+<pre>
+&lt;tr&gt;
+   &lt;td align="left" bgcolor="#ffffff" width="182"&gt; 
+      &lt;NYT_HEADLINE&gt; 
+         &lt;a href="/onthisday/20020619.html"&gt;&lt;font face="times" size="3"&gt;&lt;b&gt;On June 19 ...&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;/a&gt; 
+      &lt;/NYT_HEADLINE&gt; 
+      &lt;NYT_BYLINE&gt; &lt;font size="-1"&gt;&lt;/font&gt; 
+      &lt;/NYT_BYLINE&gt; 
+      &lt;NYT_SUMMARY&gt; &lt;font size="-1"&gt; &lt;b&gt;1964:&lt;/b&gt; The Civil Rights Act of 1964 was approved. (&lt;a href="/onthisday/big/0619.html"&gt;See this front page.&lt;/a&gt;) 
+         &lt;br&gt; &lt;b&gt;1903:&lt;/b&gt; Lou Gehrig was born. 
+         &lt;a href="/onthisday/bday/0619.html"&gt;(Read about his life.)&lt;/a&gt; 
+         &lt;br&gt; &lt;b&gt;1886:&lt;/b&gt; Harper's Weekly featured a cartoon about the proposed annexation of Nova Scotia. 
+         &lt;a href="/onthisday/harp/0619.html"&gt;(See the cartoon.)&lt;/a&gt;&lt;/font&gt; 
+   &lt;/td&gt;
+&lt;/tr&gt;
+</pre>
+   <a name="option_y">
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3><b>-y:</b>&nbsp;&nbsp;&nbsp;Turn off XML detection</h3>
+
+   <p>HTB automatically detects XML compliant files and treats the unknown
+   tags differently than HTML tags.  XML tags are indented as whitespace
+   permits and case changes &amp; attribute sorting are not applied. To turn
+   off this default behavior and apply case changes &amp; sorting to all
+   tags known and unknown, specify the -y option.
+   <br> 
+   <br> <b>Example:</b>
+   <br> 
+   <br> 
+    - <a href="#option_n">Never break tags</a>, <a href="#option_l">make all
+    tags lower case</a> whether HTML or not, and do not change indenting for
+    unknown tags... 
+   <br> 
+   <center> 
+       <code>htb -lny myfile.html</code>
+   </center> 
+   <br> <b>Before:</b> 
+
+<pre>
+&lt;TR&gt;&lt;TD WIDTH=182 ALIGN=left BGCOLOR="#ffffff"&gt;
+&lt;NYT_HEADLINE&gt;
+&lt;A
+
+HREF="/onthisday/20020619.html"&gt;&lt;FONT SIZE="3" FACE="times"&gt;&lt;B&gt;On June 19 ...&lt;BR&gt;&lt;/B&gt;&lt;/FONT&gt;&lt;/A&gt;
+&lt;/NYT_HEADLINE&gt;
+&lt;NYT_BYLINE&gt;
+&lt;FONT SIZE="-1"&gt;&lt;/FONT&gt;
+&lt;/NYT_BYLINE&gt;
+&lt;NYT_SUMMARY&gt;
+&lt;FONT SIZE="-1"&gt;
+&lt;B&gt;1964:&lt;/B&gt; The Civil Rights Act of 1964 was approved.   (&lt;A 
+HREF="/onthisday/big/0619.html"&gt;See this front page.&lt;/A&gt;) &lt;BR&gt;
+&lt;B&gt;1903:&lt;/B&gt; Lou Gehrig was born.  &lt;A 
+HREF="/onthisday/bday/0619.html"&gt;(Read about his life.)&lt;/A&gt; &lt;BR&gt;
+&lt;B&gt;1886:&lt;/B&gt; Harper's Weekly featured a cartoon about the proposed annexation of Nova Scotia. &lt;A 
+HREF="/onthisday/harp/0619.html"&gt;(See the cartoon.)&lt;/A&gt;&lt;/FONT&gt;
+&lt;/TD&gt;&lt;/TR&gt;
+</pre>
+
+   <b>After:</b> 
+
+<pre>
+&lt;tr&gt;
+   &lt;td align="left" bgcolor="#ffffff" width="182"&gt; 
+      &lt;nyt_headline&gt; 
+      &lt;a href="/onthisday/20020619.html"&gt;&lt;font face="times" size="3"&gt;&lt;b&gt;On June 19 ...&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;/a&gt; 
+      &lt;/nyt_headline&gt; 
+      &lt;nyt_byline&gt; &lt;font size="-1"&gt;&lt;/font&gt; 
+      &lt;/nyt_byline&gt; 
+      &lt;nyt_summary&gt; &lt;font size="-1"&gt; &lt;b&gt;1964:&lt;/b&gt; The Civil Rights Act of 1964 was approved. (&lt;a href="/onthisday/big/0619.html"&gt;See this front page.&lt;/a&gt;) 
+      &lt;br&gt; &lt;b&gt;1903:&lt;/b&gt; Lou Gehrig was born. 
+      &lt;a href="/onthisday/bday/0619.html"&gt;(Read about his life.)&lt;/a&gt; 
+      &lt;br&gt; &lt;b&gt;1886:&lt;/b&gt; Harper's Weekly featured a cartoon about the proposed annexation of Nova Scotia. 
+      &lt;a href="/onthisday/harp/0619.html"&gt;(See the cartoon.)&lt;/a&gt;&lt;/font&gt; 
+   &lt;/td&gt;
+&lt;/tr&gt;
+</pre>
+   <a name="option_z">
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3><b>-z:</b>&nbsp;&nbsp;&nbsp;Remove Comments</h3>
+
+   <p>The -z command-line option removes all stand-alone comments from the
+   input data. This does not include JavaScript comments or comment blocks
+   within APPLET, OBJECT, SCRIPT, and STYLE tags used to hide text from
+   browsers. The revised output should render and function as the original.
+   The -z option is useful in reducing tagged file sizes when the comment
+   blocks are no longer needed, or in removing dead, commented-out sections
+   within documents which tend to collect over time. The stripped comments are
+   not lost, however. These are sent to the "standard error" stream and may
+   be collected in another file for reference or for use in documentation by
+   "standard error" redirection ("2&gt;" or "2&gt;&gt;"). If "standard error"
+   is not redirected, the stripped comments will be seen scrolling by on the
+   screen.  Use in combination with the <a href="#option_k">-k option</a> to
+   strip comments without otherwise changing the document layout.
+   <br> 
+   <br> <b>Example Usage:</b>
+   <br> 
+   <br> 
+    - Beautify <i>myfile.htm</i> and save the output to <i>newfile.htm</i>
+    but save the stripped comments in another file called <i>comments.txt</i>
+    by redirecting the "standard error" stream to a file.
+   <br> 
+   <br> 
+   <center> 
+   <table cellspacing="0" cellpadding="5" border="0">
+     <tr><td align="left" nowrap><nobr>
+       <code>htb -z myfile.htm newfile.htm 2&gt; comments.txt</code></nobr>
+       </td> 
+       <td align="left" nowrap><nobr>
+         (<i>comments.txt</i> will be created or overwritten)
+       </td> 
+     </tr>
+     <tr><td align="left" nowrap><nobr>
+       <code>htb -z myfile.htm newfile.htm 2&gt;&gt; comments.txt</code></nobr>
+       </td> 
+       <td align="left" nowrap><nobr>
+         (<i>comments.txt</i> will be created or appended to)
+       </td> 
+     </tr>
+   </table>
+   </center> 
+   <br>
+   <br>
+   <a name="option_0"></a>
+   <a href="#contents">Back to Table of Contents</a> 
+
+   <h3></a><b>0-9</b>:&nbsp;&nbsp;&nbsp;Spaces for Indenting</h3>
+
+   <p>A command-line option from 0 to 9 represents the number of spaces
+   used for increments of indenting. Specifying 0 will cause all indenting
+   to be removed and the tags will shifted to the left. If not specified, the
+   default is to indent by 3.
+   <br> 
+</dl>
+<hr> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+<br> 
+</body>
+</html>
+

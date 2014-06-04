@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace GameGen
 
         public void Generate()
         {
-            String genPath     = NDSFrameworkHelper.CodeDirectory + @"\arm9";
+            String genPath = ProjectRoot + @"\gen";
             String includePath = genPath + @"\include";
             String sourcePath  = genPath + @"\source";
 
@@ -125,6 +126,43 @@ namespace GameGen
             }
 
             File.WriteAllText(String.Format(@"{0}\{1}.h", includePath, Name + "Types"), typesSource);
+
+            FormatGeneratedFiles();
+
+            ExportFormattedFiles();
+        }
+
+        private void FormatGeneratedFiles()
+        {
+            Process formatter = new Process();
+            formatter.StartInfo.FileName = "call_Artistic_Style.bat";
+            formatter.StartInfo.Arguments = ProjectRoot + " cpp h";
+            formatter.StartInfo.UseShellExecute = false;
+            formatter.StartInfo.RedirectStandardOutput = false;
+            formatter.Start();
+            formatter.WaitForExit();
+            formatter.StartInfo.Arguments = ProjectRoot + " h";
+            formatter.Start();
+            formatter.WaitForExit();
+            formatter.Close();
+
+            foreach (var file in Directory.EnumerateFiles(ProjectRoot, "*.orig", SearchOption.AllDirectories))
+                File.Delete(file);
+        }
+
+        private void ExportFormattedFiles()
+        {
+            String gen  = ProjectRoot + @"\gen";
+            String arm9 = NDSFrameworkHelper.CodeDirectory + @"\arm9";
+
+            CopyDirectoryContents(gen + @"\include", arm9 + @"\include");
+            CopyDirectoryContents(gen + @"\source",  arm9 + @"\source");
+        }
+
+        private void CopyDirectoryContents(String sourceDir, String destDir)
+        {
+            foreach (var file in Directory.GetFiles(sourceDir))
+                File.Copy(file, destDir + @"\" + Path.GetFileName(file), true);
         }
 
         public DSLProject(String projectRoot)
@@ -134,7 +172,7 @@ namespace GameGen
 
         public String Name
         {
-            get { return Directory.GetParent(ProjectRoot).Name; }
+            get { return new DirectoryInfo(ProjectRoot).Name ; }
         }
     }
 }

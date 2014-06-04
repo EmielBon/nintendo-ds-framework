@@ -1,4 +1,4 @@
-﻿Build started 29-5-2014 19:05:11.
+﻿Build started 4-6-2014 17:16:24.
      1>Project "C:\Programming\nintendo-ds-framework\code\arm7\arm7.vcxproj" on node 3 (Build target(s)).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.MakeFile.Targets(37,5): warning MSB8005: The property 'NMakeBuildCommandLine' doesn't exist.  Skipping...
      1>Done Building Project "C:\Programming\nintendo-ds-framework\code\arm7\arm7.vcxproj" (Build target(s)).

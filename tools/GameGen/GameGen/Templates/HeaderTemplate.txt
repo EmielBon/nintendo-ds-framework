@@ -1,5 +1,3 @@
-#pragma once
-
 [HeaderIncludes]
 
 class [ClassName] : public [BaseClass]

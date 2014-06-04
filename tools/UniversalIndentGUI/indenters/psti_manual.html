@@ -1,0 +1,4605 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+
+
+          	                           
+  
+  
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=windows-1250">
+
+
+  
+                                     	 	                           
+  
+  
+  
+  <title>Manual for Pl/Sql Tidy internet version 1.2</title>
+  <meta name="GENERATOR" content="OpenOffice.org 1.0.2  (Win32)">
+
+
+          	                           
+  
+  
+  <meta name="CREATED" content="20050118;19122553">
+
+
+          	                              
+  
+  
+  <style type="text/css">
+
+
+
+<!--
+
+  H1 { font-family: Times New Roman; font-size:xx-large; color:#808000; }
+
+	H2 { font-family: Times New Roman; font-size:x-large; text-decoration:underline; color: #008000;}
+
+	H1 { font-family: Times New Roman; font-size:35px; color:#808000; }
+
+	BODY { font-family: Times New Roman; font-size:20px; }
+
+	H2 { font-family: Times New Roman; font-size:25px; text-decoration:underline; color: #008000;}
+
+-->
+
+  </style>
+</head>
+
+
+<body lang="en-US">
+
+
+                   
+<h1><a name="mozTocId557664"></a>Manual for Pl/Sql Tidy version 1.2</h1>
+
+
+                              
+<ul>
+
+
+          	<li>                                             
+    
+    
+    <p style="margin-bottom: 0cm;"><a name="mozToc"></a><!--mozToc h1 1 h2 2 h3 3 h4 4 h5 5 h6 6--><a href="#mozTocId557664">Manual 	for Pl/Sql Tidy version 1.2</a>  	</p>
+
+
+          	                                             
+    
+    
+    <ul>
+
+
+          		<li>                  <a href="#mozTocId473756">Its 		purpose</a> 
+       </li>
+
+
+        <li>                  <a href="#mozTocId513808">How to 		use  it</a> 
+       </li>
+
+
+        <li>                          <a href="#mozTocId398913">How to 		use 
+   it in an editor</a>       </li>
+
+
+        <li>                          <a href="#mozTocId82816">About 		the 
+   use of switches</a>       </li>
+
+
+        <li>                         <a href="#mozTocId15096">List of 		switches</a> 
+       </li>
+
+
+        <li>                                   <a href="#mozTocId490730">Switches 
+   		and examples</a><br>
+
+
+                 <a href="#mozTocId634677">-h</a><br>
+
+
+                 <a href="#mozTocId273491">-v</a><br>
+
+
+                 <a href="#mozTocId274681">-i 		filename     input file</a><br>
+
+
+                 <a href="#mozTocId604894">-o 		filename     output file
+(tidied     up)</a><br>
+
+
+                 <a href="#mozTocId117050">-io 		filename    same input and 
+ output    file </a><br>
+
+
+                 <a href="#mozTocId92942">-t 		size         tab is equal
+		to   size   spaces</a><br>
+
+
+                 <a href="#mozTocId846518">-is size        		indent size
+in  spaces    (generally)</a><br>
+
+
+                 <a href="#mozTocId956006">-il[Level] 		size indent size
+at  Level(specific)</a><br>
+
+
+                 <a href="#mozTocId240143">-uk[+,-]        		uppercase keywords 
+   yes/no</a><br>
+
+
+                 <a href="#mozTocId497989">-ck[+,-]        		capital keywords 
+  yes/no</a><br>
+
+
+                 <a href="#mozTocId911653">-clb[+,-]       		column like
+lists    inside  brackets</a><br>
+
+
+                 <a href="#mozTocId966798">-c[+,-]         		compactify,
+remove    redundant  spaces/keep</a><br>
+
+
+                 <a href="#mozTocId787824">-co[+,-]        		remove spaces
+ around    operations (+,- etcdo 		nothing/)</a><br>
+
+
+                 <a href="#mozTocId968629">-sao[+,-]       		add space around 
+  operations/do   nothing</a><br>
+
+
+                 <a href="#mozTocId900878">-rsaob[+,-]     		remove spaces
+ after    opening brackets/keep</a><br>
+
+
+                 <a href="#mozTocId320591">-iic[+,-]       		indent inside
+ comments/do    nothing</a><br>
+
+
+                 <a href="#mozTocId69003">-ncb[+,-]       		don't remove
+spaces    around  brackets/do nothing</a><br>
+
+
+                 <a href="#mozTocId766087">-rs[+,-]        		keep the relative
+   identation  of a select/do nothing</a><br>
+
+        <a href="#iaew">-iaew[+-]
+indent after when in exception yes/no</a><br>
+
+        <a href="#iacw">-iacw[+-]
+indent after when in case statement yes/no</a><br>
+
+
+                 <a href="#mozTocId912087">-iac[+,-]       		indent after 
+cursor    yes/no<br>
+
+
+           </a><a href="#acav">-acav[+,-] align consecutive assignments (:=) 
+ verticaly<br>
+
+
+          </a><a href="file:///D:/m/sybase/Manual.html#isc">-isc[+,-] indent
+ standalone comments</a>         <br>
+
+
+                 <a href="#mozTocId738408">-b 		maxvers      number of backup 
+  versions   to 		keep<br>
+
+
+           </a><a href="#bdir">-bdir set backup directory</a><a href="#mozTocId738408"><br>
+
+
+           </a>              </li>
+
+
+      <li>                                           <a href="#mozTocId3250">Backing 		up</a>       </li>
+
+
+        <li>                                            <a href="#mozTocId708676">Syntax 		checking</a>       </li>
+
+
+        <li>                                             <a href="#mozTocId107425">Safety 		measures</a>       </li>
+
+
+        <li>                                             <a href="#mozTocId748554">Limits</a>       </li>
+
+
+        <li>                                             <a href="#mozTocId908973">License</a>  		           </li>
+
+
+          	                                             
+    
+    
+    </ul>
+
+
+           </li>
+
+
+                   
+</ul>
+
+
+
+
+<h2><a name="mozTocId473756"></a>Its purpose</h2>
+
+
+
+
+
+<p>This software allows you to tidy/beautify/format your Pl\Sql
+code in a batch file or Dos prompt.<br>
+
+
+
+
+
+This is a command line tool that gives you the freedom to build
+it in your programming environment. You can use it in your favorite
+editor easily.<br>
+
+
+
+
+
+</p>
+
+
+
+
+
+<h2><a name="mozTocId513808"></a>How to use it</h2>
+
+
+
+
+
+<p>Goto to the installation directory and enter in dos:<br>
+
+
+
+
+
+psti -h<br>
+
+
+
+
+
+for the options and help,</p>
+
+
+
+
+
+<h2><a name="mozTocId398913"></a>How to use it
+in an editor</h2>
+
+
+
+
+
+<p>In a regular editor, there are user definable tools. Set a
+tool to execute psti.<br>
+
+
+
+
+
+Make sure that the working directory is the same as the installation
+directory. Otherwise, it won't work.<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+E.g. Ultraedit<br>
+
+
+
+
+
+Command line : psti -io %F<br>
+
+
+
+
+
+Working directory: d:\psti</p>
+
+
+
+
+
+<h2><a name="mozTocId82816"></a>About the use
+of switches</h2>
+
+
+
+
+
+<p>Incorrect switches are simply ignored. You are informed about
+that.<br>
+
+
+
+
+
+Incompatible switches are allowed. The switches that come later
+will override earlier ones.<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+There are 3 types of switches:<br>
+
+
+
+
+
+-with no value (-h,-v)<br>
+
+
+
+
+
+-with 2 possible value (-rs+,-rs-)<br>
+
+
+
+
+
+-with many possible values (-i,-o..)<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+Many switches are already "on" by default. Therefore things may
+not work out as you expect. <br>
+
+
+
+
+
+Take these into account when using switches.<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+Here is the list:<br>
+
+
+
+
+
+-in+ -uk+ -c+ -rsaob+ -co+ -ncb+ -rs+ -iaew+ -iacw+ -iac+ -clb+</p>
+
+
+
+
+
+<h2><a name="mozTocId15096"></a>List of
+switches</h2>
+
+
+
+
+
+<p><br>
+
+
+
+
+
+</p>
+
+
+
+
+
+<table border="1" cellpadding="2" cellspacing="0">
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Switch/option</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Meaning</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-i filename/stdin</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>use filename as input file or use standard input as
+source</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-o filename/stdout</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>use filename output file (tidied up) or use standard
+output as destination</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-io </p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>filename same input and output file</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr valign="top">
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-sl lineno</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>tidy lines from this lineno on</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr valign="top">
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-se lineno</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>tidy lines up to that lineno</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-t size </p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>tab is equal to size spaces</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-is size </p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>indent size in spaces (generally)</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-in[+,-]</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>indent lines yes/no</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-il[Level]</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>size indent size at Level(specific)</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-uk[+,-]</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>uppercase keywords yes/no</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-ck[+,-]</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>capital keywords yes/no</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+      <td>-lk[+,-]</td>
+
+
+
+
+      <td>lowercase
+keywords yes/no</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td>-ui[+,-]</td>
+
+
+
+
+      <td>uppercase
+identifiers yes/no
+      </td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td>-ci[+,-]</td>
+
+
+
+
+      <td>capital
+identifiers yes/no</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+      <td>-li[+,-] </td>
+
+
+
+
+      <td>lowercase
+identifiers yes/no</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-clb[+,-]</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>column like lists inside brackets</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-c[+,-]</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>compactify, remove redundant spaces/keep</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-co[+,-]</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>remove spaces around operations (+,- etc/do nothing/)</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-sao[+,-]</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>add space around operations/do nothing</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-rsaob[+,-]</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>remove spaces after opening brackets/keep</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-iic[+,-]</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>indent inside comments/do nothing</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-ncb[+,-]</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>don't remove spaces around brackets/do nothing</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-rs[+,-]</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>keep the relative identation of a select/do nothing</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-iaew[+,-]</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>indent after exception when yes/no</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+      <td>-iacw[+,-]</td>
+
+      <td>indent after case when yes/no</td>
+
+    </tr>
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-iac[+,-]</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>indent after cursor yes/no</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td valign="top">-acav[+,-]<br>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td valign="top">align consecutive assignments (:=)
+vertically<br>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td valign="top">-isc[+,-]<br>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td valign="top">indent standalone comments<br>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-x </p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>does not execute anything, just prints info about the
+configuration given by command line</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-v</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>verbose , same as -x but it will tidy</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-b maxvers</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>number of backup versions to keep</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td valign="top">-bdir directory<br>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td valign="top">set backup directory<br>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>-h </p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>help</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<h2><a name="mozTocId490730"></a>Switches and
+examples</h2>
+
+
+
+
+
+<h3><a name="mozTocId634677"></a>-h</h3>
+
+
+
+
+
+<p>lists you all possible switches you can use.</p>
+
+
+
+
+
+<h3><a name="mozTocId273491"></a>-v</h3>
+
+
+
+
+
+<p>shows you the settings.</p>
+
+
+
+
+
+<h3><a name="mozTocId274681"></a>-i filename
+input file</h3>
+
+
+
+
+
+<p>This is the filename of scripts to tidy.<br>
+
+
+
+
+
+If the filename is stdin, the program uses the standard input as a
+source<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+E.g. psti -i=h.sql<br>
+
+
+
+
+
+E.g psti -i stdin</p>
+
+
+
+
+
+<h3><a name="mozTocId604894"></a>-o filename
+output file (tidied up)</h3>
+
+
+
+
+
+<p>Default value: input filename + ".tdy"</p>
+
+
+
+
+
+<p>This is the resultant file of the formatting.<br>
+
+
+
+
+
+If filename is stdout, the program uses the standard output as a
+destination.<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+E.g. psti -i=h.sql -o=h2.sql<br>
+
+
+
+
+
+E.g psti -i stdin -o stdout</p>
+
+
+
+
+
+<h3>-sl lineno tidy lines from this lineno on</h3>
+
+
+
+
+
+<p>The resultant fiile will not contain lines before line lineno
+of the original file.<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+E.g. psti -i=h.sql -sl 4</p>
+
+
+
+
+
+<h3>-sr lineno tidy lines up to that lineno</h3>
+
+
+
+
+
+<p>The resultant file will not contain lines after line lineno of
+the original file.<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+E.g. psti -i=h.sql -sl 2000</p>
+
+
+
+
+
+<h3><a name="mozTocId117050"></a>-io filename
+same input and output file </h3>
+
+
+
+
+
+<p>This is a shortcut for -i and -o.<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+E.g. psti -io=h.sql</p>
+
+
+
+
+
+<h3><a name="mozTocId92942"></a>-t size tab is
+equal to size spaces</h3>
+
+
+
+
+
+Default value: 8 spaces.<br>
+
+
+
+
+
+Specify the size of tab character in spaces.<br>
+
+
+
+
+
+<p> <br>
+
+
+
+
+
+E.g. psti -io=h.sql -t 4<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+</p>
+
+
+
+
+
+<h3><a name="mozTocId846518"></a>-is size
+indent size in spaces (generally)</h3>
+
+
+
+
+
+<p>Default value: 2 spaces</p>
+
+
+
+
+
+<p>Probably it is one of the most important switches. <br>
+
+
+
+
+
+<br>
+
+
+
+
+
+E.g. psti -io=h.sql -is 3</p>
+
+
+
+
+
+<h3><a name="mozTocId956006"></a>-il[Level]
+size indent size at Level(specific)</h3>
+
+
+
+
+
+<p>Level refers to how many spaces of indentation precedes a
+given line of
+code. The code inside a loop is more indented than the code before the
+loop.<br>
+
+
+
+
+
+Statements that make the level of code higher/more indented : <br>
+
+
+
+
+
+packages, functions, procedures,loops, if , begin, when(optional),
+cursor (optional),<br>
+
+
+
+
+
+The size is in spaces. Use more of this switch, if you want to set more
+than 1 level.<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+E.g. psti -io=h.sql -is 3 -il1 2 -il2 4</p>
+
+
+
+
+
+<h3><a name="mozTocId240143"></a>-uk[+,-]
+uppercase keywords yes/no</h3>
+
+
+
+
+
+Default state:on.<br>
+
+
+
+
+
+All keywords will be converted into uppercase letters.
+(BEGIN IF VARCHAR2)<br>
+
+
+
+
+
+<p> <br>
+
+
+
+
+
+E.g. psti -io=h.sql -uk+</p>
+
+
+
+
+
+<h3><a name="mozTocId497989"></a>-ck[+,-]
+capital keywords yes/no</h3>
+
+
+
+
+
+<p>Default state:off.<br>
+
+
+
+
+
+All keywords will be capitalized. (Begin If Varchar2)<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+E.g. psti -io=h.sql -ck+</p>
+
+
+
+
+
+<h3><a name="lk"></a>-lk[+,-]&nbsp;lowercase
+keywords yes/no</h3>
+
+
+
+
+
+Default state:off.<br>
+
+
+
+
+
+All keywords will be converted into lowercase letters.
+(begin if varchar2)<br>
+
+
+
+
+
+<p> <br>
+
+
+
+
+
+E.g. psti -io=h.sql -lk+</p>
+
+
+
+
+
+<h3><a name="ui"></a>-ui[+,-]
+uppercase&nbsp;identifiers yes/no</h3>
+
+
+
+
+
+Default state:off.<br>
+
+
+
+
+
+All&nbsp;identifiers will be converted into uppercase letters.
+(TERRA5:=3;)<br>
+
+
+
+
+
+<p> <br>
+
+
+
+
+
+E.g. psti -io=h.sql -ui+</p>
+
+
+
+
+
+<h3><a name="ci"></a>-ci[+,-]
+capital identifiers yes/no</h3>
+
+
+
+
+
+<p>Default state:off.<br>
+
+
+
+
+
+All identifiers will be capitalized. (Terra5:=3;)<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+E.g. psti -io=h.sql -ci+</p>
+
+
+
+
+
+<h3><a name="li"></a>-li[+,-]&nbsp;lowercase&nbsp;identifiers
+yes/no</h3>
+
+
+
+
+
+Default state:off.<br>
+
+
+
+
+
+All keywords will be converted into lowercase letters.
+(terra5:=3;)<br>
+
+
+
+
+
+<p>E.g. psti -io=h.sql -li+</p>
+
+
+
+
+
+<p></p>
+
+
+
+
+
+<p></p>
+
+
+
+
+
+<h3><a name="mozTocId911653"></a>-clb[+,-]
+column like lists inside brackets</h3>
+
+
+
+
+
+<p>Default state:on</p>
+
+
+
+
+
+<p>E.g. psti -io=h.sql -clb+<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+this:</p>
+
+
+
+
+
+<pre>a := (a + 1<br> + 4<br> + 5<br> + 8);<br>will become that:<br>a := (a + 1<br> + 4<br> + 5<br> + 8);</pre>
+
+
+
+
+
+<h3> <a name="mozTocId966798"></a>-c[+,-]
+compactify, remove redundant spaces/keep</h3>
+
+
+
+
+
+<p>Default state:on.</p>
+
+
+
+
+
+<p>E.g. psti -io=h.sql -c+</p>
+
+
+
+
+
+<table border="0" cellpadding="2" cellspacing="0">
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Original</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>procedure h is</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Tidied</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>procedure h is</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<h3><a name="mozTocId787824"></a>-co[+,-]
+remove spaces around operations (+,- etcdo nothing/)</h3>
+
+
+
+
+
+<p>Default state:on.</p>
+
+
+
+
+
+<p>E.g. psti -io=h.sql -co+</p>
+
+
+
+
+
+<table border="0" cellpadding="2" cellspacing="2">
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Original</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>d:= 5 + 7;</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Tidied</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>d:=5+7;</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<h3><a name="mozTocId968629"></a>-sao[+,-] add
+space around operations/do nothing</h3>
+
+
+
+
+
+<p>Default state:on.</p>
+
+
+
+
+
+<p>E.g. psti -io=h.sql -co- -sao+</p>
+
+
+
+
+
+<table border="0" cellpadding="2" cellspacing="2">
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Original</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>d:=5+7;</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Tidied</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>d := 5 + 7;</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<p><br>
+
+
+
+
+
+</p>
+
+<h3><a name="mozTocId900878"></a>-rsaob[+,-]
+remove spaces after opening brackets/keep</h3>
+
+
+
+
+
+<p style="margin-bottom: 0cm;">Default state:on. </p>
+
+
+
+
+
+<table border="0" cellpadding="2" cellspacing="2">
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Original</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p><font face="monospace">FOR rec IN ( SELECT
+* FROM dual<br>
+
+
+
+
+
+WHERE g = 5)</font></p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<p style="margin-bottom: 0cm;"><br>
+
+
+
+
+
+</p>
+
+
+
+
+
+<table border="0" cellpadding="2" cellspacing="2">
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Tidied<br>
+
+
+
+
+
+psti -io=h.sql -rsaob-</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p><font face="monospace">FOR rec IN ( SELECT
+* FROM dual<br>
+
+
+
+
+
+WHERE g = 5)</font> </p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<p style="margin-bottom: 0cm;"><br>
+
+
+
+
+
+</p>
+
+
+
+
+
+<table border="0" cellpadding="2" cellspacing="2">
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Tidied<br>
+
+
+
+
+
+psti -io=h.sql -rsaob+</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p><font face="monospace">FOR rec IN (SELECT *
+FROM dual<br>
+
+
+
+
+
+WHERE g = 5)</font> </p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<p><br>
+
+
+
+
+
+</p>
+
+<h3><a name="mozTocId320591"></a>-iic[+,-]
+indent inside comments/do nothing</h3>
+
+
+
+
+
+<p>Default state:off.</p>
+
+
+
+
+
+<p>If it is on, it will indent text inside /*..*/</p>
+
+
+
+
+
+<h3><a name="mozTocId69003"></a>-ncb[+,-]
+don't remove spaces around brackets/do nothing</h3>
+
+
+
+
+
+<p style="margin-bottom: 0cm;">Default state:on.</p>
+
+
+
+
+
+<p style="margin-bottom: 0cm;"></p>
+
+
+
+
+
+<table border="0" cellpadding="2" cellspacing="2">
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Original<br>
+
+
+
+
+
+psti -io=h.sql -ncb-</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p><font face="monospace">FOR rec IN(SELECT *
+FROM dual<br>
+
+
+
+
+
+WHERE g = 5)</font></p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<p style="margin-bottom: 0cm;"><br>
+
+
+
+
+
+</p>
+
+
+
+
+
+<table border="0" cellpadding="2" cellspacing="2">
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Tidied<br>
+
+
+
+
+
+psti -io=h.sql -ncb+</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p><font face="monospace">FOR rec IN (SELECT *
+FROM dual<br>
+
+
+
+
+
+WHERE g = 5)</font> </p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<p><br>
+
+
+
+
+
+<a name="mozTocId766087"></a>-rs[+,-] keep
+the relative identation of a select/do nothing</p>
+
+
+
+
+
+<p style="margin-bottom: 0cm;">Default state:on. </p>
+
+
+
+
+
+<table border="0" cellpadding="2" cellspacing="2">
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Original<br>
+
+
+
+
+
+psti -io=h.sql -rs+</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p><font face="monospace">select *<br>
+
+
+
+
+
+from memory<br>
+
+
+
+
+
+where year&gt;1786</font></p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<p style="margin-bottom: 0cm;"><br>
+
+
+
+
+
+</p>
+
+
+
+
+
+<table border="0" cellpadding="2" cellspacing="2">
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Tidied<br>
+
+
+
+
+
+psti -io=h.sql -rs-</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p><font face="monospace">select *<br>
+
+
+
+
+
+from memory<br>
+
+
+
+
+
+where year&gt;1786</font> </p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+<h3><a name="iaew"></a>-iaew[+-]
+indent after when in exception yes/no</h3>
+
+
+
+<p style="margin-bottom: 0cm;"><br>
+
+
+
+</p>
+
+
+
+<table class="example" border="0" cellpadding="2">
+
+
+
+  <tbody>
+
+
+
+    <tr>
+
+
+
+      <td>
+      
+      
+      <p>Original<br>
+
+
+
+tpsf -io=h.sql -iaew-</p>
+
+
+
+      </td>
+
+
+
+      <td>
+      
+      
+      <p><font face="monospace">EXCEPTION<br>
+
+
+
+WHEN no_data THEN<br>
+
+
+
+hello;</font></p>
+
+
+
+      </td>
+
+
+
+    </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+
+<p style="margin-bottom: 0cm;"><br>
+
+
+
+</p>
+
+
+
+<table class="example" border="0" cellpadding="2">
+
+
+
+  <tbody>
+
+
+
+    <tr>
+
+
+
+      <td>
+      
+      
+      <p>Tidied<br>
+
+
+
+tpsf -io=h.sql -iaew+</p>
+
+
+
+      </td>
+
+
+
+      <td>
+      
+      
+      <p><font face="monospace">EXCEPTION<br>
+
+
+
+WHEN no_data THEN<br>
+
+
+
+&nbsp; hello;</font> </p>
+
+
+
+      </td>
+
+
+
+    </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+
+<br>
+
+
+
+<h3><a name="iacw"></a>-iacw[+-]
+indent after when in case statement yes/no</h3>
+
+
+
+<p style="margin-bottom: 0cm;"><br>
+
+
+
+</p>
+
+
+
+<table class="example" border="0" cellpadding="2">
+
+
+
+  <tbody>
+
+
+
+    <tr>
+
+
+
+      <td>
+      
+      
+      <p>Original<br>
+
+
+
+tpsf -io=h.sql -iacw-</p>
+
+
+
+      </td>
+
+
+
+      <td>
+      
+      
+      <p><font face="monospace">CASE opinion<br>
+
+
+
+&nbsp;&nbsp;WHEN '9' THEN<br>
+
+
+
+&nbsp;&nbsp;dbms_output.put_line('Excellent');<br>
+
+
+
+&nbsp;&nbsp;WHEN '5' THEN dbms_output.put_line('Poor');<br>
+
+
+
+&nbsp;&nbsp;ELSE dbms_output.put_line('cannot decide');<br>
+
+
+
+END CASE;&nbsp; &nbsp;</font></p>
+
+
+
+      </td>
+
+
+
+    </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+
+<p style="margin-bottom: 0cm;"><br>
+
+
+
+</p>
+
+
+
+<table class="example" border="0" cellpadding="2">
+
+
+
+  <tbody>
+
+
+
+    <tr>
+
+
+
+      <td>
+      
+      
+      <p>Tidied<br>
+
+
+
+tpsf -io=h.sql -iacw+</p>
+
+
+
+      </td>
+
+
+
+      <td> <font face="monospace">CASE opinion<br>
+
+
+
+&nbsp; WHEN '9' THEN&nbsp;&nbsp; &nbsp; &nbsp;<span style="font-family: Times New Roman;"> </span></font><br>
+
+
+
+      <font face="monospace">&nbsp;&nbsp;&nbsp;&nbsp;dbms_output.put_line('Excellent');<br>
+
+
+
+&nbsp; WHEN '5' THEN dbms_output.put_line('Poor');<br>
+
+
+
+&nbsp; ELSE dbms_output.put_line('cannot decide');<br>
+
+
+
+END CASE;</font></td>
+
+
+
+    </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+<h3><a name="mozTocId912087"></a>-iac[+,-]
+indent after cursor yes/no</h3>
+
+
+
+
+
+<p style="margin-bottom: 0cm;">Default state:on. </p>
+
+
+
+
+
+<table border="0" cellpadding="2" cellspacing="2">
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Original<br>
+
+
+
+
+
+psti -io=h.sql -iac-</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p><font face="monospace">CURSOR b IS<br>
+
+
+
+
+
+SELECT * FROM dual;</font></p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Tidied<br>
+
+
+
+
+
+psti -io=h.sql -iac+</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p><font face="monospace">CURSOR b IS<br>
+
+
+
+
+
+SELECT * FROM dual;</font> </p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<h3><a name="acav"></a>-acav[+,-] align
+consecutive assignments (:=) vertically</h3>
+
+
+
+
+
+<p> Default state:off.</p>
+
+
+
+
+
+<table border="0" cellpadding="2" cellspacing="2">
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Original<br>
+
+
+
+
+
+psti -io=h.sql -acav-</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p><font face="monospace">derival:=0;<br>
+
+
+
+
+
+d:=1;<br>
+
+
+
+
+
+      </font></p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p>Tidied<br>
+
+
+
+
+
+psti -io=h.sql -acav+</p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td>
+      
+      
+      
+      
+      <p><font face="monospace">derival:=0;<br>
+
+
+
+
+
+d :=1;<br>
+
+
+
+
+
+      </font></p>
+
+
+
+
+
+      
+      
+      
+      
+      <p> </p>
+
+
+
+
+
+      </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<p> </p>
+
+
+
+
+
+<h3><a name="isc"></a>-isc[+,-] indent
+standalone comments</h3>
+
+
+
+
+
+Default state:off.
+<table border="1" cellpadding="2" cellspacing="2">
+
+
+
+
+
+  <tbody>
+
+
+
+
+
+    <tr>
+
+
+
+
+
+      <td valign="top"> Original<br>
+
+
+
+
+
+psti&nbsp;-io=h.sql -isc-<br>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td valign="top">begin<br>
+
+
+
+
+
+/*hello &nbsp;Sql*/<br>
+
+
+
+
+
+&nbsp; low:=4+4<br>
+
+
+
+
+
+-- end of little block<br>
+
+
+
+
+
+end; <br>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td valign="top"> Tidied<br>
+
+
+
+
+
+psti&nbsp;-io=h.sql&nbsp;-isc+<br>
+
+
+
+
+
+      </td>
+
+
+
+
+
+      <td valign="top">begin<br>
+
+
+
+
+
+&nbsp; /*hello &nbsp;Sql*/<br>
+
+
+
+
+
+&nbsp; low:=4+4<br>
+
+
+
+
+
+&nbsp; -- end of little block<br>
+
+
+
+
+
+end; </td>
+
+
+
+
+
+    </tr>
+
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+
+
+<h3><a name="mozTocId738408"></a>-b maxvers
+number of backup versions to keep</h3>
+
+
+
+
+
+Default value:40.
+<p>Number of old backup versions to keep +1 (including the
+current backup version that is being created)<br>
+
+
+
+
+
+</p>
+
+
+
+
+
+<h3><a name="bdir"></a>-bdir directory</h3>
+
+
+
+
+
+Default value: temp enviromental variable (usually
+C:\DOCUME~1\username\LOCALS~1\Temp)<br>
+
+
+
+
+
+Set backup directory<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+<h2><a name="mozTocId3250"></a>Backing up</h2>
+
+
+
+
+
+<p>The original source and its directory path are backed up. Even
+old backups are backed
+up. <br>
+
+
+
+
+
+The backup directory can be specified by -bdir switch. Otherwise, it is<br>
+
+
+
+
+
+the tmp directory.</p>
+
+
+
+
+
+<h2><a name="mozTocId708676"></a>Syntax
+checking</h2>
+
+
+
+
+
+<p>Some syntax checking is performed. If the check fails, the
+code is not tidied.<br>
+
+
+
+
+
+The following are checked:<br>
+
+
+
+
+
+-the balance of brackets ()<br>
+
+
+
+
+
+-runaway/unclosed '<br>
+
+
+
+
+
+-runaway/unclosed "<br>
+
+
+
+
+
+-blocks are closed properly (missing end if,end loop, end package
+detection) </p>
+
+
+
+
+
+<h2>Return code of the software</h2>
+
+
+
+
+
+<p> If the executable runs without error, it returns error code
+0.&nbsp;</p>
+
+
+
+
+
+Otherwise, it returns 2.
+<h2><a name="mozTocId107425"></a>Safety
+measures</h2>
+
+
+
+
+
+<p>-Syntax checking. If it fails, the code is not formatted.<br>
+
+
+
+
+
+-The formatter checks itself. So it does not produce bad code easily.
+If self-check fails, it displays the message : Integrity error and the
+code is not touched.<br>
+
+
+
+
+
+-It backs up the original source in the temp directory. (designated by
+tmp enviroment variable). By default, 40 versions are backed up. It can
+be changed by -b flag.<br>
+
+
+
+
+
+-Unless you specify -io, the output file is the original filename plus
+.tdy. So the original one is not overwritten.<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+</p>
+
+
+
+
+
+<h2><a name="mozTocId748554"></a>Limits</h2>
+
+
+
+
+
+<p>The software can handle/format a code up to a size that is
+maximum of 1/3
+of the available memory.<br>
+
+
+
+
+
+(If you have 500 Mbyte memory, it can handle 166Mbyte code). This is an
+approximation.<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+<br>
+
+
+
+
+
+</p>
+
+
+
+
+
+<h2><a name="mozTocId908973"></a>License</h2>
+
+
+
+
+
+<p>Pl/Sql Tidy<br>
+
+
+
+
+
+Idea/programmed by Marton Papp ((C)2003-2008 )<br>
+
+
+
+
+
+End User License Agreement (EULA)<br>
+
+
+
+
+
+THIS IS FREEWARE AND IS TO BE DISTRIBUTED AS THAT ONLY<br>
+
+
+
+
+
+===========================================================<br>
+
+
+
+
+
+You will agree to these terms in order to continue:<br>
+
+
+
+
+
+1. If you distribute this software, you are to (a) Distribute it in
+it's original condition (b) You will send it with all and only the
+files that came with it.<br>
+
+
+
+
+
+2. You will not alter this file or any of the contained files<br>
+
+
+
+
+
+3. You will not use this application for any illegal activities<br>
+
+
+
+
+
+4. You will install this application at your own risk. Any damage done
+is the responsibility of the end-user<br>
+
+
+
+
+
+This software contains ABSOLUTELY NO ADWARE, SPYWARE, VIRUSES or other
+harmful applications. <br>
+
+
+
+
+
+<br>
+
+
+
+
+
+</p>
+
+
+
+
+
+<h2>Credits</h2>
+
+
+
+Made in C++ with STL<a href="http://www.perl.org/">.</a><br>
+
+
+
+
+
+Compiled with <a href="http://www.microsoft.com/Express/"><span style="text-decoration: underline;">Microsoft Compiler</span></a>&nbsp;<br>
+
+
+
+Html pages are edited with &nbsp;<a href="http://www.nvu.com">NVU</a><br>
+
+
+
+The installer is&nbsp;<a href="http://www.jrsoftware.org/isinfo.php">Inno Setup</a><br>
+
+
+
+The rest is me.<br>
+
+
+
+
+
+<p>
+<!-- Start of StatCounter Code -->
+<script language="javascript">
+var sc_project=492918; var sc_partition=3; </script>
+<script language="javascript" src="http://www.statcounter.com/counter/frames.js"></script>
+<noscript><a href="http://www.statcounter.com/"
+target="_blank"><img
+src="http://c4.statcounter.com/counter.php?sc_project=492918&amp;amp;java=0"
+name="Graphic1" alt="free hit counter javascript" align=bottom width=75
+height=38 border=0></a></noscript>
+
+
+
+
+
+<!-- End of StatCounter Code --> </p>
+
+
+
+
+
+</body>
+</html>

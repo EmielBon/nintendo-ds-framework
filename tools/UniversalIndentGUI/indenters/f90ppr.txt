@@ -1,0 +1,3 @@
+Fortran 90 texts and programs, assembled by Michel Olagnon:
+http://www.ifremer.fr/ditigo/molagnon/molagnon.html
+Compiles with G95

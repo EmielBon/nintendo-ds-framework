@@ -1,0 +1,8 @@
+--indent-col1-comments
+--break-blocks
+--pad-paren
+--pad-paren-in
+-A1
+--align-pointer=name
+--align-reference=name
+--mode=c
