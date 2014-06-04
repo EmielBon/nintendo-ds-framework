@@ -12,7 +12,7 @@ namespace GameGen
     {
         public string[] tokens;
         int tokenIndex = 0;
-        string[] presetTokens = { ";", "{", "}", "(", ")", "<", ">", "[", "]" };
+        string[] presetTokens = { ";", "{", "}", "(", ")", "<", ">", "[", "]", "," };
 
         public Lexer(string source)
         {
@@ -62,6 +62,18 @@ namespace GameGen
             ReadToken();
         }
 
+        public string ReadUntil(string delimiter)
+        {
+            int startPos = tokenIndex;
+            while (tokenIndex < tokens.Length)
+            {
+                if (PeekToken() == delimiter)
+                    break;
+                SkipToken();
+            }
+            return String.Join(" ", tokens.SubArray(startPos, tokenIndex - startPos - 1));
+        }
+
         public string ReadBlock(string openDelimiter, string closeDelimiter)
         {
             int startPos = tokenIndex;
@@ -74,7 +86,7 @@ namespace GameGen
                     depth++;
                 if (PeekToken() == closeDelimiter)
                     depth--;
-                ReadToken();
+                SkipToken();
             }
             return String.Join(" ", tokens.SubArray(startPos + 1, tokenIndex - startPos - 2));
         }
@@ -82,6 +94,11 @@ namespace GameGen
         public bool HasNext()
         {
             return PeekToken() != null;
+        }
+
+        public bool HasNext(int i)
+        {
+            return PeekToken(i) != null;
         }
     }
 }

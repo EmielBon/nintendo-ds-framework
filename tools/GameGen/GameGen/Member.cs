@@ -9,7 +9,7 @@ namespace GameGen
     class Member
     {
         public String Name;
-        public Type Type;
+        public String Type;
         public String InitialValue;
      }
 }
