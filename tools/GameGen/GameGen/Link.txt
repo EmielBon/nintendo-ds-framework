@@ -1,1 +1,0 @@
-﻿Room1 : Room{Link link;int count = 5;List<int> counter = {5, 5, 2, 2, 4};={ }={ 3,2,4};void Initialize(int bla){AddGameObjectLink();Background = GameMap1;}inline void Inline(){bla();}}

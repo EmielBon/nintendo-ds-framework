@@ -6,6 +6,5 @@ C:\Programming\nintendo-ds-framework\tools\GameGen\GameGen\obj\Debug\GameGen.exe
 C:\Programming\nintendo-ds-framework\tools\GameGen\GameGen\obj\Debug\GameGen.pdb
 C:\Programming\nintendo-ds-framework\tools\GameGen\GameGen\bin\Debug\Templates\CppTemplate.txt
 C:\Programming\nintendo-ds-framework\tools\GameGen\GameGen\bin\Debug\Templates\HeaderTemplate.txt
-C:\Programming\nintendo-ds-framework\tools\GameGen\GameGen\bin\Debug\Room1.txt
 C:\Programming\nintendo-ds-framework\tools\GameGen\GameGen\bin\Debug\call_Artistic_Style.astylerc
 C:\Programming\nintendo-ds-framework\tools\GameGen\GameGen\bin\Debug\call_Artistic_Style.bat

@@ -8,6 +8,9 @@ namespace GameGen
 {
     class IfStatement : Conditional
     {
+        public IfStatement(Expression condition, Block block) : base(condition, block)
+        {
 
+        }
     }
 }

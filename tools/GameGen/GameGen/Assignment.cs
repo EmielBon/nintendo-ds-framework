@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace GameGen
 {
-    class Assignment : Statement
+    /*class Assignment : Statement
     {
         public String VariableName;
         public String Value;
-    }
+
+        public Assignment()
+    }*/
 }

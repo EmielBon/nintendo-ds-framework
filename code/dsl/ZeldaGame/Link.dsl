@@ -8,10 +8,11 @@ Link : GameObject
 	
 	void Update()
 	{
-		fx12 speed = 96;
+	%1 = 96.0f
+		fx12 speed = %1;
 		fx12 timeStep = ElapsedTime.Seconds();
 		
-		Vector2 direction(0, 0);
+		Vector2 direction = Vector2(0 + 4, 0);
 		if (!IsKeyHeld(Keys.All))
 		{
 			CurrentSprite.SubImageIndex = 0;
@@ -38,8 +39,8 @@ Link : GameObject
 		}
 		
 		direction = direction.Normalize();
-		x += direction.x * speed * timeStep;
-		y += direction.y * speed * timeStep;
+		x = x + direction.x * speed * timeStep;
+		y = y + direction.y * speed * timeStep;
 	}
 
 	void Draw()

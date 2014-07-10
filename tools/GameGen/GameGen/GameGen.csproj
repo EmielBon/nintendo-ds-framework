@@ -43,11 +43,14 @@
   <ItemGroup>
     <Compile Include="ArrayExtensions.cs" />
     <Compile Include="Assignment.cs" />
+    <Compile Include="BinaryOperation.cs" />
     <Compile Include="Block.cs" />
     <Compile Include="Conditional.cs" />
     <Compile Include="Expression.cs" />
-    <Compile Include="FunctionArgument.cs" />
+    <Compile Include="FunctionParameter.cs" />
+    <Compile Include="FunctionCall.cs" />
     <Compile Include="IfStatement.cs" />
+    <Compile Include="Operators.cs" />
     <Compile Include="Statement.cs" />
     <Compile Include="ClassDefinition.cs" />
     <Compile Include="ContainerMember.cs" />
@@ -57,7 +60,9 @@
     <Compile Include="CompilationUnit.cs" />
     <Compile Include="Include.cs" />
     <Compile Include="Lexer.cs" />
-    <Compile Include="Linker.cs" />
+    <Compile Include="UnaryOperation.cs" />
+    <Compile Include="VariableReference.cs" />
+    <None Include="Linker.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="NDSFrameworkHelper.cs" />
     <Compile Include="Program.cs" />
@@ -75,11 +80,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Link.txt" />
-    <Content Include="Room1.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="GameMap1.txt" />
     <Content Include="Templates\CppTemplate.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

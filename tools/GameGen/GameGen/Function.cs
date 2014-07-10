@@ -9,46 +9,46 @@ namespace GameGen
     class Function
     {
         public String Name;
-        public List<FunctionArgument> Arguments;
-        public List<Statement> Body;
+        public List<FunctionParameter> Arguments = new List<FunctionParameter>();
+        public Block Body;
         public String ReturnType;
+
+        public static Function Parse(String returnType, String name, String arguments, String body)
+        {
+            Function function = new Function();
+            function.ReturnType = returnType;
+            function.Name = name;
+            function.ParseArguments(arguments);
+            function.Body = Block.Parse(body);
+
+            return function;
+        }
 
         public void ParseArguments(String arguments)
         {
-            if (arguments.Trim() == String.Empty) return;
+            if (arguments.Trim() == String.Empty) 
+                return;
 
             Lexer lexer = new Lexer(arguments);
             
             while(lexer.HasNext(3))
             {
-                Arguments.Add(new FunctionArgument( lexer.ReadToken(), lexer.ReadToken() ));
+                Arguments.Add(new FunctionParameter( lexer.ReadToken(), lexer.ReadToken() ));
                 lexer.SkipToken();
             }
-            Arguments.Add(new FunctionArgument(lexer.ReadToken(), lexer.ReadToken()));
+            Arguments.Add(new FunctionParameter(lexer.ReadToken(), lexer.ReadToken()));
         }
 
-        public void ParseBody(String body)
+        public string ToString(int depth)
         {
-            Lexer lexer = new Lexer(body);
+            var args = "";
+            foreach (var arg in Arguments)
+                args += arg + ",";
 
-            while (lexer.HasNext())
-            {
-                // Conditional
-                if (lexer.PeekToken() == "if")
-                {
-                    lexer.ReadToken();      // Absorb if
-                    String condition = lexer.ReadBlock("(", ")");
-                    IfStatement statement = new IfStatement();
-                    statement.Condition = new Expression(condition);
-                    statement.Body = new Block(lexer.ReadBlock("{", "}"));
-                    Body.Add(statement);
-                }
-                else
-                {
+            if (args.Length > 0)
+                args.Substring(0, args.Length - 1);
 
-                    Statement statement = lexer.ReadUntil(";");
-                }
-            }
+            return String.Format("{0}{1} {2} ({3}) \n{4}", Statement.GetTabs(depth), ReturnType, Name, args, Body.ToString(depth + 1));
         }
     }
 }

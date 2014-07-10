@@ -10,11 +10,12 @@ namespace GameGen
     {
         public String ClassName;
         public String BaseClassName;
-        public List<Member> Members;
-        public List<Function> Functions;
+        public List<Member> Members = new List<Member>();
+        public List<Function> Functions = new List<Function>();
 
         public static ClassDefinition Parse(Lexer lexer)
         {
+
             var className = lexer.ReadToken();
             lexer.SkipToken(); // :
             var baseClassName = lexer.ReadToken();
@@ -28,6 +29,7 @@ namespace GameGen
             BaseClassName = baseClassName;
             ParseClassBody(body);
             AddFunctionIfNotDefined("void Initialize");
+            Console.WriteLine(ToString(0));
         }
 
         private void ParseClassBody(String body)
@@ -49,11 +51,11 @@ namespace GameGen
                 }
                 if (lexer.PeekToken(2) == "(") // Function definition
                 {
-                    Function function = new Function();
-                    function.ReturnType = lexer.ReadToken();
-                    function.Name = lexer.ReadToken();
-                    function.Arguments = lexer.ReadBlock("(", ")");
-                    function.Body = lexer.ReadBlock("{", "}");
+                    Function function = Function.Parse(
+                        lexer.ReadToken(), // return type
+                        lexer.ReadToken(), // name
+                        lexer.ReadBlock("(", ")"), // arguments 
+                        lexer.ReadBlock("{", "}")); // body
                     Functions.Add(function);
                 }
             }
@@ -69,7 +71,7 @@ namespace GameGen
                 found |= (function.Name == name);
 
             if (!found)
-                Functions.Insert(0, new Function() { Name = name, ReturnType = type });
+                Functions.Insert(0, new Function() { Name = name, ReturnType = type, Body = new Block()});
         }
 
         private static Member CreateMember(String type, String name, String initialValue = null)
@@ -79,6 +81,21 @@ namespace GameGen
             member.InitialValue = initialValue;
             member.Name = name;
             return member;
+        }
+
+        public string ToString(int depth)
+        {
+            var str = String.Format("{0} : {1}\n", ClassName, BaseClassName);
+
+            foreach (var member in Members)
+                str += member.ToString(depth + 1) + "\n";
+
+            str += "\n";
+
+            foreach (var function in Functions)
+                str += function.ToString(depth + 1) + "\n";
+
+            return str;
         }
     }
 }

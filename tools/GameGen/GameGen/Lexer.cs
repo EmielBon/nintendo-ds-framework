@@ -12,7 +12,7 @@ namespace GameGen
     {
         public string[] tokens;
         int tokenIndex = 0;
-        string[] presetTokens = { ";", "{", "}", "(", ")", "<", ">", "[", "]", "," };
+        string[] presetTokens = { ";", "{", "}", "(", ")", "<", ">", "[", "]", ","};
 
         public Lexer(string source)
         {
@@ -22,10 +22,17 @@ namespace GameGen
 
         public string Preprocess(string source)
         {
+            var tokens = new List<String>();
+            tokens.AddRange(presetTokens);
+            tokens.AddRange(Operators.Tokens);
+
             // Add spaces around preset tokens, so we make sure they are seen as separate tokens
-            foreach(var token in presetTokens)
+            foreach (var token in tokens)
                 source = source.Replace( token, " " + token + " ");
-            
+            foreach (var token in tokens)
+                if (token.Length == 2)
+                    source = source.Replace(token[0] + " " + token[1], token);
+
             source = Regex.Replace(source, @"\s+", " ");
             
             return source;
@@ -33,15 +40,16 @@ namespace GameGen
 
         public string PeekToken(int index = 0)
         {
-            if (tokenIndex + index >= tokens.Length)
+            int i = tokenIndex + index;
+            if (i < 0 || i >= tokens.Length)
                 return null;
             return tokens[tokenIndex + index];
         }
 
-        public string ReadToken()
+        public string ReadToken(int index = 0)
         {
-            string token = PeekToken();
-            tokenIndex++;
+            string token = PeekToken(index);
+            tokenIndex += index + 1;
             return token;
         }
 
@@ -71,7 +79,11 @@ namespace GameGen
                     break;
                 SkipToken();
             }
-            return String.Join(" ", tokens.SubArray(startPos, tokenIndex - startPos - 1));
+            
+            if (tokenIndex == tokens.Length)
+                return null;
+            
+            return String.Join(" ", tokens.SubArray(startPos, tokenIndex - startPos));
         }
 
         public string ReadBlock(string openDelimiter, string closeDelimiter)

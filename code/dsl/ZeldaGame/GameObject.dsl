@@ -9,6 +9,9 @@ GameObject : DrawableGameComponent
 	
 	void Update()
 	{
-		ImageIndex = (ImageIndex + ImageSpeed * ElapsedTime.Seconds()) % (fx12)((int)CurrentSprite.SubImages.size());
+		ImageIndex = 0;
 	}
 }
+
+
+//(ImageIndex + ImageSpeed * ElapsedTime.Seconds()) % (fx12)((int)CurrentSprite.SubImages.size());

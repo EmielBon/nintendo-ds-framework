@@ -53,7 +53,7 @@ namespace GameGen
             return output;
         }
 
-        public string GenerateHeader()
+        /*public string GenerateHeader()
         {
             string members = "";
             foreach (Member member in ClassDefinition.Members)
@@ -74,12 +74,12 @@ namespace GameGen
             output = output.Replace("[ClassName]", ClassDefinition.ClassName);
             output = output.Replace("[BaseClass]", ClassDefinition.BaseClassName);
             output = output.Replace("[FunctionDefinitions]", functions);
-            output = output.Replace("[Members]", members /*+ containerMembers*/);
+            output = output.Replace("[Members]", members /*+ containerMembers*//*);
 
             return Postprocess(output);
-        }
+        }*/
 
-        public string GenerateCpp()
+        /*public string GenerateCpp()
         {
             string functions = "";
 
@@ -134,6 +134,6 @@ namespace GameGen
             output = output.Replace("[Functions]", functions);
 
             return Postprocess(output);
-        }
+        }*/
     }
 }

@@ -29,3 +29,22 @@
 7. Statements
 
 7.1 All statements must be terminated with the semicolon (;) symbol.
+
+Appendix A
+
+Language definition
+
+CompilationUnit = ClassDefinition
+
+ClassDefinition = Identifier ":" Identifier "{" ClassBody "}"
+
+ClassBody = MemberDefinition |
+            FunctionDefinition
+		
+MemberDefinition = Identifier Identifier "=" $1 "(" ")"
+
+Expression = UnaryExpression |
+             BinaryExpression |
+			 FunctionCall;
+			 
+BinaryExpression = Expression "." Expression

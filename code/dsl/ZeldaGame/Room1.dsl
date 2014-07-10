@@ -14,3 +14,10 @@ Room1 : Room
 		SetBackground(0, Load<TiledBackground>("newGameMap2"));
 	}
 }
+
+TiledBackground
+{	
+	List<MapTile>
+
+	extern void function();
+}

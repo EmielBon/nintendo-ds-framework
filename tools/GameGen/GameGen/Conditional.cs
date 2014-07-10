@@ -16,5 +16,17 @@ namespace GameGen
             Condition = condition;
             Body = block;
         }
+
+        public override string ToString(int depth)
+        {
+            var str = "";
+            var tabs = GetTabs(depth);
+
+            str += tabs + GetType().Name + "\n";
+            str += Condition.ToString(depth + 1) + "\n";
+            str += Body.ToString(depth + 1);
+
+            return str;
+        }
     }
 }

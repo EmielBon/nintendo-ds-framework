@@ -12,7 +12,7 @@ namespace GameGen
     class DSLProject
     {
         public String ProjectRoot;
-        public List<CompilationUnit> CompilationUnits;
+        public List<CompilationUnit> CompilationUnits = new List<CompilationUnit>();
 
         public void Generate()
         {
@@ -25,10 +25,10 @@ namespace GameGen
                 if (Path.GetFileName(fileName) == "TypeDefinitions.dsl")
                     continue;
                 var sourceFile = CompilationUnit.Parse(fileName, this);
-                CompilationUnits.Add(sourceFile);
+                    CompilationUnits.Add(sourceFile);
             }
-
-            foreach (CompilationUnit unit in CompilationUnits)
+            
+            /*foreach (CompilationUnit unit in CompilationUnits)
             {
                 AddFunctionIfNotDefined(unit.ClassDefinition, "void Initialize");
 
@@ -83,7 +83,7 @@ namespace GameGen
 
             FormatGeneratedFiles();
 
-            ExportFormattedFiles();
+            ExportFormattedFiles();*/
         }
 
         private void FormatGeneratedFiles()
