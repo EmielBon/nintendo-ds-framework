@@ -4,7 +4,7 @@
 
 namespace Graphics
 {
-	TreeMap< Ptr<TileSet>, u32 > TilesManager::TileSetToIdentifier;
+	Dictionary< Ptr<TileSet>, u32 > TilesManager::TileSetToIdentifier;
 	u32                          TilesManager::nextFreeIdentifier = 0;
 
 	//-------------------------------------------------------------------------------------------------

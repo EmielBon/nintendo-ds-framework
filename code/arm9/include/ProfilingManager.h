@@ -14,7 +14,7 @@ namespace Debug
 
 	public:
 
-		static TreeMap<String, ProfilingResult> ProfilingResults;
+		static Dictionary<String, ProfilingResult> ProfilingResults;
 	};
 
 }

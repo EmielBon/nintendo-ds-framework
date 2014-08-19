@@ -54,7 +54,6 @@ namespace Graphics
 		ObjectAttributeMemory = Graphics::ObjectAttributeMemory(this);
 		TextureMemory         = Graphics::TextureMemory(main);
 
-		// todo: find a way to do initialization in the constructors
 		BackgroundMemory.Initialize();
 		SpriteMemory.Initialize();
 		TextureMemory.Initialize();

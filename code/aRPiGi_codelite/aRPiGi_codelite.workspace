@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="aRPiGi_codelite" Database="">
+  <Project Name="aRPiGi_codelite" Path="aRPiGi_codelite.project" Active="Yes"/>
+  <Project Name="arm7" Path="arm7/arm7.project"/>
+  <Project Name="arm9" Path="arm9/arm9.project" Active="No"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Project Name="aRPiGi_codelite" ConfigName="Debug"/>
+      <Project Name="arm7" ConfigName="Debug"/>
+      <Project Name="arm9" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Project Name="aRPiGi_codelite" ConfigName="Release"/>
+      <Project Name="arm7" ConfigName="Release"/>
+      <Project Name="arm9" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+  <Environment>
+    <![CDATA[]]>
+  </Environment>
+</CodeLite_Workspace>

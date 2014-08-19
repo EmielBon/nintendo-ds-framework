@@ -35,11 +35,11 @@ namespace Graphics
 		ASSERT(PaletteMemory.HasPalette(tileSet->Palettes[0]), "Palette not in memory");
 
 		// Offset the tile's pixels
-		tile.OffsetPixels(paletteOffset, tileSet->Transparent);
+		auto offsetPixels = OffsetPixelsForTile(tile, paletteOffset, tileSet->Transparent);
 		// Copy the tile to the next available VRAM location
 		// todo: wont this overwrite stuff if 4bpp tiles are added second?
 		u16* location = TileBaseAddress() + nextAvailableIndex * tile.ByteSize/sizeof(u16);
-		bool success = Add(tile.GetPixelDataRef(), location);
+		bool success = Add(*offsetPixels, location);
 		ASSERT(success, "Failed to copy tiles to VRAM");
 		// Register the identifier to the VRAM location
 		RegisterVRAMIndexForTile(identifier, nextAvailableIndex);
@@ -52,5 +52,21 @@ namespace Graphics
 	{
 		for (auto identifier : identifiers)
 			AddTile(identifier);
+	}
+	
+	//-------------------------------------------------------------------------------------------------
+	Ptr< List<byte> > TileMemory::OffsetPixelsForTile(const Tile &tile, int offset, bool transparent)
+	{
+		// Make empty tile with the same bpp
+		Tile offsetTile(tile.Bpp);
+		
+		for(int i = 0; i < 64; ++i)
+		{
+			int pixel = tile.GetPixel(i);
+			int newPixel = (transparent && pixel == 0) ? 0 : pixel + offset;
+			offsetTile.SetPixel(i, newPixel);
+		}
+		
+		return offsetTile.GetPixelData();
 	}
 }

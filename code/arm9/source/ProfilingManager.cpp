@@ -2,7 +2,7 @@
 
 namespace Debug
 {
-	TreeMap<String, ProfilingResult> ProfilingManager::ProfilingResults;
+	Dictionary<String, ProfilingResult> ProfilingManager::ProfilingResults;
 
 	//-------------------------------------------------------------------------------------------------
 	void ProfilingManager::RefineResult( const String &name, int64 elapsedTicks )

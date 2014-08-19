@@ -79,7 +79,7 @@ namespace Graphics
 	protected:
 
 		u16* location;
-		TreeMap< Ptr<Palette>, int> indexMap;
+		Dictionary< Ptr<Palette>, int> indexMap;
 		bool free[256];
 	};
 
@@ -102,8 +102,7 @@ namespace Graphics
 	inline bool PaletteMemory::IsFree(int i) const
 	{
 		// Todo: account for expansion once it is implemented
-		if (i < 0 || i > 256)
-			return false;
+		sassert(i >= 0 || i < 256, "Error: Index %i is out of range", i);
 		return free[i];
 	}
 
@@ -116,21 +115,21 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	inline int PaletteMemory::IndexForPosition(int x, int y)
 	{
+		sassert(x >= 0 && x < 16 && y >= 0 && y < 16, "Error: Position (%i,%i) out of range", x, y);
 		return x + y * 16;
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline Framework::Point PaletteMemory::PositionForIndex(int index)
 	{
-		if (index < 0 || index > 255)
-			return Point(-1, -1);
+		sassert(index >= 0 || index < 256, "Error: Index %i is out of range", index);
 		return Point(index % 16, index / 16);
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline bool PaletteMemory::HasPalette(Ptr<Palette> palette)
 	{
-		ASSERT(palette, "Palette is null");
+		sassert(palette, "Palette is null");
 		return indexMap.find(palette) != indexMap.end();
 	}
 

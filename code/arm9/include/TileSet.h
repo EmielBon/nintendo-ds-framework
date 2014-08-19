@@ -26,7 +26,7 @@ namespace Graphics
 	public:
 
 		///
-		virtual ~TileSet() { }
+		virtual ~TileSet() = default;
 
 		/// Add a tile to this tile set
 		bool AddTile(const Tile &tile);
@@ -63,9 +63,6 @@ namespace Graphics
 
 		/// Accessor to the tile data of this tile set
 		Tile& operator[] (int index);
-
-		/// Returns the pixel data as an array of bytes
-		List<byte> GetPixelData() const;
 
 	protected:
 

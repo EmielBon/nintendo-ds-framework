@@ -72,7 +72,7 @@ namespace Graphics
 		const static u32 SPRITE_MAX_AFFINE = 32;
 		
 		List< Ptr<Sprite> > sprites;
-		TreeMap< Ptr<Sprite>, Ptr<LLR::SpriteResource> > oamSpriteMap;
+		Dictionary< Ptr<Sprite>, Ptr<LLR::SpriteResource> > oamSpriteMap;
 	};
 
 	//-------------------------------------------------------------------------------------------------

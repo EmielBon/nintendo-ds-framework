@@ -35,6 +35,9 @@ namespace Graphics
 		void AddTiles(const Set<u32> &identifiers);
 
 		///
+		Ptr< List<byte> > OffsetPixelsForTile(const Tile &tile, int offset, bool transparent);
+
+		///
 		void RegisterVRAMIndexForTile(u32 identifier, u32 VRAMIndex);
 
 		///
@@ -47,7 +50,7 @@ namespace Graphics
 
 		Graphics::PaletteMemory PaletteMemory;
 		int nextAvailableIndex;
-		TreeMap<u32, u32> IdentifierToVRAMIndex;
+		Dictionary<u32, u32> IdentifierToVRAMIndex;
 	};
 
 	//-------------------------------------------------------------------------------------------------

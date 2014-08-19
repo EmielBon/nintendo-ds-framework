@@ -29,7 +29,7 @@ namespace Framework
 		using namespace FileSystem;
 
 		// Caching
-		static TreeMap<String, Ptr<T>> loadedContent;
+		static Dictionary<String, Ptr<T>> loadedContent;
 		if (loadedContent.find(name) != loadedContent.end())
 			return loadedContent[name];
 

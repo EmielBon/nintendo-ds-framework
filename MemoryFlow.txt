@@ -1,0 +1,24 @@
+Background map toevoegen happy flow, 8bpp
+
+1. TileSet laden
+1.1 Elke tile in de tileset krijgt een unieke identifier, deze houdt hij zelf bij.
+
+2. Map laden
+2.1 Elke tile in de map wordt vervangen door zijn bijbehorende unieke identifier
+
+3. Map -> BackgroundMemory
+3.1 Elke map tile 
+
+1. Palette
+1.1 Voor het palette moet een mapping gevonden worden van elke index naar een vrije PaletteMemory index [PaletteMapping]
+1.2 De kleuren in het palette moeten gekopieerd worden naar PaletteMemory volgens de eerder gevonden mapping
+1.3 De kleuren in het palette memory kunnen direct worden uitgelezen
+
+2. TileSet
+2.1 Van elke pixel in de tile moet index worden vervangen door PaletteMapping[index]
+2.2 Voor elke tile moet een mapping gevonden worden naar een vrije tile in TileMemory [TileMapping] 
+2.2 Elke tile moet gekopieerd worden naar een vrije tile in TileMemory volgens de eerder gevonden mapping
+
+
+Background tiles toevoegen happy flow, 4bpp
+1.1 Voor een dynamic palette moet een mapping gevonden worden voor elke index naar een index in een vrij 2D blok in PaletteMemory [PaletteMap] 

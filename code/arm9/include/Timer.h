@@ -2,6 +2,7 @@
 
 #include "types.h"
 
+// todo: should be in System namespace
 namespace Debug
 {	
 	struct Timer

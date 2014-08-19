@@ -14,9 +14,6 @@ namespace Graphics
 	public:
 
 		///
-		TileSet256() = default;
-
-		///
 		virtual ~TileSet256() = default;
 
 		///
@@ -30,9 +27,7 @@ namespace Graphics
 	inline void TileSet256::AddTiles(const List<Tile8bpp> &tiles)
 	{
 		for(u32 i = 0; i < tiles.size(); ++i)
-		{
 			AddTile(tiles[i]);
-		}
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -40,6 +35,7 @@ namespace Graphics
 	{
 		if (Palettes.size() == 0) 
 			AddPalette(palette);
-		else Palettes[0] = palette;
+		else 
+			Palettes[0] = palette;
 	}
 }

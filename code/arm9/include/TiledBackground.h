@@ -59,7 +59,7 @@ namespace Graphics
 
 		// todo: remove const
 		const Framework::Size Size;
-		TreeMap<u32, int> IdentifierReferenceCount;
+		Dictionary<u32, int> IdentifierReferenceCount;
 		int Bpp;
 		//Set<u32> UniqueIndices;
 	};

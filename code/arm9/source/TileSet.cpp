@@ -34,18 +34,4 @@ namespace Graphics
 	{
 		return (Palettes.empty() || Palettes[0]->EntryCount() == palette.EntryCount());
 	}
-
-	//-------------------------------------------------------------------------------------------------
-	List<byte> TileSet::GetPixelData() const
-	{
-		List<byte> data;
-
-		for(u32 i = 0; i < Tiles.size(); ++i)
-		{
-			List<byte> pixels = Tiles[i].GetPixelDataRef();
-			data.insert(data.end(), pixels.begin(), pixels.end());
-		}
-
-		return data;
-	}
 }

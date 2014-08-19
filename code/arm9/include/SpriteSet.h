@@ -8,7 +8,7 @@ namespace Graphics
 	{
 	public:
 
-		TreeMap<String, Ptr<Sprite>> Sprites;
+		Dictionary<String, Ptr<Sprite>> Sprites;
 
 		Ptr<Sprite>& operator[](const String &key)
 		{

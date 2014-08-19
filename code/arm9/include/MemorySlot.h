@@ -53,7 +53,7 @@ namespace Graphics
 		VideoRamBank *vramBank;
 
 		// Maps compatible VRAM bank's names to the corresponding VRAM control register mapping value for this slot
-		TreeMap<BankName, int> supportedMappings;
+		Dictionary<BankName, int> supportedMappings;
 	};
 
 	//-------------------------------------------------------------------------------------------------

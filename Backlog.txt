@@ -1,0 +1,6 @@
+- Replace all namespaces with a common one like in OpenCV, which uses the cv:: namespace
+	- Rationale: namespaces are to avoid naming conflicts, we don't have any in our project. A single namespace is easier to use.
+- Turn the engine code into a statically linked library, so the test projects won't have to be rebuilt every time an engine feature changes.
+- Move the automatic memory management from the memory classes (BackgroundMemory, PaletteMemory etc.) to a separete class, making all of them simpler to understand.
+x Separate types into different files.
+- Rename TreeMap to Dictionary

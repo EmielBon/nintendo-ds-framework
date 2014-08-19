@@ -14,9 +14,6 @@ namespace Graphics
 	public:
 
 		///
-		TileSet16() = default;
-
-		///
 		virtual ~TileSet16() = default;
 
 		///
@@ -27,17 +24,15 @@ namespace Graphics
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline bool TileSet16::AddPalette(Ptr<Palette> palette)
-	{
-		return super::AddPalette(palette);
-	}
-
-	//-------------------------------------------------------------------------------------------------
 	inline void TileSet16::AddTiles(const List<Tile4bpp> &tiles)
 	{
 		for(u32 i = 0; i < tiles.size(); ++i)
-		{
 			AddTile(tiles[i]);
-		}
+	}
+	
+	//-------------------------------------------------------------------------------------------------
+	inline bool TileSet16::AddPalette(Ptr<Palette> palette)
+	{
+		return super::AddPalette(palette);
 	}
 }

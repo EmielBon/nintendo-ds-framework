@@ -48,7 +48,7 @@ namespace Graphics
 	public:
 
 		u16* nextAvailableAddress;
-		TreeMap< Ptr<Texture>, u16* > TextureAddresses;
+		Dictionary< Ptr<Texture>, u16* > TextureAddresses;
 	};
 
 	//-------------------------------------------------------------------------------------------------

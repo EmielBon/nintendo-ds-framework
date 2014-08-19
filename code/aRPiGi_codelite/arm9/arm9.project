@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="arm9" InternalType="">
+  <Description/>
+  <Dependencies/>
+  <Settings Type="Dynamic Library">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="MinGW ( CodeLite-4.8.1 )" DebuggerType="GNU gdb debugger" Type="Dynamic Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g" C_Options="-g" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" UseDifferentPCHFlags="no" PCHFlags="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="" IntermediateDirectory="./Debug" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="yes">
+        <RebuildCommand/>
+        <CleanCommand>make clean</CleanCommand>
+        <BuildCommand>make</BuildCommand>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory>$(WorkspacePath)</WorkingDirectory>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="MinGW ( CodeLite-4.8.1 )" DebuggerType="GNU gdb debugger" Type="Dynamic Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="" C_Options="" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" UseDifferentPCHFlags="no" PCHFlags="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="-O2" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="" IntermediateDirectory="./Release" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="yes">
+        <RebuildCommand/>
+        <CleanCommand>make clean</CleanCommand>
+        <BuildCommand>make</BuildCommand>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory>$(WorkspacePath)</WorkingDirectory>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+  <VirtualDirectory Name="source">
+    <File Name="../../arm9/source/AbstractButton.cpp"/>
+    <File Name="../../arm9/source/Background.cpp"/>
+    <File Name="../../arm9/source/BackgroundMemory.cpp"/>
+    <File Name="../../arm9/source/BasicEffect.cpp"/>
+    <File Name="../../arm9/source/BinaryReader.cpp"/>
+    <File Name="../../arm9/source/BoundingBox.cpp"/>
+    <File Name="../../arm9/source/BoundingSphere.cpp"/>
+    <File Name="../../arm9/source/Button.cpp"/>
+    <File Name="../../arm9/source/Camera.cpp"/>
+    <File Name="../../arm9/source/CollisionMap.cpp"/>
+    <File Name="../../arm9/source/Color.cpp"/>
+    <File Name="../../arm9/source/Component.cpp"/>
+    <File Name="../../arm9/source/Console.cpp"/>
+    <File Name="../../arm9/source/ConsoleTest.cpp"/>
+    <File Name="../../arm9/source/ContentManager.cpp"/>
+    <File Name="../../arm9/source/DebugUI.cpp"/>
+    <File Name="../../arm9/source/DebugUITest.cpp"/>
+    <File Name="../../arm9/source/DisplayList.cpp"/>
+    <File Name="../../arm9/source/EfficientVectorsTest.cpp"/>
+    <File Name="../../arm9/source/FileStream.cpp"/>
+    <File Name="../../arm9/source/FixedPointUnitTest.cpp"/>
+    <File Name="../../arm9/source/FlyingCamera.cpp"/>
+    <File Name="../../arm9/source/FPSCounter.cpp"/>
+    <File Name="../../arm9/source/Game.cpp"/>
+    <File Name="../../arm9/source/GameCamera.cpp"/>
+    <File Name="../../arm9/source/GameObject.cpp"/>
+    <File Name="../../arm9/source/GameTime.cpp"/>
+    <File Name="../../arm9/source/GraphicsDevice.cpp"/>
+    <File Name="../../arm9/source/GraphicsDeviceManager.cpp"/>
+    <File Name="../../arm9/source/KeyPad.cpp"/>
+    <File Name="../../arm9/source/Link.cpp"/>
+    <File Name="../../arm9/source/Log.cpp"/>
+    <File Name="../../arm9/source/LogEntry.cpp"/>
+    <File Name="../../arm9/source/Logging.cpp"/>
+    <File Name="../../arm9/source/LogPrinter.cpp"/>
+    <File Name="../../arm9/source/main9.cpp"/>
+    <File Name="../../arm9/source/Map.cpp"/>
+    <File Name="../../arm9/source/Mario.cpp"/>
+    <File Name="../../arm9/source/Material.cpp"/>
+    <File Name="../../arm9/source/MatrixPerformanceTest.cpp"/>
+    <File Name="../../arm9/source/Memory2D.cpp"/>
+    <File Name="../../arm9/source/MemorySlot.cpp"/>
+    <File Name="../../arm9/source/ModelMesh.cpp"/>
+    <File Name="../../arm9/source/ModelMeshPart.cpp"/>
+    <File Name="../../arm9/source/NDSGameHost.cpp"/>
+    <File Name="../../arm9/source/ObjectAttributeMemory.cpp"/>
+    <File Name="../../arm9/source/Palette.cpp"/>
+    <File Name="../../arm9/source/PaletteMemory.cpp"/>
+    <File Name="../../arm9/source/PaletteTest.cpp"/>
+    <File Name="../../arm9/source/Path.cpp"/>
+    <File Name="../../arm9/source/Profiler.cpp"/>
+    <File Name="../../arm9/source/ProfilingManager.cpp"/>
+    <File Name="../../arm9/source/ProfilingResult.cpp"/>
+    <File Name="../../arm9/source/ProfilingTest.cpp"/>
+    <File Name="../../arm9/source/Room.cpp"/>
+    <File Name="../../arm9/source/Room1.cpp"/>
+    <File Name="../../arm9/source/Scene.cpp"/>
+    <File Name="../../arm9/source/SceneObject.cpp"/>
+    <File Name="../../arm9/source/Screen.cpp"/>
+    <File Name="../../arm9/source/Sprite.cpp"/>
+    <File Name="../../arm9/source/SpriteMemory.cpp"/>
+    <File Name="../../arm9/source/StreamReader.cpp"/>
+    <File Name="../../arm9/source/StringHelper.cpp"/>
+    <File Name="../../arm9/source/Test2D.cpp"/>
+    <File Name="../../arm9/source/Test3D.cpp"/>
+    <File Name="../../arm9/source/TextRenderer.cpp"/>
+    <File Name="../../arm9/source/TextRenderingTest.cpp"/>
+    <File Name="../../arm9/source/TextureMemory.cpp"/>
+    <File Name="../../arm9/source/Tile.cpp"/>
+    <File Name="../../arm9/source/TiledBackground.cpp"/>
+    <File Name="../../arm9/source/TileMemory.cpp"/>
+    <File Name="../../arm9/source/TileSet.cpp"/>
+    <File Name="../../arm9/source/TilesManager.cpp"/>
+    <File Name="../../arm9/source/Timer.cpp"/>
+    <File Name="../../arm9/source/TimerTest.cpp"/>
+    <File Name="../../arm9/source/TimeSpan.cpp"/>
+    <File Name="../../arm9/source/TouchScreen.cpp"/>
+    <File Name="../../arm9/source/TouchState.cpp"/>
+    <File Name="../../arm9/source/VertexBuffer.cpp"/>
+    <File Name="../../arm9/source/VideoRam.cpp"/>
+    <File Name="../../arm9/source/VideoRamBank.cpp"/>
+    <File Name="../../arm9/source/X11Palette.cpp"/>
+    <File Name="../../arm9/source/ZeldaGame.cpp"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="Graphics">
+    <File Name="../../arm9/include/Graphics.h"/>
+    <File Name="../../arm9/include/Screen.h"/>
+    <VirtualDirectory Name="Background">
+      <File Name="../../arm9/include/Background.h"/>
+      <File Name="../../arm9/include/BackgroundMemory.h"/>
+      <File Name="../../arm9/include/Backgrounds.h"/>
+      <File Name="../../arm9/include/Map.h"/>
+      <File Name="../../arm9/include/MapTile.h"/>
+      <File Name="../../arm9/include/Tile.h"/>
+      <File Name="../../arm9/include/TiledBackground.h"/>
+      <File Name="../../arm9/include/TileMemory.h"/>
+      <File Name="../../arm9/include/TileSet.h"/>
+      <File Name="../../arm9/include/TileSet16.h"/>
+      <File Name="../../arm9/include/TileSet256.h"/>
+      <File Name="../../arm9/include/TilesManager.h"/>
+      <File Name="../../arm9/include/ScreenBlock.h"/>
+      <File Name="../../arm9/include/ScreenBlockEntry.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="3D">
+      <File Name="../../arm9/include/BasicEffect.h"/>
+      <File Name="../../arm9/include/Camera.h"/>
+      <File Name="../../arm9/include/DirectionalLight.h"/>
+      <File Name="../../arm9/include/DisplayList.h"/>
+      <File Name="../../arm9/include/EfficientVertex.h"/>
+      <File Name="../../arm9/include/IndexBuffer.h"/>
+      <File Name="../../arm9/include/Light.h"/>
+      <File Name="../../arm9/include/Material.h"/>
+      <File Name="../../arm9/include/Model.h"/>
+      <File Name="../../arm9/include/ModelMesh.h"/>
+      <File Name="../../arm9/include/ModelMeshPart.h"/>
+      <File Name="../../arm9/include/OpenGL.h"/>
+      <File Name="../../arm9/include/PointLight.h"/>
+      <File Name="../../arm9/include/RasterizerState.h"/>
+      <File Name="../../arm9/include/Scene.h"/>
+      <File Name="../../arm9/include/SceneObject.h"/>
+      <File Name="../../arm9/include/Texture.h"/>
+      <File Name="../../arm9/include/TextureMemory.h"/>
+      <File Name="../../arm9/include/Vertex.h"/>
+      <File Name="../../arm9/include/VertexBuffer.h"/>
+      <File Name="../../arm9/include/ViewPort.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="Text">
+      <File Name="../../arm9/include/Font.h"/>
+      <File Name="../../arm9/include/TextRenderer.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="Sprite">
+      <File Name="../../arm9/include/ObjectAttributeMemory.h"/>
+      <File Name="../../arm9/include/Sprite.h"/>
+      <File Name="../../arm9/include/SpriteMemory.h"/>
+      <File Name="../../arm9/include/Sprites.h"/>
+      <File Name="../../arm9/include/SpriteSet.h"/>
+      <File Name="../../arm9/include/SpriteSubImage.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="Palette">
+      <File Name="../../arm9/include/Palette.h"/>
+      <File Name="../../arm9/include/PaletteMemory.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="Memory">
+      <File Name="../../arm9/include/Memory2D.h"/>
+      <File Name="../../arm9/include/MemorySlot.h"/>
+      <File Name="../../arm9/include/MemoryTypes.h"/>
+      <File Name="../../arm9/include/VideoRam.h"/>
+      <File Name="../../arm9/include/VideoRamBank.h"/>
+      <File Name="../../arm9/include/VideoRamBankNames.h"/>
+    </VirtualDirectory>
+    <File Name="../../arm9/include/GraphicsDevice.h"/>
+    <File Name="../../arm9/include/GraphicsDeviceManager.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="Framework">
+    <File Name="../../arm9/include/BoundingBox.h"/>
+    <File Name="../../arm9/include/BoundingSphere.h"/>
+    <File Name="../../arm9/include/Color.h"/>
+    <File Name="../../arm9/include/Container.h"/>
+    <File Name="../../arm9/include/ContainmentType.h"/>
+    <File Name="../../arm9/include/ContentManager.h"/>
+    <File Name="../../arm9/include/DrawableGameComponent.h"/>
+    <File Name="../../arm9/include/Framework.h"/>
+    <File Name="../../arm9/include/Game.h"/>
+    <File Name="../../arm9/include/GameComponent.h"/>
+    <File Name="../../arm9/include/GameComponentCollection.h"/>
+    <File Name="../../arm9/include/Mat.h"/>
+    <File Name="../../arm9/include/Vec2.h"/>
+    <File Name="../../arm9/include/Vec3.h"/>
+    <File Name="../../arm9/include/GameTime.h"/>
+    <File Name="../../arm9/include/IDisposable.h"/>
+    <File Name="../../arm9/include/IDrawable.h"/>
+    <File Name="../../arm9/include/IEventListener.h"/>
+    <File Name="../../arm9/include/IGameComponent.h"/>
+    <File Name="../../arm9/include/IGameHost.h"/>
+    <File Name="../../arm9/include/IActionListener.h"/>
+    <File Name="../../arm9/include/Rectangle.h"/>
+    <File Name="../../arm9/include/Size.h"/>
+    <File Name="../../arm9/include/IUpdateable.h"/>
+    <File Name="../../arm9/include/NDSGameHost.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="Util">
+    <File Name="../../arm9/include/Util.h"/>
+    <File Name="../../arm9/include/StringHelper.h"/>
+    <File Name="../../arm9/include/SetOperations.h"/>
+    <File Name="../../arm9/include/SetHelper.h"/>
+    <File Name="../../arm9/include/MathFunctions.h"/>
+    <File Name="../../arm9/include/FixedHelper.h"/>
+    <VirtualDirectory Name="DataStructures">
+      <File Name="../../arm9/include/fixed.h"/>
+      <File Name="../../arm9/include/types.h"/>
+      <File Name="../../arm9/include/CoreTypes.h"/>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <VirtualDirectory Name="FileSystem">
+    <File Name="../../arm9/include/BinaryReader.h"/>
+    <File Name="../../arm9/include/File.h"/>
+    <File Name="../../arm9/include/FileStream.h"/>
+    <File Name="../../arm9/include/StreamReader.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="GUI">
+    <File Name="../../arm9/include/AbstractButton.h"/>
+    <File Name="../../arm9/include/Button.h"/>
+    <File Name="../../arm9/include/Component.h"/>
+    <File Name="../../arm9/include/GUI.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="System">
+    <File Name="../../arm9/include/TimeSpan.h"/>
+    <File Name="../../arm9/include/System.h"/>
+    <File Name="../../arm9/include/Timer.h"/>
+    <File Name="../../arm9/include/DateTime.h"/>
+    <File Name="../../arm9/include/Console.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="Framework3D">
+    <File Name="../../arm9/include/Game3D.h"/>
+    <File Name="../../arm9/include/GameCamera.h"/>
+    <File Name="../../arm9/include/GameObjec3D.h"/>
+    <File Name="../../arm9/include/FlyingCamera.h"/>
+    <File Name="../../arm9/include/Framework3D.h"/>
+    <File Name="../../arm9/include/Room3D.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="Framework2D">
+    <File Name="../../arm9/include/CollisionMap.h"/>
+    <File Name="../../arm9/include/Framework2D.h"/>
+    <File Name="../../arm9/include/Room.h"/>
+    <File Name="../../arm9/include/Path.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="Debug">
+    <File Name="../../arm9/include/Assert.h"/>
+    <File Name="../../arm9/include/BreakPoint.h"/>
+    <File Name="../../arm9/include/Debug.h"/>
+    <File Name="../../arm9/include/FPSCounter.h"/>
+    <File Name="../../arm9/include/DebugUI.h"/>
+    <File Name="../../arm9/include/Log.h"/>
+    <File Name="../../arm9/include/LogEntry.h"/>
+    <File Name="../../arm9/include/Logging.h"/>
+    <File Name="../../arm9/include/LogPrinter.h"/>
+    <File Name="../../arm9/include/ProfilingResult.h"/>
+    <File Name="../../arm9/include/Profiler.h"/>
+    <File Name="../../arm9/include/ProfilingManager.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="Test">
+    <File Name="../../arm9/include/X11Palette.h"/>
+    <File Name="../../arm9/include/PaletteTest.h"/>
+    <File Name="../../arm9/include/ProfilingTest.h"/>
+    <File Name="../../arm9/include/TextRenderingTest.h"/>
+    <File Name="../../arm9/include/TimerTest.h"/>
+    <File Name="../../arm9/include/MatrixPerformanceTest.h"/>
+    <File Name="../../arm9/include/Mario.h"/>
+    <File Name="../../arm9/include/ConsoleTest.h"/>
+    <File Name="../../arm9/include/DebugUITest.h"/>
+    <File Name="../../arm9/include/EfficientVectorsTest.h"/>
+    <File Name="../../arm9/include/FixedPointUnitTest.h"/>
+    <File Name="../../arm9/include/Test2D.h"/>
+    <File Name="../../arm9/include/Test3D.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="Input">
+    <File Name="../../arm9/include/TouchScreen.h"/>
+    <File Name="../../arm9/include/TouchState.h"/>
+    <File Name="../../arm9/include/KeyPad.h"/>
+    <File Name="../../arm9/include/Keys.h"/>
+    <File Name="../../arm9/include/KeyState.h"/>
+    <File Name="../../arm9/include/Input.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="LLR">
+    <File Name="../../arm9/include/SpriteResource.h"/>
+    <File Name="../../arm9/include/LLR.h"/>
+    <File Name="../../arm9/include/IGraphicsResource.h"/>
+    <File Name="../../arm9/include/MapResource.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="GameGen">
+    <File Name="../../arm9/include/dslTypes.h"/>
+    <File Name="../../arm9/include/GameObject.h"/>
+    <File Name="../../arm9/include/GameGenProject.h"/>
+    <File Name="../../arm9/include/Link.h"/>
+    <File Name="../../arm9/include/Room1.h"/>
+    <File Name="../../arm9/include/ZeldaGame.h"/>
+    <File Name="../../arm9/include/ZeldaGameTypes.h"/>
+    <File Name="../../arm9/include/GlobalFunctions.h"/>
+  </VirtualDirectory>
+</CodeLite_Project>

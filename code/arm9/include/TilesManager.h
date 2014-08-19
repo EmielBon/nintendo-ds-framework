@@ -20,7 +20,7 @@ namespace Graphics
 
 	private:
 
-		static TreeMap< Ptr<TileSet>, u32 > TileSetToIdentifier;
+		static Dictionary< Ptr<TileSet>, u32 > TileSetToIdentifier;
 		static u32 nextFreeIdentifier;
 
 	public:

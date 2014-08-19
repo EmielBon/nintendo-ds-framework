@@ -67,7 +67,7 @@ namespace Framework
 		inRun = true;
 
 		// Initialize file system
-		fileSystemSupported = nitroFSInit();
+		fileSystemSupported = nitroFSInit(NULL);
 		// Initialize VRAM
 		VideoRam::Initialize();
 		// Initialize the engines
