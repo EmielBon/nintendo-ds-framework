@@ -75,6 +75,7 @@ namespace Framework
 		};
 
 		auto header = fs.ReadHeader<TileSetFileHeader>();
+		
 		auto tileSet = New<TileSet256>();
 		tileSet->AddTiles(*(fs.ReadAll<Tile8bpp>()));
 		tileSet->tileSize.Width  = header.Width;
@@ -188,14 +189,13 @@ namespace Framework
 			{
 				String name = tokens[1];
 				List<TiledImage> subImages;
-				u32 tilesetBaseIdentifier = tileSet->Tiles[0].Identifier;//TilesManager::IdentifierForTileSet(tileSet);
 				int tileCount = size.Width * size.Height;
 				for (u32 i = 2; i < tokens.size(); ++i)
 				{
 					TiledImage subImage(size.Width, size.Height, 8);
 					for (int j = 0; j < tileCount; ++j)
 					{
-						u32 subImageBaseIdentifier = tilesetBaseIdentifier + StringHelper::ParseInt(tokens[i]) * tileCount;
+						u32 subImageBaseIdentifier = StringHelper::ParseInt(tokens[i]) * tileCount;
 						subImage.Tiles[j] = &tileSet->Tiles[subImageBaseIdentifier + j];
 					}
 					subImages.push_back(subImage);

@@ -25,9 +25,6 @@ namespace Graphics
 		// Todo: make dependent on size (and dynamic)
 		for (int i = 0; i < 256; ++i)
 			free[i] = true;
-
-		sassert(location, "wra");
-		//sassert(false, "success");
 	}
 
 	//-------------------------------------------------------------------------------------------------
