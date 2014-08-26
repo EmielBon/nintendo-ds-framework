@@ -31,7 +31,7 @@ namespace Framework
 		Game();
 
 		/// 
-		virtual ~Game() { }
+		virtual ~Game() = default;
 
 		///
 		static Game& Instance();

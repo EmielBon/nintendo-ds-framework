@@ -20,36 +20,23 @@ namespace Graphics
 
 	public:
 
-		/// Empty Constructor
-		PaletteMemory();
-
 		///
 		PaletteMemory(bool isMain, u32 type);
 
 		/// Initialize this PaletteMemory
 		void Initialize(u32 parentType);
 
-		/// Returns whether this palette is present in palette memory
-		bool HasPalette(Ptr<Palette> palette);
+		/// 
+		int AddColor(u16 color);
 
-		/// Add a Palette to the Nintendo DS's PaletteMemory, returns the needed pixel offset if successful, and -1 otherwise
-		void AddPalette(Ptr<Palette> palette, bool transparent);
+		/// Add a Palette to the Nintendo DS's PaletteMemory
+		void AddPalette(Ptr<Palette> palette);
 
-		/// Add a Palette to the Nintendo DS's PaletteMemory, returns the needed horizontal pixel offset if successful, and -1 otherwise 
-		void AddDynamicPalette(const List<Ptr<Palette>> &palettes, bool transparent);
-
-		/// Marks a palette for removal, freeing up its used space
-		bool Invalidate(Ptr<Palette> palette);
+		/// Add a Palette to the Nintendo DS's PaletteMemory, returns the start index of the 2D block in palette memory 
+		int AddDynamicPalette(const List<Ptr<Palette>> &palettes);
 
 		///
 		void SetTransparentColor(u16 color);
-
-		/// 
-		void CopyPalette(Ptr<Palette> palette, int index, bool transparent);
-
-		/// Finds the index at which a sequence with a specified size can be placed in 256x1 palette memory
-		/// Returns a number in the range [1, 255]. Index 0 is the transparent color so it is skipped
-		int FindFreeSequence(int width) const;
 
 		/// Finds the index at which a sequence with the given width and height can be placed in 16x16 palette memory
 		/// Returns a number in the range [1, 255]. The column 1x16 contains the transparent colors for every 16x1 palette, so it is skipped
@@ -61,12 +48,6 @@ namespace Graphics
 		///
 		bool IsFree(int x, int y) const;
 
-		///
-		int GetIndex(Ptr<Palette> palette);
-
-		///
-		Point GetPosition(Ptr<Palette> palette);
-
 		/// Returns the maximum size of this memory, determined by the physical limit of the Nintendo DS's palette memory
 		int Maximum() const;
 
@@ -76,19 +57,43 @@ namespace Graphics
 		///
 		static Point PositionForIndex(int index);
 
+		///
+		bool HasColor(u16 color) const;
+
+		/// 
+		void RegisterPaletteIndexForColor(u32 paletteIndex, u16 color);
+
+		/// 
+		int GetIndexForColor(u16 color) const;
+
+		/// 
+		void SetColorForIndex(u16 color, int index);
+
+	protected:
+	
+		/// 
+		int SetColorToNextFreeIndex(u16 color);
+		
+		/// 
+		int FindNextFreeIndex();
+		
 	protected:
 
 		u16* location;
-		Dictionary< Ptr<Palette>, int> indexMap;
+		Dictionary< u16, int > ColorToPaletteIndex;
+		int currentFreeIndex;
 		bool free[256];
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline PaletteMemory::PaletteMemory() : location(NULL)
+	finline int PaletteMemory::AddColor(u16 color)
 	{
-
+		int index = GetIndexForColor(color);
+		if (index != -1)
+			return index;
+		return SetColorToNextFreeIndex(color);
 	}
-
+	
 	//-------------------------------------------------------------------------------------------------
 	inline int PaletteMemory::Maximum() const
 	{
@@ -127,15 +132,26 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline bool PaletteMemory::HasPalette(Ptr<Palette> palette)
-	{
-		sassert(palette, "Palette is null");
-		return indexMap.find(palette) != indexMap.end();
-	}
-
-	//-------------------------------------------------------------------------------------------------
 	inline void PaletteMemory::SetTransparentColor(u16 color)
 	{
 		location[0] = color;
+	}
+	
+	//-------------------------------------------------------------------------------------------------
+	inline bool PaletteMemory::HasColor(u16 color) const
+	{
+		return (GetIndexForColor(color) != -1);
+	}
+	
+	//-------------------------------------------------------------------------------------------------
+	inline void PaletteMemory::RegisterPaletteIndexForColor(u32 paletteIndex, u16 color)
+	{
+		ColorToPaletteIndex[color] = paletteIndex;
+	}
+	
+	inline int PaletteMemory::GetIndexForColor(u16 color) const
+	{
+		auto it = ColorToPaletteIndex.find(color);
+		return (it == ColorToPaletteIndex.end()) ? -1 : it->second;
 	}
 }

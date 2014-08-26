@@ -1,7 +1,7 @@
 #pragma once
 
 #include "types.h"
-#include "SpriteSubImage.h"
+#include "TiledImage.h"
 #include <nds/arm9/sprite.h>
 #include "fixed.h"
 
@@ -18,10 +18,7 @@ namespace Graphics
 		Sprite() = default;
 
 		/// Constructor
-		Sprite(const List<SpriteSubImage> &subImages);
-
-		/// Calculates the set of unique indices in this sprite, should be called after changing the SubImages property
-		void ApplyChanges();
+		Sprite(const List<TiledImage> &subImages);
 
 	public:
 
@@ -34,9 +31,8 @@ namespace Graphics
 		u32 SubImageIndex;
 		int ImageSpeed;
 
-		List<SpriteSubImage> SubImages;
-		Set<u32> UniqueIndices; // Todo: also used in Maps, extract?
-
+		List<TiledImage> SubImages;
+		
 	protected:
 
 		ObjSize  size;

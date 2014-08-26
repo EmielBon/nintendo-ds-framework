@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Game.h"
-#include "X11Palette.h"
 #include "types.h"
 
 namespace Test

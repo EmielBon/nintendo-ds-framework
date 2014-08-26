@@ -182,14 +182,7 @@
       <File Name="../../arm9/include/BackgroundMemory.h"/>
       <File Name="../../arm9/include/Backgrounds.h"/>
       <File Name="../../arm9/include/Map.h"/>
-      <File Name="../../arm9/include/MapTile.h"/>
-      <File Name="../../arm9/include/Tile.h"/>
       <File Name="../../arm9/include/TiledBackground.h"/>
-      <File Name="../../arm9/include/TileMemory.h"/>
-      <File Name="../../arm9/include/TileSet.h"/>
-      <File Name="../../arm9/include/TileSet16.h"/>
-      <File Name="../../arm9/include/TileSet256.h"/>
-      <File Name="../../arm9/include/TilesManager.h"/>
       <File Name="../../arm9/include/ScreenBlock.h"/>
       <File Name="../../arm9/include/ScreenBlockEntry.h"/>
     </VirtualDirectory>
@@ -226,7 +219,6 @@
       <File Name="../../arm9/include/SpriteMemory.h"/>
       <File Name="../../arm9/include/Sprites.h"/>
       <File Name="../../arm9/include/SpriteSet.h"/>
-      <File Name="../../arm9/include/SpriteSubImage.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Palette">
       <File Name="../../arm9/include/Palette.h"/>
@@ -242,6 +234,14 @@
     </VirtualDirectory>
     <File Name="../../arm9/include/GraphicsDevice.h"/>
     <File Name="../../arm9/include/GraphicsDeviceManager.h"/>
+    <VirtualDirectory Name="Tiles">
+      <File Name="../../arm9/include/Tile.h"/>
+      <File Name="../../arm9/include/TileMemory.h"/>
+      <File Name="../../arm9/include/TileSet.h"/>
+      <File Name="../../arm9/include/TileSet16.h"/>
+      <File Name="../../arm9/include/TileSet256.h"/>
+      <File Name="../../arm9/include/TiledImage.h"/>
+    </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="Framework">
     <File Name="../../arm9/include/BoundingBox.h"/>
@@ -369,4 +369,6 @@
     <File Name="../../arm9/include/ZeldaGameTypes.h"/>
     <File Name="../../arm9/include/GlobalFunctions.h"/>
   </VirtualDirectory>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
 </CodeLite_Project>

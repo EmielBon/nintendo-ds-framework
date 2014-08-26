@@ -6,6 +6,8 @@
 
 // 2D Graphics
 #include "Background.h"
+#include "BackgroundMemory.h"
+#include "SpriteMemory.h"
 
 // 3D Graphics
 #include "OpenGL.h"
@@ -49,13 +51,13 @@ namespace Graphics
 
 		bool main = IsMain();
 
-		BackgroundMemory      = Graphics::BackgroundMemory(main);
-		SpriteMemory          = Graphics::SpriteMemory(main);
+		BackgroundMemory      = New<Graphics::BackgroundMemory>(main);
+		SpriteMemory          = New<Graphics::SpriteMemory>(main);
 		ObjectAttributeMemory = Graphics::ObjectAttributeMemory(this);
 		TextureMemory         = Graphics::TextureMemory(main);
 
-		BackgroundMemory.Initialize();
-		SpriteMemory.Initialize();
+		BackgroundMemory->Initialize();
+		SpriteMemory->Initialize();
 		TextureMemory.Initialize();
 	}
 
@@ -111,7 +113,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	void GraphicsDevice::SetBackgroundColor(u16 color)
 	{
-		BackgroundMemory.PaletteMemory.SetTransparentColor(color);
+		BackgroundMemory->PaletteMemory->SetTransparentColor(color);
 	}
 
 	//-------------------------------------------------------------------------------------------------

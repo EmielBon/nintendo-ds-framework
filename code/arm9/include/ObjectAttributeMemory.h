@@ -23,7 +23,7 @@ namespace Graphics
 		ObjectAttributeMemory();
 
 		///
-		ObjectAttributeMemory(Graphics::GraphicsDevice *device);
+		ObjectAttributeMemory(GraphicsDevice *device);
 
 		/// Update the Nintendo DS's OAM attributes with the possibly changed Sprite properties
 		void Update();
@@ -64,7 +64,7 @@ namespace Graphics
 
 	protected:
 
-		Graphics::GraphicsDevice* graphicsDevice;
+		GraphicsDevice* graphicsDevice;
 		OAMTable* oam;
 		u16* location;
 
@@ -76,7 +76,7 @@ namespace Graphics
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline ObjectAttributeMemory::ObjectAttributeMemory() : DisplayMode(SpriteDisplayMode_1D_64), graphicsDevice(NULL), oam(NULL), location(NULL)
+	inline ObjectAttributeMemory::ObjectAttributeMemory() : DisplayMode(SpriteDisplayMode_1D_64), graphicsDevice(nullptr), oam(nullptr), location(nullptr)
 	{
 		
 	}

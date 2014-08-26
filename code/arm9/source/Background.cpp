@@ -29,7 +29,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	Graphics::BackgroundMemory& Background::BackgroundMemory() const
 	{
-		return graphicsDevice->BackgroundMemory;
+		return *graphicsDevice->BackgroundMemory;
 	}
 
 	//-------------------------------------------------------------------------------------------------

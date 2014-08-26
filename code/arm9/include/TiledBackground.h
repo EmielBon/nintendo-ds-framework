@@ -1,114 +1,59 @@
 #pragma once
 
+#include "TiledImage.h"
 #include "types.h"
-#include "MapTile.h"
-#include "Size.h"
+#include "ScreenBlockEntry.h"
 
 namespace Graphics
 {
-	class TiledBackground
+	class TiledBackground : public TiledImage
 	{
+	private:
+	
+		using base = TiledImage;
+		
 	public:
 		
 		/// Empty constructor
-		TiledBackground();
+		TiledBackground() = default;
 		
 		///
-		TiledBackground(int width, int height);
+		TiledBackground(int width, int height, int bpp);
 		
-		///
+		/// 
+		void SetTileParameters(int index, bool flippedHorizontal, bool flippedVertical, u32 paletteIndex);
+		
+		/// todo: implement
 		static Ptr<TiledBackground> FromTileSet(Ptr<TileSet> tileSet, int width, int height);
-
-		/// Returns the size of this map
-		Framework::Size GetSize() const;
 		
 		/// Returns whether the map is in a valid format to be displayed
 		void CheckValid() const;
+
+		///
+		void CopyToHardwareMap(Map &map);
 		
-		///
-		Set<u32> UniqueIndices() const;
-
-		///
-		void Clear();
-
-		///
-		int GetTileIndex(int x, int y) const;
-	
-		///
-		int TileByteSize() const;
-
-		///
-		const MapTile& GetTile(int index) const;
-
-		///
-		const MapTile& GetTile(int x, int y) const;
-
-		///
-		void SetTile(int index, const MapTile& mapTile);
-
-		///
-		void SetTile(int x, int y, const MapTile& mapTile);
-
-		///
-		void CopyToHardwareMap(int mapIndex);
-
 	public:
-
-		List<MapTile> MapTiles;
+		
+		List<ScreenBlockEntry> TileParameters; // This uses the palette index and flip parameters from ScreenBlockEntry. The tile index parameter is ignored. 
 		Ptr<Framework2D::CollisionMap> CollisionMap;
-
-		// todo: remove const
-		const Framework::Size Size;
-		Dictionary<u32, int> IdentifierReferenceCount;
-		int Bpp;
-		//Set<u32> UniqueIndices;
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline TiledBackground::TiledBackground() : Bpp(0)
+	inline TiledBackground::TiledBackground(int width, int height, int bpp) : base(width, height, bpp)
 	{
-		
+		TileParameters.assign(width * height, ScreenBlockEntry());
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline TiledBackground::TiledBackground(int w, int h) : Size(w, h), Bpp(0)
+	inline Ptr<TiledBackground> TiledBackground::FromTileSet( Ptr<TileSet> tileSet, int width, int height )
 	{
-		Clear();
+		CRASH("Not implemented"); 
+		return nullptr;
 	}
-
+	
 	//-------------------------------------------------------------------------------------------------
-	inline Framework::Size TiledBackground::GetSize() const
+	inline void TiledBackground::SetTileParameters(int index, bool flippedHorizontal, bool flippedVertical, u32 paletteIndex)
 	{
-		return Size;
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	inline int TiledBackground::GetTileIndex(int x, int y) const
-	{
-		return x + y * Size.Width;
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	inline const MapTile& TiledBackground::GetTile( int index ) const
-	{
-		return MapTiles[index];
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	inline const MapTile& TiledBackground::GetTile( int x, int y ) const
-	{
-		return GetTile( GetTileIndex(x, y) );
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	inline void TiledBackground::SetTile( int x, int y, const MapTile& mapTile )
-	{
-		SetTile(GetTileIndex(x, y), mapTile);
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	inline int TiledBackground::TileByteSize() const
-	{
-		return Bpp * 64 / 8;
+		TileParameters[index] = ScreenBlockEntry(0, flippedHorizontal, flippedVertical, paletteIndex);
 	}
 }

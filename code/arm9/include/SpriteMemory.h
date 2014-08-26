@@ -13,9 +13,6 @@ namespace Graphics
 
 	public:
 
-		/// Empty Constructor
-		SpriteMemory() = default;
-
 		///
 		SpriteMemory(bool isMain);
 

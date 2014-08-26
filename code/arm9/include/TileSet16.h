@@ -18,9 +18,6 @@ namespace Graphics
 
 		///
 		void AddTiles(const List<Tile4bpp> &tiles);
-
-		/// Add a palette to this tile set
-		bool AddPalette(Ptr<Palette> palette);
 	};
 
 	//-------------------------------------------------------------------------------------------------
@@ -28,11 +25,5 @@ namespace Graphics
 	{
 		for(u32 i = 0; i < tiles.size(); ++i)
 			AddTile(tiles[i]);
-	}
-	
-	//-------------------------------------------------------------------------------------------------
-	inline bool TileSet16::AddPalette(Ptr<Palette> palette)
-	{
-		return super::AddPalette(palette);
 	}
 }

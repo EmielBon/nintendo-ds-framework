@@ -1,4 +1,4 @@
-#include "DebugUITest.h"
+/*#include "DebugUITest.h"
 
 // Stable packages
 #include "Framework.h"
@@ -18,7 +18,7 @@ namespace Test
 	//-------------------------------------------------------------------------------------------------
 	void DebugUITest::Initialize()
 	{
-		/*GraphicsDevice::Main.SetBackgroundColor(Color::CornflowerBlue);
+		GraphicsDevice::Main.SetBackgroundColor(Color::CornflowerBlue);
 		GraphicsDevice::Sub.SetBackgroundColor(Color::BlueViolet);
 
 		HideConsole();
@@ -30,29 +30,29 @@ namespace Test
 		auto debugUI = New<DebugUI>(bg2);
 		Components.Add(debugUI);
 
-		super::Initialize();*/
+		super::Initialize();
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	void DebugUITest::LoadContent()
 	{
-		/*Ptr<TileSet256> tileSet = Content.Load<TileSet256>("zeldaset");
+		Ptr<TileSet256> tileSet = Content.Load<TileSet256>("zeldaset");
 		tileSet->SetPalette(Content.Load<Palette>("zeldaset_pal"));
 
 		GraphicsDevice::Main.BackgroundMemory.AddTiles(tileSet);
 
-		super::LoadContent();*/
+		super::LoadContent();
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	void DebugUITest::Update(const GameTime &gameTime)
 	{	
-		//super::Update(gameTime);
+		super::Update(gameTime);
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	void DebugUITest::Draw(const GameTime &gameTime)
 	{
-		//super::Draw(gameTime);
+		super::Draw(gameTime);
 	}
-}
+}*/

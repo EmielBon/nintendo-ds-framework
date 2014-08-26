@@ -3,6 +3,9 @@
   <Project Name="aRPiGi_codelite" Path="aRPiGi_codelite.project" Active="Yes"/>
   <Project Name="arm7" Path="arm7/arm7.project"/>
   <Project Name="arm9" Path="arm9/arm9.project" Active="No"/>
+  <Environment>
+    <![CDATA[]]>
+  </Environment>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Project Name="aRPiGi_codelite" ConfigName="Debug"/>
@@ -15,7 +18,4 @@
       <Project Name="arm9" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
-  <Environment>
-    <![CDATA[]]>
-  </Environment>
 </CodeLite_Workspace>

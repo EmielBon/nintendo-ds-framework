@@ -14,9 +14,6 @@ namespace Graphics
 
 	public:
 
-		/// Empty Constructor
-		BackgroundMemory() = default;
-
 		///
 		BackgroundMemory(bool isMain);
 

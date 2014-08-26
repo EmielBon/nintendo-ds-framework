@@ -1,11 +1,11 @@
-#include "TilesManager.h"
+/*#include "TilesManager.h"
 #include "Assert.h"
 #include "TileSet.h"
 
 namespace Graphics
 {
 	Dictionary< Ptr<TileSet>, u32 > TilesManager::TileSetToIdentifier;
-	u32                          TilesManager::nextFreeIdentifier = 0;
+	u32                             TilesManager::nextFreeIdentifier = 0;
 
 	//-------------------------------------------------------------------------------------------------
 	void TilesManager::AddTileSet( Ptr<TileSet> tileSet )
@@ -51,4 +51,4 @@ namespace Graphics
 		return tileSet->Tiles[identifier - IdentifierForTileSet(tileSet)];
 	}
 
-}
+}*/

@@ -8,8 +8,6 @@
 
 #include "types.h"
 #include "Background.h"
-#include "BackgroundMemory.h"
-#include "SpriteMemory.h"
 #include "ObjectAttributeMemory.h"
 #include "TextureMemory.h"
 #include "ViewPort.h"
@@ -125,8 +123,8 @@ namespace Graphics
 
 	public:
 
-		Graphics::BackgroundMemory BackgroundMemory;
-		Graphics::SpriteMemory     SpriteMemory;
+		Ptr<Graphics::BackgroundMemory> BackgroundMemory;
+		Ptr<Graphics::SpriteMemory>     SpriteMemory;
 		Graphics::ObjectAttributeMemory ObjectAttributeMemory;
 		Graphics::TextureMemory    TextureMemory;
 		Background &Background0, &Background1, &Background2, &Background3;

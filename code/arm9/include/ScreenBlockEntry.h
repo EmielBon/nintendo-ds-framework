@@ -14,6 +14,7 @@ namespace Graphics
 
 		ScreenBlockEntry(u16 value);
 
+		// todo: paletteIndex can probably be u32, because u16 is already too large
 		ScreenBlockEntry(u16 tileIndex, bool flippedHorizontal, bool flippedVertical, u16 paletteIndex);
 	
 		int TileIndex();

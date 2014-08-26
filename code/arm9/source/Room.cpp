@@ -68,8 +68,8 @@ namespace Framework2D
 		case 3: bg = &Background3; break;
 		default: CRASH("Background index out of range [0..3] for index (" << index << ")"); break;
 		}
-
-		background->CopyToHardwareMap(index);
+	
+		background->CopyToHardwareMap(*bg->GetMap());
 		bg->ShowMap(index);
 		bg->Enable();
 		bg->SetLayer(index);

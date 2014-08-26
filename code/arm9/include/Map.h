@@ -2,13 +2,10 @@
 
 #include "types.h"
 #include "Size.h"
-#include "MapTile.h"
-#include "TilesManager.h"
 #include "ScreenBlockEntry.h"
 
 namespace Graphics
 {
-	// todo: rename
 	class Map
 	{
 	public:
@@ -17,19 +14,16 @@ namespace Graphics
 		Map();
 
 		/// Constructor with pointer to this map's BackgroundMemory location
-		Map(BackgroundMemory* backgroundMemory, int index);
+		Map(Graphics::BackgroundMemory *backgroundMemory, int index);
 
 		///
 		bool IsInitialized() const;
 
 		///
-		void SetTile(int x, int y, const MapTile &tile);
+		void SetTile(int x, int y, ScreenBlockEntry tile);
 
 		/// 
-		void SetTile(int index, const MapTile &tile);
-
-		///
-		void SetClearTile(const MapTile &tile);
+		void SetTile(int index, ScreenBlockEntry tile);
 
 		///
 		void Clear();
@@ -39,25 +33,24 @@ namespace Graphics
 
 	private:
 
-		ScreenBlockEntry MapTileToScreenBlockEntry(const MapTile &mapTile) const;
-
-	private:
-
-		BackgroundMemory* backgroundMemory;
 		int               index;
 		Framework::Size   size; 
 		u16*              location;
-		ScreenBlockEntry  clearTile;
+		
+	public:
+
+		Graphics::BackgroundMemory *BackgroundMemory;
+		ScreenBlockEntry            ClearTile;
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline Map::Map() : backgroundMemory(NULL), index(-1), size(32, 32), location(NULL)
+	inline Map::Map() : index(-1), size(32, 32), location(nullptr), BackgroundMemory(nullptr)
 	{
 
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline void Map::SetTile(int x, int y, const MapTile &tile)
+	inline void Map::SetTile(int x, int y, ScreenBlockEntry tile)
 	{
 		SetTile(x + y * size.Width, tile);
 	}
@@ -71,6 +64,14 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	inline bool Map::IsInitialized() const
 	{
-		return backgroundMemory != NULL && location != NULL && index >= 0;
+		return (BackgroundMemory != nullptr && location != nullptr && index >= 0);
+	}
+	
+	//-------------------------------------------------------------------------------------------------
+	inline void Map::SetTile(int index, ScreenBlockEntry tile)
+	{
+		sassert(IsInitialized(), "Setting tile in uninitialized map");
+		sassert(index >= 0 && index < size.Width * size.Height, "Internal map index out of bounds");
+		location[index] = tile;
 	}
 }

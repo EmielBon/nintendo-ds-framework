@@ -17,7 +17,6 @@ namespace System
 	Console::Console(Graphics::Background& background, int x, int y, int width, int height) 
 		: super(background, "font8x8@4"), X(x), Y(y), Width(width), Height(height), redraw(true)
 	{
-		ASSERT(Width < Screen::Width && Height < Screen::Height, "Too large Console size");
 		ASSERT(Width % 8 == 0 && Height % 8 == 0, "Invalid Console size");
 	}
 

@@ -24,10 +24,9 @@
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "BasicEffect.h"
-#include "TilesManager.h"
+//#include "TilesManager.h"
 #include "Sprite.h"
 #include "SpriteSet.h"
-#include "SpriteSubImage.h"
 
 namespace Framework
 {
@@ -59,9 +58,9 @@ namespace Framework
 		tiles->tileSize.Height = header.Height;
 		tiles->AddTiles(*(fs.ReadAll<Tile4bpp>()));
 
-		ASSERT(tiles->tileSize.Width % 8 == 0 || tiles->tileSize.Height % 8 == 0, "Error: Invalid tile size");
+		sassert(tiles->tileSize.Width % 8 == 0 || tiles->tileSize.Height % 8 == 0, "Error: Invalid tile size");
 		
-		TilesManager::AddTileSet(tiles);
+		//TilesManager::AddTileSet(tiles);
 
 		return tiles;
 	}
@@ -78,17 +77,19 @@ namespace Framework
 		};
 
 		auto header = fs.ReadHeader<TileSetFileHeader>();
-		auto tiles = New<TileSet256>();
-		tiles->AddTiles(*(fs.ReadAll<Tile8bpp>()));
-		tiles->tileSize.Width  = header.Width;
-		tiles->tileSize.Height = header.Height;
-		//tiles->Transparent = header.Transparent;
+		auto tileSet = New<TileSet256>();
+		tileSet->AddTiles(*(fs.ReadAll<Tile8bpp>()));
+		tileSet->tileSize.Width  = header.Width;
+		tileSet->tileSize.Height = header.Height;
+		
+		auto palette = Load<Palette>(resourceName + "_pal");
+		
+		for (auto &tile : tileSet->Tiles)
+			tile.AddPalette(palette);
+ 
+		sassert(tileSet->tileSize.Width % 8 == 0 || tileSet->tileSize.Height % 8 == 0, "Error: Invalid tile size");
 
-		ASSERT(tiles->tileSize.Width % 8 == 0 || tiles->tileSize.Height % 8 == 0, "Error: Invalid tile size");
-
-		TilesManager::AddTileSet(tiles);
-
-		return tiles;
+		return tileSet;
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -109,6 +110,7 @@ namespace Framework
 		Ptr<MapResource>  mapData;
 		Ptr<CollisionMap> collisionMap;
 		Ptr<TileSet256>   tileSet;
+		Ptr<Palette>      palette;
 
 		for(u32 i = 0; i < lines.size(); ++i)
 		{
@@ -134,28 +136,21 @@ namespace Framework
 			if (type == "c") collisionMap = ContentManager::Load<CollisionMap>(fileName);
 			// \todo Support for loading more than one tile set per map
 			if (type == "t") tileSet      = ContentManager::Load<TileSet256>(fileName);
-			if (type == "p") tileSet->SetPalette( ContentManager::Load<Palette>(fileName) );
 		}
 
-		Ptr<TiledBackground> map = New<TiledBackground>(mapSize.Width, mapSize.Height);
-		map->CollisionMap = collisionMap;
+		auto tiledBackground = New<TiledBackground>(mapSize.Width, mapSize.Height, 8);
+		tiledBackground->CollisionMap = collisionMap;
 
-		auto& screenBlockEntries = mapData->ScreenBlockEntries;
+		auto &screenBlockEntries = mapData->ScreenBlockEntries;
 
 		for(u32 i = 0; i < screenBlockEntries.size(); ++i)
 		{
-			ScreenBlockEntry screenBlockEntry = screenBlockEntries[i];
-
-			MapTile mapTile;
-			mapTile.TileIdentifier = TilesManager::IdentifierForTile(tileSet, screenBlockEntry.TileIndex());
-			mapTile.PaletteIndex   = screenBlockEntry.PaletteIndex();
-			mapTile.FlipHorizontal = screenBlockEntry.IsFlippedHorizontal();
-			mapTile.FlipVertical   = screenBlockEntry.IsFlippedHorizontal();
-
-			map->SetTile(i, mapTile);
+			auto screenBlockEntry = screenBlockEntries[i];
+			tiledBackground->Tiles[i] = &tileSet->Tiles[screenBlockEntry.TileIndex()];
+			tiledBackground->TileParameters[i] = screenBlockEntry;
 		}
 
-		return map;
+		return tiledBackground;
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -191,19 +186,20 @@ namespace Framework
 			}
 			// \todo Support for loading more than one tile set per map
 			if (type == "t") tileSet = ContentManager::Load<TileSet256>(fileName);
-			if (type == "p") tileSet->SetPalette(ContentManager::Load<Palette>(fileName));
 			if (type == "i")
 			{
 				String name = tokens[1];
-				List<SpriteSubImage> subImages;
-				for (int i = 2; i < tokens.size(); ++i)
+				List<TiledImage> subImages;
+				u32 tilesetBaseIdentifier = tileSet->Tiles[0].Identifier;//TilesManager::IdentifierForTileSet(tileSet);
+				int tileCount = size.Width * size.Height;
+				for (u32 i = 2; i < tokens.size(); ++i)
 				{
-					SpriteSubImage subImage(size.Width, size.Height);
-					u32 tilesetBaseIdentifier = TilesManager::IdentifierForTileSet(tileSet);
-					int tileCount = size.Width * size.Height;
+					TiledImage subImage(size.Width, size.Height, 8);
 					for (int j = 0; j < tileCount; ++j)
-						subImage.TileIdentifiers[j] = tilesetBaseIdentifier + StringHelper::ParseInt(tokens[i]) * tileCount + j;
-
+					{
+						u32 subImageBaseIdentifier = tilesetBaseIdentifier + StringHelper::ParseInt(tokens[i]) * tileCount;
+						subImage.Tiles[j] = &tileSet->Tiles[subImageBaseIdentifier + j];
+					}
 					subImages.push_back(subImage);
 				}
 				auto sprite = New<Sprite>(subImages);
@@ -238,7 +234,7 @@ namespace Framework
 	Ptr<Palette> ContentManager::LoadResourceFromStream(const String &resourceName, FileStream &fs)
 	{
 		Ptr<Palette> palette = New<Palette>();
-		palette->Entries = *(fs.ReadAll<u16>());
+		palette->Colors = *(fs.ReadAll<u16>());
 		return palette;
 	}
 
@@ -254,7 +250,7 @@ namespace Framework
 
 		auto header = fs.ReadHeader<CollisionMapFileHeader>();
 		auto colmap = New<CollisionMap>(header.Width, header.Height);
-		colmap->Entries = *(fs.ReadAll<u8>());
+		colmap->Colors = *(fs.ReadAll<u8>());
 
 		return colmap;
 	}

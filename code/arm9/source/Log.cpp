@@ -13,7 +13,7 @@ namespace Debug
 
 		if (activeEntryStack.empty())
 		{
-			Entries.push_back(entry);
+			Colors.push_back(entry);
 			return &Last();
 		}
 		else
@@ -49,7 +49,7 @@ namespace Debug
 	{
 		while( HasActiveEntry() )
 			activeEntryStack.pop();
-		Entries.clear();
+		Colors.clear();
 	}
 
 	//-------------------------------------------------------------------------------------------------

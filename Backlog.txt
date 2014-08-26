@@ -1,6 +1,36 @@
+Completed:
+x Separate types into different files.
+x Rename TreeMap to Dictionary
+x Fully move palettes from TileSet to Tile, so every tile knows exactly what color their pixels are
+
+Pending:
 - Replace all namespaces with a common one like in OpenCV, which uses the cv:: namespace
 	- Rationale: namespaces are to avoid naming conflicts, we don't have any in our project. A single namespace is easier to use.
 - Turn the engine code into a statically linked library, so the test projects won't have to be rebuilt every time an engine feature changes.
 - Move the automatic memory management from the memory classes (BackgroundMemory, PaletteMemory etc.) to a separete class, making all of them simpler to understand.
-x Separate types into different files.
-- Rename TreeMap to Dictionary
+- Investigate whether it is possible to have directories in gamedata, and implement if so.
+- Replace all ASSERT and ASSERT2 statements with the new sassert
+- Implement a user-defined literal for fixed point numbers
+	- If not possible due to variable decimal point placement, choose either fx12 or fx16 for the literal
+- Simplify API for tiles
+- Let TileMemory::AddTile and PaletteMemory::AddColor return the index they were added to
+	Rationale: Often you have to add a tile/color and directly look up the location. This prevents the lookup.
+- Sort out and reduce the number of includes in headers
+- Cleanup debug system
+	- Console
+	- Make DebugUI work for other classes than Test3D
+- Let ContentManager retain weak pointers (WeakPtr) to the loaded resources instead of strong pointers (Ptr)
+
+Possibly not:
+- Let tilesets with a palette size <= 16 be loaded as 4pp tiles 
+
+
+
+
+
+
+
+
+
+
+

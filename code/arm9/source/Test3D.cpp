@@ -11,8 +11,8 @@
 #include "TileSet256.h"
 #include "Palette.h"
 #include "Background.h"
-#include "TilesManager.h"
 #include "Map.h"
+#include "BackgroundMemory.h"
 
 // 3D Graphics
 #include "GraphicsDevice.h"
@@ -111,14 +111,16 @@ namespace Test
 		
 		// Create the background
 		auto tileSet = Content.Load<TileSet256>("background");
-		tileSet->SetPalette( Content.Load<Palette>("background_pal") );
-		tileSet->Transparent = false;
+		// Set the palette to non-transparent. Since every tile in a tileset retains a pointer to their common palette, it only has to be changed for a single tile.
+		tileSet->Tiles[0].Palettes[0]->Transparent = false;
 		
-		auto &map = GraphicsDevice.BackgroundMemory.Maps[0];
+		auto &map = GraphicsDevice.BackgroundMemory->Maps[0];
 		
 		for(int i = 0; i < tileSet->GetTileCount8x8(); ++i)
 		{
-			map.SetTile(i, TilesManager::IdentifierForTile(tileSet, i) );
+			auto &tile = tileSet->Tiles[i];
+			GraphicsDevice.BackgroundMemory->AddTile(tile);
+			map.SetTile(i, ScreenBlockEntry(tile.Identifier));
 		}
 
 		super::LoadContent();

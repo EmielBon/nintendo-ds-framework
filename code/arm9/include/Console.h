@@ -78,5 +78,4 @@ namespace System
 	{
 		return entries.size();
 	}
-
 }

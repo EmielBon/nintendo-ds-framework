@@ -9,7 +9,7 @@ namespace Graphics
 	using namespace Framework;
 	
 	//-------------------------------------------------------------------------------------------------
-	PaletteMemory::PaletteMemory(bool isMain, u32 type) : super(isMain, type)
+	PaletteMemory::PaletteMemory(bool isMain, u32 type) : super(isMain, type), currentFreeIndex(0)
 	{
 		if (GetType() == Memory_BGPAL || type == Memory_SPRPAL)
 			InitializeWithSize( 256 * sizeof(u16) ); // BG and SPR memory have 256 entries of dedicated palette memory
@@ -18,8 +18,8 @@ namespace Graphics
 		{
 		case Memory_BGPAL:  location = IsMain() ?     BG_PALETTE :     BG_PALETTE_SUB; break;
 		case Memory_SPRPAL: location = IsMain() ? SPRITE_PALETTE : SPRITE_PALETTE_SUB; break;
-		case Memory_TEXPAL: location = IsMain() ?         VRAM_E :               NULL; break; // Todo: VRAM_E is only right in 1 case, derive correct
-		default:            location = NULL;                                           break;
+		case Memory_TEXPAL: location = IsMain() ?         VRAM_E :            nullptr; break; // Todo: VRAM_E is only right in 1 case, derive correct
+		default: CRASH("No memory location for palette memory type " << GetType());    break;
 		}
 
 		// Todo: make dependent on size (and dynamic)
@@ -28,84 +28,44 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void PaletteMemory::AddPalette(Ptr<Palette> palette, bool transparent)
+	void PaletteMemory::AddPalette(Ptr<Palette> palette)
 	{
-		if (HasPalette(palette)) // Palette is already in this memory
-			return;
-
-		int count = palette->EntryCount();
-		int index = FindFreeSequence(transparent ? count - 1 : count);
-
-		ASSERT2(index != -1, "No free sequence of " << count << " found!");
-
-		CopyPalette(palette, index, transparent);
+		auto &colors = palette->Colors;
+		for (u32 i = 0; i < colors.size(); ++i)
+		{
+			if (palette->Transparent && i == 0)
+				continue;
+			AddColor(colors[i]);
+		}
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void PaletteMemory::AddDynamicPalette(const List<Ptr<Palette>> &palettes, bool transparent)
+	int PaletteMemory::AddDynamicPalette(const List<Ptr<Palette>> &palettes)
 	{
-		if (palettes.size() == 0)
-			return;
+		int width  = palettes[0]->Count();
+		int height = palettes.size(); 
+		int startIndex = FindFreeSequence2D(width, height);
+		sassert(startIndex != -1, "No free sequence found!");
+		auto pos = PositionForIndex(startIndex);
 		
-		// Todo: Assumption that all sub-palettes are present in palette ram if the first one is
-		if (HasPalette(palettes[0])) // Palette is already in this memory
-			return;
-
-		int count = palettes[0]->EntryCount();
-		int index = FindFreeSequence2D(transparent ? count - 1 : count, palettes.size());
-
-		ASSERT(index != -1, "No free sequence found!");
-
-		for(u32 i = 0; i < palettes.size(); ++i)
-			CopyPalette(palettes[i], index + 16 * i, transparent);
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	bool PaletteMemory::Invalidate(Ptr<Palette> palette)
-	{
-		if (!HasPalette(palette))
-			return false;
-
-		int index = GetIndex(palette);
-
-		for(int i = 0; i < palette->EntryCount(); ++i)
+		int i = (palettes[0]->Transparent) ? 1 : 0;
+		for (         ; i < width;  ++i)
+		for (int j = 0; j < height; ++j)
 		{
-			free[index + i] = true;
+			int x = pos.x + i;
+			int y = pos.y + j;
+			auto palette = palettes[j];
+			// This can overwrite a duplicate color entry in ColorToPaletteIndex. 
+			// However, this is fine for 256 color tiles, since they would just use the new value.
+			// It is also fine for 16 color tiles, since they switch vertically by palette number, as long as they retain their 2D start position.
+			// It can be problamatic for dynamic palettes if the first palette is used for indexing 
+			SetColorForIndex( palette->Colors[i], IndexForPosition(x, y) );
 		}
-		indexMap.erase(palette);
-		return true;
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	int PaletteMemory::FindFreeSequence(int width) const
-	{
-		if (width < 1 || width > 256)
-			return -1;
-
-		int index = 1;
-		int counter = 0;
-
-		// Start at 1 because 0 is transparent
-		for(int i = 1; i < 256; ++i)
-		{
-			if ( IsFree(i) )
-			{
-				counter++;
-			}
-			else
-			{
-				if (i >= 256 - width) // Impossible to fit
-					break;
-
-				counter = 0;
-				index = i + 1;
-			}
-
-			if (counter == width)
-				return index;
-		}
-
-		return -1;
+		
+		return startIndex;
+		/*printf "Hoi Emiel-Cees\n"
+		printf "Ik hou van jou\n"
+		printf "Xoxox"*/
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -123,9 +83,7 @@ namespace Graphics
 
 			for(int xx = 0; xx < width;  ++xx)
 			for(int yy = 0; yy < height; ++yy)
-			{
 				found = found && IsFree(x + xx, y + yy);
-			}
 
 			if (found)
 				return IndexForPosition(x, y);
@@ -133,40 +91,45 @@ namespace Graphics
 
 		return -1;
 	}
-
+	
 	//-------------------------------------------------------------------------------------------------
-	void PaletteMemory::CopyPalette(Ptr<Palette> palette, int index, bool transparent)
+	void PaletteMemory::SetColorForIndex(u16 color, int index)
 	{
-		List<u16> entries = (transparent) ? List<u16>(palette->Entries.begin() + 1, palette->Entries.end()) 
-			                               : palette->Entries;
-
-		ASSERT(location != NULL, "Copy data to NULL");
-
-		bool success = Add(entries, location + index);
-
-		ASSERT(success, "Failed to copy palette");
-
-		for(int i = 0; i < palette->EntryCount(transparent); ++i)
+		location[index] = color;
+		free[index] = false;
+		RegisterPaletteIndexForColor(color, index);
+	}
+	
+	//-------------------------------------------------------------------------------------------------
+	int PaletteMemory::SetColorToNextFreeIndex(u16 color)
+	{
+		int index = FindNextFreeIndex();
+		SetColorForIndex(color, index);
+		return index;
+	}
+	
+	//-------------------------------------------------------------------------------------------------
+	int PaletteMemory::FindNextFreeIndex()
+	{
+		// todo: make upper limit dependent on actual size
+		for (int i = 0; i < 256; ++i)
 		{
-			free[index + i] = false;
+			int index = (currentFreeIndex + i) % 256;
+			currentFreeIndex = (currentFreeIndex + 1) % 256;
+			if (IsFree(index))
+			{
+				return index;
+			}
+			else
+			{
+				ASSERT(location, "sss");
+				CRASH(index);
+			}
 		}
-
-		indexMap[palette] = (transparent) ? index - 1 : index;
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	int PaletteMemory::GetIndex(Ptr<Palette> palette)
-	{
-		if (!HasPalette(palette)) 
-			return -1; // Palette not in memory
-		return indexMap[palette];
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	Point PaletteMemory::GetPosition(Ptr<Palette> palette)
-	{
-		if (!HasPalette(palette)) 
-			return Point(-1, 0); // Palette not in memory
-		return PositionForIndex(indexMap[palette]);
+		CRASH("Palette memory full " << currentFreeIndex);
+		return -1;
+		/*while(!IsFree(currentFreeIndex))
+			currentFreeIndex++;
+		return currentFreeIndex;*/
 	}
 }

@@ -26,12 +26,10 @@ namespace Debug
 			oldLogSize = 0;
 		}
 
-		auto &entries = currentLog->Entries;
+		auto &entries = currentLog->Colors;
 
 		for(u32 i = oldLogSize; i < entries.size(); ++i)
-		{
 			Print(entries[i], 0);
-		}
 
 		oldLogSize = entries.size();
 	}
@@ -62,8 +60,6 @@ namespace Debug
 		auto &entries = entry.SubEntries;
 
 		for(auto it = entries.begin(); it != entries.end(); ++it)
-		{
 			Print(*it, depth + 1);
-		}
 	}
 }

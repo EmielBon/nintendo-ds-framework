@@ -20,7 +20,6 @@ namespace Test
 		GraphicsDevice::Sub.SetBackgroundColor(Color::BlueViolet);
 
 		LOG("Initialized stuff");
-
 		super::Initialize();
 	}
 

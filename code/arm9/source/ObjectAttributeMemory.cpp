@@ -6,7 +6,7 @@
 #include "TileSet256.h"
 #include "FixedHelper.h"
 #include "SpriteResource.h"
-#include "TilesManager.h"
+#include "SpriteMemory.h"
 #include <nds/dma.h>
 #include <nds/arm9/cache.h>
 
@@ -31,10 +31,8 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	void ObjectAttributeMemory::Update()
 	{
-		ASSERT(graphicsDevice != NULL && oam != NULL && location != NULL, "Error: OAM not initialized");
-
-		ASSERT2(sprites.size() < 2, "Count " << sprites.size());
-
+		sassert(graphicsDevice != nullptr && oam != nullptr && location != nullptr, "Error: OAM not initialized");
+		
 		for(u32 i = 0; i < sprites.size(); ++i)
 		{
 			auto& sprite        = *sprites[i];
@@ -77,9 +75,10 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	void ObjectAttributeMemory::DrawSprite(Ptr<Sprite> sprite, fx12 x, fx12 y, fx12 subImageIndex)
 	{
-		ASSERT(sprites.size() < SPRITE_MAX, "Error: Sprite limit reached");
+		sassert(sprites.size() < SPRITE_MAX, "Error: Sprite limit reached");
 		
-		if (!sprite) return;
+		if (!sprite) 
+			return;
 
 		sprite->X = (int)x;
 		sprite->Y = (int)y;
@@ -91,7 +90,9 @@ namespace Graphics
 		//{
 			// Add the tiles for this sprite to sprite memory
 			//ASSERT2(false, sprite->UniqueIndices.size());
-			graphicsDevice->SpriteMemory.AddTiles(sprite->UniqueIndices);
+			for (auto &subImage : sprite->SubImages)
+				for (auto tile : subImage.Tiles)
+					graphicsDevice->SpriteMemory->AddTile(*tile);
 			// Add the sprite to object attribute memory
 			Ptr<SpriteResource> oamSprite = Convert(*sprite);
 			oamSpriteMap[sprite] = oamSprite;
@@ -103,12 +104,12 @@ namespace Graphics
 	{
 		Ptr<SpriteResource> converted = New<SpriteResource>();
 
-		for(u32 i = 0; i < sprite.SubImages.size(); ++i)
+		for (auto &subImage : sprite.SubImages)
 		{
-			u32 tileIdentifier = sprite.SubImages[i].TileIdentifiers[0]; // Upper left tile is used for sprite indexing
+			u32 tileIdentifier = subImage.Tiles[0]->Identifier; // Upper left tile is used for sprite indexing
 			
 			SpriteEntry entry;
-			entry.gfxIndex = graphicsDevice->SpriteMemory.VRAMIndexForIdentifier(tileIdentifier);
+			entry.gfxIndex = graphicsDevice->SpriteMemory->VRAMIndexForTile(tileIdentifier);
 			entry.x = sprite.X;
 			entry.y = sprite.Y;
 			entry.isHidden = false;

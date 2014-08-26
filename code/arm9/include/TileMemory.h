@@ -1,9 +1,7 @@
 #pragma once
 
 #include "Memory2D.h"
-#include "PaletteMemory.h"
 #include "types.h"
-#include "TilesManager.h"
 
 namespace Graphics
 {
@@ -15,8 +13,6 @@ namespace Graphics
 
 	protected:
 
-		TileMemory();
-
 		TileMemory(bool isMain, u32 type);
 
 		virtual int TileBase() const = 0;
@@ -25,17 +21,15 @@ namespace Graphics
 
 	public:
 
-		/// Add a single tile to VRAM
-		void AddTile(u32 identifier);
+		/// Add a single tile to VRAM, returns the VRAM index it was copied to
+		// todo: remove dynamicPaletteStartIndex argument
+		u32 AddTile(const Tile &tile, int dynamicPaletteStartIndex = -1);
 
-		/// Add a single tile to VRAM, without checking if it is already in VRAM
-		void AddTileUnsafe(u32 identifier);
+		/// todo: rename
+		Ptr< List<byte> > OffsetPixelsForTile(const Tile &tile);
 
-		/// Add a complete tile set to VRAM
-		void AddTiles(const Set<u32> &identifiers);
-
-		///
-		Ptr< List<byte> > OffsetPixelsForTile(const Tile &tile, int offset, bool transparent);
+		/// todo: remove
+		Ptr< List<byte> > OffsetPixelsForTile(const Tile &tile, int offset);
 
 		///
 		void RegisterVRAMIndexForTile(u32 identifier, u32 VRAMIndex);
@@ -44,33 +38,14 @@ namespace Graphics
 		bool TileInVRAM(u32 identifier) const;
 
 		///
-		u32 VRAMIndexForIdentifier(u32 identifier) const;
+		int VRAMIndexForTile(u32 identifier) const;
 
 	public:
 
-		Graphics::PaletteMemory PaletteMemory;
+		Ptr<Graphics::PaletteMemory> PaletteMemory;
 		int nextAvailableIndex;
 		Dictionary<u32, u32> IdentifierToVRAMIndex;
 	};
-
-	//-------------------------------------------------------------------------------------------------
-	inline TileMemory::TileMemory() : nextAvailableIndex(0)
-	{
-
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	inline TileMemory::TileMemory(bool isMain, u32 type) : super(isMain, type), PaletteMemory(isMain, type | Memory_PAL), nextAvailableIndex(0)
-	{
-		
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	finline void TileMemory::AddTile(u32 identifier)
-	{
-		if (!TileInVRAM(identifier))
-			AddTileUnsafe(identifier);
-	}
 
 	//-------------------------------------------------------------------------------------------------
 	finline void TileMemory::RegisterVRAMIndexForTile( u32 identifier, u32 VRAMIndex )
@@ -81,13 +56,13 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	finline bool TileMemory::TileInVRAM( u32 identifier ) const
 	{
-		return (IdentifierToVRAMIndex.find(identifier) != IdentifierToVRAMIndex.end());
+		return VRAMIndexForTile(identifier) != -1;
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	finline u32 TileMemory::VRAMIndexForIdentifier( u32 identifier ) const
+	finline int TileMemory::VRAMIndexForTile( u32 identifier ) const
 	{
-		ASSERT(TileInVRAM(identifier), "Tile not in VRAM");
-		return IdentifierToVRAMIndex.at(identifier);
+		auto it = IdentifierToVRAMIndex.find(identifier);
+		return (it == IdentifierToVRAMIndex.end()) ? -1 : it->second;
 	}
 }

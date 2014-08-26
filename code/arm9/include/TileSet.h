@@ -16,12 +16,10 @@ namespace Graphics
 {
 	class TileSet
 	{
-	friend class TileMemory;
-
 	protected:
 
 		/// Empty Constructor
-		TileSet();
+		TileSet() = default;
 
 	public:
 
@@ -61,39 +59,12 @@ namespace Graphics
 		///
 		int GetByteSize() const;
 
-		/// Accessor to the tile data of this tile set
-		Tile& operator[] (int index);
-
-	protected:
-
-		///
-		//bool IsValid() const;
-
-		/// Add a palette to this tile set
-		bool AddPalette(Ptr<Palette> palette);
-
-		/// Returns whether this tile set has one or more palettes
-		bool HasPalette() const;
-
-		/// Returns whether this tile set has more than one palette
-		bool HasDynamicPalette() const;
-
 	public:
 
 		Framework::Size tileSize;
+		// todo: use a list of TiledImages instead of Tiles
 		List<Tile> Tiles;
-		bool Transparent;
-		int Identifier;
-
-	protected:
-
-		List< Ptr<Graphics::Palette> > Palettes;
 	};
-
-	//-------------------------------------------------------------------------------------------------
-	inline TileSet::TileSet() : Transparent(true), Identifier(0)
-	{
-	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline Framework::Size TileSet::GetTileSize() const
@@ -124,35 +95,17 @@ namespace Graphics
 	{
 		return (IsEmpty()) ? 0 : GetTileCount8x8() * TileByteSize();
 	}
-
-	//-------------------------------------------------------------------------------------------------
-	inline Tile& TileSet::operator[] (int index)
-	{
-		return Tiles[index];
-	}
 	
-	//-------------------------------------------------------------------------------------------------
-	inline bool TileSet::HasPalette() const
-	{
-		return (Palettes.size() > 0);
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	inline bool TileSet::HasDynamicPalette() const
-	{
-		return (Palettes.size() > 1);
-	}
-
 	//-------------------------------------------------------------------------------------------------
 	inline int TileSet::TileByteSize() const
 	{
-		return (IsEmpty()) ? 0 : Tiles[0].ByteSize;
+		return (IsEmpty()) ? 0 : Tiles[0].ByteSize();
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline bool TileSet::TileIsCompatible(const Tile &tile) const
 	{
-		return (IsEmpty() || tile.Bpp == Tiles[0].Bpp);
+		return (IsEmpty() || tile.BitsPerPixel() == Tiles[0].BitsPerPixel());
 	}
 
 	//-------------------------------------------------------------------------------------------------

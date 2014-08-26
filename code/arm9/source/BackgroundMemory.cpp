@@ -4,7 +4,6 @@
 #include "TiledBackground.h"
 #include "Logging.h"
 #include "MapResource.h"
-#include "TilesManager.h"
 #include "SetHelper.h"
 #include <nds/arm9/background.h>
 

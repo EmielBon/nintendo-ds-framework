@@ -6,7 +6,7 @@ namespace Framework2D
 	bool CollisionMap::Collision(int x, int y) const
 	{
 		int tile = GetTileFor(x, y);
-		return ( tile != -1 && Entries[tile] != 0 );
+		return ( tile != -1 && Colors[tile] != 0 );
 	}
 
 	//-------------------------------------------------------------------------------------------------

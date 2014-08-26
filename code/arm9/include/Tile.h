@@ -32,8 +32,11 @@ namespace Graphics
 		///
 		Tile(const Tile8bpp &tile);
 
-		///
-		Ptr< List<byte> > GetPixelData() const;
+		/// 
+		int BitsPerPixel() const;
+		
+		/// Size in bytes of this tile, can be either 32 (for 4bpp tiles) or 64 (for 8bpp tiles)
+		int ByteSize() const;
 		
 		/// Returns the value of the pixel at the given index. Index is the pixel index [0-63]
 		int GetPixel(int index) const;
@@ -41,19 +44,26 @@ namespace Graphics
 		/// Sets the value of the pixel. Index is the pixel index [0-63], value is an index in the palette
 		void SetPixel(int index, int value);
 
+		/// 
+		void AddPalette(Ptr<Palette> palette);
+
+	private:
+	
+		static u32 nextFreeIdentifier;
+
 	public:
 
-		int Bpp;      // Number of bits per pixel of this tile, can be either 4 or 8
-		int ByteSize; // Size in bytes of this tile, can be either 32 (for 4bpp tiles) or 64 (for 8bpp tiles)
-		u32 Identfier;
-		Ptr< List<byte> > Pixels; // Todo: Rename, Pixels[0] for instance does not give you the first pixel in case of 4bpp, but the first and the second
+		u32                  Identifier;
+		List< Ptr<Palette> > Palettes;
+		Ptr< List<byte> >    Pixels; // todo: Rename, Pixels[0] for instance does not give you the first pixel in case of 4bpp, but the first and the second
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline Tile::Tile(int bpp) : Bpp(bpp), ByteSize(bpp * 64 / 8)
+	inline Tile::Tile(int bpp)
 	{
+		Identifier = nextFreeIdentifier++;
 		Pixels = New< List<byte> >();
-		Pixels->resize(ByteSize);
+		Pixels->assign(bpp * 64 / 8, 0);
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -67,10 +77,16 @@ namespace Graphics
 	{
 		Pixels->assign(tile.Pixels, tile.Pixels+64);
 	}
-
+	
 	//-------------------------------------------------------------------------------------------------
-	inline Ptr< List<byte> > Tile::GetPixelData() const
+	inline int Tile::BitsPerPixel() const
 	{
-		return Pixels;
+		return ByteSize() * 8 / 64;
+	}
+	
+	//-------------------------------------------------------------------------------------------------
+	inline int Tile::ByteSize() const
+	{
+		return Pixels->size();
 	}
 }

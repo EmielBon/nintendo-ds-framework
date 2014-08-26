@@ -254,9 +254,9 @@ namespace Debug
 			Console->LoadContent();
 			LOG_ENABLE();
 			ShowConsole();
-			for(u32 i = 0; i < StandardLog.Entries.size(); ++i)
+			for(u32 i = 0; i < StandardLog.Colors.size(); ++i)
 			{
-				LogPrinter::Print(StandardLog.Entries[i], 0);
+				LogPrinter::Print(StandardLog.Colors[i], 0);
  			}
 			initialized = true;
 		}

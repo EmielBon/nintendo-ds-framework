@@ -53,7 +53,7 @@ namespace Debug
 	public:
 
 		bool enabled;
-		List<LogEntry> Entries;
+		List<LogEntry> Colors;
 	};
 
 	//-------------------------------------------------------------------------------------------------
@@ -102,13 +102,13 @@ namespace Debug
 	inline void Log::CancelEntry()
 	{
 		EndEntry();
-		Entries.pop_back();
+		Colors.pop_back();
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline LogEntry& Log::Last()
 	{
-		return Entries.back();
+		return Colors.back();
 	}
 
 	//-------------------------------------------------------------------------------------------------

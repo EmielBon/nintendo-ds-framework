@@ -24,8 +24,8 @@ namespace Graphics
 		///
 		void AddColor(float red, float green, float blue);
 
-		/// 
-		int EntryCount(bool transparent = false) const;
+		/// Returns the number of colors in this palette, excluding the first one if the palette is transparent
+		int Count() const;
 
 		///
 		bool IsEmpty() const;
@@ -42,37 +42,38 @@ namespace Graphics
 
 	public:
 
-		List<u16> Entries;
+		List<u16> Colors;
+		bool Transparent;
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline Palette::Palette(int size)
+	inline Palette::Palette(int size) : Transparent(true)
 	{
-		Entries.resize(size);
+		Colors.resize(size);
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline int Palette::EntryCount(bool transparent) const
+	inline int Palette::Count() const
 	{
-		int entries = Entries.size();
-		return (transparent) ? entries -1 : entries;
+		int count = Colors.size();
+		return (Transparent) ? count - 1 : count;
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline bool Palette::IsEmpty() const
 	{
-		return EntryCount() == 0;
+		return Count() == 0;
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline int Palette::GetByteSize() const
 	{
-		return Entries.size() * sizeof(u16);
+		return Colors.size() * sizeof(u16);
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline u16& Palette::operator[] (int index)
 	{
-		return Entries[index];
+		return Colors[index];
 	}
 }

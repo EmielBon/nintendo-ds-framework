@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 #include "Game.h"
 #include "types.h"
@@ -18,4 +18,4 @@ namespace Test
 		void Update(const GameTime &gameTime);
 		void Draw(const GameTime &gameTime);
 	};
-}
+}*/
