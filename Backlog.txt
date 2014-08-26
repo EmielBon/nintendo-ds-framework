@@ -2,7 +2,10 @@ Completed:
 x Separate types into different files.
 x Rename TreeMap to Dictionary
 x Fully move palettes from TileSet to Tile, so every tile knows exactly what color their pixels are
-
+x Simplify API for tiles
+x Let TileMemory::AddTile and PaletteMemory::AddColor return the index they were added to
+	Rationale: Often you have to add a tile/color and directly look up the location. This prevents the lookup.
+	
 Pending:
 - Replace all namespaces with a common one like in OpenCV, which uses the cv:: namespace
 	- Rationale: namespaces are to avoid naming conflicts, we don't have any in our project. A single namespace is easier to use.
@@ -12,9 +15,6 @@ Pending:
 - Replace all ASSERT and ASSERT2 statements with the new sassert
 - Implement a user-defined literal for fixed point numbers
 	- If not possible due to variable decimal point placement, choose either fx12 or fx16 for the literal
-- Simplify API for tiles
-- Let TileMemory::AddTile and PaletteMemory::AddColor return the index they were added to
-	Rationale: Often you have to add a tile/color and directly look up the location. This prevents the lookup.
 - Sort out and reduce the number of includes in headers
 - Cleanup debug system
 	- Console
@@ -25,15 +25,4 @@ Pending:
 - Re-implement GetMap for backgrounds and make it so they always show a map [0..7]. By default Background[i] should show Map[i]
 
 Possibly not:
-- Let tilesets with a palette size <= 16 be loaded as 4pp tiles 
-
-
-
-
-
-
-
-
-
-
-
+- Let tilesets with a palette size <= 16 be loaded as 4pp tiles
