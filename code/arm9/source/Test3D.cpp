@@ -79,7 +79,7 @@ namespace Test
 		graphics.PreferMultiSampling = false;
 		graphics.ApplyChanges();
 		// Set the color for the background
-		GraphicsDevice::Main.SetBackgroundColor( Color::DeepSkyBlue );
+		GraphicsDevice::Main.SetBackgroundColor( Color::Black );
 
 		super::Initialize();
 	}

@@ -31,6 +31,7 @@
     <ClCompile Include="source\GameTime.cpp" />
     <ClCompile Include="source\GraphicsDeviceManager.cpp" />
     <ClCompile Include="source\Component.cpp" />
+    <ClCompile Include="source\JumpBumpGame.cpp" />
     <ClCompile Include="source\Map.cpp" />
     <ClCompile Include="source\Log.cpp" />
     <ClCompile Include="source\Logging.cpp" />
@@ -43,6 +44,7 @@
     <ClCompile Include="source\ProfilingManager.cpp" />
     <ClCompile Include="source\ProfilingResult.cpp" />
     <ClCompile Include="source\ProfilingTest.cpp" />
+    <ClCompile Include="source\Rabbit.cpp" />
     <ClCompile Include="source\Room1.cpp" />
     <ClCompile Include="source\Scene.cpp" />
     <ClCompile Include="source\SceneObject.cpp" />
@@ -104,13 +106,13 @@
     <ClInclude Include="include\IGameHost.h" />
     <ClInclude Include="include\IndexBuffer.h" />
     <ClInclude Include="include\Input.h" />
+    <ClInclude Include="include\JumpBumpGame.h" />
     <ClInclude Include="include\LLR.h" />
     <ClInclude Include="include\Map.h" />
     <ClInclude Include="include\Light.h" />
     <ClInclude Include="include\Logging.h" />
     <ClInclude Include="include\LogPrinter.h" />
     <ClInclude Include="include\MapResource.h" />
-    <ClInclude Include="include\MapTile.h" />
     <ClInclude Include="include\MatrixPerformanceTest.h" />
     <ClInclude Include="include\MemoryTypes.h" />
     <ClInclude Include="include\NDSGameHost.h" />
@@ -128,6 +130,7 @@
     <ClInclude Include="include\ProfilingResult.h" />
     <ClInclude Include="include\ProfilingManager.h" />
     <ClInclude Include="include\ProfilingTest.h" />
+    <ClInclude Include="include\Rabbit.h" />
     <ClInclude Include="include\RasterizerState.h" />
     <ClInclude Include="include\Rectangle.h" />
     <ClInclude Include="include\Room1.h" />
@@ -143,7 +146,6 @@
     <ClInclude Include="include\StreamReader.h" />
     <ClInclude Include="include\StringHelper.h" />
     <ClInclude Include="include\System.h" />
-    <ClInclude Include="include\Test2D.h" />
     <ClInclude Include="include\Test3D.h" />
     <ClInclude Include="include\Background.h" />
     <ClInclude Include="include\BackgroundMemory.h" />
@@ -232,7 +234,6 @@
     <ClCompile Include="source\Screen.cpp" />
     <ClCompile Include="source\Sprite.cpp" />
     <ClCompile Include="source\SpriteMemory.cpp" />
-    <ClCompile Include="source\Test2D.cpp" />
     <ClCompile Include="source\Test3D.cpp" />
     <ClCompile Include="source\TextRenderer.cpp" />
     <ClCompile Include="source\TextRenderingTest.cpp" />

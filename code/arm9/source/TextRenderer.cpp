@@ -35,7 +35,7 @@ namespace Graphics
 		dynamicPaletteStartIndex = bgmem.PaletteMemory->AddDynamicPalette(Palettes);
 		// Set the map's clear tile to the font's first glyph. todo: This makes little sense, it takes the first 8x8 tile in the tileset
 		auto &blankTile = Font->Tiles[0];
-		bgmem.AddTile(blankTile);
+		bgmem.AddTile(blankTile, 0);
 		u32 blankTileIndex = bgmem.VRAMIndexForTile(blankTile.Identifier);
 		int index = Background->GetMapIndex();
 		sassert(index >= 0 && index <= 3, "Map index out of bounds");

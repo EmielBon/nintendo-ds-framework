@@ -1,4 +1,3 @@
-#include "Test2D.h"
 #include "Test3D.h"
 #include "ConsoleTest.h"
 #include "DebugUITest.h"
@@ -10,11 +9,9 @@
 #include "MatrixPerformanceTest.h"
 #include "FixedPointUnitTest.h"
 #include "GameGenProject.h"
-
+#include "JumpBumpGame.h"
 int main(void) 
 {
-	//Test::Test2D test;
-	//Test::Test3D test;
 	//Test::CollisionTest test;
 	//Test::ConsoleTest test;
 	//Test::DebugUITest test;
@@ -26,8 +23,9 @@ int main(void)
 	//Test::ProfilingTest test;
 	//Test::MatrixPerformanceTest test;
 	//Test::FixedPointUnitTest test;
-	GameGenProject test;
-
+	//Test::Test3D test;
+	//GameGenProject test;
+	JumpBumpGame test;
 	test.Run();
 
 	return 0;

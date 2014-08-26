@@ -1,6 +1,7 @@
 #include "SpriteMemory.h"
 #include "Logging.h"
 #include "VideoRamBank.h"
+#include "Sprite.h"
 #include <nds/arm9/video.h>
 
 namespace Graphics
@@ -52,5 +53,13 @@ namespace Graphics
 	u16* SpriteMemory::TileBaseAddress() const
 	{
 		return IsMain() ? SPRITE_GFX : SPRITE_GFX_SUB;
+	}
+
+	//------------------------------------------------------------------------------------------------- 
+	void SpriteMemory::AddSprite(const Sprite &sprite)
+	{
+		for (auto subImage : sprite.SubImages)
+			for (auto tile : subImage.Tiles)
+				AddTile(*tile);
 	}
 }
