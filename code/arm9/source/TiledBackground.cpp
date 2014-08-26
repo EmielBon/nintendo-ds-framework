@@ -17,7 +17,7 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void TiledBackground::CopyToHardwareMap(Map &map)
+	void TiledBackground::CopyToHardwareMap(Ptr<Map> map)
 	{
 		for (int i = 0; i < Size.Width;  ++i)
 		for (int j = 0; j < Size.Height; ++j)
@@ -25,13 +25,15 @@ namespace Graphics
 			auto tile = GetTile(i, j);
 			if (!tile)
 			{
-				map.SetTile(i, j, map.ClearTile);
+				map->SetTile(i, j, map->ClearTile);
 				continue;
 			}
-			u32 tileIndex = map.BackgroundMemory->AddTile(*tile);
+			sassert(map, "Map not initialized");
+			sassert(map->BackgroundMemory, "backgroundmemory not initialized");
+			u32 tileIndex = map->BackgroundMemory->AddTile(*tile);
 			auto screenBlockEntry = TileParameters[ GetTileIndex(i, j) ];
 			screenBlockEntry.SetTileIndex(tileIndex);
-			map.SetTile(i, j, screenBlockEntry);
+			map->SetTile(i, j, screenBlockEntry);
 		}
 	}
 }

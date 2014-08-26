@@ -9,6 +9,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	Map::Map(Graphics::BackgroundMemory* backgroundMemory, int index) : index(index), size(32, 32), BackgroundMemory(backgroundMemory) 
 	{
+		sassert(backgroundMemory, "Error: Background memory cannot be null");
 		location = BackgroundMemory->IsMain() ? BG_MAP_RAM(index) : BG_MAP_RAM_SUB(index);
 		Clear();
 	}

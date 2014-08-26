@@ -16,11 +16,11 @@
 #include "GameCamera.h"
 #include "ProfilingManager.h"
 #include "ProfilingResult.h"
-
+#include "Background.h"
 #include <nds/arm9/video.h>
 
-#define TextLayer   GraphicsDevice::Sub.Background1
-#define ButtonLayer GraphicsDevice::Sub.Background0
+#define TextLayer   GraphicsDevice::Sub.Backgrounds[1]
+#define ButtonLayer GraphicsDevice::Sub.Backgrounds[0]
 
 namespace Debug
 {
@@ -37,14 +37,14 @@ namespace Debug
 	DebugUI::DebugUI(Test3D* game) : mode(DebugMode_PROFILING), redraw(false), FPS(0), game(game)
 	{
 		// Top layer
-		ButtonLayer.Enable();
-		ButtonLayer.SetLayer(0);
-		ButtonLayer.ShowMap(0);
+		ButtonLayer->Enable();
+		ButtonLayer->SetLayer(0);
+		ButtonLayer->ShowMapWithIndex(0);
 
 		// Bottom layer
-		TextLayer.Enable();
-		TextLayer.SetLayer(1);
-		TextLayer.ShowMap(1);
+		TextLayer->Enable();
+		TextLayer->SetLayer(1);
+		TextLayer->ShowMapWithIndex(1);
 
 		InitializeConsole();
 
@@ -146,8 +146,8 @@ namespace Debug
 			
 		elapsedSeconds = (int)gameTime.TotalGameTime.TotalSeconds();
 		
-		ButtonLayer.Clear();
-		TextLayer.Clear();
+		ButtonLayer->Clear();
+		TextLayer->Clear();
 		
 		switch(mode)
 		{
@@ -265,9 +265,9 @@ namespace Debug
 	//-------------------------------------------------------------------------------------------------
 	void DebugUI::ShowConsole()
 	{
-		Background& bg = Console->Background;
-		bg.Enable();
-		bg.SetLayer(0);
+		auto bg = Console->Background;
+		bg->Enable();
+		bg->SetLayer(0);
 
 		Console->Enabled = true;
 		Console->Visible = true;
@@ -278,6 +278,6 @@ namespace Debug
 	{
 		Console->Enabled = false;
 		Console->Visible = false;
-		Console->Background.Disable();
+		Console->Background->Disable();
 	}
 }

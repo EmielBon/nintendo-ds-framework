@@ -18,8 +18,8 @@ namespace Graphics
 	{
 	public:
 
-		/// Empty constructor
-		Background();
+		/// 
+		Background() = delete;
 
 		/// Constructor. The specified index should be unique and in the range [0..3]
 		Background(GraphicsDevice *engine, int index);
@@ -38,11 +38,11 @@ namespace Graphics
 		/// Set this backgrounds draw-priority. A low priority sets this background on top (so draws it last)
 		void SetLayer(int priority);
 
-		///
-		void ShowMap(int index);
+		/// 
+		int GetMapIndex();
 
-		/// Returns the active map that this background is showing
-		Map* GetMap() const;
+		///
+		void ShowMapWithIndex(int index);
 
 		/// 
 		Graphics::BackgroundMemory& BackgroundMemory() const;
@@ -93,7 +93,13 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline void Background::ShowMap(int index)
+	inline int Background::GetMapIndex()
+	{
+		return mapIndex;
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	inline void Background::ShowMapWithIndex(int index)
 	{
 		ASSERT(index >= 0 && index < 8, "Map index out of bounds");
 		mapIndex = index;

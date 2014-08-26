@@ -7,9 +7,7 @@
 #pragma once
 
 #include "types.h"
-#include "Background.h"
 #include "ObjectAttributeMemory.h"
-#include "TextureMemory.h"
 #include "ViewPort.h"
 #include "RasterizerState.h"
 #include <nds/arm9/videoGL.h>
@@ -113,8 +111,6 @@ namespace Graphics
 		u32  mode;
 		bool enable3D;
 		bool enableSprites;
-		
-		Array<Background, 4> backgrounds;
 
 	public:
 
@@ -126,11 +122,11 @@ namespace Graphics
 		Ptr<Graphics::BackgroundMemory> BackgroundMemory;
 		Ptr<Graphics::SpriteMemory>     SpriteMemory;
 		Graphics::ObjectAttributeMemory ObjectAttributeMemory;
-		Graphics::TextureMemory    TextureMemory;
-		Background &Background0, &Background1, &Background2, &Background3;
-
+		Ptr<Graphics::TextureMemory>    TextureMemory;
+		
 	public:
 
+		Array<Ptr<Background>, 4> Backgrounds;
 		Ptr<Graphics::Texture> ActiveTexture;
 		Ptr<IndexBuffer> Indices;
 		Ptr<Graphics::VertexBuffer> VertexBuffer;

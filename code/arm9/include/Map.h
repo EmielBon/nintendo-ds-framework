@@ -10,8 +10,8 @@ namespace Graphics
 	{
 	public:
 
-		/// Empty constructor
-		Map();
+		/// 
+		Map() = delete;
 
 		/// Constructor with pointer to this map's BackgroundMemory location
 		Map(Graphics::BackgroundMemory *backgroundMemory, int index);
@@ -42,12 +42,6 @@ namespace Graphics
 		Graphics::BackgroundMemory *BackgroundMemory;
 		ScreenBlockEntry            ClearTile;
 	};
-
-	//-------------------------------------------------------------------------------------------------
-	inline Map::Map() : index(-1), size(32, 32), location(nullptr), BackgroundMemory(nullptr)
-	{
-
-	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline void Map::SetTile(int x, int y, ScreenBlockEntry tile)

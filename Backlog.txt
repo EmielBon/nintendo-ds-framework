@@ -20,6 +20,9 @@ Pending:
 	- Console
 	- Make DebugUI work for other classes than Test3D
 - Let ContentManager retain weak pointers (WeakPtr) to the loaded resources instead of strong pointers (Ptr)
+- Remove all reference members
+- Remove all unsigned counters if not needed
+- Re-implement GetMap for backgrounds and make it so they always show a map [0..7]. By default Background[i] should show Map[i]
 
 Possibly not:
 - Let tilesets with a palette size <= 16 be loaded as 4pp tiles 

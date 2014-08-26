@@ -30,7 +30,7 @@ namespace Graphics
 		void CheckValid() const;
 
 		///
-		void CopyToHardwareMap(Map &map);
+		void CopyToHardwareMap(Ptr<Map> map);
 		
 	public:
 		

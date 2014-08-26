@@ -30,8 +30,7 @@ namespace Framework2D
 	public:
 
 		const String Name;
-		Graphics::Background &Background0, &Background1, &Background2, &Background3;
-
+		
 	protected:
 		
 		List< Ptr<GameObject> > objects;

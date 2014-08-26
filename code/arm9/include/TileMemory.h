@@ -21,6 +21,9 @@ namespace Graphics
 
 	public:
 
+		/// 
+		TileMemory() = delete;
+
 		/// Add a single tile to VRAM, returns the VRAM index it was copied to
 		// todo: remove dynamicPaletteStartIndex argument
 		u32 AddTile(const Tile &tile, int dynamicPaletteStartIndex = -1);

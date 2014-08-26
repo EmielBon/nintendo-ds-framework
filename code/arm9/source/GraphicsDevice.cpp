@@ -16,6 +16,7 @@
 #include "Texture.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
+#include "TextureMemory.h"
 
 // Utils
 #include "MathFunctions.h"
@@ -32,11 +33,7 @@ namespace Graphics
 	GraphicsDevice GraphicsDevice::Sub;
 
 	//-------------------------------------------------------------------------------------------------
-	GraphicsDevice::GraphicsDevice() : mode(0), enable3D(false), enableSprites(false), 
-		Background0(backgrounds[0]), 
-		Background1(backgrounds[1]), 
-		Background2(backgrounds[2]), 
-		Background3(backgrounds[3])
+	GraphicsDevice::GraphicsDevice() : mode(0), enable3D(false), enableSprites(false)
 	{
 		// Do not call Initialize() here, the order of initialization is 
 		// important so Initialize() is manually called in Game::Run()!
@@ -46,19 +43,19 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	void GraphicsDevice::Initialize()
 	{
-		for(u32 i = 0; i < backgrounds.size(); ++i)
-			backgrounds[i] = Background(this, i);
+		for(u32 i = 0; i < Backgrounds.size(); ++i)
+			Backgrounds[i] = New<Background>(this, i);
 
 		bool main = IsMain();
 
 		BackgroundMemory      = New<Graphics::BackgroundMemory>(main);
 		SpriteMemory          = New<Graphics::SpriteMemory>(main);
 		ObjectAttributeMemory = Graphics::ObjectAttributeMemory(this);
-		TextureMemory         = Graphics::TextureMemory(main);
+		TextureMemory         = New<Graphics::TextureMemory>(main);
 
 		BackgroundMemory->Initialize();
 		SpriteMemory->Initialize();
-		TextureMemory.Initialize();
+		TextureMemory->Initialize();
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -92,12 +89,12 @@ namespace Graphics
 
 		videoMode += mode;
 
-		for(u32 i = 0; i < backgrounds.size(); ++i)
-			backgrounds[i].Synchronize();
+		for(u32 i = 0; i < Backgrounds.size(); ++i)
+			Backgrounds[i]->Synchronize();
 			
 		// These bit masks are based on libnds 1.4.8 DISPLAY_BGx_ACTIVE, which are bit 8 through 11 of the video mode
-		for(u32 i = 0; i < backgrounds.size(); ++i)
-			videoMode |= ( backgrounds[i].IsEnabled() ) ? BIT(8 + i) : 0;
+		for(u32 i = 0; i < Backgrounds.size(); ++i)
+			videoMode |= ( Backgrounds[i]->IsEnabled() ) ? BIT(8 + i) : 0;
 
 		videoMode |= (enable3D) ? ENABLE_3D : 0;
 		videoMode |= (enableSprites) ? DISPLAY_SPR_ACTIVE | ObjectAttributeMemory.DisplayMode : 0;

@@ -41,15 +41,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AST\AbstractSyntaxTree.cs" />
     <Compile Include="ArrayExtensions.cs" />
     <Compile Include="Assignment.cs" />
+    <Compile Include="AST\BooleanLiteral.cs" />
+    <Compile Include="AST\FloatLiteral.cs" />
+    <Compile Include="AST\Identifier.cs" />
+    <Compile Include="AST\IntegerLiteral.cs" />
+    <Compile Include="AST\StringLiteral.cs" />
     <Compile Include="BinaryOperation.cs" />
     <Compile Include="Block.cs" />
     <Compile Include="Conditional.cs" />
+    <Compile Include="DSLTokens.cs" />
     <Compile Include="Expression.cs" />
     <Compile Include="FunctionParameter.cs" />
     <Compile Include="FunctionCall.cs" />
     <Compile Include="IfStatement.cs" />
+    <Compile Include="Lexer2.cs" />
+    <Compile Include="AST\Node.cs" />
     <Compile Include="Operators.cs" />
     <Compile Include="Statement.cs" />
     <Compile Include="ClassDefinition.cs" />
@@ -60,6 +69,7 @@
     <Compile Include="CompilationUnit.cs" />
     <Compile Include="Include.cs" />
     <Compile Include="Lexer.cs" />
+    <Compile Include="Token.cs" />
     <Compile Include="UnaryOperation.cs" />
     <Compile Include="VariableReference.cs" />
     <None Include="Linker.cs" />

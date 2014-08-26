@@ -14,7 +14,7 @@ namespace System
 	using namespace Framework;
 
 	//-------------------------------------------------------------------------------------------------
-	Console::Console(Graphics::Background& background, int x, int y, int width, int height) 
+	Console::Console(Ptr<Graphics::Background> background, int x, int y, int width, int height) 
 		: super(background, "font8x8@4"), X(x), Y(y), Width(width), Height(height), redraw(true)
 	{
 		ASSERT(Width % 8 == 0 && Height % 8 == 0, "Invalid Console size");
@@ -36,11 +36,11 @@ namespace System
 		if (keys.IsKeyHeld(Keys::Touch))
 		{
 			int dy = oldState.Position.py - touch.Position.py;
-			Background.Offset.y += dy;
-			if (Background.Offset.y < 0)
-				Background.Offset.y = 0;
-			if (Background.Offset.y > EntryCount() * 8 - Screen::Height)
-				Background.Offset.y = EntryCount() * 8 - Screen::Height;
+			Background->Offset.y += dy;
+			if (Background->Offset.y < 0)
+				Background->Offset.y = 0;
+			if (Background->Offset.y > EntryCount() * 8 - Screen::Height)
+				Background->Offset.y = EntryCount() * 8 - Screen::Height;
 			oldState = touch;
 		}
 		
@@ -58,8 +58,8 @@ namespace System
 		int charHeight    = Font->CharSize().Height;
 		int charHeight8x8 = charHeight / 8;
 		
-		int startEntry = Background.Offset.y / 8;
-		int startRow   = Background.Offset.y / 8 + 2;
+		int startEntry = Background->Offset.y / 8;
+		int startRow   = Background->Offset.y / 8 + 2;
 
 		for(int i = 0; i < 24; ++i)
 		{

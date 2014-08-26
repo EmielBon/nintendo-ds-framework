@@ -25,7 +25,9 @@ namespace Test
 		GraphicsDevice::Main.BackgroundMemory->PaletteMemory->SetTransparentColor(Color::CornflowerBlue);
 		for (auto color : palette.Colors)
 			GraphicsDevice::Main.BackgroundMemory->PaletteMemory->AddColor(color);
-		
+		GraphicsDevice::Main.BackgroundMemory->PaletteMemory->AddColor(Color::Red);
+		sassert(false, "%i", GraphicsDevice::Main.BackgroundMemory->PaletteMemory->GetIndexForColor(0xD59F));
+		//sassert(false, "%i",GraphicsDevice::Main.BackgroundMemory->PaletteMemory->ColorToPaletteIndex.size());
 		// Dynamic palette test
 		auto pal1 = New<Palette>();
 		pal1->AddColor(Color::Gold);

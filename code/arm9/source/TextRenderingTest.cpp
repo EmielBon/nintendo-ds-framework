@@ -22,10 +22,10 @@ namespace Test
 	//-------------------------------------------------------------------------------------------------
 	void TextRenderingTest::Initialize()
 	{
-		Background& bg0 = GraphicsDevice::Main.Background0; // Text layer
-		bg0.Enable();
-		bg0.SetLayer(0);
-		bg0.ShowMap(0);
+		auto bg0 = GraphicsDevice::Main.Backgrounds[0]; // Text layer
+		bg0->Enable();
+		bg0->SetLayer(0);
+		bg0->ShowMapWithIndex(0);
 
 		tr = New<TextRenderer>(bg0);
 		Components.Add(tr);

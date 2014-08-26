@@ -14,6 +14,9 @@ namespace Graphics
 
 	public:
 
+		/// 
+		BackgroundMemory() = delete;
+
 		///
 		BackgroundMemory(bool isMain);
 
@@ -40,7 +43,7 @@ namespace Graphics
 		static const u32 TILE_MEMORY_MAX = 0x40000; // Todo: Klopt dit wel?
 		static const int       MAP_COUNT = 8;
 		
-		Array<Map, 8> Maps;
+		Array<Ptr<Map>, 8> Maps;
 	};
 
 	//-------------------------------------------------------------------------------------------------

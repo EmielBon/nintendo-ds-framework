@@ -1,6 +1,5 @@
 s 32x32
 t link32x32
-p link32x32_pal
 
 i link_down 0 1 2 3 4 5 6 5 4 3 2 1
 i link_up 7 8 9 10 11 12 13 12 11 10 9 8

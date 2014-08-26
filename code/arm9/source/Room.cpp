@@ -3,6 +3,7 @@
 #include "GraphicsDevice.h"
 #include "Background.h"
 #include "TiledBackground.h"
+#include "BackgroundMemory.h"
 
 namespace Framework2D
 {
@@ -11,10 +12,6 @@ namespace Framework2D
 	using namespace Test;
 
 	Room::Room()
-		: Background0(Graphics::GraphicsDevice::Main.Background0),
-		  Background1(Graphics::GraphicsDevice::Main.Background1),
-		  Background2(Graphics::GraphicsDevice::Main.Background2),
-		  Background3(Graphics::GraphicsDevice::Main.Background3)
 	{
 
 	}
@@ -43,7 +40,7 @@ namespace Framework2D
 	//-------------------------------------------------------------------------------------------------
 	void Room::Draw(const GameTime &gameTime)
 	{
-		GraphicsDevice::Main.Background0.ColorMode = ColorMode::ColorMode256;
+		GraphicsDevice::Main.Backgrounds[0]->ColorMode = ColorMode::ColorMode256;
 
 		for (auto object : objects)
 			object->Draw(gameTime);
@@ -58,19 +55,13 @@ namespace Framework2D
 	//-------------------------------------------------------------------------------------------------
 	void Room::SetBackground(int index, Ptr<TiledBackground> background)
 	{
-		Background *bg = nullptr;
+		auto bg = GraphicsDevice::Main.Backgrounds[index];
+		sassert(bg, "Hardware background %i not initialized", index);
+		bg->ShowMapWithIndex(index);
 
-		switch (index)
-		{
-		case 0: bg = &Background0; break;
-		case 1: bg = &Background1; break;
-		case 2: bg = &Background2; break;
-		case 3: bg = &Background3; break;
-		default: CRASH("Background index out of range [0..3] for index (" << index << ")"); break;
-		}
-	
-		background->CopyToHardwareMap(*bg->GetMap());
-		bg->ShowMap(index);
+		sassert(index >= 0 && index <= 3, "Map index out of bounds");
+		auto map = GraphicsDevice::Main.BackgroundMemory->Maps[index];
+		background->CopyToHardwareMap(map);
 		bg->Enable();
 		bg->SetLayer(index);
 	}

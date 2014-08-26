@@ -47,7 +47,6 @@
     <ClCompile Include="source\Scene.cpp" />
     <ClCompile Include="source\SceneObject.cpp" />
     <ClCompile Include="source\StreamReader.cpp" />
-    <ClCompile Include="source\TilesManager.cpp" />
     <ClCompile Include="source\Timer.cpp" />
     <ClCompile Include="source\StringHelper.cpp" />
     <ClCompile Include="source\TextureMemory.cpp" />
@@ -173,7 +172,6 @@
     <ClInclude Include="include\Palette.h" />
     <ClInclude Include="include\PaletteMemory.h" />
     <ClInclude Include="include\PaletteTest.h" />
-    <ClInclude Include="include\TilesManager.h" />
     <ClInclude Include="include\Timer.h" />
     <ClInclude Include="include\Room.h" />
     <ClInclude Include="include\Screen.h" />

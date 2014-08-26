@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameGen
 {
-    class Statement
+    class Statement : Node
     {
         public String Content;
 

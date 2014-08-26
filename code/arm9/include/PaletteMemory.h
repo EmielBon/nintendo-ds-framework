@@ -5,6 +5,7 @@
 #include "Palette.h"
 #include "types.h"
 #include "Vec2.h"
+
 // Todo: PaletteMemory actually has 2 slots (more?), the first one is dedicated palette memory, the second can be used by allocating a small VRAM Bank
 
 namespace Graphics
@@ -19,6 +20,9 @@ namespace Graphics
 		using super = Graphics::Memory2D;
 
 	public:
+
+		/// 
+		PaletteMemory() = delete;
 
 		///
 		PaletteMemory(bool isMain, u32 type);
@@ -61,7 +65,7 @@ namespace Graphics
 		bool HasColor(u16 color) const;
 
 		/// 
-		void RegisterPaletteIndexForColor(u32 paletteIndex, u16 color);
+		void RegisterPaletteIndexForColor(int paletteIndex, u16 color);
 
 		/// 
 		int GetIndexForColor(u16 color) const;
@@ -77,7 +81,7 @@ namespace Graphics
 		/// 
 		int FindNextFreeIndex();
 		
-	protected:
+	public:
 
 		u16* location;
 		Dictionary< u16, int > ColorToPaletteIndex;
@@ -144,11 +148,12 @@ namespace Graphics
 	}
 	
 	//-------------------------------------------------------------------------------------------------
-	inline void PaletteMemory::RegisterPaletteIndexForColor(u32 paletteIndex, u16 color)
+	inline void PaletteMemory::RegisterPaletteIndexForColor(int paletteIndex, u16 color)
 	{
 		ColorToPaletteIndex[color] = paletteIndex;
 	}
 	
+	//-------------------------------------------------------------------------------------------------
 	inline int PaletteMemory::GetIndexForColor(u16 color) const
 	{
 		auto it = ColorToPaletteIndex.find(color);

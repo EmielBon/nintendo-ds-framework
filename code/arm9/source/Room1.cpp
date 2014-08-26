@@ -5,10 +5,10 @@
 
 void Room1::Initialize()
 {
-    //link = New<Link>();
-    //link->x = 200;
-    //link->y = 20;
-    //AddObject ( link );
+    link = New<Link>();
+    link->x = 200;
+    link->y = 20;
+    AddObject ( link );
     base::Initialize();
 }
 

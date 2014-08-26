@@ -44,6 +44,7 @@ namespace Graphics
 	class BackgroundMemory;
 	class SpriteMemory;
 	class PaletteMemory;
+	class TextureMemory;
 	class Memory2D;
 
 	class Model;

@@ -13,6 +13,9 @@ namespace Graphics
 
 	public:
 
+		/// 
+		SpriteMemory() = delete;
+
 		///
 		SpriteMemory(bool isMain);
 

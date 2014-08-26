@@ -2,6 +2,8 @@
 #include "GameObject.h"
 #include "Room1.h"
 #include "ZeldaGame.h"
+#include "SpriteMemory.h"
+#include "PaletteMemory.h"
 
 void Link::Initialize()
 {
@@ -12,6 +14,7 @@ void Link::LoadContent()
 {
     Sprites = ContentManager::Load<SpriteSet> ( "link" );
     CurrentSprite = Sprites->at ( "link_down" );
+	GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
     base::LoadContent();
 }
 

@@ -44,7 +44,7 @@ namespace Framework
 	//-------------------------------------------------------------------------------------------------
 	Game& Game::Instance()
 	{
-		ASSERT(instance != NULL, "Error: No game instance exists");
+		sassert(instance != NULL, "Error: No game instance exists");
 		return *instance;
 	}
 

@@ -24,6 +24,7 @@
 #include "IndexBuffer.h"
 #include "Scene.h"
 #include "Light.h"
+#include "TextureMemory.h"
 
 // Game classes
 #include "Mario.h"
@@ -59,18 +60,18 @@ namespace Test
 	void EVTest::Initialize()
 	{
 		//ASSERT2(false, fx12((int)(fx12(15.253f))).ToFloat());
-		GraphicsDevice::Main.TextureMemory.AutomaticExpansion = false;
-		GraphicsDevice::Main.TextureMemory.AssignBankToSlot(BankA, 0);
-		GraphicsDevice::Main.TextureMemory.AssignBankToSlot(BankB, 1);
-		GraphicsDevice::Main.TextureMemory.AssignBankToSlot(BankC, 2);
-		GraphicsDevice::Main.TextureMemory.AssignBankToSlot(BankD, 3);
+		GraphicsDevice::Main.TextureMemory->AutomaticExpansion = false;
+		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankA, 0);
+		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankB, 1);
+		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankC, 2);
+		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankD, 3);
 
 		// Enable 3D on the main engine
 		GraphicsDevice::Main.Enable3D(true);
 		// Enable background 0 (used for 3D rendering)
-		Background& bg0 = GraphicsDevice::Main.Background0;
-		bg0.Enable();
-		bg0.SetLayer(0);
+		auto bg0 = GraphicsDevice::Main.Backgrounds[0];
+		bg0->Enable();
+		bg0->SetLayer(0);
 		// Set up the graphics device
 		GraphicsDevice.RasterizerState.CullMode = CullMode::None;
 		graphics.PreferMultiSampling = false;

@@ -59,8 +59,6 @@ namespace Framework
 		tiles->AddTiles(*(fs.ReadAll<Tile4bpp>()));
 
 		sassert(tiles->tileSize.Width % 8 == 0 || tiles->tileSize.Height % 8 == 0, "Error: Invalid tile size");
-		
-		//TilesManager::AddTileSet(tiles);
 
 		return tiles;
 	}

@@ -67,7 +67,7 @@ namespace Graphics
 
 		for(u32 i = 0; i < Maps.size(); ++i)
 		{
-			Maps[i] = Map(this, i);
+			Maps[i] = New<Map>(this, i);
 		}
 	}
 

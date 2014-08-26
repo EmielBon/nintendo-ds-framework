@@ -59,12 +59,12 @@ namespace Graphics
 		
 		if (TextureEnabled)
 		{
-			GraphicsDevice::Main.TextureMemory.AddTexture(Texture);
+			GraphicsDevice::Main.TextureMemory->AddTexture(Texture);
 			GraphicsDevice::Main.ActiveTexture = Texture;
 			
 			int textureWidth  = TextureSizeParameter(Texture->Width);
 			int textureHeight = TextureSizeParameter(Texture->Height);
-			u16* addr = GraphicsDevice::Main.TextureMemory.GetTextureAddress(Texture);
+			u16* addr = GraphicsDevice::Main.TextureMemory->GetTextureAddress(Texture);
 			GFX_TEX_FORMAT = (textureWidth << 20) | (textureHeight << 23) | (1 << 16) | (1 << 17) | (GL_RGBA << 26) | (( (uint32)addr >> 3 ) & 0xFFFF);
 		}
 		else

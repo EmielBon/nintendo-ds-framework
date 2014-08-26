@@ -17,6 +17,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	u32 TileMemory::AddTile(const Tile &tile, int dynamicPaletteStartIndex)
 	{
+		sassert(PaletteMemory, "Error: Palette memory not initialized");
 		// todo: find a way to retrieve dynamicPaletteStartIndex from the tile or its palettes
 		
 		// Check if tile is already in memory. If so, return the current VRAM index
@@ -55,6 +56,7 @@ namespace Graphics
 		static int counter = 0;
 		
 		sassert(tile.Palettes.size() >= 1, "Tile has no referenced Palette");
+
 		// Make empty tile with the same bpp
 		Tile offsetTile(tile.BitsPerPixel());
 		

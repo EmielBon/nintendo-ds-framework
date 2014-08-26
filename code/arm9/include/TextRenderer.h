@@ -11,7 +11,7 @@ namespace Graphics
 	public:
 
 		///
-		TextRenderer(Graphics::Background &background, const String &fontName = "font8x8@4");
+		TextRenderer(Ptr<Graphics::Background> background, const String &fontName = "font8x8@4");
 
 		///
 		virtual void LoadContent();
@@ -29,7 +29,7 @@ namespace Graphics
 		Ptr<Graphics::Font> Font;
 		List< Ptr<Palette> > Palettes;
 		int dynamicPaletteStartIndex;
-		Graphics::Background &Background;
+		Ptr<Graphics::Background> Background;
 		int count;
 	};
 }

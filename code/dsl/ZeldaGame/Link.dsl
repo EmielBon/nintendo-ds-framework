@@ -8,8 +8,7 @@ Link : GameObject
 	
 	void Update()
 	{
-	%1 = 96.0f
-		fx12 speed = %1;
+		fx12 speed = 96;
 		fx12 timeStep = ElapsedTime.Seconds();
 		
 		Vector2 direction = Vector2(0 + 4, 0);

@@ -20,6 +20,7 @@
 #include "FlyingCamera.h"
 #include "Mat.h"
 #include "Model.h"
+#include "TextureMemory.h"
 #include "Vec3.h"
 #include "Vertex.h"
 #include "VertexBuffer.h"
@@ -54,11 +55,11 @@ namespace Test
 		fpsCounter = New<FPSCounter>();
 		Components.Add(fpsCounter);
 
-		GraphicsDevice::Main.TextureMemory.AutomaticExpansion = false;
-		GraphicsDevice::Main.TextureMemory.AssignBankToSlot(BankA, 0);
-		GraphicsDevice::Main.TextureMemory.AssignBankToSlot(BankB, 1);
-		GraphicsDevice::Main.TextureMemory.AssignBankToSlot(BankC, 2);
-		GraphicsDevice::Main.TextureMemory.AssignBankToSlot(BankD, 3);
+		GraphicsDevice::Main.TextureMemory->AutomaticExpansion = false;
+		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankA, 0);
+		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankB, 1);
+		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankC, 2);
+		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankD, 3);
 
 		debugUI = New<DebugUI>(this);
 		Components.Add(debugUI);
@@ -66,13 +67,13 @@ namespace Test
 		// Enable 3D on the main engine
 		GraphicsDevice::Main.Enable3D(true);
 		// Enable background 0 (used for 3D rendering)
-		Background& bg0 = GraphicsDevice::Main.Background0;
-		bg0.Enable();
-		bg0.SetLayer(0);
+		auto bg0 = GraphicsDevice::Main.Backgrounds[0];
+		bg0->Enable();
+		bg0->SetLayer(0);
 		// Enable background 1 (background)
-		Background& bg1 = GraphicsDevice::Main.Background1;
-		bg1.Enable();
-		bg1.SetLayer(1);
+		auto bg1 = GraphicsDevice::Main.Backgrounds[1];
+		bg1->Enable();
+		bg1->SetLayer(1);
 		// Set up the graphics device
 		GraphicsDevice.RasterizerState.CullMode = CullMode::None;
 		graphics.PreferMultiSampling = false;
@@ -120,7 +121,7 @@ namespace Test
 		{
 			auto &tile = tileSet->Tiles[i];
 			GraphicsDevice.BackgroundMemory->AddTile(tile);
-			map.SetTile(i, ScreenBlockEntry(tile.Identifier));
+			map->SetTile(i, ScreenBlockEntry(tile.Identifier));
 		}
 
 		super::LoadContent();
@@ -142,8 +143,8 @@ namespace Test
 		// Clear the render target in a predetermined color
 		GraphicsDevice.Clear(ClearOptions::Target, Color::DeepSkyBlue);
 		
-		GraphicsDevice::Main.Background1.ColorMode = ColorMode::ColorMode256;
-		GraphicsDevice::Main.Background1.ShowMap(0);
+		GraphicsDevice::Main.Backgrounds[1]->ColorMode = ColorMode::ColorMode256;
+		GraphicsDevice::Main.Backgrounds[1]->ShowMapWithIndex(0);
 
 		debugUI->FPS = fpsCounter->FPS;
 

@@ -7,23 +7,9 @@
 namespace Graphics
 {
 	//-------------------------------------------------------------------------------------------------
-	Background::Background() : index(-1), layer(3), enabled(false), graphicsDevice(NULL), mapIndex(-1), Offset(0, 0), ColorMode(ColorMode16)
-	{
-		
-	}
-
-	//-------------------------------------------------------------------------------------------------
 	Background::Background(GraphicsDevice *e, int i) : index(i), layer(3), enabled(false), graphicsDevice(e), mapIndex(-1), Offset(0, 0), ColorMode(ColorMode16)
 	{
 		
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	Map* Background::GetMap() const
-	{
-		if (mapIndex < 0)
-			return NULL;
-		return &BackgroundMemory().Maps[mapIndex];
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -36,7 +22,7 @@ namespace Graphics
 	void Background::Clear()
 	{
 		ASSERT2(mapIndex >= 0, "No map for Background" << index);
-		GetMap()->Clear();
+		graphicsDevice->BackgroundMemory->Maps[mapIndex]->Clear();
 	}
 
 	//-------------------------------------------------------------------------------------------------

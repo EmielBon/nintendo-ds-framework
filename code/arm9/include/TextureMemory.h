@@ -16,7 +16,7 @@ namespace Graphics
 	public:
 
 		///
-		TextureMemory();
+		TextureMemory() = delete;
 
 		///
 		TextureMemory(bool isMain);
@@ -50,10 +50,4 @@ namespace Graphics
 		u16* nextAvailableAddress;
 		Dictionary< Ptr<Texture>, u16* > TextureAddresses;
 	};
-
-	//-------------------------------------------------------------------------------------------------
-	inline TextureMemory::TextureMemory() : nextAvailableAddress(NULL)
-	{
-
-	}
 }

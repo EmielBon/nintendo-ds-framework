@@ -18,7 +18,7 @@ namespace GameGen
         public static Expression Parse(String content, Dictionary<string, string> SubExpressions = null)
         {
             String operators = "=+-*/.";
-            
+
             content = content.Replace(" ", "");
             
             var dollars = new Dictionary<string, string>();

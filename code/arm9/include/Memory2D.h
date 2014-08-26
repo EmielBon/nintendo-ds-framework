@@ -18,8 +18,8 @@ namespace Graphics
 	{
 	public:
 
-		/// Empty constructor
-		Memory2D();
+		/// 
+		Memory2D() = delete;
 
 		/// Constructor, creates an empty Memory2D object that is unusable until a call to Init()
 		Memory2D(bool isMain, u32 type);
@@ -99,12 +99,6 @@ namespace Graphics
 
 		bool AutomaticExpansion;
 	};
-
-	//-------------------------------------------------------------------------------------------------
-	inline Memory2D::Memory2D() : type(MemoryType::Memory_NONE), totalSize(0), available(0), AutomaticExpansion(true)
-	{
-		engineType = EngineType::UNDEFINED;
-	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline Memory2D::Memory2D(bool isMain, u32 type) : type(type), totalSize(0), available(0), AutomaticExpansion(true)

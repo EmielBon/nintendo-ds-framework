@@ -11,10 +11,17 @@ namespace GameGen
     {
         static void Main(string[] args)
         {
-            string path = args[0];// Environment.GetEnvironmentVariable("ARPIGI");
-            DSLProject project = new DSLProject(path);
+            //string path = args[0];// Environment.GetEnvironmentVariable("ARPIGI");
+            //DSLProject project = new DSLProject(path);
             //File.WriteAllText(includePath + @"\GameGenProject.h", String.Format("#pragma once\n\n#include \"{0}.h\"\n\nusing GameGenProject = {0};", Name));
-            project.Generate();
+            //project.Generate();
+
+            var lexer = new Lexer2("int i = 2 + 55.0 - \"abc\";");
+			do
+			{
+				lexer.ReadToken();
+			}
+			while (lexer.Token != -1);
 
             /*var dollars = new Dictionary<string, string>();
 */
@@ -34,10 +41,6 @@ namespace GameGen
             //Console.WriteLine(operation.ToString(0));
             /*Expression expr = Expression.Parse("y = -1");
             Console.WriteLine(expr.ToString(0));*/
-            while (true) ;
         }
-
-        
-
     }
 }

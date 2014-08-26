@@ -8,6 +8,7 @@
 #include "Font.h"
 #include "Screen.h"
 #include "ScreenBlockEntry.h"
+#include "PaletteMemory.h"
 
 // Debugging
 #include "Logging.h"
@@ -18,7 +19,7 @@ namespace Graphics
 	using namespace Framework;
 
 	//-------------------------------------------------------------------------------------------------
-	TextRenderer::TextRenderer(Graphics::Background &background, const String &fontName /* = "font8x8@4" */) 
+	TextRenderer::TextRenderer(Ptr<Graphics::Background> background, const String &fontName /* = "font8x8@4" */) 
 		: FontName(fontName), dynamicPaletteStartIndex(-1), Background(background)
 	{
 		
@@ -27,7 +28,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	void TextRenderer::LoadContent()
 	{
-		auto &bgmem = Background.BackgroundMemory();
+		auto &bgmem = Background->BackgroundMemory();
 		Font = ContentManager::Load<Graphics::Font>(FontName);
 		// Create and add the font's (dynamic) palette
 		AddColor(Color::White, Color::Black); // Standard colors, black bg and white text
@@ -36,7 +37,9 @@ namespace Graphics
 		auto &blankTile = Font->Tiles[0];
 		bgmem.AddTile(blankTile);
 		u32 blankTileIndex = bgmem.VRAMIndexForTile(blankTile.Identifier);
-		Background.GetMap()->ClearTile = ScreenBlockEntry(blankTileIndex);
+		int index = Background->GetMapIndex();
+		sassert(index >= 0 && index <= 3, "Map index out of bounds");
+		bgmem.Maps[index]->ClearTile = ScreenBlockEntry(blankTileIndex);
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -55,11 +58,13 @@ namespace Graphics
 		sassert(dynamicPaletteStartIndex != -1, "Cannot draw text without a (dynamic) palette");
 		
 		//PROFILE_METHOD(TRDrwT);
-		auto &map   = *Background.GetMap();
-		auto &bgmem = Background.BackgroundMemory();
+		int index = Background->GetMapIndex();
+		sassert(index >= 0 && index <= 3, "Map index out of bounds");
+		auto &bgmem = Background->BackgroundMemory();
+		auto &map   = bgmem.Maps[index];
 		
 		// Map size
-		auto size = map.GetSize();
+		auto size = map->GetSize();
 		int mapWidth8x8  = size.Width;
 		int mapHeight8x8 = size.Height;
 		
@@ -81,9 +86,8 @@ namespace Graphics
 					continue;
 
 				auto &tile = Font->Tiles[str[i] * tilesPerChar + j];
-				bgmem.AddTile(tile, dynamicPaletteStartIndex);
-				u32 tileIndex = bgmem.VRAMIndexForTile(tile.Identifier);
-				map.SetTile(x2, y2, ScreenBlockEntry(tileIndex, false, false, palIndex));
+				int tileIndex = bgmem.AddTile(tile, dynamicPaletteStartIndex);
+				map->SetTile(x2, y2, ScreenBlockEntry(tileIndex, false, false, palIndex));
 			}
 			x += charWidth;
 		}

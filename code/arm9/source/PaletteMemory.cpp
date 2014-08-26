@@ -21,10 +21,13 @@ namespace Graphics
 		case Memory_TEXPAL: location = IsMain() ?         VRAM_E :            nullptr; break; // Todo: VRAM_E is only right in 1 case, derive correct
 		default: CRASH("No memory location for palette memory type " << GetType());    break;
 		}
-
+		
 		// Todo: make dependent on size (and dynamic)
-		for(int i = 0; i < 256; ++i)
+		for (int i = 0; i < 256; ++i)
 			free[i] = true;
+
+		sassert(location, "wra");
+		//sassert(false, "success");
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -97,7 +100,7 @@ namespace Graphics
 	{
 		location[index] = color;
 		free[index] = false;
-		RegisterPaletteIndexForColor(color, index);
+		RegisterPaletteIndexForColor(index, color);
 	}
 	
 	//-------------------------------------------------------------------------------------------------
@@ -111,20 +114,15 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	int PaletteMemory::FindNextFreeIndex()
 	{
+		sassert(location, "sss");
+
 		// todo: make upper limit dependent on actual size
 		for (int i = 0; i < 256; ++i)
 		{
 			int index = (currentFreeIndex + i) % 256;
 			currentFreeIndex = (currentFreeIndex + 1) % 256;
 			if (IsFree(index))
-			{
 				return index;
-			}
-			else
-			{
-				ASSERT(location, "sss");
-				CRASH(index);
-			}
 		}
 		CRASH("Palette memory full " << currentFreeIndex);
 		return -1;

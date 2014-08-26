@@ -322,9 +322,6 @@
     <ClInclude Include="include\IGraphicsResource.h">
       <Filter>LLR</Filter>
     </ClInclude>
-    <ClInclude Include="include\TilesManager.h">
-      <Filter>Graphics\Tiles</Filter>
-    </ClInclude>
     <ClInclude Include="include\BreakPoint.h">
       <Filter>Debug</Filter>
     </ClInclude>
@@ -605,9 +602,6 @@
     </ClCompile>
     <ClCompile Include="source\Component.cpp">
       <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="source\TilesManager.cpp">
-      <Filter>Graphics\Tiles</Filter>
     </ClCompile>
     <ClCompile Include="source\ProfilingManager.cpp">
       <Filter>Debug</Filter>

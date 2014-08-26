@@ -14,7 +14,7 @@ namespace System
 	public:
 
 		/// 
-		Console(Graphics::Background &background, int x, int y, int width, int height);
+		Console(Ptr<Graphics::Background> background, int x, int y, int width, int height);
 		
 		/// 
 		void Update(const Framework::GameTime &gameTime);
