@@ -7,7 +7,6 @@
 
 // Stuff you can load
 #include "TiledBackground.h"
-#include "MapResource.h"
 #include "TileSet16.h"
 #include "TileSet256.h"
 #include "Palette.h"
@@ -24,14 +23,11 @@
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "BasicEffect.h"
-//#include "TilesManager.h"
 #include "Sprite.h"
-#include "SpriteSet.h"
 
 namespace Framework
 {
 	using namespace std;
-	using namespace LLR;
 	using namespace Util;
 	using namespace Debug;
 	using namespace Graphics;
@@ -43,7 +39,7 @@ namespace Framework
 	// Todo: code duplications in TileSet16 and TileSet256
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<TileSet16> ContentManager::LoadResourceFromStream(const String &resourceName, FileStream &fs)
+	Ptr<TileSet16> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		struct TileSetFileHeader
 		{
@@ -65,7 +61,7 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<TileSet256> ContentManager::LoadResourceFromStream(const String &resourceName, FileStream &fs)
+	Ptr<TileSet256> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		struct TileSetFileHeader
 		{
@@ -80,8 +76,8 @@ namespace Framework
 		tileSet->AddTiles(*(fs.ReadAll<Tile8bpp>()));
 		tileSet->tileSize.Width  = header.Width;
 		tileSet->tileSize.Height = header.Height;
-		
-		auto palette = Load<Palette>(resourceName + "_pal");
+			
+		auto palette = Load<Palette>(fs.resourceName + "_pal");
 		
 		for (auto &tile : tileSet->Tiles)
 			tile.AddPalette(palette);
@@ -93,20 +89,20 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<Font> ContentManager::LoadResourceFromStream(const String &resourceName, FileStream &fs)
+	Ptr<Font> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
-		return static_pointer_cast<Font>( LoadResourceFromStream<TileSet16>(resourceName, fs) );
+		return static_pointer_cast<Font>( LoadResourceFromStream<TileSet16>(fs) );
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<TiledBackground> ContentManager::LoadResourceFromStream(const String &resourceName, FileStream &fs)
+	Ptr<TiledBackground> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		StreamReader reader(&fs);
 		auto lines = reader.ReadToEnd();
 
 		Size              mapSize;
-		Ptr<MapResource>  mapData;
+		Ptr<MapResource>  screenBlockEntries;
 		Ptr<CollisionMap> collisionMap;
 		Ptr<TileSet256>   tileSet;
 		Ptr<Palette>      palette;
@@ -131,7 +127,7 @@ namespace Framework
 				int height   = StringHelper::ParseInt(sizeStr[1]);
 				mapSize = Size(width, height);
 			}
-			if (type == "d") mapData      = ContentManager::Load<MapResource>(fileName);
+			if (type == "d") screenBlockEntries = ContentManager::Load<MapResource>(fileName);
 			if (type == "c") collisionMap = ContentManager::Load<CollisionMap>(fileName);
 			// \todo Support for loading more than one tile set per map
 			if (type == "t") tileSet      = ContentManager::Load<TileSet256>(fileName);
@@ -140,11 +136,9 @@ namespace Framework
 		auto tiledBackground = New<TiledBackground>(mapSize.Width, mapSize.Height, 8);
 		tiledBackground->CollisionMap = collisionMap;
 
-		auto &screenBlockEntries = mapData->ScreenBlockEntries;
-
-		for(u32 i = 0; i < screenBlockEntries.size(); ++i)
+		for(u32 i = 0; i < screenBlockEntries->size(); ++i)
 		{
-			auto screenBlockEntry = screenBlockEntries[i];
+			auto screenBlockEntry = (*screenBlockEntries)[i];
 			tiledBackground->Tiles[i] = &tileSet->Tiles[screenBlockEntry.TileIndex()];
 			tiledBackground->TileParameters[i] = screenBlockEntry;
 		}
@@ -154,7 +148,7 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<SpriteSet> ContentManager::LoadResourceFromStream(const String &resourceName, FileStream &fs)
+	Ptr<SpriteSet> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		StreamReader reader(&fs);
 		auto lines = reader.ReadToEnd();
@@ -200,8 +194,7 @@ namespace Framework
 					}
 					subImages.push_back(subImage);
 				}
-				auto sprite = New<Sprite>(subImages);
-				spriteSet->Sprites[name] = sprite;
+				(*spriteSet)[name] = new Sprite(subImages);
 			}
 		}
 
@@ -212,7 +205,7 @@ namespace Framework
 	// \todo What would be better is a custom load function where you can specify the header and content type. 
 	// MapResource's purpose is not for loading, it just happens to contain a list op ScreenBlockEntries
 	template<>
-	Ptr<MapResource> ContentManager::LoadResourceFromStream(const String &resourceName, FileStream &fs)
+	Ptr<MapResource> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		struct MapFileHeader
 		{
@@ -222,14 +215,14 @@ namespace Framework
 
 		auto header = fs.ReadHeader<MapFileHeader>();
 		auto map = New<MapResource>(header.Width, header.Height);
-		map->ScreenBlockEntries = *(fs.ReadAll<ScreenBlockEntry>());
+		map = fs.ReadAll<ScreenBlockEntry>();
 
 		return map;
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<Palette> ContentManager::LoadResourceFromStream(const String &resourceName, FileStream &fs)
+	Ptr<Palette> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		Ptr<Palette> palette = New<Palette>();
 		palette->Colors = *(fs.ReadAll<u16>());
@@ -238,7 +231,7 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<CollisionMap> ContentManager::LoadResourceFromStream(const String &resourceName, FileStream &fs)
+	Ptr<CollisionMap> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		struct CollisionMapFileHeader
 		{
@@ -255,7 +248,7 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<Path> ContentManager::LoadResourceFromStream(const String &resourceName, FileStream &fs)
+	Ptr<Path> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		auto path = New<Path>();
 		auto data = *(fs.ReadAll<u16>());
@@ -271,7 +264,7 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<Model> ContentManager::LoadResourceFromStream(const String &resourceName, FileStream &fs)
+	Ptr<Model> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		Ptr<Model> model = New<Model>();
 
@@ -302,7 +295,7 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<ModelMesh> ContentManager::LoadResourceFromStream(const String &resourceName, FileStream &fs)
+	Ptr<ModelMesh> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		struct MeshFileHeader
 		{
@@ -350,7 +343,7 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<Texture> ContentManager::LoadResourceFromStream(const String &resourceName, FileStream &fs)
+	Ptr<Texture> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		struct TextureFileHeader
 		{
@@ -367,7 +360,7 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<Scene> ContentManager::LoadResourceFromStream(const String &resourceName, FileStream &fs)
+	Ptr<Scene> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		Ptr<Scene> scene = New<Scene>();
 

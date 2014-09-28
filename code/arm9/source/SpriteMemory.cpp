@@ -12,10 +12,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	SpriteMemory::SpriteMemory(bool isMain) : super(isMain, MemoryType::Memory_SPR)
 	{
-		// Somehow the Initialize function is needed, initialization of the memory 
-		// slots cannot be done in the constructor. It seems it has something to do 
-		// with the pointer to this Memory2D object, which is stored in the memory 
-		// slots, is corrupt or something when stored in the constructor.
+		
 	}
 
 	//-------------------------------------------------------------------------------------------------

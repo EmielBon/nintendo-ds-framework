@@ -97,7 +97,6 @@
     <ClInclude Include="include\Graphics.h" />
     <ClInclude Include="include\GraphicsDeviceManager.h" />
     <ClInclude Include="include\GUI.h" />
-    <ClInclude Include="include\IGraphicsResource.h" />
     <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\IActionListener.h" />
     <ClInclude Include="include\IDisposable.h" />
@@ -107,12 +106,10 @@
     <ClInclude Include="include\IndexBuffer.h" />
     <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\JumpBumpGame.h" />
-    <ClInclude Include="include\LLR.h" />
     <ClInclude Include="include\Map.h" />
     <ClInclude Include="include\Light.h" />
     <ClInclude Include="include\Logging.h" />
     <ClInclude Include="include\LogPrinter.h" />
-    <ClInclude Include="include\MapResource.h" />
     <ClInclude Include="include\MatrixPerformanceTest.h" />
     <ClInclude Include="include\MemoryTypes.h" />
     <ClInclude Include="include\NDSGameHost.h" />
@@ -139,9 +136,7 @@
     <ClInclude Include="include\SceneObject.h" />
     <ClInclude Include="include\SetHelper.h" />
     <ClInclude Include="include\Size.h" />
-    <ClInclude Include="include\SpriteResource.h" />
     <ClInclude Include="include\Sprites.h" />
-    <ClInclude Include="include\SpriteSet.h" />
     <ClInclude Include="include\SpriteSubImage.h" />
     <ClInclude Include="include\StreamReader.h" />
     <ClInclude Include="include\StringHelper.h" />

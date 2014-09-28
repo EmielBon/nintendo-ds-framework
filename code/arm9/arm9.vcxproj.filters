@@ -304,17 +304,8 @@
     <ClInclude Include="include\Size.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="include\MapResource.h">
-      <Filter>LLR</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SpriteResource.h">
-      <Filter>LLR</Filter>
-    </ClInclude>
     <ClInclude Include="include\SpriteSubImage.h">
       <Filter>Graphics\Sprite</Filter>
-    </ClInclude>
-    <ClInclude Include="include\IGraphicsResource.h">
-      <Filter>LLR</Filter>
     </ClInclude>
     <ClInclude Include="include\BreakPoint.h">
       <Filter>Debug</Filter>
@@ -360,9 +351,6 @@
     </ClInclude>
     <ClInclude Include="include\ContentManager.h">
       <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SpriteSet.h">
-      <Filter>Graphics\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="include\MatrixPerformanceTest.h">
       <Filter>Test</Filter>
@@ -420,9 +408,6 @@
     </ClInclude>
     <ClInclude Include="include\GUI.h">
       <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="include\LLR.h">
-      <Filter>LLR</Filter>
     </ClInclude>
     <ClInclude Include="include\System.h">
       <Filter>System</Filter>
@@ -748,9 +733,6 @@
     </Filter>
     <Filter Include="GUI">
       <UniqueIdentifier>{723f2b19-ca35-4730-961b-687d308e10c3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="LLR">
-      <UniqueIdentifier>{74ff88e0-ca34-477c-a657-9862c0cea28c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Test\Test 2D">
       <UniqueIdentifier>{6f0a803b-90f6-43c0-9bf1-79779a766c22}</UniqueIdentifier>

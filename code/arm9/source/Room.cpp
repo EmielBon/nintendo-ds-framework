@@ -53,16 +53,15 @@ namespace Framework2D
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void Room::SetBackground(int index, Ptr<TiledBackground> background)
+	void Room::SetBackground(int index, TiledBackground *background)
 	{
 		auto bg = GraphicsDevice::Main.Backgrounds[index];
 		sassert(bg, "Hardware background %i not initialized", index);
 		bg->ShowMapWithIndex(index);
-
-		sassert(index >= 0 && index <= 3, "Map index out of bounds");
-		auto map = GraphicsDevice::Main.BackgroundMemory->Maps[index];
-		background->CopyToHardwareMap(map);
 		bg->Enable();
 		bg->SetLayer(index);
+
+		sassert(index >= 0 && index <= 3, "Map index out of bounds");
+		background->CopyToHardwareBackground(*bg);
 	}
 }

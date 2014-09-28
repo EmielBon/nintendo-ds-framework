@@ -19,7 +19,7 @@ namespace Graphics
 	using namespace Framework;
 
 	//-------------------------------------------------------------------------------------------------
-	TextRenderer::TextRenderer(Ptr<Graphics::Background> background, const String &fontName /* = "font8x8@4" */) 
+	TextRenderer::TextRenderer(Graphics::Background *background, const String &fontName /* = "font8x8@4" */) 
 		: FontName(fontName), dynamicPaletteStartIndex(-1), Background(background)
 	{
 		
@@ -86,8 +86,9 @@ namespace Graphics
 					continue;
 
 				auto &tile = Font->Tiles[str[i] * tilesPerChar + j];
-				int tileIndex = bgmem.AddTile(tile, dynamicPaletteStartIndex);
-				map->SetTile(x2, y2, ScreenBlockEntry(tileIndex, false, false, palIndex));
+				//int tileIndex = bgmem.AddTile(tile, dynamicPaletteStartIndex);
+				GraphicsDevice::SetBackgroundTile(*Background, i, j, &tile, TileParameters(0, false, false, palIndex));
+				//map->SetTile(x2, y2, ScreenBlockEntry(tileIndex, false, false, palIndex));
 			}
 			x += charWidth;
 		}

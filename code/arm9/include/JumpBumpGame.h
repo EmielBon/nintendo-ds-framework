@@ -21,5 +21,5 @@ public:
 
 public:
 
-	List<Ptr<Rabbit>> Rabbits;
+	List<Rabbit*> Rabbits;
 };

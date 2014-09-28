@@ -29,13 +29,10 @@ namespace Graphics
 		void Update();
 
 		/// Adds a sprite to the Nintendo DS's OAM memory 
-		void DrawSprite(Ptr<Sprite> sprite, fx12 x, fx12 y, fx12 subImageIndex);
+		void DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex);
 
 		/// Clears all sprite entries
 		void Reset();
-
-		///
-		Ptr<LLR::SpriteResource> Convert(const Sprite &sprite) const;
 
 	private:
 
@@ -68,15 +65,14 @@ namespace Graphics
 		OAMTable* oam;
 		u16* location;
 
+		int spriteCount;
+
 		const static u32 SPRITE_MAX = 128;
 		const static u32 SPRITE_MAX_AFFINE = 32;
-		
-		List< Ptr<Sprite> > sprites;
-		Dictionary< Ptr<Sprite>, Ptr<LLR::SpriteResource> > oamSpriteMap;
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline ObjectAttributeMemory::ObjectAttributeMemory() : DisplayMode(SpriteDisplayMode_1D_64), graphicsDevice(nullptr), oam(nullptr), location(nullptr)
+	inline ObjectAttributeMemory::ObjectAttributeMemory() : DisplayMode(SpriteDisplayMode_1D_64), graphicsDevice(nullptr), oam(nullptr), location(nullptr), spriteCount(0)
 	{
 		
 	}

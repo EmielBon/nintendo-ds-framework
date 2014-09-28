@@ -10,6 +10,7 @@
 #include "ObjectAttributeMemory.h"
 #include "ViewPort.h"
 #include "RasterizerState.h"
+#include "ScreenBlockEntry.h"
 #include <nds/arm9/videoGL.h>
 #include "fixed.h"
 
@@ -85,6 +86,9 @@ namespace Graphics
 
 		///
 		void EnableSprites(bool enable);
+		
+		///
+		void Enable3D(bool enable);
 
 		///
 		void Synchronize();
@@ -92,10 +96,17 @@ namespace Graphics
 		///
 		void SetBackgroundColor(u16 color);
 
-	public:
+		/// 
+		Background* GetBackgroundAtLayer(int layer) const;
+
+		/// 
+		static void SetBackgroundTile(Background &background, int i, int j, Tile *tile, TileParameters params);
+
+		/// 
+		void SetTileForBackgroundAtLayer(int layer, int i, int j, Tile *tile, TileParameters params = 0);
 
 		///
-		void Enable3D(bool enable);
+		void DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex);
 
 		/// Can draw a maximum of 6144 vertices per frame, which corresponds roughly to about 2048 triangles or 1536 quads
 		void DrawIndexedPrimitives(PrimitiveType type, int vertexOffset, int minVertexIndex, int numVertices, int startIndex, int primitiveCount);
@@ -126,7 +137,7 @@ namespace Graphics
 		
 	public:
 
-		Array<Ptr<Background>, 4> Backgrounds;
+		Array<Background*, 4> Backgrounds;
 		Ptr<Graphics::Texture> ActiveTexture;
 		Ptr<IndexBuffer> Indices;
 		Ptr<Graphics::VertexBuffer> VertexBuffer;
@@ -138,5 +149,13 @@ namespace Graphics
 	inline bool GraphicsDevice::IsMain() const
 	{
 		return this == &Main;
+	}
+
+	//------------------------------------------------------------------------------------------------- 
+	inline void GraphicsDevice::SetTileForBackgroundAtLayer(int layer, int i, int j, Tile *tile, TileParameters params /* = 0 */)
+	{
+		auto bg = GetBackgroundAtLayer(layer);
+		sassert(bg, "Background cannot be null");
+		SetBackgroundTile(*bg, i, j, tile, params);
 	}
 }

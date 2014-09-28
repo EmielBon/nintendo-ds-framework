@@ -31,7 +31,7 @@ namespace FileSystem
 	//-------------------------------------------------------------------------------------------------
 	inline StreamReader::StreamReader(String fileName)
 	{
-		fileStream = new FileStream();
+		fileStream = new FileStream(fileName);
 		fileStream->Open(fileName);
 	}
 

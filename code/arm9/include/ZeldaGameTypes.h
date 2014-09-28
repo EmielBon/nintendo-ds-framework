@@ -8,7 +8,6 @@
 #include "Framework3D.h"
 #include "Graphics.h"
 #include "Input.h"
-#include "LLR.h"
 #include "System.h"
 #include "Util.h"
 
@@ -24,6 +23,5 @@ using namespace Framework2D;
 using namespace Framework3D;
 using namespace Graphics;
 using namespace Input;
-using namespace LLR;
 using namespace System;
 using namespace Util;

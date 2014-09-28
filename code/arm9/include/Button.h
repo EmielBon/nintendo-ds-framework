@@ -16,7 +16,7 @@ namespace GUI
 
 		Button() = default;
 
-		Button(String text, int x, int y, Ptr<Graphics::Background> background);
+		Button(const String &text, int x, int y, Graphics::Background *background);
 
 		void Tap();
 

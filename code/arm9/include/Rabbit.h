@@ -10,5 +10,5 @@ public:
 
 public:
 	
-	Ptr<Graphics::Sprite> Sprite;
+	Graphics::Sprite* Sprite;
 };

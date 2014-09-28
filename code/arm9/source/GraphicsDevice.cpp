@@ -44,7 +44,7 @@ namespace Graphics
 	void GraphicsDevice::Initialize()
 	{
 		for(u32 i = 0; i < Backgrounds.size(); ++i)
-			Backgrounds[i] = New<Background>(this, i);
+			Backgrounds[i] = new Background(this, i);
 
 		bool main = IsMain();
 
@@ -62,16 +62,14 @@ namespace Graphics
 	void GraphicsDevice::SetMode(u32 modeIndex)
 	{
 		// Main engine has 6 modes, sub engine 5 modes, any number higher is invalid
-		ASSERT(modeIndex >= 0 && modeIndex <= (IsMain() ? 6 : 5), "Error: invalid mode index specified");
-		
+		sassert(modeIndex >= 0 && modeIndex <= (IsMain() ? 6 : 5), "Error: invalid mode index specified");
 		mode = modeIndex;
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	void GraphicsDevice::Enable3D(bool enable)
 	{
-		ASSERT(IsMain(), "Error: The sub engine does not support 3D");
-		
+		sassert(IsMain(), "Error: The sub engine does not support 3D");
 		enable3D = enable;
 	}
 
@@ -114,12 +112,47 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
+	Background* GraphicsDevice::GetBackgroundAtLayer(int layer) const
+	{
+		for (auto background : Backgrounds)
+			if (background->GetLayer() == layer)
+				return background;
+		return nullptr;
+	}
+
+	//------------------------------------------------------------------------------------------------- 
+	void GraphicsDevice::SetBackgroundTile(Background &background, int i, int j, Tile *tile, TileParameters params /* = 0 */)
+	{
+		auto &bgMem = background.BackgroundMemory();
+		auto &map   = *bgMem.Maps[background.GetMapIndex()];
+
+		if (tile)
+		{
+			u32 tileIndex = bgMem.AddTile(*tile);
+			auto screenBlockEntry = params;
+			screenBlockEntry.SetTileIndex(tileIndex);
+			map.SetTile(i, j, screenBlockEntry);
+		}
+		else
+		{
+			map.SetTile(i, j, map.ClearTile);
+		}
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	void GraphicsDevice::DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex)
+	{
+		SpriteMemory->AddSprite(sprite);
+		ObjectAttributeMemory.DrawSprite(sprite, x, y, imageIndex);
+	}
+
+	//-------------------------------------------------------------------------------------------------
 	void GraphicsDevice::DrawIndexedPrimitives( PrimitiveType type, int vertexOffset, int minVertexIndex, int numVertices, int startIndex, int primitiveCount )
 	{
-		ASSERT(IsMain(), "Error: The sub engine does not support 3D");
-		ASSERT(VertexBuffer, "Error: No vertex buffer assigned");
-		ASSERT(Indices, "Error: No index buffer assigned");
-		ASSERT(Indices->IndexCount() > 0, "Error: Drawing empty index list");
+		sassert(IsMain(), "Error: The sub engine does not support 3D");
+		sassert(VertexBuffer, "Error: No vertex buffer assigned");
+		sassert(Indices, "Error: No index buffer assigned");
+		sassert(Indices->IndexCount() > 0, "Error: Drawing empty index list");
 
 		glBegin((GL_GLBEGIN_ENUM)type);
 
@@ -140,19 +173,19 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	void GraphicsDevice::DrawUserIndexedPrimitives( PrimitiveType type, const List<Vertex>& vertices, int vertexOffset, int numVertices, const List<u16> &indices, int indexOffset, int primitiveCount )
 	{
-		ASSERT(IsMain(), "Error: The sub engine does not support 3D");
-		ASSERT(vertices.size() > 0 && indices.size() > 0, "Error: Drawing empty vertices and/or indices list");
+		sassert(IsMain(), "Error: The sub engine does not support 3D");
+		sassert(vertices.size() > 0 && indices.size() > 0, "Error: Drawing empty vertices and/or indices list");
 
 		glBegin((GL_GLBEGIN_ENUM)type);
 
 		for(u32 i = indexOffset; i < indices.size(); ++i)
 		{
 			int index = indices[i] + vertexOffset;
-			const Vertex  &v = vertices[index];
+			auto &v = vertices[index];
 
-			const Vector2 &texcoord = v.TextureCoordinates;
-			const Vector3 &normal   = v.Normal;
-			const Vector3 &position = v.Position;
+			auto &texcoord = v.TextureCoordinates;
+			auto &normal   = v.Normal;
+			auto &position = v.Position;
 
 			glTexCoord2fx12(texcoord.x, texcoord.y);
 			// todo: inefficient, float and conversion from fx12 to float, and then to fx10
@@ -166,7 +199,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	void GraphicsDevice::Clear( ClearOptions options, Color color/*, float depth, int stencil*/ )
 	{
-		ASSERT(IsMain(), "Error: The sub engine does not support 3D");
+		sassert(IsMain(), "Error: The sub engine does not support 3D");
 
 		if (options & ClearOptions::Target)
 		{

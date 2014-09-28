@@ -25,7 +25,7 @@ namespace Framework2D
 
 		void AddObject(Ptr<GameObject> obj);
 
-		void SetBackground(int index, Ptr<Graphics::TiledBackground> background);
+		void SetBackground(int index, Graphics::TiledBackground *background);
 
 	public:
 

@@ -6,7 +6,7 @@
 
 namespace Graphics
 {
-	struct ScreenBlockEntry
+	class ScreenBlockEntry
 	{
 	public:
 
@@ -36,7 +36,7 @@ namespace Graphics
 
 		operator u16();
 	
-	private:
+	protected:
 
 		u16 value;
 	};

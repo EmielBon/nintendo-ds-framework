@@ -9,8 +9,8 @@ void GameObject::Initialize()
     y = 0.0f;
     ImageSpeed = 10;
     ImageIndex = 0.0f;
-    CurrentSprite = New<Sprite>();
-    Sprites = New<SpriteSet>();
+	CurrentSprite = nullptr;
+    Sprites = nullptr;
     base::Initialize();
 }
 

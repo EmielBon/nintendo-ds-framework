@@ -12,8 +12,8 @@ void Link::Initialize()
 
 void Link::LoadContent()
 {
-    Sprites = ContentManager::Load<SpriteSet> ( "link" );
-    CurrentSprite = Sprites->at ( "link_down" );
+    Sprites = ContentManager::Load<SpriteSet>("link").get();
+    CurrentSprite = Sprites->at("link_down");
 	GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
     base::LoadContent();
 }
@@ -26,7 +26,7 @@ void Link::Update ( const GameTime &gameTime )
 
     if ( !KeyPad::GetState().IsKeyHeld ( Keys::All ) )
     {
-        CurrentSprite->SubImageIndex = 0;
+        ImageIndex = 0;
     }
 
     if ( KeyPad::GetState().IsKeyHeld ( Keys::Left ) )
@@ -61,7 +61,7 @@ void Link::Update ( const GameTime &gameTime )
 
 void Link::Draw ( const GameTime &gameTime )
 {
-    DrawSprite ( CurrentSprite, x, y, ImageIndex );
+    DrawSprite ( *CurrentSprite, x, y, ImageIndex );
     base::Draw ( gameTime );
 }
 

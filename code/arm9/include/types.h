@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CoreTypes.h"
-
+#include <nds/arm9/sprite.h>
 /// Forward declarations
 
 namespace Framework
@@ -38,8 +38,8 @@ namespace Graphics
 	class Font;
 	class GraphicsDevice;
 	class Map;
-	class SpriteSet;
-
+	class ScreenBlockEntry;
+	
 	class TileMemory;
 	class BackgroundMemory;
 	class SpriteMemory;
@@ -56,6 +56,11 @@ namespace Graphics
 	class GraphicsDevice;
 	class VertexBuffer;
 	class IndexBuffer;
+
+	using TileParameters = ScreenBlockEntry;
+	using SpriteSet = Dictionary<String, Sprite*>;
+	using SpriteResource = List<SpriteEntry>;
+	using MapResource = List<ScreenBlockEntry>;
 }
 
 namespace FileSystem
@@ -84,12 +89,6 @@ namespace Framework3D
 namespace Input
 {
 
-}
-
-namespace LLR
-{
-	struct MapResource;
-	struct SpriteResource;
 }
 
 namespace System
