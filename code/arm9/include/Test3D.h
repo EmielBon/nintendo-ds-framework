@@ -42,7 +42,7 @@ namespace Test
 		// Game objects and variables
 		//Ptr<Map> background;
 		Ptr<Framework3D::Scene> scene;
-		Ptr<Debug::FPSCounter> fpsCounter;
-		Ptr<Debug::DebugUI> debugUI;
+		Debug::FPSCounter *fpsCounter;
+		Debug::DebugUI *debugUI;
 	};
 }

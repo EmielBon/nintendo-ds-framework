@@ -119,8 +119,17 @@ namespace Util
 
 namespace Framework
 {
-	using Matrix  = Mat<fx12>;
-	using Point   = Vec2<int>;
-	using Vector2 = Vec2<fx12>;
-	using Vector3 = Vec3<fx12>;
+	using Matrix   = Mat<fx12>;
+	using Point    = Vec2<int>;
+	using Vector2  = Vec2<fx12>;
+	using Vector2b = Vec2<char>;
+	using Vector2s = Vec2<short>;
+	using Vector2i = Vec2<int>;
+	using Vector2f = Vec2<float>;
+	using Vector2  = Vec2<fx12>;
+	using Vector3  = Vec3<fx12>;
+	using Vector3b = Vec3<char>;
+	using Vector3s = Vec3<short>;
+	using Vector3i = Vec3<int>;
+	using Vector3f = Vec3<float>;
 }

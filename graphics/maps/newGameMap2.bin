@@ -1,0 +1,5 @@
+s 32x24
+d newGameMap2MapData
+c newGameMap2Collision
+t zeldaset
+p zeldaset_pal

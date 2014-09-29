@@ -1,14 +1,17 @@
 #pragma once
 
 #include "types.h"
+#include "GameObject.h"
 
-class Rabbit
+class Rabbit : public GameObject
 {
 public:
 
 	Rabbit() = default;
 
-public:
-	
-	Graphics::Sprite* Sprite;
+	void LoadContent();
+
+	void Update(const Framework::GameTime &gameTime);
+
+	void Draw(const Framework::GameTime &gameTime);
 };

@@ -7,6 +7,10 @@ class Rabbit;
 
 class JumpBumpGame : public Framework::Game
 {
+private:
+
+	using base = Framework::Game;
+
 public:
 
 	JumpBumpGame();

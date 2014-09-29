@@ -17,7 +17,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	ObjectAttributeMemory::ObjectAttributeMemory(Graphics::GraphicsDevice *device) : DisplayMode(SpriteDisplayMode_1D_64), graphicsDevice(device), oam(NULL), location(NULL), spriteCount(0)
 	{
-		ASSERT(device != NULL, "Error: ObjectAttributeMemory initialized with NULL device");
+		sassert(device, "Error: ObjectAttributeMemory initialized with NULL device");
 
 		oam = new OAMTable();
 		location = graphicsDevice->IsMain() ? OAM : OAM_SUB;
@@ -81,7 +81,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	void ObjectAttributeMemory::Reset()
 	{
-		ASSERT(oam != NULL, "Error: OAM not initialized");
+		sassert(oam, "Error: OAM not initialized");
 
 		/*
 		 * For all 128 sprites on the DS, disable and clear any attributes they 

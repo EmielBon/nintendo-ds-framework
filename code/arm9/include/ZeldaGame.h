@@ -9,5 +9,5 @@ private:
 public:
     void Initialize();
 public:
-    Ptr<Room> currentRoom;
+    Room *currentRoom;
 };

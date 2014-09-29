@@ -7,9 +7,10 @@
 namespace Graphics
 {
 	//-------------------------------------------------------------------------------------------------
-	Background::Background(GraphicsDevice *e, int i) : index(i), layer(3), enabled(false), graphicsDevice(e), mapIndex(-1), Offset(0, 0), ColorMode(ColorMode16)
+	Background::Background(GraphicsDevice *e, int i) : index(i), graphicsDevice(e), Offset(0, 0), ColorMode(ColorMode256)
 	{
-		
+		mapIndex = index;
+		layer    = index;
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -28,9 +29,9 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	void Background::Synchronize() const
 	{
-		ASSERT(graphicsDevice != NULL && index != -1, "Background not initialized");
+		ASSERT(graphicsDevice && index != -1, "Background not initialized");
 		
-		if (!enabled || mapIndex < 0) 
+		if (!IsEnabled()) 
 			return;
 
 		int tileBase = BackgroundMemory().TileBase();

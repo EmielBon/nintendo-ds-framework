@@ -12,33 +12,33 @@ namespace Framework
 	public:
 
 		///
-		virtual ~GameComponentCollection() { }
+		virtual ~GameComponentCollection() = default;
 
 		///
-		void Add(Ptr<GameComponent> component);
+		void Add(GameComponent *component);
 
 		///
 		void Clear();
 
 		/// 
-		void Remove(Ptr<GameComponent> component);
+		void Remove(GameComponent *component);
 
 		///
 		int Count() const;
 
 	public:
 
-		Set<Ptr<GameComponent>>::iterator Begin();
+		Set<GameComponent*>::iterator Begin();
 
-		Set<Ptr<GameComponent>>::iterator End();
+		Set<GameComponent*>::iterator End();
 
 	protected:
 
-		Set<Ptr<GameComponent>> Items;
+		Set<GameComponent*> Items;
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline void GameComponentCollection::Add(Ptr<GameComponent> component)
+	inline void GameComponentCollection::Add(GameComponent *component)
 	{
 		Items.insert(component);
 	}
@@ -50,7 +50,7 @@ namespace Framework
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline void GameComponentCollection::Remove(Ptr<GameComponent> component)
+	inline void GameComponentCollection::Remove(GameComponent *component)
 	{
 		Items.erase(component);
 	}
@@ -62,13 +62,13 @@ namespace Framework
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline Set<Ptr<GameComponent>>::iterator GameComponentCollection::Begin()
+	inline Set<GameComponent*>::iterator GameComponentCollection::Begin()
 	{
 		return Items.begin();
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline Set<Ptr<GameComponent>>::iterator GameComponentCollection::End()
+	inline Set<GameComponent*>::iterator GameComponentCollection::End()
 	{
 		return Items.end();
 	}

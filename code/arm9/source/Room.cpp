@@ -58,7 +58,6 @@ namespace Framework2D
 		auto bg = GraphicsDevice::Main.Backgrounds[index];
 		sassert(bg, "Hardware background %i not initialized", index);
 		bg->ShowMapWithIndex(index);
-		bg->Enable();
 		bg->SetLayer(index);
 
 		sassert(index >= 0 && index <= 3, "Map index out of bounds");

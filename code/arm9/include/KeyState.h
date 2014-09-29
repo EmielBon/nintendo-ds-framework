@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Keys.h"
+#include "types.h"
+#include "Vec2.h"
 
 namespace Input
 {
@@ -9,13 +11,16 @@ namespace Input
 	public:
 
 		/// 
-		bool IsKeyPressed(Keys key);
+		bool IsKeyPressed(Keys key) const;
 
 		/// 
-		bool IsKeyHeld(Keys key);
+		bool IsKeyHeld(Keys key) const;
 
 		/// 
-		bool IsKeyReleased(Keys key);
+		bool IsKeyReleased(Keys key) const;
+
+		///
+		Framework::Vector2i GetDirectionalPadVector() const;
 
 	public:
 
@@ -25,20 +30,37 @@ namespace Input
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline bool KeyState::IsKeyPressed(Keys key)
+	inline bool KeyState::IsKeyPressed(Keys key) const
 	{
 		return (PressedState & key) != 0; 
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline bool KeyState::IsKeyHeld(Keys key)
+	inline bool KeyState::IsKeyHeld(Keys key) const
 	{
 		return (HeldState & key) != 0; 
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline bool KeyState::IsKeyReleased(Keys key)
+	inline bool KeyState::IsKeyReleased(Keys key) const
 	{
 		return (ReleasedState & key) != 0; 
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	inline Framework::Vector2i KeyState::GetDirectionalPadVector() const
+	{
+		Framework::Vector2i direction;
+
+		if (IsKeyHeld(Keys::Left))
+			direction.x = -1;
+		else if (IsKeyHeld(Keys::Right))
+			direction.x =  1;
+		if (IsKeyHeld(Keys::Down))
+			direction.y = -1;
+		else if (IsKeyHeld(Keys::Up))
+			direction.y = 1;
+
+		return direction;
 	}
 }

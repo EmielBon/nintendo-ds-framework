@@ -17,6 +17,7 @@ GRAPHICS    := ../graphics
 SOUND       := ../sound
 MODELS 		:= $(GRAPHICS)/models
 TEXTURES    := $(GRAPHICS)/textures
+MAPS        := $(GRAPHICS)/maps
 TILES		:= $(GRAPHICS)/tilesets
 SCENES      := $(GRAPHICS)/scenes
 FONTS       := $(GRAPHICS)/fonts
@@ -26,7 +27,7 @@ FONTS       := $(GRAPHICS)/fonts
 #---------------------------------------------------------------------------------
 # main targets
 #---------------------------------------------------------------------------------
-all: models textures tilesets scenes fonts $(TARGET).nds
+all: models textures maps tilesets scenes fonts $(TARGET).nds
 
 #---------------------------------------------------------------------------------
 $(TARGET).nds	:	$(TARGET).arm7 $(TARGET).arm9 $(BINMODELS) 
@@ -68,6 +69,18 @@ $(GAMEDATA)/%.bin : $(TEXTURES)/%.png
 cleantextures :
 	rm -f $(BINTEXTURES)
 
+#---------------------------------------------------------------------------------
+MAPFILES 	:= $(wildcard $(MAPS)/*.bin)
+BINMAPS  	:= $(addprefix $(GAMEDATA)/, $(notdir $(MAPFILES:.bin=.bin)))
+
+maps : $(BINMAPS)
+
+$(GAMEDATA)/%.bin : $(MAPS)/%.bin
+	cp -f $(ARPIGI)/code/$< $(ARPIGI)/code/$@
+
+cleanmaps :
+	rm -f $(BINMAPS)
+	
 #---------------------------------------------------------------------------------
 TILEFILES 	:= $(wildcard $(TILES)/*.png)
 BINTILES  	:= $(addprefix $(GAMEDATA)/, $(notdir $(TILEFILES:.png=.bin)))
