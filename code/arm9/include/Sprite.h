@@ -22,13 +22,12 @@ namespace Graphics
 
 	public:
 
-		int X, Y;
 		int OriginX, OriginY;
 
 		fx8 Scale;
 		ObjPriority Priority;
-
-		u32 SubImageIndex;
+		
+		int ImageIndex;
 		int ImageSpeed;
 
 		List<TiledImage> SubImages;

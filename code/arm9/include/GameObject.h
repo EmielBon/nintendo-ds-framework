@@ -14,6 +14,6 @@ public:
     fx12 y;
     fx12 ImageSpeed;
     fx12 ImageIndex;
-    Ptr<Sprite> CurrentSprite;
-    Ptr<SpriteSet> Sprites;
+    Sprite *CurrentSprite;
+    SpriteSet *Sprites;
 };

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CoreTypes.h"
-
+#include <nds/arm9/sprite.h>
 /// Forward declarations
 
 namespace Framework
@@ -38,8 +38,8 @@ namespace Graphics
 	class Font;
 	class GraphicsDevice;
 	class Map;
-	class SpriteSet;
-
+	class ScreenBlockEntry;
+	
 	class TileMemory;
 	class BackgroundMemory;
 	class SpriteMemory;
@@ -56,6 +56,11 @@ namespace Graphics
 	class GraphicsDevice;
 	class VertexBuffer;
 	class IndexBuffer;
+
+	using TileParameters = ScreenBlockEntry;
+	using SpriteSet = Dictionary<String, Sprite*>;
+	using SpriteResource = List<SpriteEntry>;
+	using MapResource = List<ScreenBlockEntry>;
 }
 
 namespace FileSystem
@@ -86,12 +91,6 @@ namespace Input
 
 }
 
-namespace LLR
-{
-	struct MapResource;
-	struct SpriteResource;
-}
-
 namespace System
 {
 	class Console;
@@ -120,8 +119,17 @@ namespace Util
 
 namespace Framework
 {
-	using Matrix  = Mat<fx12>;
-	using Point   = Vec2<int>;
-	using Vector2 = Vec2<fx12>;
-	using Vector3 = Vec3<fx12>;
+	using Matrix   = Mat<fx12>;
+	using Point    = Vec2<int>;
+	using Vector2  = Vec2<fx12>;
+	using Vector2b = Vec2<char>;
+	using Vector2s = Vec2<short>;
+	using Vector2i = Vec2<int>;
+	using Vector2f = Vec2<float>;
+	using Vector2  = Vec2<fx12>;
+	using Vector3  = Vec3<fx12>;
+	using Vector3b = Vec3<char>;
+	using Vector3s = Vec3<short>;
+	using Vector3i = Vec3<int>;
+	using Vector3f = Vec3<float>;
 }

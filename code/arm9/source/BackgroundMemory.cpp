@@ -3,13 +3,11 @@
 #include "VideoRamBank.h"
 #include "TiledBackground.h"
 #include "Logging.h"
-#include "MapResource.h"
 #include "SetHelper.h"
 #include <nds/arm9/background.h>
 
 namespace Graphics
 {
-	using namespace LLR;
 	using namespace Util;
 	using namespace Debug;
 

@@ -159,7 +159,7 @@ namespace Framework
 	{
 		for(auto it = Components.Begin(); it != Components.End(); ++it)
 		{
-			if (auto drawable = dynamic_pointer_cast<DrawableGameComponent>(*it))
+			if (auto drawable = static_cast<DrawableGameComponent*>(*it))
 				drawable->LoadContent();
 		}
 	}
@@ -179,7 +179,7 @@ namespace Framework
 	{
 		for(auto it = Components.Begin(); it != Components.End(); ++it)
 		{
-			if (auto drawable = dynamic_pointer_cast<DrawableGameComponent>(*it))
+			if (auto drawable = dynamic_cast<DrawableGameComponent*>(*it))
 			{
 				if (drawable->Visible)
 					drawable->Draw(gameTime);

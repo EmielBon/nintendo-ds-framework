@@ -5,21 +5,19 @@
 #include "Sprite.h"
 #include "TileSet256.h"
 #include "FixedHelper.h"
-#include "SpriteResource.h"
 #include "SpriteMemory.h"
 #include <nds/dma.h>
 #include <nds/arm9/cache.h>
 
 namespace Graphics
 {
-	using namespace LLR;
 	using namespace Math;
 	using namespace Util;
 
 	//-------------------------------------------------------------------------------------------------
-	ObjectAttributeMemory::ObjectAttributeMemory(Graphics::GraphicsDevice *device) : DisplayMode(SpriteDisplayMode_1D_64), graphicsDevice(device), oam(NULL), location(NULL)
+	ObjectAttributeMemory::ObjectAttributeMemory(Graphics::GraphicsDevice *device) : DisplayMode(SpriteDisplayMode_1D_64), graphicsDevice(device), oam(NULL), location(NULL), spriteCount(0)
 	{
-		ASSERT(device != NULL, "Error: ObjectAttributeMemory initialized with NULL device");
+		sassert(device, "Error: ObjectAttributeMemory initialized with NULL device");
 
 		oam = new OAMTable();
 		location = graphicsDevice->IsMain() ? OAM : OAM_SUB;
@@ -31,41 +29,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	void ObjectAttributeMemory::Update()
 	{
-		sassert(graphicsDevice != nullptr && oam != nullptr && location != nullptr, "Error: OAM not initialized");
-		
-		for(u32 i = 0; i < sprites.size(); ++i)
-		{
-			auto& sprite        = *sprites[i];
-			auto& oamSprite     = *oamSpriteMap[sprites[i]];
-			SpriteEntry &oamObj = oam->oamBuffer[i];
-			
-			oamObj = oamSprite.OAMSpriteEntries[sprite.SubImageIndex];
-			oamObj.rotationIndex = i;
-
-			SpriteRotation &rotObj = oam->matrixBuffer[i];
-			rotObj.hdx = FixedHelper::Tof16(fx8(1) / sprite.Scale);
-			rotObj.hdy = 0;
-			rotObj.vdx = 0;
-			rotObj.vdy = FixedHelper::Tof16(fx8(1) / sprite.Scale);
-
-			// Todo: Tighter coupling between sprite and oam sprite
-			// Todo: Hacky
-			/*SpriteEntry &oamObj = oam->oamBuffer[i];
-			Sprite &sprite = *sprites[i];
-			Sprite &oamSprite = *oamSpriteMap[sprites[i]];
-			int tileCount = sprite.TileSet->Get8x8TilesPerTile();
-			oamObj.gfxIndex = oamSprite.SubImages[sprite.SubImageIndex] * tileCount * GetSpriteTileStride(); // Klopt alleen als alle sprites even groot zijn
-			oamObj.x = sprite.X;
-			oamObj.y = sprite.Y;
-			oamObj.isHidden = false;
-			oamObj.isMosaic = false;
-			oamObj.isRotateScale = true;
-			oamObj.isSizeDouble = false;
-			oamObj.size = sprite.size;
-			oamObj.shape = sprite.shape;
-			oamObj.priority = sprite.Priority;
-			oamObj.colorMode = OBJCOLOR_256;*/
-		}
+		sassert(graphicsDevice && oam && location , "Error: OAM not initialized");
 
 		DC_FlushAll();
 		dmaCopy( oam->oamBuffer, location, SPRITE_MAX * sizeof(SpriteEntry) );
@@ -73,63 +37,32 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void ObjectAttributeMemory::DrawSprite(Ptr<Sprite> sprite, fx12 x, fx12 y, fx12 subImageIndex)
+	void ObjectAttributeMemory::DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex)
 	{
-		sassert(sprites.size() < SPRITE_MAX, "Error: Sprite limit reached");
-		
-		if (!sprite) 
-			return;
+		int subImageIndex = (int)imageIndex % sprite.SubImages.size();
+		u32 tileIdentifier = sprite.SubImages[subImageIndex].Tiles[0]->Identifier; // Upper left tile is used for sprite indexing
 
-		sprite->X = (int)x;
-		sprite->Y = (int)y;
-		sprite->SubImageIndex = (int)subImageIndex;
+		auto &entry = oam->oamBuffer[spriteCount];
+		entry.gfxIndex = graphicsDevice->SpriteMemory->VRAMIndexForTile(tileIdentifier);
+		entry.x = (int)x;
+		entry.y = (int)y;
+		entry.isHidden = false;
+		entry.isMosaic = false;
+		entry.isRotateScale = true;
+		entry.isSizeDouble = false;
+		entry.size = sprite.size;
+		entry.shape = sprite.shape;
+		entry.priority = sprite.Priority;
+		entry.colorMode = OBJCOLOR_256;
+		entry.rotationIndex = spriteCount;
 
-		sprites.push_back(sprite);
+		SpriteRotation &rotObj = oam->matrixBuffer[spriteCount];
+		rotObj.hdx = FixedHelper::Tof16(fx8(1) / sprite.Scale);
+		rotObj.hdy = 0;
+		rotObj.vdx = 0;
+		rotObj.vdy = FixedHelper::Tof16(fx8(1) / sprite.Scale);
 
-		//if (oamSpriteMap.find(sprite) == oamSpriteMap.end())
-		//{
-			// Add the tiles for this sprite to sprite memory
-			//ASSERT2(false, sprite->UniqueIndices.size());
-			for (auto &subImage : sprite->SubImages)
-				for (auto tile : subImage.Tiles)
-					graphicsDevice->SpriteMemory->AddTile(*tile);
-			// Add the sprite to object attribute memory
-			Ptr<SpriteResource> oamSprite = Convert(*sprite);
-			oamSpriteMap[sprite] = oamSprite;
-		//}
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	Ptr<SpriteResource> ObjectAttributeMemory::Convert(const Sprite &sprite) const
-	{
-		Ptr<SpriteResource> converted = New<SpriteResource>();
-
-		for (auto &subImage : sprite.SubImages)
-		{
-			u32 tileIdentifier = subImage.Tiles[0]->Identifier; // Upper left tile is used for sprite indexing
-			
-			SpriteEntry entry;
-			entry.gfxIndex = graphicsDevice->SpriteMemory->VRAMIndexForTile(tileIdentifier);
-			entry.x = sprite.X;
-			entry.y = sprite.Y;
-			entry.isHidden = false;
-			entry.isMosaic = false;
-			entry.isRotateScale = true;
-			entry.isSizeDouble = false;
-			entry.size = sprite.size;
-			entry.shape = sprite.shape;
-			entry.priority = sprite.Priority;
-			entry.colorMode = OBJCOLOR_256;
-			
-			converted->OAMSpriteEntries.push_back(entry);
-			//u32 &val = (*converted).SubImages[i];
-			//auto vramIndex = tileIndexMap.find(val * TileSet->Get8x8TilesPerTile());
-
-			//if (vramIndex != tileIndexMap.end())
-			//	val = vramIndex->second / TileSet->Get8x8TilesPerTile();
-		}
-
-		return converted;
+		spriteCount++;
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -148,14 +81,14 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	void ObjectAttributeMemory::Reset()
 	{
-		ASSERT(oam != NULL, "Error: OAM not initialized");
+		sassert(oam, "Error: OAM not initialized");
 
 		/*
 		 * For all 128 sprites on the DS, disable and clear any attributes they 
 		 * might have. This prevents any garbage from being displayed and gives 
 		 * us a clean slate to work with.
 		 */
-		for (u32 i = 0; i < sprites.size(); ++i) 
+		for (u32 i = 0; i < spriteCount; ++i)
 		{
 			oam->oamBuffer[i].attribute[0] = ATTR0_DISABLED;
 			oam->oamBuffer[i].attribute[1] = 0;
@@ -174,6 +107,6 @@ namespace Graphics
 			oam->matrixBuffer[i].vdy = FixedHelper::Tof16( fx8(1) );
 		}
 
-		sprites.clear();
+		spriteCount = 0;
 	}
 }

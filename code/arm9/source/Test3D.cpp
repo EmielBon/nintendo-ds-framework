@@ -52,7 +52,7 @@ namespace Test
 	//-------------------------------------------------------------------------------------------------
 	void Test3D::Initialize()
 	{
-		fpsCounter = New<FPSCounter>();
+		fpsCounter = new FPSCounter();
 		Components.Add(fpsCounter);
 
 		GraphicsDevice::Main.TextureMemory->AutomaticExpansion = false;
@@ -61,25 +61,17 @@ namespace Test
 		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankC, 2);
 		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankD, 3);
 
-		debugUI = New<DebugUI>(this);
+		debugUI = new DebugUI(this);
 		Components.Add(debugUI);
 		
 		// Enable 3D on the main engine
 		GraphicsDevice::Main.Enable3D(true);
-		// Enable background 0 (used for 3D rendering)
-		auto bg0 = GraphicsDevice::Main.Backgrounds[0];
-		bg0->Enable();
-		bg0->SetLayer(0);
-		// Enable background 1 (background)
-		auto bg1 = GraphicsDevice::Main.Backgrounds[1];
-		bg1->Enable();
-		bg1->SetLayer(1);
 		// Set up the graphics device
 		GraphicsDevice.RasterizerState.CullMode = CullMode::None;
 		graphics.PreferMultiSampling = false;
 		graphics.ApplyChanges();
 		// Set the color for the background
-		GraphicsDevice::Main.SetBackgroundColor( Color::DeepSkyBlue );
+		GraphicsDevice::Main.SetBackgroundColor( Color::Black );
 
 		super::Initialize();
 	}
@@ -90,7 +82,7 @@ namespace Test
 		scene = Content.Load<Scene>("scene");
 		scene->Lights.push_back(Light(Color::White, Vector3(0, -1, -1)));
 		scene->Ambient = Color::Gray;
-		Components.Add(scene);
+		Components.Add(scene.get());
 		// Init mario
 		Ptr<Mario> mario = New<Mario>();
 		mario->scene = scene;

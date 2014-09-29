@@ -36,16 +36,6 @@ namespace Debug
 	//-------------------------------------------------------------------------------------------------
 	DebugUI::DebugUI(Test3D* game) : mode(DebugMode_PROFILING), redraw(false), FPS(0), game(game)
 	{
-		// Top layer
-		ButtonLayer->Enable();
-		ButtonLayer->SetLayer(0);
-		ButtonLayer->ShowMapWithIndex(0);
-
-		// Bottom layer
-		TextLayer->Enable();
-		TextLayer->SetLayer(1);
-		TextLayer->ShowMapWithIndex(1);
-
 		InitializeConsole();
 
 		button1         = Button("Links",             0,           0, ButtonLayer);
@@ -265,10 +255,6 @@ namespace Debug
 	//-------------------------------------------------------------------------------------------------
 	void DebugUI::ShowConsole()
 	{
-		auto bg = Console->Background;
-		bg->Enable();
-		bg->SetLayer(0);
-
 		Console->Enabled = true;
 		Console->Visible = true;
 	}
@@ -278,6 +264,5 @@ namespace Debug
 	{
 		Console->Enabled = false;
 		Console->Visible = false;
-		Console->Background->Disable();
 	}
 }

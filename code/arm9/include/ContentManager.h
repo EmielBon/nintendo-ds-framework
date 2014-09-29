@@ -19,7 +19,7 @@ namespace Framework
 
 		/// Load the file's data
 		template<class T>
-		static Ptr<T> LoadResourceFromStream(const String &resourceName, FileSystem::FileStream &fs);
+		static Ptr<T> LoadResourceFromStream(FileSystem::FileStream &fs);
 	};
 
 	//-------------------------------------------------------------------------------------------------
@@ -35,9 +35,9 @@ namespace Framework
 
 		String path = "/" + name + ".bin";
 
-		FileStream fs;
+		FileStream fs(name);
 		fs.Open(path);
-		auto resource = LoadResourceFromStream<T>(name, fs);
+		auto resource = LoadResourceFromStream<T>(fs);
 		fs.Close();
 
 		loadedContent[name] = resource;

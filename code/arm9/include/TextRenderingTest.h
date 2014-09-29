@@ -20,6 +20,6 @@ namespace Test
 
 	protected:
 
-		Ptr<Graphics::TextRenderer> tr;
+		Graphics::TextRenderer *tr;
 	};
 }

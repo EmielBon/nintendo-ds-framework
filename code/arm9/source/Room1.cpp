@@ -14,7 +14,7 @@ void Room1::Initialize()
 
 void Room1::LoadContent()
 {
-    SetBackground ( 0, ContentManager::Load<TiledBackground> ( "newGameMap2" ) );
+    SetBackground ( 0, ContentManager::Load<TiledBackground> ( "newGameMap2" ).get() );
     base::LoadContent();
 }
 

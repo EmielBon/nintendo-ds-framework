@@ -1,6 +1,7 @@
 #include "SpriteMemory.h"
 #include "Logging.h"
 #include "VideoRamBank.h"
+#include "Sprite.h"
 #include <nds/arm9/video.h>
 
 namespace Graphics
@@ -11,10 +12,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	SpriteMemory::SpriteMemory(bool isMain) : super(isMain, MemoryType::Memory_SPR)
 	{
-		// Somehow the Initialize function is needed, initialization of the memory 
-		// slots cannot be done in the constructor. It seems it has something to do 
-		// with the pointer to this Memory2D object, which is stored in the memory 
-		// slots, is corrupt or something when stored in the constructor.
+		
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -52,5 +50,13 @@ namespace Graphics
 	u16* SpriteMemory::TileBaseAddress() const
 	{
 		return IsMain() ? SPRITE_GFX : SPRITE_GFX_SUB;
+	}
+
+	//------------------------------------------------------------------------------------------------- 
+	void SpriteMemory::AddSprite(const Sprite &sprite)
+	{
+		for (auto subImage : sprite.SubImages)
+			for (auto tile : subImage.Tiles)
+				AddTile(*tile);
 	}
 }

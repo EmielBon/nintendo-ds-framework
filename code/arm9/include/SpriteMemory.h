@@ -30,6 +30,9 @@ namespace Graphics
 
 		///
 		u16* TileBaseAddress() const;
+
+		/// 
+		void AddSprite(const Sprite &sprite);
 	};
 
 	//-------------------------------------------------------------------------------------------------

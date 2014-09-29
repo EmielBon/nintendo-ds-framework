@@ -14,6 +14,7 @@ namespace Graphics
 
 		void SetData(short *begin, short *end);
 
+		// todo: rename to Count
 		int IndexCount() const;
 
 		u16& operator[](u32 index);

@@ -16,7 +16,7 @@ namespace FileSystem
 	public:
 
 		/** \brief Creates an empty closed stream. */
-		FileStream();
+		FileStream(const String &resourceName);
 
 		virtual ~FileStream() { }
 
@@ -76,12 +76,13 @@ namespace FileSystem
 		FILE* stream;
 
 	public:
-
+		
 		bool EndOfFile;
+		String resourceName;
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline FileStream::FileStream() : stream(0), EndOfFile(false)
+	inline FileStream::FileStream(const String &resourceName) : stream(0), EndOfFile(false), resourceName(resourceName)
 	{
 	}
 

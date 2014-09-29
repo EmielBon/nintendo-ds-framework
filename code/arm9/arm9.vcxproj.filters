@@ -85,9 +85,6 @@
     <ClInclude Include="include\Input.h">
       <Filter>Input</Filter>
     </ClInclude>
-    <ClInclude Include="include\Test2D.h">
-      <Filter>Test\Test 2D</Filter>
-    </ClInclude>
     <ClInclude Include="include\Sprites.h">
       <Filter>Graphics\Sprite</Filter>
     </ClInclude>
@@ -307,20 +304,8 @@
     <ClInclude Include="include\Size.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="include\MapTile.h">
-      <Filter>Graphics\Background</Filter>
-    </ClInclude>
-    <ClInclude Include="include\MapResource.h">
-      <Filter>LLR</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SpriteResource.h">
-      <Filter>LLR</Filter>
-    </ClInclude>
     <ClInclude Include="include\SpriteSubImage.h">
       <Filter>Graphics\Sprite</Filter>
-    </ClInclude>
-    <ClInclude Include="include\IGraphicsResource.h">
-      <Filter>LLR</Filter>
     </ClInclude>
     <ClInclude Include="include\BreakPoint.h">
       <Filter>Debug</Filter>
@@ -366,9 +351,6 @@
     </ClInclude>
     <ClInclude Include="include\ContentManager.h">
       <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SpriteSet.h">
-      <Filter>Graphics\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="include\MatrixPerformanceTest.h">
       <Filter>Test</Filter>
@@ -427,9 +409,6 @@
     <ClInclude Include="include\GUI.h">
       <Filter>GUI</Filter>
     </ClInclude>
-    <ClInclude Include="include\LLR.h">
-      <Filter>LLR</Filter>
-    </ClInclude>
     <ClInclude Include="include\System.h">
       <Filter>System</Filter>
     </ClInclude>
@@ -441,6 +420,12 @@
     </ClInclude>
     <ClInclude Include="include\GlobalFunctions.h">
       <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="include\JumpBumpGame.h">
+      <Filter>Test\Jump%27n%27Bump</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Rabbit.h">
+      <Filter>Test\Jump%27n%27Bump</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -503,9 +488,6 @@
     </ClCompile>
     <ClCompile Include="source\Test3D.cpp">
       <Filter>Test\Test 3D</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Test2D.cpp">
-      <Filter>Test\Test 2D</Filter>
     </ClCompile>
     <ClCompile Include="source\Path.cpp">
       <Filter>Framework\Framework2D</Filter>
@@ -684,6 +666,12 @@
     <ClCompile Include="source\StreamReader.cpp">
       <Filter>System\IO</Filter>
     </ClCompile>
+    <ClCompile Include="source\JumpBumpGame.cpp">
+      <Filter>Test\Jump%27n%27Bump</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Rabbit.cpp">
+      <Filter>Test\Jump%27n%27Bump</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Graphics">
@@ -746,9 +734,6 @@
     <Filter Include="GUI">
       <UniqueIdentifier>{723f2b19-ca35-4730-961b-687d308e10c3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="LLR">
-      <UniqueIdentifier>{74ff88e0-ca34-477c-a657-9862c0cea28c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Test\Test 2D">
       <UniqueIdentifier>{6f0a803b-90f6-43c0-9bf1-79779a766c22}</UniqueIdentifier>
     </Filter>
@@ -763,6 +748,9 @@
     </Filter>
     <Filter Include="System\IO">
       <UniqueIdentifier>{ddef039e-11a9-4830-902e-03256ffe0e85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test\Jump%27n%27Bump">
+      <UniqueIdentifier>{e866be3d-4170-4dec-b17d-810a0bfabe51}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

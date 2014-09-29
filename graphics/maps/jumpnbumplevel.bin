@@ -1,0 +1,4 @@
+s 32x32
+d jumpnbumplevelMapData
+c jumpnbumplevelCollision
+t zeldaset

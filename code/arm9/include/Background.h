@@ -26,25 +26,22 @@ namespace Graphics
 
 	public:
 
-		/// Enable this Background, making it visible.
-		void Enable();
-
-		/// Disable this Background, making it fully transparent
-		void Disable();
-
 		/// Returns whether this background is enabled
 		bool IsEnabled() const;
+
+		/// 
+		int GetLayer() const;
 
 		/// Set this backgrounds draw-priority. A low priority sets this background on top (so draws it last)
 		void SetLayer(int priority);
 
 		/// 
-		int GetMapIndex();
+		int GetMapIndex() const;
 
 		///
 		void ShowMapWithIndex(int index);
 
-		/// 
+		/// todo: can this be removed?
 		Graphics::BackgroundMemory& BackgroundMemory() const;
 
 		///
@@ -57,7 +54,6 @@ namespace Graphics
 
 		int index;
 		int layer;
-		bool enabled;
 
 		GraphicsDevice *graphicsDevice;
 		int mapIndex;
@@ -69,31 +65,26 @@ namespace Graphics
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline void Background::Enable()
-	{
-		enabled = true;
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	inline void Background::Disable()
-	{
-		enabled = false;
-	}
-
-	//-------------------------------------------------------------------------------------------------
 	inline bool Background::IsEnabled() const
 	{
-		return enabled;
+		return mapIndex >= 0;
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	inline int Background::GetLayer() const
+	{
+		return layer;
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline void Background::SetLayer(int l)
 	{
+		sassert(l >= 0 && l <= 3, "Layer index out of range");
 		layer = l;
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline int Background::GetMapIndex()
+	inline int Background::GetMapIndex() const
 	{
 		return mapIndex;
 	}

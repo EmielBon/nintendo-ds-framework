@@ -44,9 +44,6 @@ namespace Graphics
 		/// Get the number of 8x8 tiles in this tile set
 		int GetTileCount8x8() const;
 	
-		/// Returns whether the size of the argument palette matches that of the previously added palettes
-		bool CompatiblePalette(const Palette &palette) const;
-
 		/// Returns the byte size of the tiles in this tile set. Can be 0 (if the set is empty), 4 if it contains 4bpp tiles, or 8 if it contains 8bpp tiles
 		int TileByteSize() const;
 

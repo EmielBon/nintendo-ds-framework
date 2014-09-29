@@ -9,7 +9,7 @@ namespace Graphics
 
 	//-------------------------------------------------------------------------------------------------
 	Sprite::Sprite(const List<TiledImage> &subImages) 
-		: X(0), Y(0), Scale(1.0f), Priority(OBJPRIORITY_0), SubImageIndex(0), ImageSpeed(1), SubImages(subImages), size(OBJSIZE_8), shape(OBJSHAPE_SQUARE)
+		: Scale(1.0f), Priority(OBJPRIORITY_0), ImageIndex(0), ImageSpeed(1), SubImages(subImages), size(OBJSIZE_8), shape(OBJSHAPE_SQUARE)
 	{
 		int width  = subImages[0].Size.Width  * 8;
 		int height = subImages[0].Size.Height * 8;

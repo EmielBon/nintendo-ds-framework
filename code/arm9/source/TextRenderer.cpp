@@ -19,7 +19,7 @@ namespace Graphics
 	using namespace Framework;
 
 	//-------------------------------------------------------------------------------------------------
-	TextRenderer::TextRenderer(Ptr<Graphics::Background> background, const String &fontName /* = "font8x8@4" */) 
+	TextRenderer::TextRenderer(Graphics::Background *background, const String &fontName /* = "font8x8@4" */) 
 		: FontName(fontName), dynamicPaletteStartIndex(-1), Background(background)
 	{
 		
@@ -35,7 +35,7 @@ namespace Graphics
 		dynamicPaletteStartIndex = bgmem.PaletteMemory->AddDynamicPalette(Palettes);
 		// Set the map's clear tile to the font's first glyph. todo: This makes little sense, it takes the first 8x8 tile in the tileset
 		auto &blankTile = Font->Tiles[0];
-		bgmem.AddTile(blankTile);
+		bgmem.AddTile(blankTile, 0);
 		u32 blankTileIndex = bgmem.VRAMIndexForTile(blankTile.Identifier);
 		int index = Background->GetMapIndex();
 		sassert(index >= 0 && index <= 3, "Map index out of bounds");
@@ -86,8 +86,9 @@ namespace Graphics
 					continue;
 
 				auto &tile = Font->Tiles[str[i] * tilesPerChar + j];
-				int tileIndex = bgmem.AddTile(tile, dynamicPaletteStartIndex);
-				map->SetTile(x2, y2, ScreenBlockEntry(tileIndex, false, false, palIndex));
+				//int tileIndex = bgmem.AddTile(tile, dynamicPaletteStartIndex);
+				GraphicsDevice::SetBackgroundTile(*Background, i, j, &tile, TileParameters(0, false, false, palIndex));
+				//map->SetTile(x2, y2, ScreenBlockEntry(tileIndex, false, false, palIndex));
 			}
 			x += charWidth;
 		}

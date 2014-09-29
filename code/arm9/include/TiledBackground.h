@@ -26,11 +26,8 @@ namespace Graphics
 		/// todo: implement
 		static Ptr<TiledBackground> FromTileSet(Ptr<TileSet> tileSet, int width, int height);
 		
-		/// Returns whether the map is in a valid format to be displayed
-		void CheckValid() const;
-
 		///
-		void CopyToHardwareMap(Ptr<Map> map);
+		void CopyToHardwareBackground(Background &bg);
 		
 	public:
 		

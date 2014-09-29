@@ -68,10 +68,6 @@ namespace Test
 
 		// Enable 3D on the main engine
 		GraphicsDevice::Main.Enable3D(true);
-		// Enable background 0 (used for 3D rendering)
-		auto bg0 = GraphicsDevice::Main.Backgrounds[0];
-		bg0->Enable();
-		bg0->SetLayer(0);
 		// Set up the graphics device
 		GraphicsDevice.RasterizerState.CullMode = CullMode::None;
 		graphics.PreferMultiSampling = false;

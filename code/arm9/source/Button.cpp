@@ -16,7 +16,7 @@ namespace GUI
 	using namespace Framework;
 
 	//-------------------------------------------------------------------------------------------------
-	Button::Button(String text, int x, int y, Ptr<Background> background)
+	Button::Button(const String &text, int x, int y, Graphics::Background *background)
 	{
 		Text = text;
 		tr = New<TextRenderer>(background, "font8x16@4");
