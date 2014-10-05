@@ -24,7 +24,6 @@ namespace Graphics
 
 		int OriginX, OriginY;
 
-		fx8 Scale;
 		ObjPriority Priority;
 		
 		int ImageIndex;

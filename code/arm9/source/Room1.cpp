@@ -6,8 +6,8 @@
 void Room1::Initialize()
 {
     link = New<Link>();
-    link->x = 200;
-    link->y = 20;
+	link->Position.x = 200;
+	link->Position.y = 20;
     AddObject ( link );
     base::Initialize();
 }

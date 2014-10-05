@@ -13,8 +13,6 @@ private:
 
 public:
 
-	JumpBumpGame();
-
 	void Initialize();
 
 	void LoadContent();
@@ -23,7 +21,10 @@ public:
 
 	void Draw(const Framework::GameTime &gameTime);
 
+	void CheckCollisions();
+
 public:
 
 	List<Rabbit*> Rabbits;
+	List<Framework::BoundingBox> Blocks;
 };

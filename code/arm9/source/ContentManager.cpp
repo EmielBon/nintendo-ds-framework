@@ -128,13 +128,11 @@ namespace Framework
 				mapSize = Size(width, height);
 			}
 			if (type == "d") screenBlockEntries = ContentManager::Load<MapResource>(fileName);
-			if (type == "c") collisionMap = ContentManager::Load<CollisionMap>(fileName);
 			// \todo Support for loading more than one tile set per map
 			if (type == "t") tileSet      = ContentManager::Load<TileSet256>(fileName);
 		}
 
 		auto tiledBackground = New<TiledBackground>(mapSize.Width, mapSize.Height, 8);
-		tiledBackground->CollisionMap = collisionMap;
 
 		for(u32 i = 0; i < screenBlockEntries->size(); ++i)
 		{
@@ -227,23 +225,6 @@ namespace Framework
 		Ptr<Palette> palette = New<Palette>();
 		palette->Colors = *(fs.ReadAll<u16>());
 		return palette;
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	template<>
-	Ptr<CollisionMap> ContentManager::LoadResourceFromStream(FileStream &fs)
-	{
-		struct CollisionMapFileHeader
-		{
-			byte Width;
-			byte Height;
-		};
-
-		auto header = fs.ReadHeader<CollisionMapFileHeader>();
-		auto colmap = New<CollisionMap>(header.Width, header.Height);
-		colmap->Colors = *(fs.ReadAll<u8>());
-
-		return colmap;
 	}
 
 	//-------------------------------------------------------------------------------------------------

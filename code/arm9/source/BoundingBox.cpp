@@ -27,6 +27,20 @@ namespace Framework
 	}
 
 	//-------------------------------------------------------------------------------------------------
+	ContainmentType BoundingBox::Contains(const Vector3 &point) const
+	{
+		if (point.x >= Min.x &&
+			point.x <= Max.x &&
+			point.y >= Min.y &&
+			point.y <= Max.y &&
+			point.z >= Min.z &&
+			point.z <= Max.z)
+			return ContainmentType::Contains;
+
+		return ContainmentType::Disjoint;
+	}
+
+	//-------------------------------------------------------------------------------------------------
 	BoundingBox BoundingBox::Transform(const Matrix &m)
 	{
 		auto translation = New<Vector3>();

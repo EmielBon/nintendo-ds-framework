@@ -54,14 +54,14 @@ void Link::Update ( const GameTime &gameTime )
     }
 
     direction = direction.Normalize();
-    x += direction.x * speed * timeStep;
-    y += direction.y * speed * timeStep;
+	Position.x += direction.x * speed * timeStep;
+	Position.y += direction.y * speed * timeStep;
     base::Update ( gameTime );
 }
 
 void Link::Draw ( const GameTime &gameTime )
 {
-    DrawSprite ( *CurrentSprite, x, y, ImageIndex );
+	DrawSprite(*CurrentSprite, Position.x, Position.y, ImageIndex);
     base::Draw ( gameTime );
 }
 

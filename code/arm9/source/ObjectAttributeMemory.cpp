@@ -37,7 +37,7 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void ObjectAttributeMemory::DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex)
+	void ObjectAttributeMemory::DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex, fx8 horizontalScale, fx8 verticalScale)
 	{
 		int subImageIndex = (int)imageIndex % sprite.SubImages.size();
 		u32 tileIdentifier = sprite.SubImages[subImageIndex].Tiles[0]->Identifier; // Upper left tile is used for sprite indexing
@@ -57,10 +57,10 @@ namespace Graphics
 		entry.rotationIndex = spriteCount;
 
 		SpriteRotation &rotObj = oam->matrixBuffer[spriteCount];
-		rotObj.hdx = FixedHelper::Tof16(fx8(1) / sprite.Scale);
+		rotObj.hdx = FixedHelper::Tof16(fx8(1) / horizontalScale);
 		rotObj.hdy = 0;
 		rotObj.vdx = 0;
-		rotObj.vdy = FixedHelper::Tof16(fx8(1) / sprite.Scale);
+		rotObj.vdy = FixedHelper::Tof16(fx8(1) / verticalScale);
 
 		spriteCount++;
 	}

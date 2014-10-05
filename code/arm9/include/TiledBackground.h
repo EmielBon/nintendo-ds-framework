@@ -32,7 +32,6 @@ namespace Graphics
 	public:
 		
 		List<ScreenBlockEntry> TileParameters; // This uses the palette index and flip parameters from ScreenBlockEntry. The tile index parameter is ignored. 
-		Ptr<Framework2D::CollisionMap> CollisionMap;
 	};
 
 	//-------------------------------------------------------------------------------------------------

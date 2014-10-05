@@ -5,8 +5,8 @@
 
 void GameObject::Initialize()
 {
-    x = 0.0f;
-    y = 0.0f;
+	Position.x = 0.0f;
+	Position.y = 0.0f;
     ImageSpeed = 10;
     ImageIndex = 0.0f;
 	CurrentSprite = nullptr;

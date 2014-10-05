@@ -61,6 +61,7 @@
     <ClInclude Include="include\Assert.h" />
     <ClInclude Include="include\Backgrounds.h" />
     <ClInclude Include="include\BinaryReader.h" />
+    <ClInclude Include="include\Block.h" />
     <ClInclude Include="include\BoundingBox.h" />
     <ClInclude Include="include\BoundingSphere.h" />
     <ClInclude Include="include\BasicEffect.h" />

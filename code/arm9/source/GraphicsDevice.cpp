@@ -140,10 +140,10 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void GraphicsDevice::DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex)
+	void GraphicsDevice::DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex, fx8 horizontalScale /* = 1 */, fx8 verticalScale /* = 1 */)
 	{
 		SpriteMemory->AddSprite(sprite);
-		ObjectAttributeMemory.DrawSprite(sprite, x, y, imageIndex);
+		ObjectAttributeMemory.DrawSprite(sprite, x, y, imageIndex, horizontalScale, verticalScale);
 	}
 
 	//-------------------------------------------------------------------------------------------------

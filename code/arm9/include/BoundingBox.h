@@ -30,6 +30,8 @@ namespace Framework
 		 *  \todo Add support for other bounding volumes. */
 		ContainmentType Contains(const BoundingBox &box) const;
 		
+		ContainmentType Contains(const Vector3 &point) const;
+
 		/** \brief Translates and scales the BoundingBox using a given Matrix.
 		 *  \param matrix A transformation matrix that might include translation or scaling.
 		 *  \returns The transformed BoundingBox.
@@ -37,6 +39,14 @@ namespace Framework
 		 *  Note that BoundingBox.Transform will not return correct results if there are rotations, shears, or other 
 		 *  unusual transforms in this transformation matrix. */
 		BoundingBox Transform(const Matrix &matrix);
+
+		fx12 GetWidth() const;
+
+		fx12 GetHeight() const;
+
+		fx12 GetDepth() const;
+
+		Vector3 Center() const;
 
 	public:
 		
@@ -47,5 +57,25 @@ namespace Framework
 	inline BoundingBox::BoundingBox(const Vector3 &pMin, const Vector3 &pMax) : Min(pMin), Max(pMax)
 	{
 
+	}
+
+	inline fx12 BoundingBox::GetWidth() const
+	{
+		return Max.x - Min.x;
+	}
+
+	inline fx12 BoundingBox::GetHeight() const
+	{
+		return Max.y - Min.y;
+	}
+
+	inline fx12 BoundingBox::GetDepth() const
+	{
+		return Max.z - Min.z;
+	}
+
+	inline Vector3 BoundingBox::Center() const
+	{
+		return (Min + Max) * 0.5f;
 	}
 }

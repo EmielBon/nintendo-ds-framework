@@ -10,8 +10,8 @@ public:
     void Initialize();
     void Update ( const GameTime &gameTime );
 public:
-    fx12 x;
-    fx12 y;
+    
+	Vector2 Position;
     fx12 ImageSpeed;
     fx12 ImageIndex;
     Sprite *CurrentSprite;
