@@ -43,7 +43,6 @@
             this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.MapPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.collisionBox = new System.Windows.Forms.CheckBox();
             this.SnapHeightChanger = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.SnapWidthChanger = new System.Windows.Forms.NumericUpDown();
@@ -95,33 +94,33 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.openToolStripMenuItem.Text = "Open...";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.saveToolStripMenuItem.Text = "Save...";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.importToolStripMenuItem.Text = "Import...";
             this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.exportToolStripMenuItem.Text = "Export...";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // tilesetToolStripMenuItem
@@ -198,7 +197,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.collisionBox);
             this.panel1.Controls.Add(this.SnapHeightChanger);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.SnapWidthChanger);
@@ -216,16 +214,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(795, 24);
             this.panel1.TabIndex = 4;
-            // 
-            // collisionBox
-            // 
-            this.collisionBox.AutoSize = true;
-            this.collisionBox.Location = new System.Drawing.Point(673, 4);
-            this.collisionBox.Name = "collisionBox";
-            this.collisionBox.Size = new System.Drawing.Size(107, 17);
-            this.collisionBox.TabIndex = 14;
-            this.collisionBox.Text = "Edit collision map";
-            this.collisionBox.UseVisualStyleBackColor = true;
             // 
             // SnapHeightChanger
             // 
@@ -370,7 +358,7 @@
             // 
             // TileHeightChanger
             // 
-            this.TileHeightChanger.Location = new System.Drawing.Point(639, 2);
+            this.TileHeightChanger.Location = new System.Drawing.Point(764, 2);
             this.TileHeightChanger.Maximum = new decimal(new int[] {
             8,
             0,
@@ -396,7 +384,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(621, 4);
+            this.label2.Location = new System.Drawing.Point(746, 4);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(12, 13);
             this.label2.TabIndex = 2;
@@ -407,7 +395,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(535, 5);
+            this.label1.Location = new System.Drawing.Point(660, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 1;
@@ -417,7 +405,7 @@
             // 
             this.TileWidthChanger.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TileWidthChanger.Location = new System.Drawing.Point(589, 2);
+            this.TileWidthChanger.Location = new System.Drawing.Point(714, 2);
             this.TileWidthChanger.Maximum = new decimal(new int[] {
             8,
             0,
@@ -502,7 +490,6 @@
         private System.Windows.Forms.NumericUpDown SnapWidthChanger;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
-        private System.Windows.Forms.CheckBox collisionBox;
     }
 }
 

@@ -12,8 +12,6 @@ namespace MapEditor
 {
     public partial class Form1 : Form
     {
-        int[,] collisionMap;
-        int[][] collisionTiles;
         int selected;
         int previousHover;
 
@@ -29,8 +27,6 @@ namespace MapEditor
         {
             InitializeComponent();
             map = new Map(MaxMapWidth, MaxMapHeight, MapPanel);
-            collisionMap = new int[MaxMapWidth, MaxMapHeight];
-            InitCollisionTiles();
         }
 
         public void DrawMap()
@@ -150,7 +146,7 @@ namespace MapEditor
 
         private void TilePanel_MouseMove(object sender, MouseEventArgs e)
         {
-            if (tileSet == null || EditCollisionMap)
+            if (tileSet == null)
                 return;
 
             int hover = GetMouseOverTile();
@@ -184,19 +180,14 @@ namespace MapEditor
             {
                 string          fileName = dialog.FileName;
                 string   mapDataFileName = fileName + "MapData";
-                string collisionFileName = fileName + "Collision";
-
+                
                 StreamWriter mapWriter = new StreamWriter(fileName + ".bin");
                 mapWriter.WriteLine("s " + MapWidth + "x" + MapHeight);
                 mapWriter.WriteLine("d " + Path.GetFileNameWithoutExtension(mapDataFileName));
-                mapWriter.WriteLine("c " + Path.GetFileNameWithoutExtension(collisionFileName));
                 mapWriter.WriteLine("t " + tileSet.FileName);
 
                 FileStream stream = new FileStream(mapDataFileName + ".bin", FileMode.Create);
                 BinaryWriter writer = new BinaryWriter(stream);
-                
-                FileStream collisionStream = new FileStream(collisionFileName + ".bin", FileMode.Create);
-                BinaryWriter collisionWriter = new BinaryWriter(collisionStream);
 
                 writer.Write((byte)MapWidth);
                 writer.Write((byte)MapHeight);
@@ -209,23 +200,15 @@ namespace MapEditor
                     int tileX = tile % 8;
                     int tileY = tile / 8;
                     Console.WriteLine(tile + " x: " + tileX + " y: " + tileY);
-                    collisionMap[2 * x,     2 * y]     = collisionTiles[(tileY * 4 + tileX) / 2][0];
-                    collisionMap[2 * x + 1, 2 * y]     = collisionTiles[(tileY * 4 + tileX) / 2][1];
-                    collisionMap[2 * x, 2 * y + 1]     = collisionTiles[(tileY * 4 + tileX) / 2][2];
-                    collisionMap[2 * x + 1, 2 * y + 1] = collisionTiles[(tileY * 4 + tileX) / 2][3];
                 }
 
                 // Write the map data and the collision map
                 for (int y = 0; y < MapHeight; y++)
                 for (int x = 0; x < MapWidth; x++)
-                {
                     writer.Write((short)map.GetScreenBlockEntry(x, y)/*map[x, y]*/);
-                    collisionStream.WriteByte((byte)collisionMap[x, y]);
-                }
 
                 mapWriter.Close();
                 writer.Close();
-                collisionWriter.Close();
             }
         }
 
@@ -376,11 +359,6 @@ namespace MapEditor
             get { return ShowGridCheckBox.Checked; }
         }
 
-        public bool EditCollisionMap
-        {
-            get { return collisionBox.Checked; }
-        }
-
         private void TilePanel_Paint(object sender, PaintEventArgs e)
         {
 
@@ -389,95 +367,6 @@ namespace MapEditor
         private void MapPanel_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void InitCollisionTiles()
-        {
-            collisionTiles = new int[68][];
-            collisionTiles[0] =  new int[] {0,0,0,0};
-            collisionTiles[1] =  new int[] {0,0,0,0};
-            collisionTiles[2] =  new int[] {0,0,0,0};
-            collisionTiles[3] =  new int[] {1,1,1,1};
-            
-            collisionTiles[4] =  new int[] {1,1,1,1};
-            collisionTiles[5] =  new int[] {1,1,1,1};
-            collisionTiles[6] =  new int[] {1,1,1,1};
-            collisionTiles[7] =  new int[] {1,1,1,1};
-
-            collisionTiles[8] =  new int[] {1,0,0,0};
-            collisionTiles[9] =  new int[] {0,1,0,0};
-            collisionTiles[10] = new int[] {1,1,1,1};
-            collisionTiles[11] = new int[] {1,0,1,0};
-
-            collisionTiles[12] = new int[] {0,0,1,0};
-            collisionTiles[13] = new int[] {1,1,1,1};
-            collisionTiles[14] = new int[] {1,0,1,1};
-            collisionTiles[15] = new int[] {1,1,1,1};
-
-            collisionTiles[16] = new int[] {0,1,1,1};
-            collisionTiles[17] = new int[] {1,1,1,1};
-            collisionTiles[18] = new int[] {1,0,1,1};
-            collisionTiles[19] = new int[] {1,1,1,1};
-
-            collisionTiles[20] = new int[] {1,1,1,1};
-            collisionTiles[21] = new int[] {0,0,0,0};
-            collisionTiles[22] = new int[] {1,1,1,1};
-            collisionTiles[23] = new int[] {1,1,1,1};
-
-            collisionTiles[24] = new int[] {0,1,1,1};
-            collisionTiles[25] = new int[] {1,1,1,1};
-            collisionTiles[26] = new int[] {1,0,1,1};
-            collisionTiles[27] = new int[] {1,1,1,1};
-
-            collisionTiles[28] = new int[] {1,1,0,1};
-            collisionTiles[29] = new int[] {1,1,1,1};
-            collisionTiles[30] = new int[] {1,1,1,0};
-            collisionTiles[31] = new int[] {1,1,1,1};
-
-            collisionTiles[32] = new int[] {0,1,1,1};
-            collisionTiles[33] = new int[] {1,1,1,1};
-            collisionTiles[34] = new int[] {1,0,1,1};
-            collisionTiles[35] = new int[] {1,1,1,1};
-
-            collisionTiles[36] = new int[] {1,1,1,1};
-            collisionTiles[37] = new int[] {1,1,1,1};
-            collisionTiles[38] = new int[] {1,1,1,1};
-            collisionTiles[39] = new int[] {0,0,0,0};
-
-            collisionTiles[40] = new int[] {1,1,0,1};
-            collisionTiles[41] = new int[] {1,1,1,1};
-            collisionTiles[42] = new int[] {1,1,1,0};
-            collisionTiles[43] = new int[] {0,0,0,0};
-
-            collisionTiles[44] = new int[] {0,1,1,1};
-            collisionTiles[45] = new int[] {1,1,1,1};
-            collisionTiles[46] = new int[] {1,0,1,1};
-            collisionTiles[47] = new int[] {0,0,0,0};
-
-            collisionTiles[48] = new int[] {1,1,0,1};
-            collisionTiles[49] = new int[] {1,1,1,1};
-            collisionTiles[50] = new int[] {1,1,1,0};
-            collisionTiles[51] = new int[] {0,0,0,0};
-
-            collisionTiles[52] = new int[] {0,1,1,1};
-            collisionTiles[53] = new int[] {1,1,1,1};
-            collisionTiles[54] = new int[] {1,0,1,1};
-            collisionTiles[55] = new int[] {1,1,1,1};
-
-            collisionTiles[56] = new int[] {1,1,0,1};
-            collisionTiles[57] = new int[] {1,1,1,1};
-            collisionTiles[58] = new int[] {1,1,1,0};
-            collisionTiles[59] = new int[] {1,1,1,1};
-
-            collisionTiles[60] = new int[] {1,1,0,1};
-            collisionTiles[61] = new int[] {1,0,1,0};
-            collisionTiles[62] = new int[] {0,0,0,0};
-            collisionTiles[63] = new int[] {1,1,1,1};
-
-            collisionTiles[64] = new int[] {0,1,0,1};
-            collisionTiles[65] = new int[] {1,1,1,1};
-            collisionTiles[66] = new int[] {1,1,1,1};
-            collisionTiles[67] = new int[] {1,1,1,1};
         }
     }
 }
