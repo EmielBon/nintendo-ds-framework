@@ -13,6 +13,10 @@ private:
 
 public:
 
+	JumpBumpGame();
+
+	static JumpBumpGame &Instance();
+
 	void Initialize();
 
 	void LoadContent();
@@ -23,8 +27,21 @@ public:
 
 	void CheckCollisions();
 
+	bool IsSpaceFree(const Framework::BoundingBox &bbox);
+
 public:
 
 	List<Rabbit*> Rabbits;
 	List<Framework::BoundingBox> Blocks;
+	static JumpBumpGame *instance;
 };
+
+inline JumpBumpGame::JumpBumpGame()
+{
+	instance = this;
+}
+
+inline JumpBumpGame& JumpBumpGame::Instance()
+{
+	return *instance;
+}

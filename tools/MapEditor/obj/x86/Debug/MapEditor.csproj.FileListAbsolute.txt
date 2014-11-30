@@ -1,0 +1,8 @@
+C:\Programming\nintendo-ds-framework\tools\MapEditor\bin\Debug\MapEditor.exe
+C:\Programming\nintendo-ds-framework\tools\MapEditor\bin\Debug\MapEditor.pdb
+C:\Programming\nintendo-ds-framework\tools\MapEditor\obj\x86\Debug\MapEditor.Form1.resources
+C:\Programming\nintendo-ds-framework\tools\MapEditor\obj\x86\Debug\MapEditor.Properties.Resources.resources
+C:\Programming\nintendo-ds-framework\tools\MapEditor\obj\x86\Debug\MapEditor.csproj.GenerateResource.Cache
+C:\Programming\nintendo-ds-framework\tools\MapEditor\obj\x86\Debug\MapEditor.exe
+C:\Programming\nintendo-ds-framework\tools\MapEditor\obj\x86\Debug\MapEditor.pdb
+C:\Programming\nintendo-ds-framework\tools\MapEditor\obj\x86\Debug\MapEditor.csprojResolveAssemblyReference.cache

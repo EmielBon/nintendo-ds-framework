@@ -44,8 +44,8 @@ namespace Graphics
 
 		auto &entry = oam->oamBuffer[spriteCount];
 		entry.gfxIndex = graphicsDevice->SpriteMemory->VRAMIndexForTile(tileIdentifier);
-		entry.x = (int)x;
-		entry.y = (int)y;
+		entry.x = (int)Math::Round(x);
+		entry.y = (int)Math::Round(y);
 		entry.isHidden = false;
 		entry.isMosaic = false;
 		entry.isRotateScale = true;

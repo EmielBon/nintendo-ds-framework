@@ -430,6 +430,9 @@
     <ClInclude Include="include\Block.h">
       <Filter>Test\Jump%27n%27Bump</Filter>
     </ClInclude>
+    <ClInclude Include="include\Range.h">
+      <Filter>Test\Jump%27n%27Bump</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Memory2D.cpp">

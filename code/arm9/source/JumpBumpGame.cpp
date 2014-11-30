@@ -13,6 +13,8 @@ using namespace Framework;
 using namespace Graphics;
 using namespace Input;
 
+JumpBumpGame* JumpBumpGame::instance = nullptr;
+
 //-------------------------------------------------------------------------------------------------
 void JumpBumpGame::Initialize()
 {
@@ -44,8 +46,21 @@ void JumpBumpGame::LoadContent()
 void JumpBumpGame::CheckCollisions()
 {
 	for (auto &block : Blocks)
+	{
 		if (Rabbits[0]->BoundingBox.Contains(block) != ContainmentType::Disjoint)
+		{
+			Rabbits[0]->other = &block;
 			Rabbits[0]->DidCollideWithObject(block);
+		}
+	}
+}
+
+bool JumpBumpGame::IsSpaceFree(const BoundingBox &bbox)
+{
+	for (auto &block : Blocks)
+		if (bbox.Contains(block) != ContainmentType::Disjoint)
+			return true;
+	return false;
 }
 
 //-------------------------------------------------------------------------------------------------

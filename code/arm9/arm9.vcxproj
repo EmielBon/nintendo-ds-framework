@@ -129,6 +129,7 @@
     <ClInclude Include="include\ProfilingManager.h" />
     <ClInclude Include="include\ProfilingTest.h" />
     <ClInclude Include="include\Rabbit.h" />
+    <ClInclude Include="include\Range.h" />
     <ClInclude Include="include\RasterizerState.h" />
     <ClInclude Include="include\Rectangle.h" />
     <ClInclude Include="include\Room1.h" />

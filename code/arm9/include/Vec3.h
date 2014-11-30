@@ -29,6 +29,12 @@ namespace Framework
 		Vec3<T> operator*(T s) const;
 
 		///
+		Vec3<T> operator*(const Vec3<T> &other) const;
+
+		///
+		Vec3<T> operator*=(const Vec3<T> &other);
+
+		///
 		Vec3<T> operator+(const Vec3<T> &other) const;
 
 		///
@@ -66,6 +72,9 @@ namespace Framework
 		
 		///
 		static Vec3<T> Transform(const Vec3<T> &vector, const T *matrix);
+
+		///
+		static Vec3<T> Sign(const Vec3<T> &vector);
 
 		/// 
 		String ToString() const;
@@ -135,6 +144,24 @@ namespace Framework
 	inline Vec3<T> Vec3<T>::operator*(T s) const
 	{
 		return Vec3<T>(x*s, y*s, z*s);
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	template<class T>
+	inline Vec3<T> Vec3<T>::operator*(const Vec3<T> &other) const
+	{
+		return Vec3<T>(x * other.x, y * other.y, z * other.z);
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	template<class T>
+	inline Vec3<T> Vec3<T>::operator*=(const Vec3<T> &other)
+	{
+		x *= other.x;
+		y *= other.y;
+		z *= other.z;
+
+		return *this;
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -243,6 +270,13 @@ namespace Framework
 	String Vec3<T>::ToString() const
 	{
 		return ToStr((float)x << " " << (float)y << " " << (float)z);
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	template<class T>
+	Vec3<T> Vec3<T>::Sign(const Vec3<T> &vector)
+	{
+		return Vec3<T>(Math::Sign(vector.x), Math::Sign(vector.y), Math::Sign(vector.z));
 	}
 }
 

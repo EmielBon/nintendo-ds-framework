@@ -1,6 +1,8 @@
 #include "Rabbit.h"
 #include "Input.h"
 #include "ContentManager.h"
+#include "Range.h"
+#include "JumpBumpGame.h"
 
 using namespace Framework;
 using namespace Input;
@@ -17,25 +19,30 @@ void Rabbit::LoadContent()
 
 void Rabbit::DidCollideWithObject(const Framework::BoundingBox &bbox)
 {
-	if (bbox.Contains(BoundingBox.Center() + Vector3(0, BoundingBox.GetHeight() / 2 + 1, 0)) == ContainmentType::Contains)
+	Vector3 halfway = Vector3::Sign(BoundingBox.Center() - bbox.Center());
+
+	Range horA = {BoundingBox.Min.x, BoundingBox.Max.x};
+	Range horB = {bbox.Min.x,        bbox.Max.x };
+
+	Range verA = { BoundingBox.Min.y, BoundingBox.Max.y };
+	Range verB = { bbox.Min.y, bbox.Max.y };
+
+	fx12 horOverlap = horA.Overlap(horB);
+	fx12 verOverlap = verA.Overlap(verB);
+
+	if (horOverlap < 0.01f || verOverlap < 0.1f) return;
+
+	Vector3 displacement = halfway * Vector3(horOverlap, verOverlap, 0);
+
+	if (horOverlap < verOverlap )
 	{
-		Position.y = bbox.Min.y - BoundingBox.GetHeight();
-		speed.y = 0;
-	}
-	else if (bbox.Contains(BoundingBox.Center() - Vector3(0, BoundingBox.GetHeight() / 2 - 1, 0)) == ContainmentType::Contains)
-	{
-		Position.y = bbox.Max.y;
-		speed.y = 0;
-	}
-	else if (bbox.Contains(BoundingBox.Center() + Vector3(BoundingBox.GetWidth() / 2 + 1, 0, 0)) == ContainmentType::Contains)
-	{
-		Position.x = bbox.Min.x - BoundingBox.GetWidth();
+		Position.x += displacement.x;
 		speed.x = 0;
 	}
-	else if (bbox.Contains(BoundingBox.Center() - Vector3(BoundingBox.GetWidth() / 2 - 1, 0, 0)) == ContainmentType::Contains)
+	else
 	{
-		Position.x = bbox.Max.x;
-		speed.x = 0;
+		Position.y += displacement.y;
+		speed.y = 0;
 	}
 }
 
@@ -49,19 +56,23 @@ void Rabbit::Update(const GameTime &gameTime)
 
 	auto keys = KeyPad::GetState();
 	auto direction = keys.GetDirectionalPadVector();
-	if (keys.IsKeyPressed(Keys::Up) && speed.y == 0)
+
+	auto bbox = BoundingBox;
+	bbox.Min.x += 1;
+	bbox.Min.y += 1;
+	bbox.Max.x -= 1;
+	bbox.Max.y += 1;
+
+	if (keys.IsKeyPressed(Keys::Up) && (JumpBumpGame::Instance().IsSpaceFree(bbox) || Position.y >= 176))
 	{
 		speed.y = -jumpSpeed;
-		gravity = 256.0f;
 	}
 
 	speed.x = direction.x * maxHorizontalSpeed;
 	speed.y += gravity * timeStep;
-	
 
-	//Position = PlaceFree(Position, speed, BoundingBox);
 	Position += speed * timeStep;
-
+	
 	if (Position.y >= 176)
 	{
 		Position.y = 176;
