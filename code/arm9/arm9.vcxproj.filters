@@ -433,6 +433,9 @@
     <ClInclude Include="include\Range.h">
       <Filter>Test\Jump%27n%27Bump</Filter>
     </ClInclude>
+    <ClInclude Include="include\DebuggerTest.h">
+      <Filter>Test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Memory2D.cpp">
@@ -677,6 +680,9 @@
     </ClCompile>
     <ClCompile Include="source\Rabbit.cpp">
       <Filter>Test\Jump%27n%27Bump</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DebuggerTest.cpp">
+      <Filter>Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

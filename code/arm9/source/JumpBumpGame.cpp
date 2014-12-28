@@ -25,11 +25,12 @@ void JumpBumpGame::Initialize()
 //-------------------------------------------------------------------------------------------------
 void JumpBumpGame::LoadContent()
 {
+	base::LoadContent();
+
 	auto background = ContentManager::Load<TiledBackground>("jumpnbumplevel");
 	auto bg = GraphicsDevice::Main.Backgrounds[0];
 	background->CopyToHardwareBackground(*bg);
-	base::LoadContent();
-
+	
 	auto size = background->Size;
 
 	for (int x = 0; x < size.Width / 2; ++x)
@@ -40,6 +41,16 @@ void JumpBumpGame::LoadContent()
 		if (index != 0)
 			Blocks.push_back(BoundingBox(Vector3(x * 16, y * 16, 0), Vector3(x * 16 + 16, y * 16 + 16, 0)));
 	}		
+	auto top    = BoundingBox(Vector3(0, -1, 0), Vector3(256, 0, 0));
+	auto bottom = BoundingBox(Vector3(0, 192, 0), Vector3(256, 193, 0));
+	auto left   = BoundingBox(Vector3(-1, 0, 0), Vector3(0, 191, 0));
+	auto right  = BoundingBox(Vector3(256, 0, 0), Vector3(257, 191, 0));
+	Blocks.push_back(top);
+	Blocks.push_back(bottom);
+	Blocks.push_back(left);
+	Blocks.push_back(right);
+
+
 }
 
 //-------------------------------------------------------------------------------------------------

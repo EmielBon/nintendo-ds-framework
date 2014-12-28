@@ -9,7 +9,9 @@
 #include "MatrixPerformanceTest.h"
 #include "FixedPointUnitTest.h"
 #include "GameGenProject.h"
+#include "DebuggerTest.h"
 #include "JumpBumpGame.h"
+
 int main(void) 
 {
 	//Test::CollisionTest test;
@@ -25,7 +27,8 @@ int main(void)
 	//Test::FixedPointUnitTest test;
 	//Test::Test3D test;
 	//GameGenProject test;
-	JumpBumpGame test;
+	DebuggerTest test;
+	//JumpBumpGame test;
 	test.Run();
 
 	return 0;

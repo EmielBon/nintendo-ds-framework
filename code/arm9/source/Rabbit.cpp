@@ -58,9 +58,7 @@ void Rabbit::Update(const GameTime &gameTime)
 	auto direction = keys.GetDirectionalPadVector();
 
 	auto bbox = BoundingBox;
-	bbox.Min.x += 1;
 	bbox.Min.y += 1;
-	bbox.Max.x -= 1;
 	bbox.Max.y += 1;
 
 	if (keys.IsKeyPressed(Keys::Up) && (JumpBumpGame::Instance().IsSpaceFree(bbox) || Position.y >= 176))
@@ -72,12 +70,12 @@ void Rabbit::Update(const GameTime &gameTime)
 	speed.y += gravity * timeStep;
 
 	Position += speed * timeStep;
-	
+	/*
 	if (Position.y >= 176)
 	{
 		Position.y = 176;
 		speed.y = 0;
-	}
+	}*/
 
 	scale = (direction.x == 0) ? scale : direction.x;
 

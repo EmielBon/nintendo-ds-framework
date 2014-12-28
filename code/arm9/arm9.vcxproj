@@ -19,6 +19,7 @@
     <ClCompile Include="source\Button.cpp" />
     <ClCompile Include="source\Color.cpp" />
     <ClCompile Include="source\ConsoleTest.cpp" />
+    <ClCompile Include="source\DebuggerTest.cpp" />
     <ClCompile Include="source\DebugUI.cpp" />
     <ClCompile Include="source\DebugUITest.cpp" />
     <ClCompile Include="source\DisplayList.cpp" />
@@ -72,6 +73,7 @@
     <ClInclude Include="include\ContainmentType.h" />
     <ClInclude Include="include\DateTime.h" />
     <ClInclude Include="include\Debug.h" />
+    <ClInclude Include="include\DebuggerTest.h" />
     <ClInclude Include="include\DebugUI.h" />
     <ClInclude Include="include\DebugUITest.h" />
     <ClInclude Include="include\DirectionalLight.h" />
