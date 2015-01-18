@@ -5,11 +5,7 @@
 
 #include "types.h"
 #include "Button.h"
-
-namespace Test
-{
-	class Test3D;
-}
+#include "FPSCounter.h"
 
 namespace Debug
 {
@@ -17,16 +13,20 @@ namespace Debug
 	{
 		DebugMode_VRAM = 0,
 		DebugMode_LOG  = 1,
-		DebugMode_SETTINGS = 2,
-		DebugMode_PROFILING = 3,
+		DebugMode_PROFILING = 2,
 	};
 
 	class DebugUI : public Framework::DrawableGameComponent, Util::IActionListener
 	{
+	protected:
+
+		///
+		DebugUI();
+	
 	public:
 
 		///
-		DebugUI(Test::Test3D* game);
+		static DebugUI& Instance();
 
 		/// Inherited methods from DrawableGameComponent
 		void Initialize();
@@ -61,9 +61,6 @@ namespace Debug
 		void DrawLogView();
 
 		///
-		void DrawSettingsView();
-
-		///
 		void DrawProfilingView();
 
 	private:
@@ -74,16 +71,17 @@ namespace Debug
 
 	public:
 
-		int FPS;
-		GUI::Button button1;
-		GUI::Button button2;
+		GUI::Button previousButton;
+		GUI::Button nextButton;
 		String message;
-
-		GUI::Button bboxButton;
-		GUI::Button cameraButton;
-		GUI::Button collisionButton;
+		FPSCounter fpsCounter;
 
 		static Ptr<System::Console> Console;
-		Test::Test3D* game;
 	};
+
+	inline DebugUI& DebugUI::Instance()
+	{
+		static DebugUI debugUI;
+		return debugUI;
+	}
 }

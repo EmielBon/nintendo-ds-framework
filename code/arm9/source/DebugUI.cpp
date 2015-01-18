@@ -10,10 +10,6 @@
 #include "TouchScreen.h"
 #include "GraphicsDevice.h"
 #include "Console.h"
-#include "Scene.h"
-#include "Test3D.h"
-#include "FlyingCamera.h"
-#include "GameCamera.h"
 #include "ProfilingManager.h"
 #include "ProfilingResult.h"
 #include "Background.h"
@@ -34,21 +30,15 @@ namespace Debug
 	Ptr<System::Console> DebugUI::Console;
 
 	//-------------------------------------------------------------------------------------------------
-	DebugUI::DebugUI(Test3D* game) : mode(DebugMode_PROFILING), redraw(false), FPS(0), game(game)
+	DebugUI::DebugUI() : mode(DebugMode_PROFILING), redraw(false)
 	{
 		InitializeConsole();
 
-		button1         = Button("Links",             0,           0, ButtonLayer);
-		button2         = Button("Rechts",  256 - 8 * 6,           0, ButtonLayer);
-		bboxButton      = Button("Enable BBOXs",      0, 40 + 16 * 0, ButtonLayer);
-		cameraButton    = Button("Switch Camera",     0, 40 + 16 * 1, ButtonLayer);
-		collisionButton = Button("Toggle Collisions", 0, 40 + 16 * 2, ButtonLayer);
-
-		button1.AddActionListener(this);
-		button2.AddActionListener(this);
-		bboxButton.AddActionListener(this);
-		cameraButton.AddActionListener(this);
-		collisionButton.AddActionListener(this);
+		previousButton = Button("<",  0,           0, ButtonLayer);
+		nextButton     = Button(">",  256 - 8 * 1, 0, ButtonLayer);
+		
+		previousButton.AddActionListener(this);
+		nextButton.AddActionListener(this);
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -63,58 +53,25 @@ namespace Debug
 	//-------------------------------------------------------------------------------------------------
 	void DebugUI::Update(const GameTime &gameTime)
 	{
-		button1.Update(gameTime);
-		button2.Update(gameTime);
-
-		if (mode == DebugMode_SETTINGS)
-		{
-			bboxButton.Update(gameTime);
-			cameraButton.Update(gameTime);
-			collisionButton.Update(gameTime);
-		}
+		previousButton.Update(gameTime);
+		nextButton.Update(gameTime);
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	void DebugUI::ActionPerformed(void *source)
 	{
-		if (source == &button1)
+		if (source == &previousButton)
 		{
 			mode = ((mode - 1) % 4);
 			if (mode < 0) mode = 3;
 			message = "Left button pressed";
 			Redraw();
 		}
-		if (source == &button2)
+		if (source == &nextButton)
 		{
 			mode = ((mode + 1) % 4);
 			message = "Right button pressed";
 			Redraw();
-		}
-		if (source == &bboxButton)
-		{
-			game->scene->BoundingBoxesVisible = !game->scene->BoundingBoxesVisible;
-		}
-		if (source == &cameraButton)
-		{
-			Ptr<Camera> &camera = game->scene->Camera;
-			auto mario = std::dynamic_pointer_cast<Mario>( game->scene->GetObject("mario") );
-			
-			if (IsOfType<FlyingCamera>(camera))
-			{
-				camera = New<GameCamera>(mario);
-				mario->Enabled = true;
-			}
-			else
-			{
-				camera = New<FlyingCamera>(camera->Eye, camera->Focus);
-				mario->Enabled = false;
-			}
-		}
-		if (source == &collisionButton)
-		{
-			auto mario = std::dynamic_pointer_cast<Mario  >( game->scene->GetObject("mario") );
-			
-			mario->CollisionsEnabled = !mario->CollisionsEnabled;
 		}
 	}
 
@@ -143,13 +100,12 @@ namespace Debug
 		{
 			case DebugMode_VRAM      : DrawVRAMView();      break;
 			case DebugMode_LOG       : DrawLogView();       break;
-			case DebugMode_SETTINGS  : DrawSettingsView();  break;
 			case DebugMode_PROFILING : DrawProfilingView(); break;
 			default                  : ASSERT(false, "Invalid Debugmode"); break;
 		}
 
-		button1.Draw(gameTime);
-		button2.Draw(gameTime);
+		previousButton.Draw(gameTime);
+		nextButton.Draw(gameTime);
 
 		redraw = false;
 	}
@@ -158,7 +114,7 @@ namespace Debug
 	void DebugUI::DrawVRAMView()
 	{
 		PROFILE_METHOD(DUIVRA);
-		tr->DrawText(ToStr("FPS: " << FPS), 1, 3, 0);
+		tr->DrawText(ToStr("FPS: " << fpsCounter.FPS), 1, 3, 0);
 		tr->DrawText("VRAM Usage", 1, 5, 0);
 
 		for(int i = 0; i < 9; ++i)
@@ -206,15 +162,6 @@ namespace Debug
 		PROFILE_METHOD(DUILog);
 		Console->Update(GameTime());
 		Console->Draw(GameTime());
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	void DebugUI::DrawSettingsView()
-	{
-		PROFILE_METHOD(DUISet);
-		bboxButton.Draw(GameTime());
-		cameraButton.Draw(GameTime());
-		collisionButton.Draw(GameTime());
 	}
 
 	//-------------------------------------------------------------------------------------------------

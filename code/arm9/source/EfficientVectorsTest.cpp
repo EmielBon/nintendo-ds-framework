@@ -75,8 +75,6 @@ namespace Test
 		// Set the color for the background
 		GraphicsDevice::Main.SetBackgroundColor( Color::DeepSkyBlue );
 
-		camera->Initialize();
-
 		super::Initialize();
 	}
 
@@ -110,8 +108,6 @@ namespace Test
 		indices[5] = 3;
 
 		quadIndices->SetData(indices);
-
-		
 
 		super::LoadContent();
 	}

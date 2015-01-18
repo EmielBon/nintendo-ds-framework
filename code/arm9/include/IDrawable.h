@@ -12,6 +12,8 @@ namespace Framework
 
 		virtual void Draw(const GameTime &gameTime) = 0;
 
+	public:
+
 		bool Visible;
 	};
 }

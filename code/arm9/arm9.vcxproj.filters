@@ -214,9 +214,6 @@
     <ClInclude Include="include\DrawableGameComponent.h">
       <Filter>Framework\Game</Filter>
     </ClInclude>
-    <ClInclude Include="include\GameComponentCollection.h">
-      <Filter>Framework\Game</Filter>
-    </ClInclude>
     <ClInclude Include="include\IGameComponent.h">
       <Filter>Framework\Game</Filter>
     </ClInclude>
@@ -683,6 +680,12 @@
     </ClCompile>
     <ClCompile Include="source\LogPrinter.cpp">
       <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GameComponent.cpp">
+      <Filter>Framework\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DrawableGameComponent.cpp">
+      <Filter>Framework\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

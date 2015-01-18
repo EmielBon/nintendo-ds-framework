@@ -132,4 +132,6 @@ namespace Framework
 	using Vector3s = Vec3<short>;
 	using Vector3i = Vec3<int>;
 	using Vector3f = Vec3<float>;
+
+	using GameComponentCollection = Set<GameComponent *>;
 }

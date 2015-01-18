@@ -19,7 +19,7 @@ JumpBumpGame* JumpBumpGame::instance = nullptr;
 void JumpBumpGame::Initialize()
 {
 	Rabbits.push_back(new Rabbit());
-	Components.Add(Rabbits[0]);
+	AddComponent(Rabbits[0]);
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -49,8 +49,6 @@ void JumpBumpGame::LoadContent()
 	Blocks.push_back(bottom);
 	Blocks.push_back(left);
 	Blocks.push_back(right);
-
-
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -77,8 +75,8 @@ bool JumpBumpGame::IsSpaceFree(const BoundingBox &bbox)
 //-------------------------------------------------------------------------------------------------
 void JumpBumpGame::Update(const Framework::GameTime &gameTime)
 {
-	base::Update(gameTime);
 	CheckCollisions();
+	base::Update(gameTime);
 }
 
 //-------------------------------------------------------------------------------------------------

@@ -7,7 +7,7 @@
 void ZeldaGame::Initialize()
 {
     currentRoom = new Room1();
-    Components.Add ( currentRoom );
+    AddComponent ( currentRoom );
     base::Initialize();
 }
 

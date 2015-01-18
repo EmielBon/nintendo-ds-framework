@@ -24,7 +24,7 @@ namespace Test
 	{
 		auto bg0 = GraphicsDevice::Main.Backgrounds[0]; // Text layer
 		tr = new TextRenderer(bg0);
-		Components.Add(tr);
+		AddComponent(tr);
 
 		super::Initialize();
 	}

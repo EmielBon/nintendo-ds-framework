@@ -23,11 +23,13 @@
     <ClCompile Include="source\DebugUI.cpp" />
     <ClCompile Include="source\DebugUITest.cpp" />
     <ClCompile Include="source\DisplayList.cpp" />
+    <ClCompile Include="source\DrawableGameComponent.cpp" />
     <ClCompile Include="source\EfficientVectorsTest.cpp" />
     <ClCompile Include="source\FixedPointUnitTest.cpp" />
     <ClCompile Include="source\FlyingCamera.cpp" />
     <ClCompile Include="source\FPSCounter.cpp" />
     <ClCompile Include="source\GameCamera.cpp" />
+    <ClCompile Include="source\GameComponent.cpp" />
     <ClCompile Include="source\GameObject.cpp" />
     <ClCompile Include="source\GameTime.cpp" />
     <ClCompile Include="source\GraphicsDeviceManager.cpp" />
@@ -93,7 +95,6 @@
     <ClInclude Include="include\Framework3D.h" />
     <ClInclude Include="include\GameCamera.h" />
     <ClInclude Include="include\GameComponent.h" />
-    <ClInclude Include="include\GameComponentCollection.h" />
     <ClInclude Include="include\GameGenProject.h" />
     <ClInclude Include="include\GameObjec3D.h" />
     <ClInclude Include="include\GameTime.h" />

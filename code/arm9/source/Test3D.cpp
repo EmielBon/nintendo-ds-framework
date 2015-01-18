@@ -52,17 +52,11 @@ namespace Test
 	//-------------------------------------------------------------------------------------------------
 	void Test3D::Initialize()
 	{
-		fpsCounter = new FPSCounter();
-		Components.Add(fpsCounter);
-
 		GraphicsDevice::Main.TextureMemory->AutomaticExpansion = false;
 		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankA, 0);
 		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankB, 1);
 		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankC, 2);
 		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankD, 3);
-
-		debugUI = new DebugUI(this);
-		Components.Add(debugUI);
 		
 		// Enable 3D on the main engine
 		GraphicsDevice::Main.Enable3D(true);
@@ -82,7 +76,7 @@ namespace Test
 		scene = Content.Load<Scene>("scene");
 		scene->Lights.push_back(Light(Color::White, Vector3(0, -1, -1)));
 		scene->Ambient = Color::Gray;
-		Components.Add(scene.get());
+		AddComponent(scene.get());
 		// Init mario
 		Ptr<Mario> mario = New<Mario>();
 		mario->scene = scene;
@@ -137,8 +131,6 @@ namespace Test
 		
 		GraphicsDevice::Main.Backgrounds[1]->ColorMode = ColorMode::ColorMode256;
 		GraphicsDevice::Main.Backgrounds[1]->ShowMapWithIndex(0);
-
-		debugUI->FPS = fpsCounter->FPS;
 
 		super::Draw(gameTime);
 	}

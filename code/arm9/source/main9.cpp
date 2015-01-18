@@ -27,8 +27,8 @@ int main(void)
 	//Test::FixedPointUnitTest test;
 	//Test::Test3D test;
 	//GameGenProject test;
-	DebuggerTest test;
-	//JumpBumpGame test;
+	//DebuggerTest test;
+	JumpBumpGame test;
 	test.Run();
 
 	return 0;

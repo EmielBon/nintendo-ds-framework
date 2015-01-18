@@ -16,7 +16,6 @@
 #include "types.h"
 #include "ContentManager.h"
 #include "GraphicsDevice.h"
-#include "GameComponentCollection.h"
 #include "GameTime.h"
 
 namespace Framework
@@ -53,13 +52,19 @@ namespace Framework
 		///
 		static void VBlankDraw();
 
+		///
+		void AddComponent(GameComponent *component);
+
+		///
+		void RemoveComponent(GameComponent *component);
+
 	protected:
 
 		/// This method is called with the subclass' implementation, after initializing the hardware
-		virtual void Initialize();
+		virtual void Initialize() { }
 
 		/// This method is called with the subclass' implementation, after Initialize()
-		virtual void LoadContent();
+		virtual void LoadContent() { }
 
 		/// This method is called with the subclass' implementation, after LoadContent() in an endless loop
 		virtual void Update(const GameTime &gameTime);
@@ -70,10 +75,11 @@ namespace Framework
 	public:
 
 		Framework::ContentManager Content;
-		GameComponentCollection Components;
+		DrawableGameComponent RootComponent;
 		// todo: remove, because this is implicitly the main device
 		Graphics::GraphicsDevice &GraphicsDevice;
 		bool IsFixedTimeStep;
+
 	private:
 
 		bool fileSystemSupported;

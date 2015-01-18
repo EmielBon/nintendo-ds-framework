@@ -5,9 +5,14 @@
 
 class Rabbit : public GameObject
 {
+private:
+	using base = GameObject;
+
 public:
 
 	Rabbit() = default;
+
+	void Initialize();
 
 	void LoadContent();
 

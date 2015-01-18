@@ -10,7 +10,7 @@ void DebuggerTest::Initialize()
 {
 	GraphicsDevice::Sub.Backgrounds[0]->ColorMode = ColorMode16;
 	console = new Console(GraphicsDevice::Sub.Backgrounds[0]);
-	Components.Add(console);
+	AddComponent(console);
 	for (int i = 0; i < 64; ++i)
 		console->WriteLine(ToStr("Hoi " << i));
 	super::Initialize();

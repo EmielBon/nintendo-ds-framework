@@ -96,6 +96,7 @@ namespace Framework
 		LOG("========= Runtime log =========");
 		LOG("");
 		// Main loop
+		
 		gameHost->Run();
 	}
 
@@ -146,44 +147,26 @@ namespace Framework
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void Game::Initialize()
+	void Game::AddComponent(GameComponent *component)
 	{
-		for(auto it = Components.Begin(); it != Components.End(); ++it)
-		{
-			(*it)->Initialize();
-		}
+		RootComponent.Components.insert(component);
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void Game::LoadContent()
+	void Game::RemoveComponent(GameComponent *component)
 	{
-		for(auto it = Components.Begin(); it != Components.End(); ++it)
-		{
-			if (auto drawable = static_cast<DrawableGameComponent*>(*it))
-				drawable->LoadContent();
-		}
+		RootComponent.Components.erase(component);
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	void Game::Update(const GameTime &gameTime)
 	{
-		for(auto it = Components.Begin(); it != Components.End(); ++it)
-		{
-			if ((*it)->Enabled)
-				(*it)->Update(gameTime);
-		}
+		RootComponent.Update(gameTime);
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	void Game::Draw(const GameTime &gameTime)
 	{
-		for(auto it = Components.Begin(); it != Components.End(); ++it)
-		{
-			if (auto drawable = dynamic_cast<DrawableGameComponent*>(*it))
-			{
-				if (drawable->Visible)
-					drawable->Draw(gameTime);
-			}
-		}
+		RootComponent.Draw(gameTime);
 	}
 }
