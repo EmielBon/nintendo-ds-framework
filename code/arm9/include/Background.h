@@ -39,6 +39,9 @@ namespace Graphics
 		int GetMapIndex() const;
 
 		///
+		Map* GetMap() const;
+
+		///
 		void ShowMapWithIndex(int index);
 
 		/// todo: can this be removed?

@@ -14,6 +14,12 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
+	Map* Background::GetMap() const
+	{
+		return graphicsDevice->BackgroundMemory->Maps[mapIndex].get();
+	}
+
+	//-------------------------------------------------------------------------------------------------
 	Graphics::BackgroundMemory& Background::BackgroundMemory() const
 	{
 		return *graphicsDevice->BackgroundMemory;
@@ -23,7 +29,7 @@ namespace Graphics
 	void Background::Clear()
 	{
 		ASSERT2(mapIndex >= 0, "No map for Background" << index);
-		graphicsDevice->BackgroundMemory->Maps[mapIndex]->Clear();
+		GetMap()->Clear();
 	}
 
 	//-------------------------------------------------------------------------------------------------

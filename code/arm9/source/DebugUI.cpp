@@ -238,7 +238,7 @@ namespace Debug
 
 		if (!initialized)
 		{
-			Console = New<System::Console>(TextLayer, 16, 16, 256 - 32, 192 - 32);
+			Console = New<System::Console>(TextLayer);
 			//Components.Add(Console);
 			LOG_DISABLE();
 			Console->LoadContent();

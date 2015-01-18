@@ -14,7 +14,7 @@ namespace System
 	public:
 
 		/// 
-		Console(Graphics::Background *background, int x, int y, int width, int height);
+		Console(Graphics::Background *background);
 		
 		/// 
 		void Update(const Framework::GameTime &gameTime);
@@ -40,11 +40,10 @@ namespace System
 	protected:
 
 		List<String> entries;
-		int X, Y, Width, Height;
 
 	private:
 
-		bool redraw;
+		int startEntry;
 	};
 
 	//-------------------------------------------------------------------------------------------------
@@ -70,7 +69,7 @@ namespace System
 	//-------------------------------------------------------------------------------------------------
 	inline void Console::Redraw()
 	{
-		redraw = true;
+		startEntry = -1;
 	}
 	
 	//-------------------------------------------------------------------------------------------------

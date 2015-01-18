@@ -2,7 +2,6 @@
 
 #include "types.h"
 #include "LogEntry.h"
-
 namespace Debug
 {
 	class Log

@@ -71,9 +71,9 @@ namespace Framework
 
 		Framework::ContentManager Content;
 		GameComponentCollection Components;
+		// todo: remove, because this is implicitly the main device
 		Graphics::GraphicsDevice &GraphicsDevice;
 		bool IsFixedTimeStep;
-
 	private:
 
 		bool fileSystemSupported;

@@ -20,7 +20,7 @@ namespace Graphics
 
 	//-------------------------------------------------------------------------------------------------
 	TextRenderer::TextRenderer(Graphics::Background *background, const String &fontName /* = "font8x8@4" */) 
-		: FontName(fontName), dynamicPaletteStartIndex(-1), Background(background)
+		: FontName(fontName), Background(background)
 	{
 		
 	}
@@ -30,9 +30,11 @@ namespace Graphics
 	{
 		auto &bgmem = Background->BackgroundMemory();
 		Font = ContentManager::Load<Graphics::Font>(FontName);
-		// Create and add the font's (dynamic) palette
-		AddColor(Color::White, Color::Black); // Standard colors, black bg and white text
-		dynamicPaletteStartIndex = bgmem.PaletteMemory->AddDynamicPalette(Palettes);
+		// Standard colors, black bg and white text
+		Palette = New<Graphics::Palette>();
+		Palette->AddColor(Color::Black);
+		Palette->AddColor(Color::White);
+		bgmem.PaletteMemory->AddPalette(Palette);
 		// Set the map's clear tile to the font's first glyph. todo: This makes little sense, it takes the first 8x8 tile in the tileset
 		auto &blankTile = Font->Tiles[0];
 		bgmem.AddTile(blankTile, 0);
@@ -43,20 +45,8 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void TextRenderer::AddColor(u16 foregroundColor, u16 backgroundColor /* = 0xD59F */)
-	{
-		sassert(dynamicPaletteStartIndex == -1, "Cannot add colors after copying palettes to palette memory");
-		auto pal = New<Palette>();
-		pal->AddColor(backgroundColor); // Transparent color
-		pal->AddColor(foregroundColor);
-		Palettes.push_back(pal);
-	}
-
-	//-------------------------------------------------------------------------------------------------
 	void TextRenderer::DrawText(const String &str, int x, int y, int paletteIndex)
 	{
-		sassert(dynamicPaletteStartIndex != -1, "Cannot draw text without a (dynamic) palette");
-		
 		//PROFILE_METHOD(TRDrwT);
 		int index = Background->GetMapIndex();
 		sassert(index >= 0 && index <= 3, "Map index out of bounds");
@@ -73,7 +63,7 @@ namespace Graphics
 		int charHeight = Font->CharSize().Height / 8;
 		int tilesPerChar = charWidth * charHeight;
 		
-		int palIndex = dynamicPaletteStartIndex / 16;
+		int palIndex = 0 / 16;
 
 		for(u32 i = 0; i < str.length(); ++i)
 		{
@@ -86,9 +76,7 @@ namespace Graphics
 					continue;
 
 				auto &tile = Font->Tiles[str[i] * tilesPerChar + j];
-				//int tileIndex = bgmem.AddTile(tile, dynamicPaletteStartIndex);
-				GraphicsDevice::SetBackgroundTile(*Background, i, j, &tile, TileParameters(0, false, false, palIndex));
-				//map->SetTile(x2, y2, ScreenBlockEntry(tileIndex, false, false, palIndex));
+				GraphicsDevice::SetBackgroundTile(*Background, x2, y2, &tile, TileParameters(0, false, false, palIndex));
 			}
 			x += charWidth;
 		}

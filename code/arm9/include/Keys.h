@@ -5,7 +5,7 @@
 
 namespace Input
 {
-	enum Keys : u16
+	enum class Keys : u16
 	{
 		A = KEY_A, // Keypad A button
 		B = KEY_B, // Keypad B button

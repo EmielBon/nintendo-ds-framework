@@ -127,9 +127,6 @@
     <ClInclude Include="include\Log.h">
       <Filter>Debug</Filter>
     </ClInclude>
-    <ClInclude Include="include\LogEntry.h">
-      <Filter>Debug</Filter>
-    </ClInclude>
     <ClInclude Include="include\Console.h">
       <Filter>System</Filter>
     </ClInclude>
@@ -200,9 +197,6 @@
       <Filter>Debug</Filter>
     </ClInclude>
     <ClInclude Include="include\Profiler.h">
-      <Filter>Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="include\LogPrinter.h">
       <Filter>Debug</Filter>
     </ClInclude>
     <ClInclude Include="include\Logging.h">
@@ -436,6 +430,12 @@
     <ClInclude Include="include\DebuggerTest.h">
       <Filter>Test</Filter>
     </ClInclude>
+    <ClInclude Include="include\LogEntry.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LogPrinter.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Memory2D.cpp">
@@ -507,9 +507,6 @@
     <ClCompile Include="source\Log.cpp">
       <Filter>Debug</Filter>
     </ClCompile>
-    <ClCompile Include="source\LogEntry.cpp">
-      <Filter>Debug</Filter>
-    </ClCompile>
     <ClCompile Include="source\Console.cpp">
       <Filter>System</Filter>
     </ClCompile>
@@ -547,9 +544,6 @@
       <Filter>Util</Filter>
     </ClCompile>
     <ClCompile Include="source\Timer.cpp">
-      <Filter>Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="source\LogPrinter.cpp">
       <Filter>Debug</Filter>
     </ClCompile>
     <ClCompile Include="source\Logging.cpp">
@@ -683,6 +677,12 @@
     </ClCompile>
     <ClCompile Include="source\DebuggerTest.cpp">
       <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LogEntry.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LogPrinter.cpp">
+      <Filter>Debug</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

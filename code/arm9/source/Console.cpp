@@ -14,10 +14,9 @@ namespace System
 	using namespace Framework;
 
 	//-------------------------------------------------------------------------------------------------
-	Console::Console(Graphics::Background *background, int x, int y, int width, int height) 
-		: super(background, "font8x8@4"), X(x), Y(y), Width(width), Height(height), redraw(true)
+	Console::Console(Graphics::Background *background) 
+		: super(background, "font8x8@4"), startEntry(-1)
 	{
-		ASSERT(Width % 8 == 0 && Height % 8 == 0, "Invalid Console size");
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -50,21 +49,25 @@ namespace System
 	//-------------------------------------------------------------------------------------------------
 	void Console::Draw(const GameTime &gameTime)
 	{
-		//if (!redraw)
-		//	return;
+		int newStartEntry = Background->Offset.y / 8;
+
+		if (newStartEntry == startEntry)
+			return;
+
+		startEntry = newStartEntry;
+		Background->Clear();
 
 		// Todo: clean up
-		int charWidth     = Font->CharSize().Width;
-		int charHeight    = Font->CharSize().Height;
-		int charHeight8x8 = charHeight / 8;
-		
-		int startEntry = Background->Offset.y / 8;
-		int startRow   = Background->Offset.y / 8 + 2;
+		int charWidth = Font->CharSize().Width;
+		//int charHeight = Font->CharSize().Height;
+		//int charHeight8x8 = charHeight / 8;
 
-		for(int i = 0; i < 24; ++i)
+		//int startRow   = Background->Offset.y / 8;
+
+		for(int i = 0; i < 26; ++i)
 		{
 			int entryIndex = startEntry + i;
-
+			//getText(entryIndex);
 			if (entryIndex < 0 || entryIndex >= EntryCount())
 				break;
 
@@ -73,11 +76,11 @@ namespace System
 
 			String text = entries[entryIndex];
 			int textWidth = Font->WidthForString(text);
-			text = (textWidth < Width) ? text : Font->StringForWidth(text, Width - 2 * charWidth) + "..";
-			DrawText(text, X / 8, (startRow + entryIndex * charHeight8x8) % 32, 0);
+			text = (textWidth < 256) ? text : Font->StringForWidth(text, 256 - 2 * charWidth) + "..";
+			//int y = (startRow + entryIndex * charHeight8x8)% 32 ;
+			int y = entryIndex % 32;
+			DrawText(text, 0, y, 0);
 		}
-
-		redraw = false;
 
 		super::Draw(gameTime);
 	}

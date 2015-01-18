@@ -32,19 +32,19 @@ namespace Input
 	//-------------------------------------------------------------------------------------------------
 	inline bool KeyState::IsKeyPressed(Keys key) const
 	{
-		return (PressedState & key) != 0; 
+		return (PressedState & (u16)key) != 0;
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline bool KeyState::IsKeyHeld(Keys key) const
 	{
-		return (HeldState & key) != 0; 
+		return (HeldState & (u16)key) != 0;
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline bool KeyState::IsKeyReleased(Keys key) const
 	{
-		return (ReleasedState & key) != 0; 
+		return (ReleasedState & (u16)key) != 0; 
 	}
 
 	//-------------------------------------------------------------------------------------------------

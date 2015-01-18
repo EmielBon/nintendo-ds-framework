@@ -3,6 +3,7 @@
 #include "DrawableGameComponent.h"
 #include "Color.h"
 #include "types.h"
+#include "Palette.h"
 
 namespace Graphics
 {
@@ -20,15 +21,11 @@ namespace Graphics
 		/// Todo: Better solution for palIndex
 		void DrawText(const String &str, int x, int y, int paletteIndex);
 
-		///
-		void AddColor(u16 foregroundColor, u16 backgroundColor = 0xD59F/*HotPink*/);
-
 	public:
 
 		String FontName;
 		Ptr<Graphics::Font> Font;
-		List< Ptr<Palette> > Palettes;
-		int dynamicPaletteStartIndex;
+		Ptr<Graphics::Palette> Palette;
 		Graphics::Background *Background;
 	};
 }

@@ -2,6 +2,7 @@
 
 #include "types.h"
 #include "Game.h"
+#include "Console.h"
 
 class DebuggerTest : public Framework::Game
 {
@@ -15,4 +16,8 @@ protected:
 	void LoadContent();
 	void Update(const Framework::GameTime &gameTime);
 	void Draw(const Framework::GameTime &gameTime);
+
+public:
+
+	System::Console *console;
 };
