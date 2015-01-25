@@ -48,6 +48,8 @@ namespace GUI
 		{
 			Tap();
 		}
+
+		super::Update(gameTime);
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -55,5 +57,7 @@ namespace GUI
 	{
 		tr->DrawText(Text, Bounds.Position.x / 8, Bounds.Position.y / 8, 0);
 		tr->Draw(gameTime);
+
+		super::Draw(gameTime);
 	}
 }

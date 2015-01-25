@@ -27,7 +27,7 @@ namespace Graphics
 		static Ptr<TiledBackground> FromTileSet(Ptr<TileSet> tileSet, int width, int height);
 		
 		///
-		void CopyToHardwareBackground(Background &bg);
+		void CopyToHardwareBackground(Background &bg) const;
 		
 	public:
 		

@@ -2,6 +2,9 @@
 
 #include "CoreTypes.h"
 #include <nds/arm9/sprite.h>
+
+#define IMPLIES(p, q) (!(p) || (q))
+
 /// Forward declarations
 
 namespace Framework

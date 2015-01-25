@@ -96,6 +96,12 @@ namespace Graphics
 		///
 		void SetBackgroundColor(u16 color);
 
+		///
+		void SetBackground(int index, const TiledBackground &background);
+
+		/// 
+		static void SetBackground(Background &bg, const TiledBackground &background);
+
 		/// 
 		Background* GetBackgroundAtLayer(int layer) const;
 

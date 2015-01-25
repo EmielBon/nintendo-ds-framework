@@ -18,6 +18,10 @@ namespace Debug
 
 	class DebugUI : public Framework::DrawableGameComponent, Util::IActionListener
 	{
+	private:
+
+		using base = Framework::DrawableGameComponent;
+
 	protected:
 
 		///
@@ -32,6 +36,9 @@ namespace Debug
 		void Initialize();
 
 		///
+		void LoadContent();
+
+		///
 		void Update(const Framework::GameTime &gameTime);
 
 		///
@@ -42,9 +49,6 @@ namespace Debug
 
 		///
 		void ActionPerformed(void *source);
-
-		///
-		void InitializeConsole();
 
 		/// Shows the console on sub-engine background 3, on top
 		void ShowConsole();
@@ -75,6 +79,7 @@ namespace Debug
 		GUI::Button nextButton;
 		String message;
 		FPSCounter fpsCounter;
+		int modeCount;
 
 		static Ptr<System::Console> Console;
 	};

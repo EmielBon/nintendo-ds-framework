@@ -8,6 +8,7 @@
 #include "Background.h"
 #include "BackgroundMemory.h"
 #include "SpriteMemory.h"
+#include "TiledBackground.h"
 
 // 3D Graphics
 #include "OpenGL.h"
@@ -43,7 +44,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	void GraphicsDevice::Initialize()
 	{
-		for(u32 i = 0; i < Backgrounds.size(); ++i)
+		for (u32 i = 0; i < Backgrounds.size(); ++i)
 			Backgrounds[i] = new Background(this, i);
 
 		bool main = IsMain();
@@ -56,6 +57,9 @@ namespace Graphics
 		BackgroundMemory->Initialize();
 		SpriteMemory->Initialize();
 		TextureMemory->Initialize();
+
+		for (u32 i = 0; i < Backgrounds.size(); ++i)
+			Backgrounds[i]->Clear();
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -112,6 +116,18 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
+	void GraphicsDevice::SetBackground(int index, const TiledBackground &background)
+	{
+		GraphicsDevice::SetBackground(*Backgrounds[index], background);
+	}
+
+	void GraphicsDevice::SetBackground(Background &bg, const TiledBackground &background)
+	{
+		bg.ColorMode = (background.Bpp == 4) ? ColorMode16 : ColorMode256;
+		background.CopyToHardwareBackground(bg);
+	}
+
+	//-------------------------------------------------------------------------------------------------
 	Background* GraphicsDevice::GetBackgroundAtLayer(int layer) const
 	{
 		for (auto background : Backgrounds)
@@ -126,9 +142,12 @@ namespace Graphics
 		auto &bgMem = background.BackgroundMemory();
 		auto &map   = *bgMem.Maps[background.GetMapIndex()];
 
+		sassert(IMPLIES(tile->BitsPerPixel() == 4, background.ColorMode == ColorMode16),  "Error: Setting tile to background with incompatible color mode");
+		sassert(IMPLIES(tile->BitsPerPixel() == 8, background.ColorMode == ColorMode256), "Error: Setting tile to background with incompatible color mode");
+
 		if (tile)
 		{
-			// todo : dynamic palette parameter disabled here
+			// todo: dynamic palette parameter disabled here
 			u32 tileIndex = bgMem.AddTile(*tile, 0);
 			auto screenBlockEntry = params;
 			screenBlockEntry.SetTileIndex(tileIndex);

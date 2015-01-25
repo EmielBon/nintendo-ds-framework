@@ -8,6 +8,7 @@
 #include "Console.h"
 #include "NDSGameHost.h"
 #include "Timer.h"
+#include "DebugUI.h"
 
 // libnds
 #include <filesystem.h>
@@ -81,6 +82,7 @@ namespace Framework
 		GraphicsDevice::Sub.ObjectAttributeMemory.DisplayMode = SpriteDisplayMode_1D_64;
 		// Initialize the console
 		//InitializeConsole(GraphicsDevice::Sub.Background3);
+		AddComponent(&DebugUI::Instance());
 		LOG("======== Initializing =========");
 		LOG("");
 		// Calls the pure virtual method Initialize, to let a subclass initialize stuff before loading content

@@ -30,31 +30,46 @@ namespace Debug
 	Ptr<System::Console> DebugUI::Console;
 
 	//-------------------------------------------------------------------------------------------------
-	DebugUI::DebugUI() : mode(DebugMode_PROFILING), redraw(false)
+	DebugUI::DebugUI() : mode(DebugMode_PROFILING), redraw(false), modeCount(3)
 	{
-		InitializeConsole();
-
-		previousButton = Button("<",  0,           0, ButtonLayer);
-		nextButton     = Button(">",  256 - 8 * 1, 0, ButtonLayer);
 		
-		previousButton.AddActionListener(this);
-		nextButton.AddActionListener(this);
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	void DebugUI::Initialize()
 	{
-		LOG_DISABLE();
-		tr = New<TextRenderer>( TextLayer );
-		tr->LoadContent();
-		LOG_ENABLE();
+		//Console = New<System::Console>(TextLayer);
+		//Components.insert(Console.get());
+		//ShowConsole();
+
+		previousButton = Button("<", 0, 0, ButtonLayer);
+		nextButton = Button(">", 256 - 8 * 1, 0, ButtonLayer);
+
+		previousButton.AddActionListener(this);
+		nextButton.AddActionListener(this);
+
+		Components.insert(&previousButton);
+		Components.insert(&nextButton);
+
+		tr = New<TextRenderer>(TextLayer);
+		Components.insert(tr.get());
+
+		TextLayer->ColorMode = ColorMode16;
+		ButtonLayer->ColorMode = ColorMode16;
+
+		base::Initialize();
+	}
+
+	void DebugUI::LoadContent()
+	{
+		base::LoadContent();
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	void DebugUI::Update(const GameTime &gameTime)
 	{
-		previousButton.Update(gameTime);
-		nextButton.Update(gameTime);
+		//Console->WriteLine("TEST!");
+		base::Update(gameTime);
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -62,17 +77,21 @@ namespace Debug
 	{
 		if (source == &previousButton)
 		{
-			mode = ((mode - 1) % 4);
-			if (mode < 0) mode = 3;
+			mode = ((mode - 1) % modeCount);
+			if (mode < 0) mode = (modeCount - 1);
 			message = "Left button pressed";
+			TextLayer->Offset.y = 0;
 			Redraw();
 		}
 		if (source == &nextButton)
 		{
-			mode = ((mode + 1) % 4);
+			mode = ((mode + 1) % modeCount);
 			message = "Right button pressed";
+			TextLayer->Offset.y = 0;
 			Redraw();
 		}
+		tr->DrawText(message, 0, 23, 0);
+		Console->WriteLine("hoi");
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -93,8 +112,8 @@ namespace Debug
 			
 		elapsedSeconds = (int)gameTime.TotalGameTime.TotalSeconds();
 		
-		ButtonLayer->Clear();
 		TextLayer->Clear();
+		ButtonLayer->Clear();
 		
 		switch(mode)
 		{
@@ -104,15 +123,15 @@ namespace Debug
 			default                  : ASSERT(false, "Invalid Debugmode"); break;
 		}
 
-		previousButton.Draw(gameTime);
-		nextButton.Draw(gameTime);
-
 		redraw = false;
+
+		base::Draw(gameTime);
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	void DebugUI::DrawVRAMView()
 	{
+		TextLayer->Clear();
 		PROFILE_METHOD(DUIVRA);
 		tr->DrawText(ToStr("FPS: " << fpsCounter.FPS), 1, 3, 0);
 		tr->DrawText("VRAM Usage", 1, 5, 0);
@@ -151,22 +170,22 @@ namespace Debug
 		vu16 vertices = GFX_VERTEX_RAM_USAGE;
 		vu16 polygons = GFX_POLYGON_RAM_USAGE;
 		tr->DrawText(ToStr("verts: " << vertices << " polys: " << polygons), 0, 22, 0);
-
-		tr->DrawText(message, 0, 23, 0);
-		tr->Draw(GameTime());
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	void DebugUI::DrawLogView()
 	{
-		PROFILE_METHOD(DUILog);
-		Console->Update(GameTime());
-		Console->Draw(GameTime());
+		//PROFILE_METHOD(DUILog);
+		
+		//Console->Update(GameTime());
+		//Console->Redraw();
+		//Console->Draw(GameTime());
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	void DebugUI::DrawProfilingView()
 	{
+		TextLayer->Clear();
 		PROFILE_METHOD(DUIPro);
 		auto& results = ProfilingManager::ProfilingResults;
 
@@ -175,27 +194,6 @@ namespace Debug
 		for(auto it = results.begin(); it != results.end(); ++it)
 		{
 			tr->DrawText(it->second.ToString(), 1, 3 + counter++, 0);
-		}
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	void DebugUI::InitializeConsole()
-	{
-		static bool initialized = false;
-
-		if (!initialized)
-		{
-			Console = New<System::Console>(TextLayer);
-			//Components.Add(Console);
-			LOG_DISABLE();
-			Console->LoadContent();
-			LOG_ENABLE();
-			ShowConsole();
-			for(u32 i = 0; i < StandardLog.Colors.size(); ++i)
-			{
-				LogPrinter::Print(StandardLog.Colors[i], 0);
- 			}
-			initialized = true;
 		}
 	}
 

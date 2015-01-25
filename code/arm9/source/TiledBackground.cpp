@@ -8,7 +8,7 @@
 namespace Graphics
 {
 	//-------------------------------------------------------------------------------------------------
-	void TiledBackground::CopyToHardwareBackground(Background &bg)
+	void TiledBackground::CopyToHardwareBackground(Background &bg) const
 	{
 		auto map = bg.BackgroundMemory().Maps[bg.GetMapIndex()];
 

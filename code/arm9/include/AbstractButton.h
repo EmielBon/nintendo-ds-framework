@@ -2,10 +2,11 @@
 
 #include "Component.h"
 #include "types.h"
+#include "DrawableGameComponent.h"
 
 namespace GUI
 {
-	class AbstractButton
+	class AbstractButton : public Framework::DrawableGameComponent
 	{
 	public:
 
