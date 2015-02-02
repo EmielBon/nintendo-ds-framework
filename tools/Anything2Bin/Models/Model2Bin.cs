@@ -13,7 +13,8 @@ namespace Anything2Bin.Models
         public static List<Vector3> Positions = new List<Vector3>();
         public static List<Vector3> Normals = new List<Vector3>();
         public static List<Vector2> UVs = new List<Vector2>();
-        
+		public static Dictionary<String, String> Textures = new Dictionary<String, String>();
+
         public static void ObjToBin(String inputFile, String outputFile)
         {
             String modelName = Path.GetFileNameWithoutExtension(inputFile);
@@ -50,8 +51,17 @@ namespace Anything2Bin.Models
                                currentMesh.AddFace(tokens); 
                                break;
                     case "o":  currentMesh = new Mesh(meshPrefix + modelName + "_" + tokens[1]);
+							   if (Textures.ContainsKey(tokens[1]))
+							   {
+								   currentMesh.TextureName = Textures[tokens[1]];
+							   }
                                meshes.Add(currentMesh);
                                break;
+					case "#":  if (tokens[1] == "texture")
+							   {
+								   Textures.Add(tokens[2], tokens[3]);
+							   }
+							   break;
                     default:   break;
                 }
             }
@@ -76,7 +86,7 @@ namespace Anything2Bin.Models
 
             foreach (Mesh mesh in meshes)
             {
-                writer.WriteLine(mesh.Name + " " + "no_texture" /*"mesh.Texture.Name"*/);
+                writer.WriteLine(mesh.Name + " " + mesh.TextureName);
             }
 
             writer.Close();

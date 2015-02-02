@@ -8,10 +8,11 @@ namespace Anything2Bin.Models
     class Mesh
     {
         public String Name;
+		public String TextureName = "no_texture";
 
-        public List<Face> Faces = new List<Face>();
+        public List<Face>   Faces    = new List<Face>();
         public List<Vertex> Vertices = new List<Vertex>();
-        public List<short> Indices = new List<short>();
+        public List<short>  Indices  = new List<short>();
 
         public Mesh(String name)
         {

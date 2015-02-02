@@ -25,9 +25,9 @@ int main(void)
 	//Test::ProfilingTest test;
 	//Test::MatrixPerformanceTest test;
 	//Test::FixedPointUnitTest test;
-	//Test::Test3D test;
+	Test::Test3D test;
 	//GameGenProject test;
-	DebuggerTest test;
+	//DebuggerTest test;
 	//JumpBumpGame test;
 	test.Run();
 
