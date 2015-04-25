@@ -13,7 +13,7 @@ void Link::Initialize()
 void Link::LoadContent()
 {
     Sprites = ContentManager::Load<SpriteSet>("link").get();
-    CurrentSprite = Sprites->at("link_down");
+	CurrentSprite = Sprites->at("link_down");
 	GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
     base::LoadContent();
 }
@@ -38,19 +38,19 @@ void Link::Update ( const GameTime &gameTime )
     if ( KeyPad::GetState().IsKeyHeld ( Keys::Right ) )
     {
         direction.x = 1;
-        CurrentSprite = Sprites->at ( "link_right" );
+		CurrentSprite = Sprites->at("link_right");
     }
 
     if ( KeyPad::GetState().IsKeyHeld ( Keys::Up ) )
     {
         direction.y = -1;
-        CurrentSprite = Sprites->at ( "link_up" );
+		CurrentSprite = Sprites->at("link_up");
     }
 
     if ( KeyPad::GetState().IsKeyHeld ( Keys::Down ) )
     {
         direction.y = 1;
-        CurrentSprite = Sprites->at ( "link_down" );
+		CurrentSprite = Sprites->at("link_down");
     }
 
     direction = direction.Normalize();

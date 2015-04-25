@@ -45,7 +45,7 @@ namespace Graphics
 		void SetPixel(int index, int value);
 
 		/// 
-		void AddPalette(Ptr<Palette> palette);
+		void AddPalette(Palette *palette);
 
 	private:
 	
@@ -53,9 +53,9 @@ namespace Graphics
 
 	public:
 
-		u32                  Identifier;
-		List< Ptr<Palette> > Palettes;
-		Ptr< List<byte> >    Pixels; // todo: Rename, Pixels[0] for instance does not give you the first pixel in case of 4bpp, but the first and the second
+		u32               Identifier;
+		List< Palette* >  Palettes;
+		Ptr< List<byte> > Pixels; // todo: Rename, Pixels[0] for instance does not give you the first pixel in case of 4bpp, but the first and the second
 	};
 
 	//-------------------------------------------------------------------------------------------------

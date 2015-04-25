@@ -47,6 +47,13 @@ namespace Framework
 		Vec3<T> operator-=(const Vec3<T> &other);
 
 		/// 
+		template<class S>
+		explicit operator Vec3<S>() const
+		{
+			return Vec3<S>((S)x, (S)y, (S)z);
+		}
+
+		/// 
 		Vec3<T> Normalize() const;
 
 		/// 

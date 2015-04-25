@@ -9,11 +9,11 @@ namespace FileSystem
 	{
 	public:
 
-		StreamReader(String fileName);
+		StreamReader(const String &fileName);
 
-		StreamReader(FileStream *stream);
+		StreamReader(const FileStream &stream);
 
-		virtual ~StreamReader() { }
+		virtual ~StreamReader() = default;
 
 		void Close();
 
@@ -25,26 +25,24 @@ namespace FileSystem
 
 	private:
 
-		FileStream *fileStream;
+		FileStream fileStream;
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline StreamReader::StreamReader(String fileName)
+	inline StreamReader::StreamReader(const String &fileName) : fileStream(fileName)
 	{
-		fileStream = new FileStream(fileName);
-		fileStream->Open(fileName);
+		fileStream.Open(fileName);
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline StreamReader::StreamReader(FileStream *stream)
+	inline StreamReader::StreamReader(const FileStream &stream) : fileStream(stream)
 	{
-		fileStream = stream;
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline void StreamReader::StreamReader::Close()
 	{
-		fileStream->Close();
+		fileStream.Close();
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -52,7 +50,7 @@ namespace FileSystem
 	{
 		String line;
 
-		while(!fileStream->EndOfFile)
+		while(!fileStream.EndOfFile)
 		{
 			char c = ReadChar();
 
@@ -70,9 +68,9 @@ namespace FileSystem
 	//-------------------------------------------------------------------------------------------------
 	u8 StreamReader::ReadChar()
 	{
-		if (!fileStream->EndOfFile)
+		if (!fileStream.EndOfFile)
 		{
-			List<u8> chars = *(fileStream->Read<u8>(1));
+			auto chars = fileStream.Read<u8>(1);
 			if (chars.empty())
 				return 0;
 			return chars[0];
@@ -85,10 +83,12 @@ namespace FileSystem
 	{
 		List<String> lines;
 
-		while(!fileStream->EndOfFile)
+		while(!fileStream.EndOfFile)
 		{
 			lines.push_back( ReadLine() );
 		}
+
+		Close();
 
 		return lines;
 	}

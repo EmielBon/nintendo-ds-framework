@@ -433,6 +433,9 @@
     <ClInclude Include="include\LogPrinter.h">
       <Filter>Debug</Filter>
     </ClInclude>
+    <ClInclude Include="include\my_shared_ptr.h">
+      <Filter>Util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Memory2D.cpp">
@@ -686,6 +689,9 @@
     </ClCompile>
     <ClCompile Include="source\DrawableGameComponent.cpp">
       <Filter>Framework\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ModelMesh.cpp">
+      <Filter>Graphics\3D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

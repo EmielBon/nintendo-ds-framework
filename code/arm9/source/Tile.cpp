@@ -10,7 +10,7 @@ namespace Graphics
 	int Tile::GetPixel(int index) const
 	{
 		sassert(index >= 0 && index < 64, "Pixel index out of range");
-		sassert(Pixels, "Pixel data was released, cannot access");
+		sassert(Pixels, "Getter : Pixel data was released, cannot access");
 		
 		auto &pixels = *Pixels;
 		
@@ -23,7 +23,7 @@ namespace Graphics
 	void Tile::SetPixel(int index, int value)
 	{
 		sassert(index >= 0 && index < 64, "Pixel index out of range");
-		sassert(Pixels, "Pixel data was released, cannot access");
+		sassert(Pixels, "Setter: Pixel data was released, cannot access");
 		
 		auto &pixels = *Pixels;
 
@@ -41,7 +41,7 @@ namespace Graphics
 	}
 	
 	//-------------------------------------------------------------------------------------------------
-	void Tile::AddPalette(Ptr<Palette> palette)
+	void Tile::AddPalette(Palette *palette)
 	{
 		sassert(!palette->IsEmpty(), "Cannot add an empty palette to a tile");
 		Palettes.push_back(palette);

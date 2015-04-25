@@ -38,7 +38,7 @@ namespace Framework
 		 *
 		 *  Note that BoundingBox.Transform will not return correct results if there are rotations, shears, or other 
 		 *  unusual transforms in this transformation matrix. */
-		BoundingBox Transform(const Matrix &matrix);
+		BoundingBox Transform(const Matrix &matrix) const;
 
 		fx12 GetWidth() const;
 

@@ -5,9 +5,9 @@ namespace Framework
 	//-------------------------------------------------------------------------------------------------
 	void GameComponent::Initialize()
 	{
-		for (auto it = Components.begin(); it != Components.end(); ++it)
+		for (auto &component : Components)
 		{
-			(*it)->Initialize();
+			component->Initialize();
 		}
 		Initialized = true;
 	}
@@ -15,10 +15,8 @@ namespace Framework
 	//-------------------------------------------------------------------------------------------------
 	void GameComponent::Update(const GameTime &gameTime)
 	{
-		for (auto it = Components.begin(); it != Components.end(); ++it)
+		for (auto &component : Components)
 		{
-			GameComponent *component = *it;
-
 			if (!component->Initialized)
 				component->Initialize();
 

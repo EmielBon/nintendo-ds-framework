@@ -88,7 +88,7 @@ namespace Graphics
 		 * might have. This prevents any garbage from being displayed and gives 
 		 * us a clean slate to work with.
 		 */
-		for (u32 i = 0; i < spriteCount; ++i)
+		for (int i = 0; i < spriteCount; ++i)
 		{
 			oam->oamBuffer[i].attribute[0] = ATTR0_DISABLED;
 			oam->oamBuffer[i].attribute[1] = 0;

@@ -18,7 +18,7 @@ namespace FileSystem
 		/** \brief Creates an empty closed stream. */
 		FileStream(const String &resourceName);
 
-		virtual ~FileStream() { }
+		virtual ~FileStream() = default;
 
 		/** \brief Opens this stream for reading.
 		 *  \param path The path to the file in the file system. */
@@ -43,7 +43,7 @@ namespace FileSystem
 		 *  elements. If reading goes beyond the end of the file, the list containing the elements up to the end of the
 		 *  file is returned. */
 		template<class T>
-		Ptr<List<T>> Read(int elements);
+		List<T> Read(int elements);
 
 		/** \brief Reads all remaining elements from the stream.
 		 *  \returns A list of the read elements.
@@ -51,7 +51,7 @@ namespace FileSystem
 		 *  Reading starts at the current file position. The type specification determines the type (and size) of the 
 		 * elements. */
 		template<class T>
-		Ptr<List<T>> ReadAll();
+		List<T> ReadAll();
 
 		/** \brief Reads raw bytes from the stream.
 		 *  \param buffer A pointer to the memory in which the read data can be stored.
@@ -82,7 +82,7 @@ namespace FileSystem
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline FileStream::FileStream(const String &resourceName) : stream(0), EndOfFile(false), resourceName(resourceName)
+	inline FileStream::FileStream(const String &resourceName) : stream(nullptr), EndOfFile(false), resourceName(resourceName)
 	{
 	}
 
@@ -97,9 +97,9 @@ namespace FileSystem
 
 	//-------------------------------------------------------------------------------------------------
 	template<class T> 
-	inline Ptr<List<T>> FileStream::Read(int elements)
+	inline List<T> FileStream::Read(int elements)
 	{
-		auto binaryData = New<List<T>>();
+		List<T> binaryData;
 
 		for(int i = 0; i < elements; ++i)
 		{
@@ -110,7 +110,7 @@ namespace FileSystem
 				EndOfFile = true;
 				break;
 			}
-			binaryData->push_back(buffer);
+			binaryData.push_back(buffer);
 		}
 
 		return binaryData;
@@ -118,11 +118,11 @@ namespace FileSystem
 
 	//-------------------------------------------------------------------------------------------------
 	template<class T> 
-	inline Ptr<List<T>> FileStream::ReadAll()
+	inline List<T> FileStream::ReadAll()
 	{
 		const int bufferSize = Math::Max(8U, sizeof(T));
 
-		auto binaryData = New<List<T>>();
+		List<T> binaryData;
 
 		T buffer[bufferSize];
 		int byterPerElement = sizeof(T);
@@ -133,11 +133,12 @@ namespace FileSystem
 		while(elementsRead > 0)
 		{
 			for(int i = 0; i < elementsRead; ++i)
-				binaryData->push_back(buffer[i]);
+				binaryData.push_back(buffer[i]);
 			elementsRead = Read(buffer, byterPerElement, nrOfElements);
 		}
 
 		EndOfFile = true;
+		Close();
 		return binaryData;
 	}
 }

@@ -28,7 +28,9 @@ namespace Test
 
 		void MoveY(fx12 acceleration, fx12 timeStep);
 
-		Vector3 HandleCollisions(fx12 timeStep);
+		//Vector3 HandleCollisions(fx12 timeStep);
+
+		void DidCollideWithObject(const Framework::BoundingBox &bbox);
 
 	public:
 
@@ -53,10 +55,12 @@ namespace Test
 		Ptr<Framework3D::Scene> scene;
 
 		bool CollisionsEnabled;
+
+		bool initialized;
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline Mario::Mario() : SceneObject("mario"), CollisionsEnabled(true)
+	inline Mario::Mario() : SceneObject("mario"), CollisionsEnabled(true), initialized(false)
 	{
 
 	}

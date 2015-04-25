@@ -16,6 +16,7 @@ namespace Graphics
 		for (int j = 0; j < Size.Height; ++j)
 		{
 			auto tile   = GetTile(i, j);
+			sassert(tile, "Tile was null");
 			auto params = TileParameters[GetTileIndex(i, j)];
 			GraphicsDevice::SetBackgroundTile(bg, i, j, tile, params);
 		}

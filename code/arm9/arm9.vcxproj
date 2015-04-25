@@ -43,6 +43,7 @@
     <ClCompile Include="source\Mario.cpp" />
     <ClCompile Include="source\Material.cpp" />
     <ClCompile Include="source\MatrixPerformanceTest.cpp" />
+    <ClCompile Include="source\ModelMesh.cpp" />
     <ClCompile Include="source\NDSGameHost.cpp" />
     <ClCompile Include="source\Profiler.cpp" />
     <ClCompile Include="source\ProfilingManager.cpp" />
@@ -118,6 +119,7 @@
     <ClInclude Include="include\Logging.h" />
     <ClInclude Include="include\MatrixPerformanceTest.h" />
     <ClInclude Include="include\MemoryTypes.h" />
+    <ClInclude Include="include\my_shared_ptr.h" />
     <ClInclude Include="include\NDSGameHost.h" />
     <ClInclude Include="include\OpenGL.h" />
     <ClInclude Include="include\Profiler.h" />

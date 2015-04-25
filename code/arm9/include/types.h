@@ -63,7 +63,6 @@ namespace Graphics
 	using TileParameters = ScreenBlockEntry;
 	using SpriteSet = Dictionary<String, Sprite*>;
 	using SpriteResource = List<SpriteEntry>;
-	using MapResource = List<ScreenBlockEntry>;
 }
 
 namespace FileSystem

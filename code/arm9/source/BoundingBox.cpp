@@ -41,7 +41,7 @@ namespace Framework
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	BoundingBox BoundingBox::Transform(const Matrix &m)
+	BoundingBox BoundingBox::Transform(const Matrix &m) const
 	{
 		auto translation = New<Vector3>();
 		auto scale = New<Vector3>();

@@ -52,7 +52,7 @@ namespace Framework
 		auto tiles = New<TileSet16>();
 		tiles->tileSize.Width  = header.Width;
 		tiles->tileSize.Height = header.Height;
-		tiles->AddTiles(*(fs.ReadAll<Tile4bpp>()));
+		tiles->AddTiles(fs.ReadAll<Tile4bpp>());
 
 		sassert(tiles->tileSize.Width % 8 == 0 || tiles->tileSize.Height % 8 == 0, "Error: Invalid tile size");
 
@@ -73,14 +73,14 @@ namespace Framework
 		auto header = fs.ReadHeader<TileSetFileHeader>();
 		
 		auto tileSet = New<TileSet256>();
-		tileSet->AddTiles(*(fs.ReadAll<Tile8bpp>()));
+		tileSet->AddTiles(fs.ReadAll<Tile8bpp>());
 		tileSet->tileSize.Width  = header.Width;
 		tileSet->tileSize.Height = header.Height;
 			
 		auto palette = Load<Palette>(fs.resourceName + "_pal");
 		
 		for (auto &tile : tileSet->Tiles)
-			tile.AddPalette(palette);
+			tile.AddPalette(palette.get());
  
 		sassert(tileSet->tileSize.Width % 8 == 0 || tileSet->tileSize.Height % 8 == 0, "Error: Invalid tile size");
 
@@ -98,18 +98,18 @@ namespace Framework
 	template<>
 	Ptr<TiledBackground> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
-		StreamReader reader(&fs);
+		StreamReader reader(fs);
 		auto lines = reader.ReadToEnd();
 
-		Size              mapSize;
-		Ptr<MapResource>  screenBlockEntries;
-		Ptr<CollisionMap> collisionMap;
-		Ptr<TileSet256>   tileSet;
-		Ptr<Palette>      palette;
+		Size                   mapSize;
+		List<ScreenBlockEntry> screenBlockEntries;
+		Ptr<CollisionMap>      collisionMap;
+		Ptr<TileSet256>        tileSet;
+		Ptr<Palette>           palette;
 
-		for(u32 i = 0; i < lines.size(); ++i)
+		for(auto &line : lines)
 		{
-			auto tokens = StringHelper::Split(lines[i], ' ');
+			auto tokens = StringHelper::Split(line, ' ');
 
 			if (tokens[0] == "")
 				continue;
@@ -127,16 +127,16 @@ namespace Framework
 				int height   = StringHelper::ParseInt(sizeStr[1]);
 				mapSize = Size(width, height);
 			}
-			if (type == "d") screenBlockEntries = ContentManager::Load<MapResource>(fileName);
+			if (type == "d") screenBlockEntries = FileStream(fileName).ReadAll<ScreenBlockEntry>();
 			// \todo Support for loading more than one tile set per map
 			if (type == "t") tileSet      = ContentManager::Load<TileSet256>(fileName);
 		}
 
 		auto tiledBackground = New<TiledBackground>(mapSize.Width, mapSize.Height, 8);
 
-		for(u32 i = 0; i < screenBlockEntries->size(); ++i)
+		for(u32 i = 0; i < screenBlockEntries.size(); ++i)
 		{
-			auto screenBlockEntry = (*screenBlockEntries)[i];
+			auto screenBlockEntry = screenBlockEntries[i];
 			tiledBackground->Tiles[i] = &tileSet->Tiles[screenBlockEntry.TileIndex()];
 			tiledBackground->TileParameters[i] = screenBlockEntry;
 		}
@@ -148,11 +148,11 @@ namespace Framework
 	template<>
 	Ptr<SpriteSet> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
-		StreamReader reader(&fs);
+		StreamReader reader(fs);
 		auto lines = reader.ReadToEnd();
 
-		Size              size;
-		Ptr<TileSet256>   tileSet;
+		Size            size;
+		Ptr<TileSet256> tileSet;
 		auto spriteSet = New<SpriteSet>();
 
 		for (u32 i = 0; i < lines.size(); ++i)
@@ -199,31 +199,12 @@ namespace Framework
 		return spriteSet;
 	}
 
-	//------------------------------------------------------------------------------------------------- 
-	// \todo What would be better is a custom load function where you can specify the header and content type. 
-	// MapResource's purpose is not for loading, it just happens to contain a list op ScreenBlockEntries
-	template<>
-	Ptr<MapResource> ContentManager::LoadResourceFromStream(FileStream &fs)
-	{
-		struct MapFileHeader
-		{
-			byte Width;
-			byte Height;
-		};
-
-		auto header = fs.ReadHeader<MapFileHeader>();
-		auto map = New<MapResource>(header.Width, header.Height);
-		map = fs.ReadAll<ScreenBlockEntry>();
-
-		return map;
-	}
-
 	//-------------------------------------------------------------------------------------------------
 	template<>
 	Ptr<Palette> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
-		Ptr<Palette> palette = New<Palette>();
-		palette->Colors = *(fs.ReadAll<u16>());
+		auto palette = New<Palette>();
+		palette->Colors = fs.ReadAll<u16>();
 		return palette;
 	}
 
@@ -232,7 +213,7 @@ namespace Framework
 	Ptr<Path> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		auto path = New<Path>();
-		auto data = *(fs.ReadAll<u16>());
+		auto data = fs.ReadAll<u16>();
 		int size = data.size();
 
 		ASSERT(size % 2 == 0, "Error: Incorrect path file");
@@ -247,14 +228,14 @@ namespace Framework
 	template<>
 	Ptr<Model> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
-		Ptr<Model> model = New<Model>();
+		auto model = New<Model>();
 
-		StreamReader reader(&fs);
+		StreamReader reader(fs);
 
 		auto lines = reader.ReadToEnd();
-		for(u32 i = 0; i < lines.size(); ++i)
+		for(auto &line : lines)
 		{
-			auto tokens = StringHelper::Split(lines[i], ' ');
+			auto tokens = StringHelper::Split(line, ' ');
 			
 			if (tokens[0] == "")
 				continue;
@@ -288,29 +269,17 @@ namespace Framework
 		
 		ModelMeshPart meshPart;
 		
-		List<VertexF> vertices = *(fs.Read<VertexF>(header.VertexCount));
-		for(u32 i = 0; i < vertices.size(); ++i)
+		auto vertices = fs.Read<VertexF>(header.VertexCount);
+		for (auto &vertex : vertices)
 		{
-			Vertex v;
-			v.Position.x = vertices[i].Position.x;
-			v.Position.y = vertices[i].Position.y;
-			v.Position.z = vertices[i].Position.z;
-
-			v.Normal.x = vertices[i].Normal.x;
-			v.Normal.y = vertices[i].Normal.y;
-			v.Normal.z = vertices[i].Normal.z;
-
-			v.TextureCoordinates.x = vertices[i].TextureCoordinates.x;
-			v.TextureCoordinates.y = vertices[i].TextureCoordinates.y;
-
-			meshPart.Vertices.push_back(v);
+			meshPart.Vertices.push_back((Vertex)vertex);
 		}
 		//meshPart.Vertices = *(fs.Read<VertexF>(header.VertexCount));
-		meshPart.Indices = *(fs.ReadAll<u16>());
+		meshPart.Indices = fs.ReadAll<u16>();
 
-		for(u32 i = 0; i < meshPart.Vertices.size(); ++i)
+		for(auto &vertex : meshPart.Vertices)
 		{
-			Vector3 &normal = meshPart.Vertices[i].Normal;
+			Vector3 &normal = vertex.Normal;
 			normal = normal.Normalize(); 
 		}
 
@@ -334,7 +303,7 @@ namespace Framework
 
 		auto header = fs.ReadHeader<TextureFileHeader>();
 		auto texture = New<Texture>(header.Width, header.Height);
-		texture->Pixels = *(fs.ReadAll<u16>());
+		texture->Pixels = fs.ReadAll<u16>();
 		
 		return texture;
 	}
@@ -345,7 +314,7 @@ namespace Framework
 	{
 		Ptr<Scene> scene = New<Scene>();
 
-		StreamReader reader(&fs);
+		StreamReader reader(fs);
 
 		auto lines = reader.ReadToEnd();
 		for(u32 i = 0; i < lines.size(); ++i)

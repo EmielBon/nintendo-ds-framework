@@ -37,6 +37,13 @@ namespace Framework
 		///
 		Vec2<T> operator-=(const Vec2<T> &other);
 
+		///
+		template<class S>
+		explicit operator Vec2<S>() const
+		{
+			return Vec2<S>((S)x, (S)y);
+		}
+
 		/// 
 		Vec2<T> Normalize() const;
 

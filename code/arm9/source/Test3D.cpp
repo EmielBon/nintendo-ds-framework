@@ -78,7 +78,7 @@ namespace Test
 		scene->Ambient = Color::Gray;
 		AddComponent(scene.get());
 		// Init mario
-		Ptr<Mario> mario = New<Mario>();
+		mario = New<Mario>();
 		mario->scene = scene;
 		mario->position.y = 4;
 		mario->position.z = 0.01f;
@@ -114,11 +114,36 @@ namespace Test
 	}
 
 	//-------------------------------------------------------------------------------------------------
+	void Test3D::CheckCollisions()
+	{
+		Matrix transform = Matrix::CreateTranslation(mario->position);
+		BoundingBox marioBox = mario->Model->Meshes[0].BoundingBox.Transform(transform);
+
+		for (auto &sceneObject : scene->Objects)
+		{
+			if (sceneObject == mario)
+				return;
+
+			Matrix &otherTransform = sceneObject->Transformation;
+
+			for (auto &mesh : sceneObject->Model->Meshes)
+			{
+				BoundingBox otherBox = mesh.BoundingBox.Transform(otherTransform);
+
+				if (marioBox.Contains(otherBox) != ContainmentType::Disjoint)
+				{
+					mario->DidCollideWithObject(otherBox);
+				}
+			}
+		}
+	}
+
+	//-------------------------------------------------------------------------------------------------
 	void Test3D::Update(const GameTime &gameTime)
 	{	
-		PROFILE_METHOD(T3DUpd);
-
 		super::Update(gameTime);
+		PROFILE_METHOD(T3DUpd);
+		CheckCollisions();
 	}
 
 	//-------------------------------------------------------------------------------------------------

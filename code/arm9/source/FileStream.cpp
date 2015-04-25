@@ -9,11 +9,11 @@ namespace FileSystem
 	using namespace std;
 
 	//-------------------------------------------------------------------------------------------------
-	void FileStream::Open(const string &path)
+	void FileStream::Open(const String &path)
 	{
 		stream = fopen(path.c_str(), "rb");
 
-		if (stream != NULL) 
+		if (stream) 
 			open = true;
 		else 
 			printf("could not open file: %s\n", path.c_str() );

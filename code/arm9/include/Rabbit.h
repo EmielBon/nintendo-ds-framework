@@ -28,5 +28,4 @@ public:
 	Vector2 speed;
 	fx12 gravity;
 	Framework::BoundingBox BoundingBox;
-	Framework::BoundingBox *other;
 };

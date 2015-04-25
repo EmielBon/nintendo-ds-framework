@@ -8,6 +8,7 @@
 #include "Debug.h" 
 #include "Scene.h"
 #include "SceneObject.h"
+#include "Range.h"
 
 namespace Test
 {
@@ -19,7 +20,6 @@ namespace Test
 		frontFacing = true;
 		scale = 1.0f;
 		flip = 1;
-
 		imageIndex = 0;
 	}
 
@@ -28,6 +28,9 @@ namespace Test
 	{
 		// Load the models
 		Model = ContentManager::Load<Graphics::Model>("mario");
+		Model->Meshes[0].BoundingBox.Min.z = -0.5f;
+		Model->Meshes[0].BoundingBox.Max.z =  0.5f;
+
 		// Initialize the effect
 		effect = New<BasicEffect>();
 		standFrontSprite = ContentManager::Load<Texture>("mario_standstill");
@@ -43,12 +46,18 @@ namespace Test
 		effect->Texture = standFrontSprite;
 		// Set the effect
 		Model->Meshes[0].MeshParts[0].Effect = effect;
-		Transformation = Matrix::CreateScale(1.0f * scale, -1.0f, 1.0f) * Matrix::CreateTranslation(position.x, position.z, position.y);
+		Transformation = Matrix::CreateScale(1.0f * scale, 1.0f, 1.0f) * Matrix::CreateTranslation(position.x, position.z, position.y);
+
+		// todo: remove once the initialization sequence is better defined
+		initialized = true;
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	void Mario::Update(const GameTime &gameTime)
 	{
+		if (!initialized)
+			return;
+
 		PROFILE_METHOD(MarUpd);
 		KeyState keys = KeyPad::GetState();
 		
@@ -57,7 +66,7 @@ namespace Test
 		fx12 maxSpeed = 5;
 		fx12 timeStep = gameTime.ElapsedGameTime.TotalSeconds();
 		
-		fx12 gravity = 25;
+		fx12 gravity = 0;// 25;
 
 		//if(!InAir())
 		//{
@@ -112,8 +121,8 @@ namespace Test
 
 		Vector3 frameSpeed = speed * timeStep;
 
-		if (CollisionsEnabled)
-			frameSpeed = HandleCollisions(timeStep);
+		//if (CollisionsEnabled)
+		//	frameSpeed = HandleCollisions(timeStep);
 		
 		position += frameSpeed;
 
@@ -153,17 +162,12 @@ namespace Test
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	Vector3 Mario::HandleCollisions(fx12 timeStep)
+	/*Vector3 Mario::HandleCollisions(fx12 timeStep)
 	{
 		PROFILE_METHOD(MarCol);
 		Vector3 frameSpeed = speed * timeStep;
 		
-		Matrix transform = {
-			    1, 0, 0, position.x,
-				0, 1, 0, position.z,
-				0, 0, 1, position.y,
-				0, 0, 0,          1,
-		};
+		Matrix transform = Matrix::CreateTranslation(position);
 
 		Ptr<BoundingBox> other = scene->PlaceFree(Model, transform, Vector3(frameSpeed.x, frameSpeed.z, frameSpeed.y));
 
@@ -190,7 +194,7 @@ namespace Test
 			}
 			else if(bbox.Min.z + frameSpeed.y < other->Max.z && bbox.Min.z > other->Max.z)
 			{
-				position.y = other->Max.z + (bbox.Max.z - bbox.Min.z) /2 + fx12(1) / fx12(100);;
+				position.y = other->Max.z + (bbox.Max.z - bbox.Min.z) /2 + fx12(1) / fx12(100);
 				frameSpeed.y = 0;
 				speed.y = 0;
 			}			// z collisions
@@ -202,13 +206,55 @@ namespace Test
 			}
 			else if(bbox.Min.y + frameSpeed.z < other->Max.y && bbox.Min.y > other->Max.y)
 			{
-				position.z = other->Max.y  + fx12(1) / fx12(100);;
+				position.z = other->Max.y  + fx12(1) / fx12(100);
 				frameSpeed.z = 0;
 				speed.z = 0;
 			}
 		}
 
 		return frameSpeed;
+	}*/
+
+	void Mario::DidCollideWithObject(const Framework::BoundingBox &bbox)
+	{
+		BoundingBox &boundingBox = Model->Meshes[0].BoundingBox;
+
+		Vector3 halfway = Vector3::Sign(boundingBox.Center() - bbox.Center());
+		
+		Range horA = { boundingBox.Min.x, boundingBox.Max.x };
+		Range horB = { bbox.Min.x, bbox.Max.x };
+
+		Range verA = { boundingBox.Min.y, boundingBox.Max.y };
+		Range verB = { bbox.Min.y, bbox.Max.y };
+
+		Range depA = { boundingBox.Min.z, boundingBox.Max.z };
+		Range depB = { bbox.Min.z, bbox.Max.z };
+
+		fx12 horOverlap = horA.Overlap(horB);
+		fx12 verOverlap = verA.Overlap(verB);
+		fx12 depOverlap = depA.Overlap(depB);
+
+		if (horOverlap < 0.01f || verOverlap < 0.1f || depOverlap < 0.01f) return;
+
+		Vector3 displacement = halfway * Vector3(horOverlap, verOverlap, depOverlap);
+
+		fx12 min = Math::Min(Math::Min(horOverlap, verOverlap), depOverlap);
+
+		if (min == horOverlap)
+		{
+			position.x += displacement.x;
+			speed.x = 0;
+		}
+		else if (min == verOverlap)
+		{
+			position.y += displacement.y;
+			speed.y = 0;
+		}
+		else
+		{
+			position.z += displacement.z;
+			speed.z = 0;
+		}
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -246,6 +292,6 @@ namespace Test
 	//-------------------------------------------------------------------------------------------------
 	bool Mario::InAir()
 	{
-		return speed.z != fx12(0) || scene->PlaceFree(Model, Matrix::CreateScale(3, 3, 3) * Matrix::CreateTranslation(position.x , position.z - fx12(5) / fx12(100), position.y));
+		return false;//speed.z != fx12(0) || scene->PlaceFree(Model, Matrix::CreateScale(3, 3, 3) * Matrix::CreateTranslation(position.x , position.z - fx12(5) / fx12(100), position.y));
 	}
 }

@@ -25,6 +25,8 @@ namespace Test
 
 		void DrawModel(Model& model, Matrix worldMatrix);
 
+		void CheckCollisions();
+
 	protected:
 
 		void Initialize();
@@ -40,7 +42,7 @@ namespace Test
 		// Often used XNA objects
 		GraphicsDeviceManager graphics;
 		// Game objects and variables
-		//Ptr<Map> background;
+		Ptr<Mario> mario;
 		Ptr<Framework3D::Scene> scene;
 	};
 }
