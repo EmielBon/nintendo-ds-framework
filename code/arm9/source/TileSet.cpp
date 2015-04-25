@@ -4,12 +4,9 @@
 namespace Graphics
 {
 	//-------------------------------------------------------------------------------------------------
-	bool TileSet::AddTile(const Tile &tile)
+	void TileSet::AddTile(const Tile &tile)
 	{
-		if (!TileIsCompatible(tile))
-			return false;
-
+		sassert(TileIsCompatible(tile), "Incompatible tile");
 		Tiles.push_back(tile);
-		return true;
 	}
 }

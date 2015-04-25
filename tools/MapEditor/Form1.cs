@@ -189,9 +189,6 @@ namespace MapEditor
                 FileStream stream = new FileStream(mapDataFileName + ".bin", FileMode.Create);
                 BinaryWriter writer = new BinaryWriter(stream);
 
-                writer.Write((byte)MapWidth);
-                writer.Write((byte)MapHeight);
-
                 // Create the collision map
                 for (int y = 0; y < MapHeight / 2; y++)
                 for (int x = 0; x < MapWidth  / 2; x++)

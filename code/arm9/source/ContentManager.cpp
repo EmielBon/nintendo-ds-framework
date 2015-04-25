@@ -127,7 +127,12 @@ namespace Framework
 				int height   = StringHelper::ParseInt(sizeStr[1]);
 				mapSize = Size(width, height);
 			}
-			if (type == "d") screenBlockEntries = FileStream(fileName).ReadAll<ScreenBlockEntry>();
+			if (type == "d")
+			{
+				auto dataFileStream = FileStream(fileName);
+				dataFileStream.Open("/" + fileName + ".bin");
+				screenBlockEntries = dataFileStream.ReadAll<ScreenBlockEntry>();
+			}
 			// \todo Support for loading more than one tile set per map
 			if (type == "t") tileSet      = ContentManager::Load<TileSet256>(fileName);
 		}
@@ -137,7 +142,9 @@ namespace Framework
 		for(u32 i = 0; i < screenBlockEntries.size(); ++i)
 		{
 			auto screenBlockEntry = screenBlockEntries[i];
-			tiledBackground->Tiles[i] = &tileSet->Tiles[screenBlockEntry.TileIndex()];
+			auto tile = &(tileSet->Tiles[screenBlockEntry.TileIndex()]);
+			sassert(tile, "Loaded tile was null");
+			tiledBackground->SetTile(i, tile);
 			tiledBackground->TileParameters[i] = screenBlockEntry;
 		}
 

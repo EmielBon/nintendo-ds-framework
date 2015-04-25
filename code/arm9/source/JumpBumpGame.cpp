@@ -27,19 +27,19 @@ void JumpBumpGame::LoadContent()
 {
 	base::LoadContent();
 
-	auto background = ContentManager::Load<TiledBackground>("jumpnbumplevel2");
+	auto background = ContentManager::Load<TiledBackground>("jumpnbumplevel");
 	auto size       = background->Size;
 	
 	GraphicsDevice::Main.SetBackground(0, *background);
 	
-	/*for (int x = 0; x < size.Width / 2; ++x)
+	for (int x = 0; x < size.Width / 2; ++x)
 	for (int y = 0; y < size.Height / 2; ++y)
 	{
 		int i = x * 2 + size.Width * y * 2;
 		auto index = background->TileParameters[i].TileIndex();
 		if (index != 0)
 			Blocks.push_back(BoundingBox(Vector3(x * 16, y * 16, 0), Vector3(x * 16 + 16, y * 16 + 16, 0)));
-	}		*/
+	}
 	
 	auto top    = BoundingBox(Vector3(0, -1, 0), Vector3(256, 0, 0));
 	auto bottom = BoundingBox(Vector3(0, 192, 0), Vector3(256, 193, 0));

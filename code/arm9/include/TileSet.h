@@ -27,7 +27,7 @@ namespace Graphics
 		virtual ~TileSet() = default;
 
 		/// Add a tile to this tile set
-		bool AddTile(const Tile &tile);
+		void AddTile(const Tile &tile);
 
 		/// Get the size of the tiles in this tile set
 		Framework::Size GetTileSize() const;

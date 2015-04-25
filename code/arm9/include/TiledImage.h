@@ -21,7 +21,13 @@ namespace Graphics
 		int GetTileIndex(int x, int y) const;
 	
 		///
+		Tile* GetTile(int i) const;
+
+		///
 		Tile* GetTile(int x, int y) const;
+
+		///
+		void SetTile(int i, Tile *tile);
 
 		///
 		void SetTile(int x, int y, Tile *tile);
@@ -52,16 +58,29 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
+	inline Tile* TiledImage::GetTile(int i) const
+	{
+		return Tiles[i];
+	}
+
+	//-------------------------------------------------------------------------------------------------
 	inline Tile* TiledImage::GetTile( int x, int y ) const
 	{
-		return Tiles[ GetTileIndex(x, y) ];
+		return GetTile( GetTileIndex(x, y) );
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	inline void TiledImage::SetTile(int i, Tile *tile)
+	{
+		// Assert there are no tiles of different bpp in this map
+		sassert(tile, "Cannot set tile to null");
+		sassert(Bpp == tile->BitsPerPixel(), "Cannot add tiles of different bit-depth");
+		Tiles[i] = tile;
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline void TiledImage::SetTile( int x, int y, Tile *tile )
 	{
-		// Assert there are no tiles of different bpp in this map
-		sassert(Bpp == tile->BitsPerPixel(), "Cannot add tiles of different bit-depth");
 		Tiles[ GetTileIndex(x, y) ] = tile;
 	}
 }
