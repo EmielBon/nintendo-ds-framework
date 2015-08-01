@@ -436,6 +436,24 @@
     <ClInclude Include="include\my_shared_ptr.h">
       <Filter>Util</Filter>
     </ClInclude>
+    <ClInclude Include="include\UnityGameObject.h">
+      <Filter>Unity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ComponentContainer.h">
+      <Filter>Unity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UnityComponent.h">
+      <Filter>Unity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UnityTransform.h">
+      <Filter>Unity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Script.h">
+      <Filter>Unity</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UnityBackground.h">
+      <Filter>Unity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Memory2D.cpp">
@@ -772,6 +790,9 @@
     </Filter>
     <Filter Include="Test\Jump%27n%27Bump">
       <UniqueIdentifier>{e866be3d-4170-4dec-b17d-810a0bfabe51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Unity">
+      <UniqueIdentifier>{4da81198-cf50-4e9f-9a29-1a161d3dedff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

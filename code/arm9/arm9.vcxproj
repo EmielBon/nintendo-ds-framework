@@ -72,6 +72,7 @@
     <ClInclude Include="include\BasicEffect.h" />
     <ClInclude Include="include\BreakPoint.h" />
     <ClInclude Include="include\Button.h" />
+    <ClInclude Include="include\ComponentContainer.h" />
     <ClInclude Include="include\ConsoleTest.h" />
     <ClInclude Include="include\Container.h" />
     <ClInclude Include="include\ContainmentType.h" />
@@ -143,6 +144,7 @@
     <ClInclude Include="include\Room3D.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\SceneObject.h" />
+    <ClInclude Include="include\Script.h" />
     <ClInclude Include="include\SetHelper.h" />
     <ClInclude Include="include\Size.h" />
     <ClInclude Include="include\Sprites.h" />
@@ -197,6 +199,10 @@
     <ClInclude Include="include\TouchScreen.h" />
     <ClInclude Include="include\TouchState.h" />
     <ClInclude Include="include\types.h" />
+    <ClInclude Include="include\UnityBackground.h" />
+    <ClInclude Include="include\UnityComponent.h" />
+    <ClInclude Include="include\UnityGameObject.h" />
+    <ClInclude Include="include\UnityTransform.h" />
     <ClInclude Include="include\Util.h" />
     <ClInclude Include="include\Vec2.h" />
     <ClInclude Include="include\Vec3.h" />
