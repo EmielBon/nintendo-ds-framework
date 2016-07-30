@@ -53,7 +53,7 @@ BINMODELS  	:= $(addprefix $(GAMEDATA)/, $(notdir $(MODELFILES:.obj=.bin)))
 models : $(BINMODELS)
 
 $(GAMEDATA)/%.bin : $(MODELS)/%.obj
-	$(ARPIGI)/tools/Anything2Bin/bin/Debug/Anything2Bin.exe $(ARPIGI)/code/$< $(ARPIGI)/code/$@ -model
+	mono $(ARPIGI)/tools/Anything2Bin/bin/Debug/Anything2Bin.exe $(ARPIGI)/code/$< $(ARPIGI)/code/$@ -model
 
 cleanmodels :
 	rm -f $(BINMODELS)
@@ -65,7 +65,7 @@ BINTEXTURES  := $(addprefix $(GAMEDATA)/, $(notdir $(TEXTUREFILES:.png=.bin)))
 textures : $(BINTEXTURES)
 
 $(GAMEDATA)/%.bin : $(TEXTURES)/%.png
-	$(ARPIGI)/tools/Anything2Bin/bin/Debug/Anything2Bin.exe $(ARPIGI)/code/$< $(ARPIGI)/code/$@ -bitmap
+	mono $(ARPIGI)/tools/Anything2Bin/bin/Debug/Anything2Bin.exe $(ARPIGI)/code/$< $(ARPIGI)/code/$@ -bitmap
 
 cleantextures :
 	rm -f $(BINTEXTURES)
@@ -101,7 +101,7 @@ BINTILES  	:= $(addprefix $(GAMEDATA)/, $(notdir $(TILEFILES:.png=.bin)))
 tilesets : $(BINTILES)
 
 $(GAMEDATA)/%.bin : $(TILES)/%.png
-	$(ARPIGI)/tools/Anything2Bin/bin/Debug/Anything2Bin.exe $(ARPIGI)/code/$< $(ARPIGI)/code/$@ -tileset
+	mono $(ARPIGI)/tools/Anything2Bin/bin/Debug/Anything2Bin.exe $(ARPIGI)/code/$< $(ARPIGI)/code/$@ -tileset
 
 cleantilesets :
 	rm -f $(BINTILES)
@@ -125,7 +125,7 @@ BINFONTS  	:= $(addprefix $(GAMEDATA)/, $(notdir $(FONTFILES:.png=.bin)))
 fonts : $(BINFONTS)
 
 $(GAMEDATA)/%.bin : $(FONTS)/%.png
-	$(ARPIGI)/tools/Anything2Bin/bin/Debug/Anything2Bin.exe $(ARPIGI)/code/$< $(ARPIGI)/code/$@ -tileset
+	mono $(ARPIGI)/tools/Anything2Bin/bin/Debug/Anything2Bin.exe $(ARPIGI)/code/$< $(ARPIGI)/code/$@ -tileset
 
 cleanfonts :
 	rm -f $(BINFONTS)

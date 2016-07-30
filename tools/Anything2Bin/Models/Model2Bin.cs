@@ -18,7 +18,7 @@ namespace Anything2Bin.Models
         public static void ObjToBin(String inputFile, String outputFile)
         {
             String modelName = Path.GetFileNameWithoutExtension(inputFile);
-            String outputDir = Path.GetDirectoryName(outputFile) + @"\";
+            String outputDir = Path.GetDirectoryName(outputFile) + @"/";
             String meshPrefix = "mesh_";
 
             List<Mesh> meshes = new List<Mesh>();

@@ -13,8 +13,9 @@ namespace Anything2Bin.Images
     {
         public static void Bitmap2Bin(String inputFile, string outputFile)
         {
+            Console.WriteLine(inputFile);
             Bitmap bitmap = new Bitmap(inputFile);
-
+    
             Console.Write("Bitmap size: " + bitmap.Width + "x" + bitmap.Height + " pixels...");
 
             FileStream stream = new FileStream(outputFile, FileMode.Create);
@@ -64,8 +65,15 @@ namespace Anything2Bin.Images
             }
 
             Process grit = new Process();
-            grit.StartInfo.FileName = Environment.GetEnvironmentVariable("ARPIGI") + @"\tools\grit\grit.exe";
-            grit.StartInfo.Arguments = String.Format("{0} -gt -gB{1} -W1 -fh! -ftb -MRp -Mw{2} -Mh{3} -o{4}", inputFile, bpp, tileWidth / 8, tileHeight / 8, outputFile);
+
+            int p = (int) Environment.OSVersion.Platform;
+            if (p == 4 || p == 128) { // Unix
+                grit.StartInfo.FileName = @"wine";
+                grit.StartInfo.Arguments = String.Format(Environment.GetEnvironmentVariable("ARPIGI") + "/tools/grit/grit.exe {0} -gt -gB{1} -W1 -fh! -ftb -MRp -Mw{2} -Mh{3} -o{4}", inputFile, bpp, tileWidth / 8, tileHeight / 8, outputFile);
+            } else { // Probably Windows
+                grit.StartInfo.FileName = Environment.GetEnvironmentVariable("ARPIGI") + "/tools/grit/grit.exe";
+                grit.StartInfo.Arguments = String.Format("{0} -gt -gB{1} -W1 -fh! -ftb -MRp -Mw{2} -Mh{3} -o{4}", inputFile, bpp, tileWidth / 8, tileHeight / 8, outputFile);
+            }
             grit.StartInfo.UseShellExecute = false;
             grit.StartInfo.RedirectStandardOutput = true;
             grit.Start();
@@ -92,7 +100,7 @@ namespace Anything2Bin.Images
 
             if (File.Exists(gritOutputPaletteFile))
             {
-                string path = Path.GetDirectoryName(outputFile) + @"\" + Path.GetFileNameWithoutExtension(outputFile) + "_pal.bin";
+                string path = Path.GetDirectoryName(outputFile) + @"/" + Path.GetFileNameWithoutExtension(outputFile) + "_pal.bin";
                 FileStream stream = new FileStream(path, FileMode.Create);
                 BinaryWriter output = new BinaryWriter(stream);
                 

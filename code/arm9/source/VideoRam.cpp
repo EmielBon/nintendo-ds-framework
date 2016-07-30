@@ -2,7 +2,7 @@
 
 #include "Debug.h"
 #include "VideoRamBank.h"
-#include <nds\arm9\video.h>
+#include <nds/arm9/video.h>
 
 namespace Graphics
 {

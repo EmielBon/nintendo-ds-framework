@@ -161,3 +161,6 @@ tools/SceneEditor2.0/SceneEditor2.0.v12.suo
 graphics/maps/jumpnbumplevelMapData.bin.bak
 tools/Anything2Bin/obj/x86/Debug/Anything2Bin.pdb
 tools/SceneEditor2.0/UpgradeLog.htm
+.cproject
+.project
+.settings/org.eclipse.cdt.core.prefs
