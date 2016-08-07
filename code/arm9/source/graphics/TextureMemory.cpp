@@ -1,7 +1,7 @@
-#include "TextureMemory.h"
-#include "Texture.h"
-#include "VideoRamBank.h"
-#include "Debug.h"
+#include "graphics/TextureMemory.h"
+#include "graphics/Texture.h"
+#include "graphics/VideoRamBank.h"
+#include "debug/Debug.h"
 #include <nds/arm9/video.h>
 
 namespace Graphics

@@ -1,6 +1,6 @@
-#include "MemorySlot.h"
-#include "VideoRamBank.h"
-#include "Debug.h"
+#include "graphics/MemorySlot.h"
+#include "graphics/VideoRamBank.h"
+#include "debug/Debug.h"
 
 namespace Graphics
 {

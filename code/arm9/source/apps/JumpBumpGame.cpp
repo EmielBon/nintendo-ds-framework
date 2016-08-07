@@ -1,8 +1,8 @@
-#include "JumpBumpGame.h"
+#include "apps/JumpBumpGame.h"
 
 #include "graphics/Sprites.h"
 #include "system/ContentManager.h"
-#include "Rabbit.h"
+#include "apps/Rabbit.h"
 #include "graphics/GraphicsDevice.h"
 #include "graphics/ObjectAttributeMemory.h"
 #include "input/Input.h"

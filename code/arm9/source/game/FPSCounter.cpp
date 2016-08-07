@@ -1,5 +1,5 @@
-#include "FPSCounter.h"
-#include "GameTime.h"
+#include "game/FPSCounter.h"
+#include "game/GameTime.h"
 
 namespace Debug
 {

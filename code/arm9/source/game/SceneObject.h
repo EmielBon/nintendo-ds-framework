@@ -1,8 +1,8 @@
 #pragma once
 
-#include "DrawableGameComponent.h"
+#include "game/DrawableGameComponent.h"
 #include "core/types.h"
-#include "Mat.h"
+#include "util/Mat.h"
 
 namespace Framework3D
 {

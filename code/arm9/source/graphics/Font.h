@@ -1,8 +1,8 @@
 #pragma once
 
-#include "TileSet16.h"
+#include "graphics/TileSet16.h"
 #include "core/types.h"
-#include "Size.h"
+#include "util/Size.h"
 
 namespace Graphics
 {

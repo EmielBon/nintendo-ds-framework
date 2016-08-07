@@ -1,4 +1,4 @@
-#include "Profiler.h"
+#include "debug/Profiler.h"
 #include "util/StringHelper.h"
 
 namespace Debug

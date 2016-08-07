@@ -1,5 +1,5 @@
-#include "Log.h"
-#include "Assert.h"
+#include "debug/Log.h"
+#include "debug/Assert.h"
 
 namespace Debug
 {

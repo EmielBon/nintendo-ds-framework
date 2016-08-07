@@ -1,7 +1,7 @@
-#include "GameObject.h"
-#include "Link.h"
-#include "Room1.h"
-#include "ZeldaGame.h"
+#include "game/GameObject.h"
+#include "apps/Link.h"
+#include "apps/Room1.h"
+#include "apps/ZeldaGame.h"
 
 void GameObject::Initialize()
 {

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/types.h"
-#include "EfficientVertex.h"
+#include "graphics/EfficientVertex.h"
 
 namespace Graphics
 {

@@ -1,4 +1,4 @@
-#include "TouchScreen.h"
+#include "input/TouchScreen.h"
 #include <nds/arm9/input.h>
 
 namespace Input

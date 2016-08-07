@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Keys.h"
+#include "input/Keys.h"
 #include "core/types.h"
 #include "util/Vec2.h"
 

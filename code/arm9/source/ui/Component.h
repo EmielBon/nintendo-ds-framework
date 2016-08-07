@@ -1,9 +1,9 @@
 #pragma once
 
-#include "IUpdateable.h"
-#include "IDrawable.h"
+#include "game/IUpdateable.h"
+#include "game/IDrawable.h"
 #include "core/types.h"
-#include "Rectangle.h"
+#include "util/Rectangle.h"
 
 namespace GUI
 {

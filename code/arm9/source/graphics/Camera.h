@@ -1,9 +1,9 @@
 #pragma once
 
-#include "GameComponent.h"
+#include "game/GameComponent.h"
 #include "core/types.h"
-#include "Vec3.h"
-#include "Mat.h"
+#include "util/Vec3.h"
+#include "util/Mat.h"
 
 namespace Graphics
 {

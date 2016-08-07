@@ -2,7 +2,7 @@
 
 #include "core/types.h"
 #include "core/fixed.h"
-#include "MathFunctions.h"
+#include "util/MathFunctions.h"
 
 namespace System
 {

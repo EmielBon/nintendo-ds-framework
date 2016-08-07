@@ -1,8 +1,8 @@
 #pragma once
 
 #include "core/types.h"
-#include "Scene.h"
-#include "DrawableGameComponent.h"
+#include "game/Scene.h"
+#include "game/DrawableGameComponent.h"
 
 namespace Framework3D
 {

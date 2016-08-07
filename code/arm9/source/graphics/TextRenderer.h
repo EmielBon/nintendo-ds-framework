@@ -1,9 +1,9 @@
 #pragma once
 
-#include "DrawableGameComponent.h"
-#include "Color.h"
+#include "game/DrawableGameComponent.h"
+#include "graphics/Color.h"
 #include "core/types.h"
-#include "Palette.h"
+#include "graphics/Palette.h"
 
 namespace Graphics
 {

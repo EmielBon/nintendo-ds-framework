@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/types.h"
-#include "Size.h"
+#include "util/Size.h"
 
 namespace Framework2D
 {

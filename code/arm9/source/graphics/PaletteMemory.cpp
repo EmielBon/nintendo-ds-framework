@@ -1,6 +1,6 @@
-#include "PaletteMemory.h"
-#include "Palette.h"
-#include "Logging.h"
+#include "graphics/PaletteMemory.h"
+#include "graphics/Palette.h"
+#include "debug/Logging.h"
 #include <nds/arm9/video.h>
 
 namespace Graphics

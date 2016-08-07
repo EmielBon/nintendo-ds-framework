@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/types.h"
-#include "DrawableGameComponent.h"
+#include "game/DrawableGameComponent.h"
 
 class GameObject;
 

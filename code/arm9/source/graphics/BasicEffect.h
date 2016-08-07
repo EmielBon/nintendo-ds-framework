@@ -1,10 +1,10 @@
 #pragma once
 
 #include "core/types.h"
-#include "Color.h"
-#include "Mat.h"
-#include "Texture.h"
-#include "DirectionalLight.h"
+#include "graphics/Color.h"
+#include "util/Mat.h"
+#include "graphics/Texture.h"
+#include "graphics/DirectionalLight.h"
 
 namespace Graphics
 {

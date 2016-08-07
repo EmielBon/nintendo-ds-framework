@@ -1,4 +1,4 @@
-#include "DrawableGameComponent.h"
+#include "game/DrawableGameComponent.h"
 
 namespace Framework
 {

@@ -1,7 +1,7 @@
-#include "Sprite.h"
-#include "MathFunctions.h"
-#include "Logging.h"
-#include "TileSet256.h"
+#include "graphics/Sprite.h"
+#include "util/MathFunctions.h"
+#include "debug/Logging.h"
+#include "graphics/TileSet256.h"
 
 namespace Graphics
 {

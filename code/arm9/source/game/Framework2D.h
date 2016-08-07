@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Framework.h"
-#include "CollisionMap.h"
-#include "GameObject.h"
-#include "Room.h"
+#include "game/Framework.h"
+#include "game/CollisionMap.h"
+#include "game/GameObject.h"
+#include "game/Room.h"

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Memory2D.h"
-#include "PaletteMemory.h"
-#include "Profiler.h"
+#include "graphics/Memory2D.h"
+#include "graphics/PaletteMemory.h"
+#include "debug/Profiler.h"
 #include "core/types.h"
 
 namespace Graphics

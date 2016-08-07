@@ -7,8 +7,8 @@
 #pragma once
 
 #include "core/types.h"
-#include "ContainmentType.h"
-#include "Vec3.h"
+#include "game/ContainmentType.h"
+#include "util/Vec3.h"
 
 namespace Framework
 {

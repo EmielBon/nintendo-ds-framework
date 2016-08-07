@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ZeldaGameTypes.h"
+#include "apps/ZeldaGameTypes.h"
 
 class Room1 : public Room
 {

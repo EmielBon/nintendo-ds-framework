@@ -1,5 +1,5 @@
 #pragma once
 
-#include "ObjectAttributeMemory.h"
-#include "Sprite.h"
-#include "SpriteMemory.h"
+#include "graphics/ObjectAttributeMemory.h"
+#include "graphics/Sprite.h"
+#include "graphics/SpriteMemory.h"

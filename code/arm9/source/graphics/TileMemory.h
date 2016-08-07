@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Memory2D.h"
+#include "graphics/Memory2D.h"
 #include "core/types.h"
 
 namespace Graphics

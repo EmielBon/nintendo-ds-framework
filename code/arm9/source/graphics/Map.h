@@ -1,8 +1,8 @@
 #pragma once
 
 #include "core/types.h"
-#include "Size.h"
-#include "ScreenBlockEntry.h"
+#include "util/Size.h"
+#include "graphics/ScreenBlockEntry.h"
 
 namespace Graphics
 {

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/types.h"
-#include "TileSet.h"
+#include "graphics/TileSet.h"
 
 namespace Graphics
 {

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Size.h"
+#include "util/Size.h"
 #include "core/types.h"
-#include "Vec2.h"
+#include "util/Vec2.h"
 
 namespace Framework
 {

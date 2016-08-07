@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CoreTypes.h"
+#include "core/CoreTypes.h"
 #include <nds/arm9/sprite.h>
 
 #define IMPLIES(p, q) (!(p) || (q))

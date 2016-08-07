@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/types.h"
+#include "../core/types.h"
 
 // Converts an expression to a String. 
 // Example: ToStr("I am " << 8 << " years old");

@@ -1,6 +1,6 @@
-#include "Tile.h"
-#include "Palette.h"
-#include "Debug.h"
+#include "graphics/Tile.h"
+#include "graphics/Palette.h"
+#include "debug/Debug.h"
 
 namespace Graphics
 {

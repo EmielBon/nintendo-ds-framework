@@ -1,8 +1,8 @@
 #pragma once
 
 #include "core/types.h"
-#include "Vertex.h"
-#include "DisplayList.h"
+#include "graphics/Vertex.h"
+#include "graphics/DisplayList.h"
 
 namespace Graphics
 {

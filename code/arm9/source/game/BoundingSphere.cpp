@@ -1,9 +1,9 @@
-#include "BoundingSphere.h"
+#include "game/BoundingSphere.h"
 #include "core/types.h"
-#include "Vec3.h"
-#include "Mat.h"
-#include "BoundingBox.h"
-#include "Logging.h"
+#include "util/Vec3.h"
+#include "util/Mat.h"
+#include "game/BoundingBox.h"
+#include "debug/Logging.h"
 
 namespace Framework
 {

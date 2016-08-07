@@ -1,8 +1,8 @@
-#include "Background.h"
+#include "graphics/Background.h"
 
-#include "GraphicsDevice.h"
-#include "BackgroundMemory.h"
-#include "Debug.h"
+#include "graphics/GraphicsDevice.h"
+#include "graphics/BackgroundMemory.h"
+#include "debug/Debug.h"
 
 namespace Graphics
 {

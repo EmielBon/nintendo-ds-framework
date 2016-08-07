@@ -1,8 +1,8 @@
 #pragma once
 
 #include "core/types.h"
-#include "Game.h"
-#include "Console.h"
+#include "game/Game.h"
+#include "debug/Console.h"
 
 class DebuggerTest : public Framework::Game
 {

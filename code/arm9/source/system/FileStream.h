@@ -7,7 +7,7 @@
 
 #include "core/types.h"
 #include <stdio.h>
-#include "MathFunctions.h"
+#include "util/MathFunctions.h"
 
 namespace FileSystem
 {

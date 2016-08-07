@@ -1,4 +1,4 @@
-#include "LogEntry.h"
+#include "debug/LogEntry.h"
 #include "util/StringHelper.h"
 #include <time.h>
 

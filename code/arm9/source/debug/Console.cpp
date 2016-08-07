@@ -1,11 +1,11 @@
-#include "Console.h"
+#include "debug/Console.h"
 #include "graphics/TextRenderer.h"
 #include "graphics/Color.h"
 #include "input/Input.h"
 #include "graphics/Font.h"
 #include "graphics/Screen.h"
 #include "graphics/Background.h"
-#include "Assert.h"
+#include "debug/Assert.h"
 
 namespace System
 {

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Component.h"
+#include "ui/Component.h"
 #include "core/types.h"
-#include "DrawableGameComponent.h"
+#include "game/DrawableGameComponent.h"
 
 namespace GUI
 {

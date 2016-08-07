@@ -1,7 +1,7 @@
-#include "Memory2D.h"
+#include "graphics/Memory2D.h"
 
-#include "VideoRam.h"
-#include "Debug.h"
+#include "graphics/VideoRam.h"
+#include "debug/Debug.h"
 #include <nds/bios.h>
 #include <nds/dma.h>
 

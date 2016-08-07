@@ -1,7 +1,7 @@
-#include "SpriteMemory.h"
-#include "Logging.h"
-#include "VideoRamBank.h"
-#include "Sprite.h"
+#include "graphics/SpriteMemory.h"
+#include "debug/Logging.h"
+#include "graphics/VideoRamBank.h"
+#include "graphics/Sprite.h"
 #include <nds/arm9/video.h>
 
 namespace Graphics

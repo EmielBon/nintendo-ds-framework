@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/types.h"
-#include "VideoRamBank.h"
+#include "graphics/VideoRamBank.h"
 
 namespace Graphics
 {

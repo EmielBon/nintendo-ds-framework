@@ -1,5 +1,5 @@
-#include "GraphicsDeviceManager.h"
-#include "Game.h"
+#include "graphics/GraphicsDeviceManager.h"
+#include "game/Game.h"
 #include <nds/arm9/videoGL.h>
 
 namespace Framework

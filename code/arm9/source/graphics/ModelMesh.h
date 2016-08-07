@@ -1,10 +1,10 @@
 #pragma once
 
 #include "core/types.h"
-#include "ModelMeshPart.h"
-#include "BoundingBox.h"
-#include "BoundingSphere.h"
-#include "Profiler.h"
+#include "graphics/ModelMeshPart.h"
+#include "game/BoundingBox.h"
+#include "game/BoundingSphere.h"
+#include "debug/Profiler.h"
 
 namespace Graphics
 {

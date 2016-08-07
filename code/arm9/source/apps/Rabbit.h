@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/types.h"
-#include "GameObject.h"
+#include "game/GameObject.h"
 
 class Rabbit : public GameObject
 {

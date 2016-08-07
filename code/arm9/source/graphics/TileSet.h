@@ -9,8 +9,8 @@
 #pragma once
 
 #include "core/types.h"
-#include "Tile.h"
-#include "Size.h"
+#include "graphics/Tile.h"
+#include "util/Size.h"
 
 namespace Graphics
 {

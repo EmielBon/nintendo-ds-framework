@@ -1,13 +1,13 @@
 /*#include "DebugUITest.h"
 
 // Stable packages
-#include "Framework.h"
-#include "Input.h"
+#include "game/Framework.h"
+#include "input/Input.h"
 
 // Specific classes
-#include "GraphicsDevice.h"
-#include "DebugUI.h"
-#include "TileSet256.h"
+#include "graphics/GraphicsDevice.h"
+#include "debug/DebugUI.h"
+#include "graphics/TileSet256.h"
 
 namespace Test
 {

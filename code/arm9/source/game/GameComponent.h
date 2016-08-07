@@ -1,8 +1,8 @@
 #pragma once
 
-#include "IGameComponent.h"
-#include "IUpdateable.h"
-#include "IDisposable.h"
+#include "game/IGameComponent.h"
+#include "game/IUpdateable.h"
+#include "game/IDisposable.h"
 #include "core/types.h"
 
 namespace Framework

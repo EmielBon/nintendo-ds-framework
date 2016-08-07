@@ -1,10 +1,10 @@
-#include "BasicEffect.h"
+#include "graphics/BasicEffect.h"
 
-#include "GraphicsDevice.h"
-#include "TextureMemory.h"
-#include "OpenGL.h"
-#include "StringHelper.h"
-#include "Profiler.h"
+#include "graphics/GraphicsDevice.h"
+#include "graphics/TextureMemory.h"
+#include "graphics/OpenGL.h"
+#include "util/StringHelper.h"
+#include "debug/Profiler.h"
 
 namespace Graphics
 {

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "core/types.h"
-#include "VideoRamBankNames.h"
-#include "MemoryTypes.h"
+#include "graphics/VideoRamBankNames.h"
+#include "graphics/MemoryTypes.h"
 
 /*
 

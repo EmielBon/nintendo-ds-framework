@@ -1,7 +1,7 @@
 #pragma once
 
-#include "AbstractButton.h"
-#include "Component.h"
+#include "ui/AbstractButton.h"
+#include "ui/Component.h"
 #include "core/types.h"
 
 namespace GUI

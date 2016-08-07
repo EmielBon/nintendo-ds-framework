@@ -1,4 +1,4 @@
-#include "ProfilingManager.h"
+#include "debug/ProfilingManager.h"
 
 namespace Debug
 {

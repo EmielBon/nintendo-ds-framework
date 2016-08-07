@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Game.h"
+#include "game/Game.h"
 #include "core/types.h"
-#include "GraphicsDeviceManager.h"
+#include "graphics/GraphicsDeviceManager.h"
 
 namespace Test
 {

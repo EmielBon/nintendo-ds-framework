@@ -1,8 +1,8 @@
-#include "Rabbit.h"
-#include "Input.h"
-#include "ContentManager.h"
-#include "Range.h"
-#include "JumpBumpGame.h"
+#include "apps/Rabbit.h"
+#include "input/Input.h"
+#include "system/ContentManager.h"
+#include "util/Range.h"
+#include "apps/JumpBumpGame.h"
 
 using namespace Framework;
 using namespace Input;

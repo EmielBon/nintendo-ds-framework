@@ -1,7 +1,7 @@
-#include "VertexBuffer.h"
+#include "graphics/VertexBuffer.h"
 
-#include "Vertex.h"
-#include "FixedHelper.h"
+#include "graphics/Vertex.h"
+#include "util/FixedHelper.h"
 #include <nds/arm9/videoGL.h>
 
 namespace Graphics

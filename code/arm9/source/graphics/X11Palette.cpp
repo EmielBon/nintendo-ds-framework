@@ -1,4 +1,4 @@
-#include "X11Palette.h"
+#include "graphics/X11Palette.h"
 
 namespace Test
 {

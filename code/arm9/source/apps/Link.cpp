@@ -1,9 +1,9 @@
-#include "Link.h"
-#include "GameObject.h"
-#include "Room1.h"
-#include "ZeldaGame.h"
-#include "SpriteMemory.h"
-#include "PaletteMemory.h"
+#include "apps/Link.h"
+#include "game/GameObject.h"
+#include "apps/Room1.h"
+#include "apps/ZeldaGame.h"
+#include "graphics/SpriteMemory.h"
+#include "graphics/PaletteMemory.h"
 
 void Link::Initialize()
 {

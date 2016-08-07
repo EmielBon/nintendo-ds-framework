@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Camera.h"
-#include "Mario.h"
+#include "graphics/Camera.h"
+#include "apps/Mario.h"
 #include "core/types.h"
 
 namespace Framework3D

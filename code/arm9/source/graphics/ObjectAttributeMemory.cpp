@@ -1,11 +1,11 @@
-#include "ObjectAttributeMemory.h"
-#include "GraphicsDevice.h"
-#include "Logging.h"
-#include "MathFunctions.h"
-#include "Sprite.h"
-#include "TileSet256.h"
-#include "FixedHelper.h"
-#include "SpriteMemory.h"
+#include "graphics/ObjectAttributeMemory.h"
+#include "graphics/GraphicsDevice.h"
+#include "debug/Logging.h"
+#include "util/MathFunctions.h"
+#include "graphics/Sprite.h"
+#include "graphics/TileSet256.h"
+#include "util/FixedHelper.h"
+#include "graphics/SpriteMemory.h"
 #include <nds/dma.h>
 #include <nds/arm9/cache.h>
 

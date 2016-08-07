@@ -1,8 +1,8 @@
 #pragma once
 
 #include "core/types.h"
-#include "Debug.h"
-#include "Vec3.h"
+#include "debug/Debug.h"
+#include "util/Vec3.h"
 
 namespace Graphics
 {

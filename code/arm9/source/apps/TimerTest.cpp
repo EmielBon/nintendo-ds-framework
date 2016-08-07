@@ -1,6 +1,6 @@
-#include "TimerTest.h"
-#include "Timer.h"
-#include "Logging.h"
+#include "apps/TimerTest.h"
+#include "system/Timer.h"
+#include "debug/Logging.h"
 #include <nds/timers.h>
 
 namespace Test

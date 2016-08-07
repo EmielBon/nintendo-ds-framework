@@ -1,4 +1,4 @@
-#include "GameComponent.h"
+#include "game/GameComponent.h"
 #include "debug/Debug.h"
 namespace Framework
 {

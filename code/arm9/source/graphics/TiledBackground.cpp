@@ -1,9 +1,9 @@
-#include "TiledBackground.h"
-#include "Tile.h"
-#include "Debug.h"
-#include "BackgroundMemory.h"
-#include "Background.h"
-#include "GraphicsDevice.h"
+#include "graphics/TiledBackground.h"
+#include "graphics/Tile.h"
+#include "debug/Debug.h"
+#include "graphics/BackgroundMemory.h"
+#include "graphics/Background.h"
+#include "graphics/GraphicsDevice.h"
 
 namespace Graphics
 {

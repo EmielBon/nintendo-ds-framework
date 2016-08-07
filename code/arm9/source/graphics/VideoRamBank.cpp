@@ -1,10 +1,10 @@
-#include "VideoRamBank.h"
+#include "graphics/VideoRamBank.h"
 
-#include "GraphicsDevice.h"
-#include "Memory2D.h"
-#include "MemorySlot.h"
-#include "Logging.h"
-#include "Debug.h"
+#include "graphics/GraphicsDevice.h"
+#include "graphics/Memory2D.h"
+#include "graphics/MemorySlot.h"
+#include "debug/Logging.h"
+#include "debug/Debug.h"
 
 #include <nds/arm9/background.h>
 

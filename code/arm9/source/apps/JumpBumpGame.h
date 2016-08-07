@@ -1,7 +1,7 @@
 #pragma once
 
-#include "game/Game.h"
-#include "core/types.h"
+#include "../game/Game.h"
+#include "../core/types.h"
 
 class Rabbit;
 

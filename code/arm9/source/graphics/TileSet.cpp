@@ -1,5 +1,5 @@
-#include "TileSet.h"
-#include "Palette.h"
+#include "graphics/TileSet.h"
+#include "graphics/Palette.h"
 
 namespace Graphics
 {

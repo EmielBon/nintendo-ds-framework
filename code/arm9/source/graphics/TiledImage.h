@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Size.h"
+#include "util/Size.h"
 #include "core/types.h"
 // todo: only here for the bpp assertion in SetTile 
-#include "Tile.h"
+#include "graphics/Tile.h"
 
 namespace Graphics
 {

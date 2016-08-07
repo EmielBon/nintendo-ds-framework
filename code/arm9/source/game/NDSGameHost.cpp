@@ -1,6 +1,6 @@
-#include "NDSGameHost.h"
+#include "game/NDSGameHost.h"
 
-#include "Game.h"
+#include "game/Game.h"
 
 namespace Framework
 {

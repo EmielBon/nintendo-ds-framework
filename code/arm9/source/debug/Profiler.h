@@ -2,7 +2,7 @@
 
 #include "core/types.h"
 #include "system/Timer.h"
-#include "ProfilingManager.h"
+#include "debug/ProfilingManager.h"
 
 #define PROFILE_METHOD(name) Debug::Profiler profiler ## name(#name);
 

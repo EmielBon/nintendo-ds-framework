@@ -1,39 +1,39 @@
-#include "Test3D.h"
+#include "apps/Test3D.h"
 
 // Stable libraries
-#include "Framework.h"
-#include "Input.h"
+#include "game/Framework.h"
+#include "input/Input.h"
 
 // Specific libraries
-#include "VideoRam.h"
+#include "graphics/VideoRam.h"
 
 // 2D graphics
-#include "TileSet256.h"
-#include "Palette.h"
-#include "Background.h"
-#include "Map.h"
-#include "BackgroundMemory.h"
+#include "graphics/TileSet256.h"
+#include "graphics/Palette.h"
+#include "graphics/Background.h"
+#include "graphics/Map.h"
+#include "graphics/BackgroundMemory.h"
 
 // 3D Graphics
-#include "GraphicsDevice.h"
-#include "GameCamera.h"
-#include "FlyingCamera.h"
-#include "Mat.h"
-#include "Model.h"
-#include "TextureMemory.h"
-#include "Vec3.h"
-#include "Vertex.h"
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
+#include "graphics/GraphicsDevice.h"
+#include "game/GameCamera.h"
+#include "game/FlyingCamera.h"
+#include "util/Mat.h"
+#include "graphics/Model.h"
+#include "graphics/TextureMemory.h"
+#include "util/Vec3.h"
+#include "graphics/Vertex.h"
+#include "graphics/VertexBuffer.h"
+#include "graphics/IndexBuffer.h"
 
-#include "Scene.h"
-#include "Light.h"
+#include "game/Scene.h"
+#include "graphics/Light.h"
 
 // Game classes
-#include "Mario.h"
+#include "apps/Mario.h"
 
 // Debug
-#include "Debug.h"
+#include "debug/Debug.h"
 
 namespace Test
 {

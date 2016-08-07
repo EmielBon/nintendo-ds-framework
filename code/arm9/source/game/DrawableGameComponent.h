@@ -1,7 +1,7 @@
 #pragma once
 
-#include "GameComponent.h"
-#include "IDrawable.h"
+#include "game/GameComponent.h"
+#include "game/IDrawable.h"
 
 namespace Framework
 {

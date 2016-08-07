@@ -1,40 +1,40 @@
-#include "EfficientVectorsTest.h"
+#include "apps/EfficientVectorsTest.h"
 
 // Stable libraries
-#include "Framework.h"
-#include "Input.h"
+#include "game/Framework.h"
+#include "input/Input.h"
 
 // Specific libraries
-#include "VideoRam.h"
+#include "graphics/VideoRam.h"
 
 // 2D graphics
-#include "TileSet256.h"
-#include "Palette.h"
-#include "Background.h"
+#include "graphics/TileSet256.h"
+#include "graphics/Palette.h"
+#include "graphics/Background.h"
 
 // 3D Graphics
-#include "GraphicsDevice.h"
-#include "GameCamera.h"
-#include "FlyingCamera.h"
-#include "Mat.h"
-#include "Model.h"
-#include "Vec3.h"
-#include "Vertex.h"
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
-#include "Scene.h"
-#include "Light.h"
-#include "TextureMemory.h"
+#include "graphics/GraphicsDevice.h"
+#include "game/GameCamera.h"
+#include "game/FlyingCamera.h"
+#include "util/Mat.h"
+#include "graphics/Model.h"
+#include "util/Vec3.h"
+#include "graphics/Vertex.h"
+#include "graphics/VertexBuffer.h"
+#include "graphics/IndexBuffer.h"
+#include "game/Scene.h"
+#include "graphics/Light.h"
+#include "graphics/TextureMemory.h"
 
 // Game classes
-#include "Mario.h"
+#include "apps/Mario.h"
 
 // Debug
-#include "Logging.h"
-#include "FPSCounter.h"
-#include "DebugUI.h"
-#include "Debug.h"
-#include "BasicEffect.h"
+#include "debug/Logging.h"
+#include "game/FPSCounter.h"
+#include "debug/DebugUI.h"
+#include "debug/Debug.h"
+#include "graphics/BasicEffect.h"
 
 namespace Test
 {

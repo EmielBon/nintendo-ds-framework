@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include <nds/arm9/trig_lut.h>
 #include "debug/Assert.h"
-#include "StringHelper.h"
-#include "FixedHelper.h"
+#include "util/StringHelper.h"
+#include "util/FixedHelper.h"
 
 // todo: optimize with nds math hardware
 namespace Math

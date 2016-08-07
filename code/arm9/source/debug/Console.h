@@ -1,7 +1,7 @@
 #pragma once
 
-#include "types.h"
-#include "TextRenderer.h"
+#include "core/types.h"
+#include "graphics/TextRenderer.h"
 
 namespace System
 {

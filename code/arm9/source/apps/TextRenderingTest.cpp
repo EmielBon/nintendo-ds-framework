@@ -1,16 +1,16 @@
-#include "TextRenderingTest.h"
+#include "apps/TextRenderingTest.h"
 
 // Stable libraries
-#include "Input.h"
+#include "input/Input.h"
 
-#include "GraphicsDevice.h"
-#include "Background.h"
-#include "TextRenderer.h"
-#include "PaletteMemory.h"
-#include "Color.h"
-#include "Logging.h"
-#include "TileSet16.h"
-#include "Screen.h"
+#include "graphics/GraphicsDevice.h"
+#include "graphics/Background.h"
+#include "graphics/TextRenderer.h"
+#include "graphics/PaletteMemory.h"
+#include "graphics/Color.h"
+#include "debug/Logging.h"
+#include "graphics/TileSet16.h"
+#include "graphics/Screen.h"
 
 namespace Test
 {

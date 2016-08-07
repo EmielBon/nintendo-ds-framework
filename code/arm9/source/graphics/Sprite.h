@@ -1,9 +1,9 @@
 #pragma once
 
 #include "core/types.h"
-#include "TiledImage.h"
+#include "graphics/TiledImage.h"
 #include <nds/arm9/sprite.h>
-#include "fixed.h"
+#include "core/fixed.h"
 
 namespace Graphics
 {

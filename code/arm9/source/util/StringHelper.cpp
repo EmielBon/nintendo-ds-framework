@@ -1,5 +1,5 @@
-#include "StringHelper.h"
-#include "MathFunctions.h"
+#include "util/StringHelper.h"
+#include "util/MathFunctions.h"
 #include "debug/Debug.h"
 
 namespace Util

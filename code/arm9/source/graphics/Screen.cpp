@@ -1,5 +1,5 @@
-#include "Screen.h"
-#include "GraphicsDevice.h"
+#include "graphics/Screen.h"
+#include "graphics/GraphicsDevice.h"
 #include <nds/arm9/video.h>
 
 namespace Graphics

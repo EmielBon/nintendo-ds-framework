@@ -1,11 +1,11 @@
-#include "Scene.h"
-#include "Model.h"
-#include "Camera.h"
-#include "BasicEffect.h"
-#include "DrawableGameComponent.h"
-#include "ContentManager.h"
-#include "Debug.h"
-#include "StringHelper.h"
+#include "game/Scene.h"
+#include "graphics/Model.h"
+#include "graphics/Camera.h"
+#include "graphics/BasicEffect.h"
+#include "game/DrawableGameComponent.h"
+#include "system/ContentManager.h"
+#include "debug/Debug.h"
+#include "util/StringHelper.h"
 
 namespace Framework3D
 {

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/types.h"
-#include "GraphicsDevice.h"
+#include "graphics/GraphicsDevice.h"
 
 static inline void DrawSprite(Graphics::Sprite &sprite, fx12 x, fx12 y, fx12 subImageIndex)
 {

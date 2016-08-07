@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Vec3.h"
+#include "util/Vec3.h"
 
 namespace Graphics
 {

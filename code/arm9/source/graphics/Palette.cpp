@@ -1,5 +1,5 @@
-#include "Palette.h"
-#include "Color.h"
+#include "graphics/Palette.h"
+#include "graphics/Color.h"
 
 namespace Graphics
 {

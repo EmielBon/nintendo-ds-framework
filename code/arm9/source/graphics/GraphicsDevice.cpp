@@ -1,29 +1,29 @@
-#include "GraphicsDevice.h"
+#include "graphics/GraphicsDevice.h"
 
 #include "core/types.h"
-#include "Screen.h"
-#include "Color.h"
+#include "graphics/Screen.h"
+#include "graphics/Color.h"
 
 // 2D Graphics
-#include "Background.h"
-#include "BackgroundMemory.h"
-#include "SpriteMemory.h"
-#include "TiledBackground.h"
+#include "graphics/Background.h"
+#include "graphics/BackgroundMemory.h"
+#include "graphics/SpriteMemory.h"
+#include "graphics/TiledBackground.h"
 
 // 3D Graphics
-#include "OpenGL.h"
-#include "Vertex.h"
-#include "EfficientVertex.h"
-#include "Texture.h"
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
-#include "TextureMemory.h"
+#include "graphics/OpenGL.h"
+#include "graphics/Vertex.h"
+#include "graphics/EfficientVertex.h"
+#include "graphics/Texture.h"
+#include "graphics/VertexBuffer.h"
+#include "graphics/IndexBuffer.h"
+#include "graphics/TextureMemory.h"
 
 // Utils
-#include "MathFunctions.h"
+#include "util/MathFunctions.h"
 
 // Debugging
-#include "Debug.h"
+#include "debug/Debug.h"
 
 // libnds
 #include <nds/arm9/video.h>

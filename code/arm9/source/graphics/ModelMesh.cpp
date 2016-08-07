@@ -1,8 +1,8 @@
-#include "ModelMesh.h"
+#include "graphics/ModelMesh.h"
 #include "core/types.h"
-#include "Vec3.h"
-#include "BoundingBox.h"
-#include "BoundingSphere.h"
+#include "util/Vec3.h"
+#include "game/BoundingBox.h"
+#include "game/BoundingSphere.h"
 
 namespace Graphics
 {

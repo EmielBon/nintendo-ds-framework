@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include "Vec3.h"
-#include "Mat.h"
+#include "util/Vec3.h"
+#include "util/Mat.h"
 
 namespace Framework
 {

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/types.h"
-#include "LogEntry.h"
+#include "debug/LogEntry.h"
 namespace Debug
 {
 	class Log

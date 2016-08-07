@@ -7,10 +7,10 @@
 #pragma once
 
 #include "core/types.h"
-#include "ObjectAttributeMemory.h"
-#include "ViewPort.h"
-#include "RasterizerState.h"
-#include "ScreenBlockEntry.h"
+#include "graphics/ObjectAttributeMemory.h"
+#include "graphics/ViewPort.h"
+#include "graphics/RasterizerState.h"
+#include "graphics/ScreenBlockEntry.h"
 #include <nds/arm9/videoGL.h>
 #include "core/fixed.h"
 

@@ -1,9 +1,9 @@
-#include "BackgroundMemory.h"
+#include "graphics/BackgroundMemory.h"
 
-#include "VideoRamBank.h"
-#include "TiledBackground.h"
-#include "Logging.h"
-#include "SetHelper.h"
+#include "graphics/VideoRamBank.h"
+#include "graphics/TiledBackground.h"
+#include "debug/Logging.h"
+#include "util/SetHelper.h"
 #include <nds/arm9/background.h>
 
 namespace Graphics

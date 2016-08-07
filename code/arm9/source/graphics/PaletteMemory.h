@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Memory2D.h"
-#include "Profiler.h"
-#include "Palette.h"
+#include "graphics/Memory2D.h"
+#include "debug/Profiler.h"
+#include "graphics/Palette.h"
 #include "core/types.h"
-#include "Vec2.h"
+#include "util/Vec2.h"
 
 // Todo: PaletteMemory actually has 2 slots (more?), the first one is dedicated palette memory, the second can be used by allocating a small VRAM Bank
 

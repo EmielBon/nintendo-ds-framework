@@ -1,15 +1,15 @@
 #include "core/types.h"
-#include "GlobalFunctions.h"
+#include "apps/GlobalFunctions.h"
 
-#include "Debug.h"
+#include "debug/Debug.h"
 #include "FileSystem.h"
-#include "Framework.h"
-#include "Framework2D.h"
-#include "Framework3D.h"
-#include "Graphics.h"
-#include "Input.h"
+#include "game/Framework.h"
+#include "game/Framework2D.h"
+#include "game/Framework3D.h"
+#include "graphics/Graphics.h"
+#include "input/Input.h"
 #include "LLR.h"
-#include "System.h"
+#include "system/System.h"
 #include "Util.h"
 
 class GameObject;

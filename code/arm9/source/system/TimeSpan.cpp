@@ -1,5 +1,5 @@
-#include "TimeSpan.h"
-#include "Assert.h"
+#include "util/TimeSpan.h"
+#include "debug/Assert.h"
 
 namespace System
 {

@@ -1,9 +1,9 @@
-#include "Room.h"
-#include "GameObject.h"
-#include "GraphicsDevice.h"
-#include "Background.h"
-#include "TiledBackground.h"
-#include "BackgroundMemory.h"
+#include "game/Room.h"
+#include "game/GameObject.h"
+#include "graphics/GraphicsDevice.h"
+#include "graphics/Background.h"
+#include "graphics/TiledBackground.h"
+#include "graphics/BackgroundMemory.h"
 
 namespace Framework2D
 {

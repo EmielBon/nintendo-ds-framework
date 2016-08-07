@@ -1,10 +1,10 @@
 #pragma once
 
-#include "fixed.h"
-#include "FixedHelper.h"
-#include "Mat.h"
-#include "GraphicsDevice.h"
-#include "Texture.h"
+#include "core/fixed.h"
+#include "util/FixedHelper.h"
+#include "util/Mat.h"
+#include "graphics/GraphicsDevice.h"
+#include "graphics/Texture.h"
 #include <nds/arm9/videoGL.h>
 
 template<int f>

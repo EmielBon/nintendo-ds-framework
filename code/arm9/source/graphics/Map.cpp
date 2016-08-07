@@ -1,7 +1,7 @@
-#include "Map.h"
-#include "BackgroundMemory.h"
-#include "Assert.h"
-#include "Tile.h"
+#include "graphics/Map.h"
+#include "graphics/BackgroundMemory.h"
+#include "debug/Assert.h"
+#include "graphics/Tile.h"
 #include <nds/bios.h>
 
 namespace Graphics

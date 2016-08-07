@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ZeldaGameTypes.h"
+#include "apps/ZeldaGameTypes.h"
 
 class ZeldaGame : public Game
 {

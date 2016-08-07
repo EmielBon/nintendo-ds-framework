@@ -1,6 +1,6 @@
 #pragma once
 
-#include "KeyState.h"
+#include "input/KeyState.h"
 
 namespace Input
 {

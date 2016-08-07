@@ -1,9 +1,9 @@
 #pragma once
 
 #include "core/types.h"
-#include "MemoryTypes.h" // Included here because every Memory2D subclass needs to specify its type
-#include "MemorySlot.h"
-#include "Assert.h"
+#include "graphics/MemoryTypes.h" // Included here because every Memory2D subclass needs to specify its type
+#include "graphics/MemorySlot.h"
+#include "debug/Assert.h"
 
 namespace Graphics
 {

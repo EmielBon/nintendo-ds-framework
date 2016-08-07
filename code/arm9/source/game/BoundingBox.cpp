@@ -1,4 +1,4 @@
-#include "BoundingBox.h"
+#include "game/BoundingBox.h"
 #include "util/Mat.h"
 #include "debug/Debug.h"
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Background.h"
-#include "BackgroundMemory.h"
-#include "TiledBackground.h"
-#include "ScreenBlockEntry.h"
+#include "graphics/Background.h"
+#include "graphics/BackgroundMemory.h"
+#include "graphics/TiledBackground.h"
+#include "graphics/ScreenBlockEntry.h"

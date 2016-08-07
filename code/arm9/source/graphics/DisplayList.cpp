@@ -1,9 +1,9 @@
-#include "DisplayList.h"
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
-#include "Texture.h"
-#include "OpenGL.h"
-#include "Assert.h"
+#include "graphics/DisplayList.h"
+#include "graphics/VertexBuffer.h"
+#include "graphics/IndexBuffer.h"
+#include "graphics/Texture.h"
+#include "graphics/OpenGL.h"
+#include "debug/Assert.h"
 
 namespace Graphics
 {

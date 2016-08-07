@@ -1,7 +1,7 @@
 #pragma once
 
-#include "SceneObject.h"
-#include "Vec3.h"
+#include "game/SceneObject.h"
+#include "util/Vec3.h"
 #include "core/types.h"
 
 namespace Test

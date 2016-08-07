@@ -1,6 +1,6 @@
-#include "TouchState.h"
+#include "input/TouchState.h"
 
-#include "KeyPad.h"
+#include "input/KeyPad.h"
 
 namespace Input
 {

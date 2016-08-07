@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/types.h"
-#include "ModelMesh.h"
+#include "graphics/ModelMesh.h"
 
 namespace Graphics
 {

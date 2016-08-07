@@ -1,5 +1,5 @@
-#include "AbstractButton.h"
-#include "IActionListener.h"
+#include "ui/AbstractButton.h"
+#include "game/IActionListener.h"
 
 namespace GUI
 {

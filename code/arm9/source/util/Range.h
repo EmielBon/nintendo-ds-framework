@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/types.h"
-#include "MathFunctions.h"
+#include "util/MathFunctions.h"
 struct Range
 {
 	fx12 min, max;

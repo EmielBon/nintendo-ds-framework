@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/types.h"
-#include "Vec2.h"
+#include "util/Vec2.h"
 
 namespace Graphics
 {

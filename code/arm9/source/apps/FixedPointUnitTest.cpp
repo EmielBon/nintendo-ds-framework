@@ -1,6 +1,6 @@
-#include "FixedPointUnitTest.h"
-#include "Debug.h"
-#include "Framework.h"
+#include "apps/FixedPointUnitTest.h"
+#include "debug/Debug.h"
+#include "game/Framework.h"
 
 namespace Test
 {

@@ -1,4 +1,4 @@
-#include "GameCamera.h"
+#include "game/GameCamera.h"
 
 namespace Framework3D
 {

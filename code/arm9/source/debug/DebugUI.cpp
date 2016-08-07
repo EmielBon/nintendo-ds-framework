@@ -1,4 +1,4 @@
-#include "DebugUI.h"
+#include "debug/DebugUI.h"
 #include "graphics/TextRenderer.h"
 #include "graphics/VideoRam.h"
 #include "graphics/VideoRamBank.h"
@@ -6,12 +6,12 @@
 #include "game/GameTime.h"
 #include "graphics/Memory2D.h"
 #include "graphics/MemorySlot.h"
-#include "Assert.h"
+#include "debug/Assert.h"
 #include "input/TouchScreen.h"
 #include "graphics/GraphicsDevice.h"
-#include "Console.h"
-#include "ProfilingManager.h"
-#include "ProfilingResult.h"
+#include "debug/Console.h"
+#include "debug/ProfilingManager.h"
+#include "debug/ProfilingResult.h"
 #include "graphics/Background.h"
 #include <nds/arm9/video.h>
 

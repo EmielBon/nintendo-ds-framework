@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/types.h"
-#include "Debug.h"
+#include "debug/Debug.h"
 #include <nds/arm9/background.h>
 
 namespace Graphics

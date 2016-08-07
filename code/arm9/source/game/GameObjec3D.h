@@ -1,6 +1,6 @@
 #pragma once
 
-#include "DrawableGameComponent.h"
+#include "game/DrawableGameComponent.h"
 #include "core/types.h"
 
 namespace Framework3D

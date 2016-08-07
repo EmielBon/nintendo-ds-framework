@@ -1,8 +1,8 @@
 #pragma once
 
-#include "TiledImage.h"
+#include "graphics/TiledImage.h"
 #include "core/types.h"
-#include "ScreenBlockEntry.h"
+#include "graphics/ScreenBlockEntry.h"
 
 namespace Graphics
 {

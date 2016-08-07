@@ -1,12 +1,12 @@
-#include "Game.h"
+#include "game/Game.h"
 
 #include "graphics/GraphicsDevice.h"
 #include "graphics/VideoRam.h"
 #include "debug/Logging.h"
 #include "input/Input.h"
-#include "DrawableGameComponent.h"
+#include "game/DrawableGameComponent.h"
 #include "debug/Console.h"
-#include "NDSGameHost.h"
+#include "game/NDSGameHost.h"
 #include "system/Timer.h"
 #include "debug/DebugUI.h"
 

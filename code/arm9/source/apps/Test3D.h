@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Game.h"
+#include "game/Game.h"
 #include "core/types.h"
-#include "Color.h"
-#include "BasicEffect.h"
-#include "GraphicsDeviceManager.h"
-#include "Material.h"
+#include "graphics/Color.h"
+#include "graphics/BasicEffect.h"
+#include "graphics/GraphicsDeviceManager.h"
+#include "graphics/Material.h"
 
 namespace Test
 {

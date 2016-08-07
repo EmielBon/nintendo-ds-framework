@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Log.h"
-#include "LogPrinter.h"
+#include "debug/Log.h"
+#include "debug/LogPrinter.h"
 #include "util/StringHelper.h"
 
 namespace Debug

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/types.h"
-#include "Color.h"
+#include "graphics/Color.h"
 
 namespace Graphics
 {

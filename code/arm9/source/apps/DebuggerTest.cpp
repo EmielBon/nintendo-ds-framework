@@ -1,4 +1,4 @@
-#include "DebuggerTest.h"
+#include "apps/DebuggerTest.h"
 #include "graphics/GraphicsDevice.h"
 #include "graphics/Background.h"
 

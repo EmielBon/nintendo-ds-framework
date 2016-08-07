@@ -7,7 +7,7 @@
 #pragma once
 
 #include "core/types.h"
-#include "fixed.h"
+#include "core/fixed.h"
 
 namespace Framework
 {

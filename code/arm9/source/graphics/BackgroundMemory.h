@@ -1,7 +1,7 @@
 #pragma once
 
-#include "TileMemory.h"
-#include "Map.h"
+#include "graphics/TileMemory.h"
+#include "graphics/Map.h"
 #include "core/types.h"
 
 namespace Graphics

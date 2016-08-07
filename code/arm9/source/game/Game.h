@@ -16,7 +16,7 @@
 #include "core/types.h"
 #include "system/ContentManager.h"
 #include "graphics/GraphicsDevice.h"
-#include "GameTime.h"
+#include "game/GameTime.h"
 
 namespace Framework
 {

@@ -1,7 +1,7 @@
-#include "TileMemory.h"
-#include "PaletteMemory.h"
-#include "Tile.h"
-#include "Debug.h"
+#include "graphics/TileMemory.h"
+#include "graphics/PaletteMemory.h"
+#include "graphics/Tile.h"
+#include "debug/Debug.h"
 
 namespace Graphics
 {

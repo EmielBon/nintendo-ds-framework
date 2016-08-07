@@ -1,13 +1,13 @@
-#include "Button.h"
-#include "Input.h"
-#include "TileSet256.h"
-#include "Color.h"
-#include "TiledBackground.h"
-#include "GraphicsDevice.h"
-#include "TextRenderer.h"
-#include "Background.h"
-#include "Font.h"
-#include "Vec2.h"
+#include "ui/Button.h"
+#include "input/Input.h"
+#include "graphics/TileSet256.h"
+#include "graphics/Color.h"
+#include "graphics/TiledBackground.h"
+#include "graphics/GraphicsDevice.h"
+#include "graphics/TextRenderer.h"
+#include "graphics/Background.h"
+#include "graphics/Font.h"
+#include "util/Vec2.h"
 
 namespace GUI
 {

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "core/types.h"
-#include "Color.h"
-#include "Vec3.h"
+#include "graphics/Color.h"
+#include "util/Vec3.h"
 
 namespace Graphics
 {

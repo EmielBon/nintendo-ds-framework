@@ -1,10 +1,10 @@
-#include "ModelMeshPart.h"
-#include "GraphicsDevice.h"
-#include "BasicEffect.h"
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
-#include "OpenGL.h"
-#include "Assert.h"
+#include "graphics/ModelMeshPart.h"
+#include "graphics/GraphicsDevice.h"
+#include "graphics/BasicEffect.h"
+#include "graphics/VertexBuffer.h"
+#include "graphics/IndexBuffer.h"
+#include "graphics/OpenGL.h"
+#include "debug/Assert.h"
 
 namespace Graphics
 {

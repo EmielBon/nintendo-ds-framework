@@ -1,9 +1,9 @@
 #pragma once
 
-#include "TileSet.h"
+#include "graphics/TileSet.h"
 #include "core/types.h"
-#include "Assert.h"
-#include "Vec2.h"
+#include "debug/Assert.h"
+#include "util/Vec2.h"
 #include <nds/arm9/background.h>
 
 namespace Graphics

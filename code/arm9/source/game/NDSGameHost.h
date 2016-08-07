@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IGameHost.h"
+#include "game/IGameHost.h"
 #include "core/types.h"
 
 namespace Framework

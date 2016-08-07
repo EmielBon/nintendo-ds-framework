@@ -1,9 +1,9 @@
-#include "FlyingCamera.h"
-#include "MathFunctions.h"
-#include "Input.h"
-#include "GameTime.h"
-#include "Logging.h"
-#include "Vec2.h"
+#include "game/FlyingCamera.h"
+#include "util/MathFunctions.h"
+#include "input/Input.h"
+#include "game/GameTime.h"
+#include "debug/Logging.h"
+#include "util/Vec2.h"
 
 namespace Framework3D
 {

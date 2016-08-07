@@ -1,5 +1,5 @@
-#include "ProfilingResult.h"
-#include "Profiler.h"
+#include "debug/ProfilingResult.h"
+#include "debug/Profiler.h"
 #include <cstdio>
 
 namespace Debug

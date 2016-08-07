@@ -1,7 +1,7 @@
-#include "VideoRam.h"
+#include "graphics/VideoRam.h"
 
-#include "Debug.h"
-#include "VideoRamBank.h"
+#include "debug/Debug.h"
+#include "graphics/VideoRamBank.h"
 #include <nds/arm9/video.h>
 
 namespace Graphics

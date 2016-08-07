@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Palette.h"
+#include "graphics/Palette.h"
 
 namespace Test
 {

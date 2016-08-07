@@ -1,7 +1,7 @@
 #pragma once
 
 #include "core/types.h"
-#include "ProfilingResult.h"
+#include "debug/ProfilingResult.h"
 #include "util/MathFunctions.h"
 
 namespace Debug

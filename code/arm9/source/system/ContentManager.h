@@ -1,8 +1,8 @@
 #pragma once
 
 #include "core/types.h"
-#include "FileStream.h"
-#include "Profiler.h"
+#include "system/FileStream.h"
+#include "debug/Profiler.h"
 
 namespace Framework
 {

@@ -1,17 +1,17 @@
-#include "TextRenderer.h"
-#include "TiledBackground.h"
-#include "Background.h"
-#include "ContentManager.h"
-#include "GraphicsDevice.h"
-#include "BackgroundMemory.h"
-#include "Color.h"
-#include "Font.h"
-#include "Screen.h"
-#include "ScreenBlockEntry.h"
-#include "PaletteMemory.h"
+#include "graphics/TextRenderer.h"
+#include "graphics/TiledBackground.h"
+#include "graphics/Background.h"
+#include "system/ContentManager.h"
+#include "graphics/GraphicsDevice.h"
+#include "graphics/BackgroundMemory.h"
+#include "graphics/Color.h"
+#include "graphics/Font.h"
+#include "graphics/Screen.h"
+#include "graphics/ScreenBlockEntry.h"
+#include "graphics/PaletteMemory.h"
 
 // Debugging
-#include "Logging.h"
+#include "debug/Logging.h"
 
 namespace Graphics
 {

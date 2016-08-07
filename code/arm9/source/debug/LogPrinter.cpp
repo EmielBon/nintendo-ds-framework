@@ -1,8 +1,8 @@
-#include "LogPrinter.h"
+#include "debug/LogPrinter.h"
 #include "util/StringHelper.h"
 #include "game/Game.h"
-#include "Console.h"
-#include "DebugUI.h"
+#include "debug/Console.h"
+#include "debug/DebugUI.h"
 
 namespace Debug
 {

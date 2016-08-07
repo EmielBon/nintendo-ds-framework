@@ -1,5 +1,5 @@
 #pragma once
 
-#include "ZeldaGame.h"
+#include "apps/ZeldaGame.h"
 
 using GameGenProject = ZeldaGame;

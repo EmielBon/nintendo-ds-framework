@@ -4,10 +4,10 @@
 
 #include "core/types.h"
 #include "debug/Debug.h"
-#include "MathFunctions.h"
+#include "util/MathFunctions.h"
 #include "debug/Logging.h"
-#include "FixedHelper.h"
-#include "Vec3.h"
+#include "util/FixedHelper.h"
+#include "util/Vec3.h"
 
 namespace Framework
 {

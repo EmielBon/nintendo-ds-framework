@@ -1,8 +1,8 @@
-#include "ZeldaGame.h"
-#include "GameObject.h"
-#include "Link.h"
-#include "Room.h"
-#include "Room1.h"
+#include "apps/ZeldaGame.h"
+#include "game/GameObject.h"
+#include "apps/Link.h"
+#include "game/Room.h"
+#include "apps/Room1.h"
 
 void ZeldaGame::Initialize()
 {

@@ -1,9 +1,9 @@
-#include "PaletteTest.h"
-#include "Color.h"
-#include "GraphicsDevice.h"
-#include "BackgroundMemory.h"
-#include "PaletteMemory.h"
-#include "X11Palette.h"
+#include "apps/PaletteTest.h"
+#include "graphics/Color.h"
+#include "graphics/GraphicsDevice.h"
+#include "graphics/BackgroundMemory.h"
+#include "graphics/PaletteMemory.h"
+#include "graphics/X11Palette.h"
 
 namespace Test
 {

@@ -1,4 +1,4 @@
-#include "KeyPad.h"
+#include "input/KeyPad.h"
 #include <nds/arm9/input.h>
 
 namespace Input

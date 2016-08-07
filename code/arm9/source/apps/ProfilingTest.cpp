@@ -1,6 +1,6 @@
-#include "ProfilingTest.h"
+#include "apps/ProfilingTest.h"
 
-#include "Debug.h"
+#include "debug/Debug.h"
 
 namespace Test
 {

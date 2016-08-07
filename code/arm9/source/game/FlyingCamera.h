@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Camera.h"
+#include "graphics/Camera.h"
 #include "core/types.h"
 
 namespace Framework3D

@@ -1,8 +1,8 @@
-#include "Camera.h"
-#include "MathFunctions.h"
-#include "GraphicsDevice.h"
-#include "MathFunctions.h"
-#include "BasicEffect.h"
+#include "graphics/Camera.h"
+#include "util/MathFunctions.h"
+#include "graphics/GraphicsDevice.h"
+#include "util/MathFunctions.h"
+#include "graphics/BasicEffect.h"
 
 namespace Graphics
 {

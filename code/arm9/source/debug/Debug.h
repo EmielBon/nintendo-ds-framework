@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Assert.h"
-#include "BreakPoint.h"
+#include "debug/Assert.h"
+#include "debug/BreakPoint.h"
 //#include "DebugUI.h"
 #include "game/FPSCounter.h"
-#include "Logging.h"
-#include "Profiler.h"
+#include "debug/Logging.h"
+#include "debug/Profiler.h"
 #include "system/Timer.h"

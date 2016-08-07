@@ -1,6 +1,6 @@
-#include "Material.h"
+#include "graphics/Material.h"
 
-#include "BasicEffect.h"
+#include "graphics/BasicEffect.h"
 
 namespace Graphics
 {
