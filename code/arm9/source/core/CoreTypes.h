@@ -14,7 +14,7 @@
 #include <stack>
 #include <sstream>
 #include <initializer_list>
-#include "../core/fixed.h"
+#include "core/fixed.h"
 
 // Template aliases
 template<class T> using Ptr = std::shared_ptr<T>;
