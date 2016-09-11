@@ -1,3 +1,4 @@
+#include "Refactoring2DEngineTest.h"
 #include "Test3D.h"
 #include "ConsoleTest.h"
 #include "DebugUITest.h"
@@ -9,7 +10,6 @@
 #include "MatrixPerformanceTest.h"
 #include "FixedPointUnitTest.h"
 #include "GameGenProject.h"
-#include "DebuggerTest.h"
 #include "JumpBumpGame.h"
 
 int main(void) 
@@ -21,14 +21,13 @@ int main(void)
 	//Test::TextRenderingTest test;
 	//Test::EVTest test;
 	//Test::TimerTest test;
-	//Test::SpriteTest test;
 	//Test::ProfilingTest test;
 	//Test::MatrixPerformanceTest test;
 	//Test::FixedPointUnitTest test;
 	//Test::Test3D test;
 	//GameGenProject test;
-	//DebuggerTest test;
-	JumpBumpGame test;
+	Refactoring2DEngineTest test;
+	//JumpBumpGame test;
 	test.Run();
 
 	return 0;

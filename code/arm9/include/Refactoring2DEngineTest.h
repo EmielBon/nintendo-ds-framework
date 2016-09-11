@@ -4,7 +4,7 @@
 #include "Game.h"
 #include "Console.h"
 
-class DebuggerTest : public Framework::Game
+class Refactoring2DEngineTest : public Framework::Game
 {
 private:
 
@@ -20,4 +20,7 @@ protected:
 public:
 
 	System::Console *console;
+	Graphics::Sprite *sprite;
+	Ptr<Graphics::SpriteSet> spriteSet;
+	fx12 imageIndex;
 };
