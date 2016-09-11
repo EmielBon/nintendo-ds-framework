@@ -43,7 +43,7 @@ namespace Anything2Bin.Images
         {
             int tileWidth  = 8;
             int tileHeight = 8;
-            int bpp        = 8;
+            int bpp        = 16;
 
             string fileName = Path.GetFileNameWithoutExtension(inputFile);
 
@@ -72,7 +72,7 @@ namespace Anything2Bin.Images
                 grit.StartInfo.Arguments = String.Format(Environment.GetEnvironmentVariable("ARPIGI") + "/tools/grit/grit.exe {0} -gt -gB{1} -W1 -fh! -ftb -MRp -Mw{2} -Mh{3} -o{4}", inputFile, bpp, tileWidth / 8, tileHeight / 8, outputFile);
             } else { // Probably Windows
                 grit.StartInfo.FileName = Environment.GetEnvironmentVariable("ARPIGI") + "/tools/grit/grit.exe";
-                grit.StartInfo.Arguments = String.Format("{0} -gt -gB{1} -W1 -fh! -ftb -MRp -Mw{2} -Mh{3} -o{4}", inputFile, bpp, tileWidth / 8, tileHeight / 8, outputFile);
+                grit.StartInfo.Arguments = String.Format("{0} -gt -p! -gu16 -gB{1} -W1 -fh! -ftb -MRp -Mw{2} -Mh{3} -o{4}", inputFile, bpp, tileWidth / 8, tileHeight / 8, outputFile);
             }
             grit.StartInfo.UseShellExecute = false;
             grit.StartInfo.RedirectStandardOutput = true;
@@ -98,6 +98,7 @@ namespace Anything2Bin.Images
                 stream.Close();
             }
 
+            
             if (File.Exists(gritOutputPaletteFile))
             {
                 string path = Path.GetDirectoryName(outputFile) + @"/" + Path.GetFileNameWithoutExtension(outputFile) + "_pal.bin";

@@ -19,28 +19,14 @@ void Refactoring2DEngineTest::Initialize()
 	imageIndex = 0.0f;
 
 	GraphicsDevice::Sub.Backgrounds[0]->ColorMode = ColorMode16;
+	GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
 
 	console = new Console(GraphicsDevice::Sub.Backgrounds[0]);
 	AddComponent(console);
-	for (int i = 0; i < 64; ++i)
+
+	for (int i = 0; i < 64; ++i) {
 		console->WriteLine(ToStr("Hoi " << i));
-
-	auto tileSet = Content.Load<TileSet256>("background");
-	// Set the palette to non-transparent. Since every tile in a tileset retains a pointer to their common palette, it only has to be changed for a single tile.
-	tileSet->Tiles[0].Palettes[0]->Transparent = false;
-
-	auto &map = GraphicsDevice.BackgroundMemory->Maps[0];
-
-	for(int i = 0; i < tileSet->GetTileCount8x8(); ++i)
-	{
-		auto &tile = tileSet->Tiles[i];
-		GraphicsDevice.BackgroundMemory->AddTile(tile);
-		map->SetTile(i, ScreenBlockEntry(tile.Identifier));
 	}
-
-	spriteSet = ContentManager::Load<SpriteSet>("link");
-	sprite = spriteSet->at("link_down");
-	GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
 
 	console->WriteLine("");
 	super::Initialize();
@@ -49,6 +35,21 @@ void Refactoring2DEngineTest::Initialize()
 void Refactoring2DEngineTest::LoadContent()
 {
 	super::LoadContent();
+	TileSet256.FromBytes(byte[] bytes)
+	auto tileSet = Content.Load<TileSet256>("background");
+	// Set the palette to non-transparent. Since every tile in a tileset retains a pointer to their common palette, it only has to be changed for a single tile.
+	tileSet->Tiles[0].Palettes[0]->Transparent = false;
+
+	auto &map = GraphicsDevice.BackgroundMemory->Maps[0];
+
+	for (int i = 0; i < tileSet->GetTileCount8x8(); ++i) {
+		auto &tile = tileSet->Tiles[i];
+		GraphicsDevice.BackgroundMemory->AddTile(tile);
+		map->SetTile(i, ScreenBlockEntry(tile.Identifier));
+	}
+
+	spriteSet = ContentManager::Load<SpriteSet>("link");
+	sprite = spriteSet->at("link_down");
 }
 
 void Refactoring2DEngineTest::Update(const GameTime &gameTime)
