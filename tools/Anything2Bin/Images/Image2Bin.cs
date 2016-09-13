@@ -43,9 +43,13 @@ namespace Anything2Bin.Images
         {
             int tileWidth  = 8;
             int tileHeight = 8;
-            int bpp        = 16;
+            int bpp        = 8; // 16bpp true color does not seem to work properly, so we just generate a palette and substitute the colors from there
 
             string fileName = Path.GetFileNameWithoutExtension(inputFile);
+            string gritOutputImageFile = Path.ChangeExtension(outputFile, ".img.bin");
+            string gritOutputPaletteFile = Path.ChangeExtension(outputFile, ".pal.bin");
+            string projectRoot = Environment.GetEnvironmentVariable("ARPIGI");
+            string gritPath = projectRoot + "/tools/grit/grit.exe";
 
             Match match = Regex.Match(fileName, @"[0-9]+x[0-9]+(@[0-9]+)?$");
             
@@ -65,14 +69,15 @@ namespace Anything2Bin.Images
             }
 
             Process grit = new Process();
-
             int p = (int) Environment.OSVersion.Platform;
+            String arguments = String.Format("{0} -gt -gB{1} -MRp -Mw{2} -Mh{3} -fh! -ftb -W1 -o{4}", inputFile, bpp, tileWidth / 8, tileHeight / 8, outputFile);
+
             if (p == 4 || p == 128) { // Unix
                 grit.StartInfo.FileName = @"wine";
-                grit.StartInfo.Arguments = String.Format(Environment.GetEnvironmentVariable("ARPIGI") + "/tools/grit/grit.exe {0} -gt -gB{1} -W1 -fh! -ftb -MRp -Mw{2} -Mh{3} -o{4}", inputFile, bpp, tileWidth / 8, tileHeight / 8, outputFile);
+                grit.StartInfo.Arguments = gritPath + " " + arguments;
             } else { // Probably Windows
-                grit.StartInfo.FileName = Environment.GetEnvironmentVariable("ARPIGI") + "/tools/grit/grit.exe";
-                grit.StartInfo.Arguments = String.Format("{0} -gt -p! -gu16 -gB{1} -W1 -fh! -ftb -MRp -Mw{2} -Mh{3} -o{4}", inputFile, bpp, tileWidth / 8, tileHeight / 8, outputFile);
+                grit.StartInfo.FileName = gritPath;
+                grit.StartInfo.Arguments = arguments;
             }
             grit.StartInfo.UseShellExecute = false;
             grit.StartInfo.RedirectStandardOutput = true;
@@ -80,60 +85,41 @@ namespace Anything2Bin.Images
             Console.SetIn(grit.StandardOutput);
             grit.WaitForExit();
 
-            string gritOutputImageFile = Path.ChangeExtension(outputFile, ".img.bin");
-            string gritOutputPaletteFile = Path.ChangeExtension(outputFile, ".pal.bin");
-
-            if (File.Exists(gritOutputImageFile))
+            if (!File.Exists(gritOutputImageFile))
             {
-                FileStream stream = new FileStream(outputFile, FileMode.Create);
-                BinaryWriter output = new BinaryWriter(stream);
-                output.Write((byte)tileWidth);
-                output.Write((byte)tileHeight);
-                output.Write((byte)0xFF); // Todo: change to actual tile count
-
-                FileStream file = new FileStream(gritOutputImageFile, FileMode.Open, FileAccess.Read);
-                file.CopyTo(stream);
-                
-                file.Close();
-                stream.Close();
+                Console.WriteLine("Error: Grit did not output graphics");
+                return;
             }
 
-            
             if (File.Exists(gritOutputPaletteFile))
             {
-                string path = Path.GetDirectoryName(outputFile) + @"/" + Path.GetFileNameWithoutExtension(outputFile) + "_pal.bin";
-                FileStream stream = new FileStream(path, FileMode.Create);
-                BinaryWriter output = new BinaryWriter(stream);
-                
-                FileStream file = new FileStream(gritOutputPaletteFile, FileMode.Open, FileAccess.Read);
-                BinaryReader reader = new BinaryReader(file);
-                List<ushort> colors = new List<ushort>();
-
-                while(true)
-                {
-                    try
-                    {
-                        colors.Add(reader.ReadUInt16());
-                    }
-                    catch (EndOfStreamException ex)
-                    {
-                    	break;
-                    }
-                }
-
-                for (int i = 0; i < colors.Count - 1; ++i)
-                {
-                    if (colors[i] == 0 && colors[i + 1] == 0)
-                        break;
-                    output.Write(colors[i]);
-                }
-
-                file.Close();
-                stream.Close();
+                Console.WriteLine("Error: Grit did not output palette");
+                return;
             }
+
+            Console.Write("Converting grit output...");
+            byte[] tilesBytes = File.ReadAllBytes(gritOutputImageFile);
+            byte[] paletteBytes = File.ReadAllBytes(gritOutputPaletteFile);
+
+            UInt16[] colors = new UInt16[paletteBytes.Length / 2];
+            Buffer.BlockCopy(paletteBytes, 0, colors, 0, paletteBytes.Length);
+
+            FileStream stream = new FileStream(outputFile, FileMode.Create);
+            BinaryWriter output = new BinaryWriter(stream);
+            output.Write(tileWidth);
+            output.Write(tileHeight);
+
+            foreach (var palettedColor in tilesBytes)
+            {
+                output.Write(colors[palettedColor]);
+            }
+
+            stream.Close();
 
             File.Delete(gritOutputImageFile);
             File.Delete(gritOutputPaletteFile);
+
+            Console.WriteLine(" done");
         }
 
         static short ColorToRGB16(Color c)
