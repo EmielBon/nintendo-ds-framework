@@ -13,10 +13,15 @@ namespace FileSystem
 	{
 		stream = fopen(path.c_str(), "rb");
 
-		if (stream) 
+		if (stream) {
 			open = true;
-		else 
+		} else {
 			printf("could not open file: %s\n", path.c_str() );
+		}
+
+		fseek(stream, 0, SEEK_END);
+		fileSize = ftell(stream);
+		rewind(stream);
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -27,12 +32,15 @@ namespace FileSystem
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	int FileStream::Read(void* buffer, u32 bytesPerElement, u32 nrOfElements)
+	size_t FileStream::Read(void* buffer, size_t bytesPerElement, size_t nrOfElements)
 	{
-		if (open) return fread(buffer, bytesPerElement, nrOfElements, stream);
+		if (!open) {
+			printf("could not read from file\n");
+			return 0;
+		}
 		
-		printf("could not read from file\n");
-		return 0;
+		size_t elementsRead = fread(buffer, bytesPerElement, nrOfElements, stream);
+		return elementsRead;
 	}
 
 	//-------------------------------------------------------------------------------------------------

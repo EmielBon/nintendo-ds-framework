@@ -20,6 +20,12 @@ namespace Graphics
 		bool IsInitialized() const;
 
 		///
+		ScreenBlockEntry GetTile(int x, int y) const;
+
+		///
+		ScreenBlockEntry GetTile(int index) const;
+
+		///
 		void SetTile(int x, int y, ScreenBlockEntry tile);
 
 		/// 
@@ -44,12 +50,6 @@ namespace Graphics
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline void Map::SetTile(int x, int y, ScreenBlockEntry tile)
-	{
-		SetTile(x + y * size.Width, tile);
-	}
-
-	//-------------------------------------------------------------------------------------------------
 	inline Size Map::GetSize() const
 	{
 		return size;
@@ -61,6 +61,26 @@ namespace Graphics
 		return (BackgroundMemory != nullptr && location != nullptr && index >= 0);
 	}
 	
+	//-------------------------------------------------------------------------------------------------
+	inline ScreenBlockEntry Map::GetTile(int x, int y) const
+	{
+		return GetTile(x + y * size.Width);
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	inline ScreenBlockEntry Map::GetTile(int index) const
+	{
+		sassert(IsInitialized(), "Setting tile in uninitialized map");
+		sassert(index >= 0 && index < size.Width * size.Height, "Internal map index out of bounds");
+		return location[index];
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	inline void Map::SetTile(int x, int y, ScreenBlockEntry tile)
+	{
+		SetTile(x + y * size.Width, tile);
+	}
+
 	//-------------------------------------------------------------------------------------------------
 	inline void Map::SetTile(int index, ScreenBlockEntry tile)
 	{

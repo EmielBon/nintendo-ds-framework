@@ -16,12 +16,10 @@ namespace Graphics
 {
 	class TileSet
 	{
-	protected:
-
-		/// Empty Constructor
-		TileSet() = default;
-
 	public:
+
+		/// Constructor
+		TileSet(int tileWidth, int tileHeight);
 
 		///
 		virtual ~TileSet() = default;
@@ -62,6 +60,19 @@ namespace Graphics
 		// todo: use a list of TiledImages instead of Tiles
 		List<Tile> Tiles;
 	};
+
+	//-------------------------------------------------------------------------------------------------
+	inline TileSet::TileSet(int tileWidth, int tileHeight) : tileSize(tileWidth, tileHeight)
+	{
+
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	inline void TileSet::AddTile(const Tile &tile)
+	{
+		sassert(TileIsCompatible(tile), "Incompatible tile");
+		Tiles.push_back(tile);
+	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline Framework::Size TileSet::GetTileSize() const

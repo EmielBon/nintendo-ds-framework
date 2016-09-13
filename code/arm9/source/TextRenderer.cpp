@@ -30,14 +30,9 @@ namespace Graphics
 	{
 		auto &bgmem = Background->BackgroundMemory();
 		Font = ContentManager::Load<Graphics::Font>(FontName);
-		// Standard colors, black bg and white text
-		Palette = New<Graphics::Palette>();
-		Palette->AddColor(Color::Black);
-		Palette->AddColor(Color::White);
-		bgmem.PaletteMemory->AddPalette(Palette);
 		// Set the map's clear tile to the font's first glyph. todo: This makes little sense, it takes the first 8x8 tile in the tileset
 		auto &blankTile = Font->Tiles[0];
-		bgmem.AddTile(blankTile, 0);
+		bgmem.AddTile(blankTile);
 		u32 blankTileIndex = bgmem.VRAMIndexForTile(blankTile.Identifier);
 		int index = Background->GetMapIndex();
 		sassert(index >= 0 && index <= 3, "Map index out of bounds");

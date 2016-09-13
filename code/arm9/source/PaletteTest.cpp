@@ -28,22 +28,6 @@ namespace Test
 		GraphicsDevice::Main.BackgroundMemory->PaletteMemory->AddColor(Color::Red);
 		sassert(false, "%i", GraphicsDevice::Main.BackgroundMemory->PaletteMemory->GetIndexForColor(0xD59F));
 		//sassert(false, "%i",GraphicsDevice::Main.BackgroundMemory->PaletteMemory->ColorToPaletteIndex.size());
-		// Dynamic palette test
-		auto pal1 = New<Palette>();
-		pal1->AddColor(Color::Gold);
-		pal1->AddColor(Color::Red);
-		pal1->Transparent = false;
-
-		auto pal2 = New<Palette>();
-		pal2->AddColor(Color::Blue);
-		pal2->AddColor(Color::Green);
-		pal2->Transparent = false;
-
-		List<Ptr<Palette>> pal2D;
-		pal2D.push_back(pal1);
-		pal2D.push_back(pal2);
-		
-		GraphicsDevice::Main.BackgroundMemory->PaletteMemory->AddDynamicPalette(pal2D);
 
 		super::LoadContent();
 	}

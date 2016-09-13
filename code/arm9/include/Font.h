@@ -1,12 +1,12 @@
 #pragma once
 
-#include "TileSet16.h"
 #include "types.h"
 #include "Size.h"
+#include "TileSet.h"
 
 namespace Graphics
 {
-	class Font : public TileSet16
+	class Font : public TileSet
 	{
 	public:
 

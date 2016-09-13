@@ -20,9 +20,9 @@ namespace Graphics
 
 		explicit Vertex(const VertexF &v)
 		{
-			Position = (Vector3)(v.Position);
-			Normal = (Vector3)(v.Normal);
-			TextureCoordinates = (Vector2)(v.TextureCoordinates);
+			Position = (Vector3)v.Position;
+			Normal = ((Vector3)v.Normal).Normalize();
+			TextureCoordinates = (Vector2)v.TextureCoordinates;
 		}
 
 	public:

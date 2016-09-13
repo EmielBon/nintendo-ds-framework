@@ -28,19 +28,12 @@ namespace Framework
 	{
 		using namespace FileSystem;
 
-		// Caching
-		static Dictionary<String, Ptr<T>> loadedContent;
-		if (loadedContent.find(name) != loadedContent.end())
-			return loadedContent[name];
-
 		String path = "/" + name + ".bin";
 
 		FileStream fs(name);
 		fs.Open(path);
 		auto resource = LoadResourceFromStream<T>(fs);
 		fs.Close();
-
-		loadedContent[name] = resource;
 
 		return resource;
 	}

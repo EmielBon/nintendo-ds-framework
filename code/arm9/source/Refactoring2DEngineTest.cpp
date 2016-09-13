@@ -2,7 +2,6 @@
 #include "GraphicsDevice.h"
 #include "Background.h"
 #include "ContentManager.h"
-#include "TileSet256.h"
 #include "Palette.h"
 #include "Map.h"
 #include "BackgroundMemory.h"
@@ -16,29 +15,27 @@ using namespace Graphics;
 
 void Refactoring2DEngineTest::Initialize()
 {
-	imageIndex = 0.0f;
+	//imageIndex = 0.0f;
 
-	GraphicsDevice::Sub.Backgrounds[0]->ColorMode = ColorMode16;
-	GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
+	//GraphicsDevice::Sub.Backgrounds[0]->ColorMode = ColorMode16;
+	//GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
 
-	console = new Console(GraphicsDevice::Sub.Backgrounds[0]);
-	AddComponent(console);
+	//console = new Console(GraphicsDevice::Sub.Backgrounds[0]);
+	//AddComponent(console);
 
-	for (int i = 0; i < 64; ++i) {
-		console->WriteLine(ToStr("Hoi " << i));
-	}
-
-	console->WriteLine("");
+//	for (int i = 0; i < 64; ++i) {
+//		console->WriteLine(ToStr("Hoi " << i));
+//	}
+//
+//	console->WriteLine("");
 	super::Initialize();
 }
 
 void Refactoring2DEngineTest::LoadContent()
 {
 	super::LoadContent();
-	TileSet256.FromBytes(byte[] bytes)
-	auto tileSet = Content.Load<TileSet256>("background");
-	// Set the palette to non-transparent. Since every tile in a tileset retains a pointer to their common palette, it only has to be changed for a single tile.
-	tileSet->Tiles[0].Palettes[0]->Transparent = false;
+
+	auto tileSet = Content.Load<TileSet>("background");
 
 	auto &map = GraphicsDevice.BackgroundMemory->Maps[0];
 
@@ -48,15 +45,17 @@ void Refactoring2DEngineTest::LoadContent()
 		map->SetTile(i, ScreenBlockEntry(tile.Identifier));
 	}
 
-	spriteSet = ContentManager::Load<SpriteSet>("link");
-	sprite = spriteSet->at("link_down");
+	//sassert(false, "%i", map->GetTile(0, 0).TileIndex());
+
+//	spriteSet = ContentManager::Load<SpriteSet>("link");
+//	sprite = spriteSet->at("link_down");
 }
 
 void Refactoring2DEngineTest::Update(const GameTime &gameTime)
 {
 	super::Update(gameTime);
 
-	imageIndex += 1.0f / 60.0f;
+	//imageIndex += 1.0f / 60.0f;
 }
 
 void Refactoring2DEngineTest::Draw(const GameTime &gameTime)
@@ -66,5 +65,5 @@ void Refactoring2DEngineTest::Draw(const GameTime &gameTime)
 	GraphicsDevice::Main.Backgrounds[0]->ColorMode = ColorMode::ColorMode256;
 	GraphicsDevice::Main.Backgrounds[0]->ShowMapWithIndex(0);
 
-	GraphicsDevice::Main.DrawSprite(*sprite, 50.0f, 50.0f, imageIndex, 1.0f, 1.0f);
+	//GraphicsDevice::Main.DrawSprite(*sprite, 50.0f, 50.0f, imageIndex, 1.0f, 1.0f);
 }

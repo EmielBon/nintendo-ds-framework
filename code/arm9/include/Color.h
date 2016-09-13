@@ -20,7 +20,7 @@ namespace Framework
 
 		/** \brief Creates a new Color from a packed ARGB16 value. 
 		 *  \param value A color as a packed ARGB16 value */
-		Color(u16 value);
+		Color(uint16_t value);
 
 		/** \brief Gets the alpha component value. 
 		 *  \returns The alpha component value of this color, range [0-1] */
@@ -70,7 +70,7 @@ namespace Framework
 
 	private:
 
-		u16 value;
+		uint16_t value;
 
 	public:
 
@@ -246,7 +246,7 @@ namespace Framework
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline Color::Color(u16 value) : value(value) 
+	inline Color::Color(uint16_t value) : value(value)
 	{
 
 	}

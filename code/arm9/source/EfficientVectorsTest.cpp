@@ -8,7 +8,6 @@
 #include "VideoRam.h"
 
 // 2D graphics
-#include "TileSet256.h"
 #include "Palette.h"
 #include "Background.h"
 

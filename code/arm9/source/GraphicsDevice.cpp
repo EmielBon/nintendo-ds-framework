@@ -148,7 +148,7 @@ namespace Graphics
 		if (tile)
 		{
 			// todo: dynamic palette parameter disabled here
-			u32 tileIndex = bgMem.AddTile(*tile, 0);
+			u32 tileIndex = bgMem.AddTile(*tile);
 			auto screenBlockEntry = params;
 			screenBlockEntry.SetTileIndex(tileIndex);
 			map.SetTile(i, j, screenBlockEntry);
