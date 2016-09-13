@@ -91,7 +91,7 @@ namespace Anything2Bin.Images
                 return;
             }
 
-            if (File.Exists(gritOutputPaletteFile))
+            if (!File.Exists(gritOutputPaletteFile))
             {
                 Console.WriteLine("Error: Grit did not output palette");
                 return;
