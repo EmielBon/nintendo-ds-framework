@@ -24,10 +24,10 @@ namespace Graphics
 		/// 
 		TileMemory() = delete;
 
+		virtual ~TileMemory() = default;
+
 		/// Add a single tile to VRAM, returns the VRAM index it was copied to
 		uint32_t AddTile(const Tile &tile);
-
-		void AddPixelColorsFromTileToPaletteMemory(const Tile &tile);
 
 		/// todo: rename
 		Tile PalettedTileFromTile(const Tile &tile);

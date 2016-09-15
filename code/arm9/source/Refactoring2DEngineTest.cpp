@@ -1,13 +1,12 @@
 #include <Refactoring2DEngineTest.h>
 #include "GraphicsDevice.h"
-#include "Background.h"
-#include "ContentManager.h"
-#include "Palette.h"
-#include "Map.h"
 #include "BackgroundMemory.h"
-#include "Sprite.h"
 #include "SpriteMemory.h"
-#include "PaletteMemory.h"
+#include "ContentManager.h"
+#include "Background.h"
+#include "TileSet.h"
+#include "Map.h"
+#include "Sprite.h"
 
 using namespace Framework;
 using namespace System;
@@ -15,7 +14,9 @@ using namespace Graphics;
 
 void Refactoring2DEngineTest::Initialize()
 {
-	//imageIndex = 0.0f;
+	super::Initialize();
+
+	imageIndex = 0.0f;
 
 	//GraphicsDevice::Sub.Backgrounds[0]->ColorMode = ColorMode16;
 	//GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
@@ -28,7 +29,7 @@ void Refactoring2DEngineTest::Initialize()
 //	}
 //
 //	console->WriteLine("");
-	super::Initialize();
+
 }
 
 void Refactoring2DEngineTest::LoadContent()
@@ -45,17 +46,15 @@ void Refactoring2DEngineTest::LoadContent()
 		map->SetTile(i, ScreenBlockEntry(tile.Identifier));
 	}
 
-	//sassert(false, "%i", map->GetTile(0, 0).TileIndex());
-
-//	spriteSet = ContentManager::Load<SpriteSet>("link");
-//	sprite = spriteSet->at("link_down");
+	spriteSet = ContentManager::Load<SpriteSet>("link");
+	sprite = spriteSet->at("link_down");
 }
 
 void Refactoring2DEngineTest::Update(const GameTime &gameTime)
 {
 	super::Update(gameTime);
 
-	//imageIndex += 1.0f / 60.0f;
+	imageIndex += 1.0f / 60.0f;
 }
 
 void Refactoring2DEngineTest::Draw(const GameTime &gameTime)
@@ -65,5 +64,5 @@ void Refactoring2DEngineTest::Draw(const GameTime &gameTime)
 	GraphicsDevice::Main.Backgrounds[0]->ColorMode = ColorMode::ColorMode256;
 	GraphicsDevice::Main.Backgrounds[0]->ShowMapWithIndex(0);
 
-	//GraphicsDevice::Main.DrawSprite(*sprite, 50.0f, 50.0f, imageIndex, 1.0f, 1.0f);
+	GraphicsDevice::Main.DrawSprite(*sprite, 50.0f, 50.0f, imageIndex, 1.0f, 1.0f);
 }

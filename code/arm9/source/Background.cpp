@@ -26,13 +26,6 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void Background::Clear()
-	{
-		ASSERT2(mapIndex >= 0, "No map for Background" << index);
-		GetMap()->Clear();
-	}
-
-	//-------------------------------------------------------------------------------------------------
 	void Background::Synchronize() const
 	{
 		ASSERT(graphicsDevice && index != -1, "Background not initialized");

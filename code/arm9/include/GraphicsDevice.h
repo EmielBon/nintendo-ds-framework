@@ -164,4 +164,25 @@ namespace Graphics
 		sassert(bg, "Background cannot be null");
 		SetBackgroundTile(*bg, i, j, tile, params);
 	}
+
+	//-------------------------------------------------------------------------------------------------
+	inline void GraphicsDevice::SetMode(u32 modeIndex)
+	{
+		// Main engine has 6 modes, sub engine 5 modes, any number higher is invalid
+		sassert(modeIndex >= 0 && modeIndex <= (IsMain() ? 6 : 5), "Error: invalid mode index specified");
+		mode = modeIndex;
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	inline void GraphicsDevice::Enable3D(bool enable)
+	{
+		sassert(IsMain(), "Error: The sub engine does not support 3D");
+		enable3D = enable;
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	inline void GraphicsDevice::EnableSprites(bool enable)
+	{
+		enableSprites = enable;
+	}
 }

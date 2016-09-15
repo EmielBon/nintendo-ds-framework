@@ -86,9 +86,7 @@ namespace Graphics
 	finline int PaletteMemory::AddColor(Color color)
 	{
 		int index = GetIndexForColor(color);
-		if (index != -1)
-			return index;
-		return SetColorToNextFreeIndex(color);
+		return index != -1 ? index : SetColorToNextFreeIndex(color);
 	}
 	
 	//-------------------------------------------------------------------------------------------------

@@ -72,7 +72,7 @@ namespace Util
 	int StringHelper::ParseInt(char c)
 	{
 		int d = c - '0';
-		ASSERT(d >= 0 && d <= 9, "FUUUUUU");
+		sassert(d >= 0 && d <= 9, "Error parsing character %c as integer", c);
 		return d;
 	}
 
@@ -97,7 +97,7 @@ namespace Util
 	//-------------------------------------------------------------------------------------------------
 	bool StringHelper::ParseBool(const String &str)
 	{
-		ASSERT(str == "false" || str == "true", "FUUUUU");
+		sassert(str == "false" || str == "true", "Error parsing string %s as boolean", str.c_str());
 		return str == "true";
 	}
 

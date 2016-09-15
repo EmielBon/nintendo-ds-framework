@@ -1,6 +1,5 @@
 #pragma once
 
-#include "TileSet.h"
 #include "types.h"
 #include "Assert.h"
 #include "Vec2.h"
@@ -46,9 +45,6 @@ namespace Graphics
 
 		/// todo: can this be removed?
 		Graphics::BackgroundMemory& BackgroundMemory() const;
-
-		///
-		void Clear();
 
 		/// Gathers all the set options in this Background and puts them in its corresponding Nintendo DS background control register
 		void Synchronize() const;		

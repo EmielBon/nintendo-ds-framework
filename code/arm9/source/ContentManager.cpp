@@ -136,6 +136,8 @@ namespace Framework
 		StreamReader reader(fs);
 		auto lines = reader.ReadToEnd();
 
+		//sassert(false, "%s\n%s\n%s\n%s\n%s\n%s\n%s", lines[0].c_str(), lines[1].c_str(), lines[2].c_str(), lines[3].c_str(), lines[4].c_str(), lines[5].c_str(), lines[6].c_str());
+
 		Size         size;
 		Ptr<TileSet> tileSet;
 		auto spriteSet = New<SpriteSet>();
@@ -144,26 +146,25 @@ namespace Framework
 		{
 			auto tokens = StringHelper::Split(lines[i], ' ');
 
-			if (tokens[0] == "")
+			if (tokens[0] == "") {
 				continue;
+			}
 
 			String type = tokens[0];
 			String fileName = tokens[1];
 
-			if (fileName == "none" || fileName == "")
+			if (fileName == "none" || fileName == "") {
 				continue;
+			}
 
-			if (type == "s")
-			{
+			if (type == "s") {
 				auto sizeStr = StringHelper::Split(tokens[1], 'x');
 				int width = StringHelper::ParseInt(sizeStr[0]);
 				int height = StringHelper::ParseInt(sizeStr[1]);
 				size = Size(width / 8, height / 8);
-			}
-			// \todo Support for loading more than one tile set per map
-			if (type == "t") tileSet = ContentManager::Load<TileSet>(fileName);
-			if (type == "i")
-			{
+			} else if (type == "t") {
+				tileSet = ContentManager::Load<TileSet>(fileName);
+			} else if (type == "i") {
 				String name = tokens[1];
 				List<TiledImage> subImages;
 				int tileCount = size.Width * size.Height;

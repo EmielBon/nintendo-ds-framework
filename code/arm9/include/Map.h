@@ -32,7 +32,7 @@ namespace Graphics
 		void SetTile(int index, ScreenBlockEntry tile);
 
 		///
-		void Clear();
+		void Clear(ScreenBlockEntry screenBlockEntry);
 
 		///
 		Size GetSize() const;
@@ -46,7 +46,6 @@ namespace Graphics
 	public:
 
 		Graphics::BackgroundMemory *BackgroundMemory;
-		ScreenBlockEntry            ClearTile;
 	};
 
 	//-------------------------------------------------------------------------------------------------

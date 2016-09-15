@@ -53,6 +53,7 @@ namespace FileSystem
 
 			if (c == '\n') {
 				lines.push_back(line);
+				line = "";
 				continue;
 			}
 
