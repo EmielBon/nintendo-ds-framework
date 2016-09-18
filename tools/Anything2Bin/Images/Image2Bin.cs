@@ -133,8 +133,8 @@ using System.Diagnostics;
                     var pixel = tile.GetPixel(x, y);
                     var value = pixel.ToRGB16();
                     var bytes = BitConverter.GetBytes(value);
-                    output.Write(bytes[1]);
                     output.Write(bytes[0]);
+                    output.Write(bytes[1]);
                 }
             }
 
