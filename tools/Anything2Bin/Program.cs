@@ -25,8 +25,8 @@ namespace Anything2Bin
             string relativeInput  = inputFile.Substring(prefix.Length);
             string relativeOutput = outputFile.Substring(prefix.Length);
 
-            Console.WriteLine("Creating " + relativeInput);
-            Console.WriteLine("- Input: " + relativeOutput);
+            Console.WriteLine("Creating " + relativeOutput);
+            Console.WriteLine("- Input: " + relativeInput);
 
             switch (type)
             {
