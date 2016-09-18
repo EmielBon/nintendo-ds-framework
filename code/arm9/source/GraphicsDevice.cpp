@@ -103,7 +103,6 @@ namespace Graphics
 
 	void GraphicsDevice::SetBackground(Background &bg, const TiledBackground &background)
 	{
-		bg.ColorMode = (background.Bpp == 4) ? ColorMode16 : ColorMode256;
 		background.CopyToHardwareBackground(bg);
 	}
 
@@ -132,13 +131,6 @@ namespace Graphics
 		auto screenBlockEntry = params;
 		screenBlockEntry.SetTileIndex(tileIndex);
 		map.SetTile(i, j, screenBlockEntry);
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	void GraphicsDevice::DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex, fx8 horizontalScale /* = 1 */, fx8 verticalScale /* = 1 */)
-	{
-		SpriteMemory->AddSprite(sprite);
-		ObjectAttributeMemory.DrawSprite(sprite, x, y, imageIndex, horizontalScale, verticalScale);
 	}
 
 	//-------------------------------------------------------------------------------------------------

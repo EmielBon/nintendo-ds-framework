@@ -49,6 +49,7 @@ namespace Graphics
 		for (int i = 0; i < 64; ++i)
 		{
 			Color pixel = tile.GetPixel(i);
+			//sassert(pixel == Color::Red, "%x %i %i", (int)pixel, i, (int)tile.Identifier);
 			if (pixel == tile.TransparentColor) {
 				palettedTile.SetPixel(i, 0);
 				continue;

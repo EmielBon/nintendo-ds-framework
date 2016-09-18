@@ -1,4 +1,4 @@
-#include "Room.h"
+/*#include "Room.h"
 #include "GameObject.h"
 #include "GraphicsDevice.h"
 #include "Background.h"
@@ -63,4 +63,4 @@ namespace Framework2D
 		sassert(index >= 0 && index <= 3, "Map index out of bounds");
 		background->CopyToHardwareBackground(*bg);
 	}
-}
+}*/

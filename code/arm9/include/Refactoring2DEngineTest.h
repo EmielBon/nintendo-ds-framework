@@ -3,6 +3,7 @@
 #include "types.h"
 #include "Game.h"
 #include "Console.h"
+#include "Sprite.h"
 
 class Refactoring2DEngineTest : public Framework::Game
 {
@@ -20,7 +21,7 @@ protected:
 public:
 
 	System::Console *console;
-	Graphics::Sprite *sprite;
+	Graphics::Sprite sprite;
 	Ptr<Graphics::SpriteSet> spriteSet;
 	fx12 imageIndex;
 };

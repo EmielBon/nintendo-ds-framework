@@ -111,9 +111,6 @@ namespace Graphics
 		/// 
 		void SetTileForBackgroundAtLayer(int layer, int i, int j, Tile *tile, TileParameters params = 0);
 
-		///
-		void DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex, fx8 horizontalScale = 1, fx8 verticalScale = 1);
-
 		/// Can draw a maximum of 6144 vertices per frame, which corresponds roughly to about 2048 triangles or 1536 quads
 		void DrawIndexedPrimitives(PrimitiveType type, int vertexOffset, int minVertexIndex, int numVertices, int startIndex, int primitiveCount);
 

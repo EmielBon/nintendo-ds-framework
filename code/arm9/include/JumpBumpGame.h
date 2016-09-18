@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 #include "Game.h"
 #include "types.h"
@@ -44,4 +44,4 @@ inline JumpBumpGame::JumpBumpGame()
 inline JumpBumpGame& JumpBumpGame::Instance()
 {
 	return *instance;
-}
+}*/

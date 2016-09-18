@@ -9,7 +9,6 @@
 #include "ProfilingTest.h"
 #include "MatrixPerformanceTest.h"
 #include "FixedPointUnitTest.h"
-#include "GameGenProject.h"
 #include "JumpBumpGame.h"
 
 int main(void) 

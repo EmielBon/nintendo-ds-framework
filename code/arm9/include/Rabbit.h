@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 #include "types.h"
 #include "GameObject.h"
@@ -28,4 +28,4 @@ public:
 	Vector2 speed;
 	fx12 gravity;
 	Framework::BoundingBox BoundingBox;
-};
+};*/

@@ -7,6 +7,8 @@
 #include "TileSet.h"
 #include "Map.h"
 #include "Sprite.h"
+#include "PaletteMemory.h"
+#include "ObjectAttributeMemory.h"
 
 using namespace Framework;
 using namespace System;
@@ -18,7 +20,6 @@ void Refactoring2DEngineTest::Initialize()
 
 	imageIndex = 0.0f;
 
-	//GraphicsDevice::Sub.Backgrounds[0]->ColorMode = ColorMode16;
 	//GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
 
 	//console = new Console(GraphicsDevice::Sub.Backgrounds[0]);
@@ -36,18 +37,34 @@ void Refactoring2DEngineTest::LoadContent()
 {
 	super::LoadContent();
 
+	GraphicsDevice::Main.SpriteMemory->PaletteMemory->AddColor(Color::Green);
+
+	auto linkTiles = Content.Load<TileSet>("red32x32");
+
+	for (int i = 0; i < 16; ++i) {
+		GraphicsDevice.SpriteMemory->AddTile(linkTiles->Tiles[i]);
+	}
+
+	sprite = Sprite();
+	sprite.Priority = OBJPRIORITY_0;
+	sprite.ImageIndex = 0;
+	sprite.ImageSpeed = 1;
+	sprite.size = OBJSIZE_32;
+	sprite.shape = OBJSHAPE_SQUARE;
+	sprite.Identifier = linkTiles->Tiles[0].Identifier;
+
 	auto tileSet = Content.Load<TileSet>("background");
+
+	// TODO: Drawing only the background is working, drawing only 1 sprite is kinda working, when both are drawn,
+	// the sprite does not even appear in sprite memory
 
 	auto &map = GraphicsDevice.BackgroundMemory->Maps[0];
 
 	for (int i = 0; i < tileSet->GetTileCount8x8(); ++i) {
 		auto &tile = tileSet->Tiles[i];
-		GraphicsDevice.BackgroundMemory->AddTile(tile);
-		map->SetTile(i, ScreenBlockEntry(tile.Identifier));
+		auto vramIndex = GraphicsDevice.BackgroundMemory->AddTile(tile);
+		map->SetTile(i, ScreenBlockEntry(vramIndex));
 	}
-
-	spriteSet = ContentManager::Load<SpriteSet>("link");
-	sprite = spriteSet->at("link_down");
 }
 
 void Refactoring2DEngineTest::Update(const GameTime &gameTime)
@@ -61,8 +78,8 @@ void Refactoring2DEngineTest::Draw(const GameTime &gameTime)
 {
 	super::Draw(gameTime);
 
-	GraphicsDevice::Main.Backgrounds[0]->ColorMode = ColorMode::ColorMode256;
-	GraphicsDevice::Main.Backgrounds[0]->ShowMapWithIndex(0);
+	//GraphicsDevice::Main.Backgrounds[0]->ColorMode = ColorMode::ColorMode256;
+	//GraphicsDevice::Main.Backgrounds[0]->ShowMapWithIndex(0);
 
-	GraphicsDevice::Main.DrawSprite(*sprite, 50.0f, 50.0f, imageIndex, 1.0f, 1.0f);
+	GraphicsDevice::Main.ObjectAttributeMemory.DrawSprite(sprite, 50.0f, 50.0f, 0, 1.0f, 1.0f);
 }

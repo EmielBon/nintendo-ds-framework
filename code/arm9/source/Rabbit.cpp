@@ -1,4 +1,4 @@
-#include "Rabbit.h"
+/*#include "Rabbit.h"
 #include "Input.h"
 #include "ContentManager.h"
 #include "Range.h"
@@ -81,12 +81,12 @@ void Rabbit::Update(const GameTime &gameTime)
 	speed.y += gravity * timeStep;
 
 	Position += speed * timeStep;
-	/*
+
 	if (Position.y >= 176)
 	{
 		Position.y = 176;
 		speed.y = 0;
-	}*/
+	}
 
 	scale = (direction.x == 0) ? scale : direction.x;
 
@@ -102,4 +102,4 @@ void Rabbit::Draw(const GameTime &gameTime)
 	GraphicsDevice::Main.DrawSprite(*CurrentSprite, Position.x, Position.y, imageIndex, scale, 1);
 
 	base::Draw(gameTime);
-}
+}*/

@@ -38,11 +38,8 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	void ObjectAttributeMemory::DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex, fx8 horizontalScale, fx8 verticalScale)
 	{
-		int subImageIndex = (int)imageIndex % sprite.SubImages.size();
-		u32 tileIdentifier = sprite.SubImages[subImageIndex].Tiles[0]->Identifier; // Upper left tile is used for sprite indexing
-
 		auto &entry = oam->oamBuffer[spriteCount];
-		entry.gfxIndex = graphicsDevice->SpriteMemory->VRAMIndexForTile(tileIdentifier);
+		entry.gfxIndex = graphicsDevice->SpriteMemory->VRAMIndexForTile(sprite.Identifier);
 		entry.x = (int)Math::Round(x);
 		entry.y = (int)Math::Round(y);
 		entry.isHidden = false;

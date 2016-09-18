@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 #include "types.h"
 #include "DrawableGameComponent.h"
@@ -35,4 +35,4 @@ namespace Framework2D
 		
 		List< Ptr<GameObject> > objects;
 	};
-}
+}*/

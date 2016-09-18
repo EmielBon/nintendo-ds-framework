@@ -17,22 +17,15 @@ namespace Graphics
 
 		Sprite() = default;
 
-		/// Constructor
-		Sprite(const List<TiledImage> &subImages);
-
 	public:
 
 		int OriginX, OriginY;
 
 		ObjPriority Priority;
 		
+		int Identifier;
 		int ImageIndex;
 		int ImageSpeed;
-
-		List<TiledImage> SubImages;
-		
-	protected:
-
 		ObjSize  size;
 		ObjShape shape;
 	};

@@ -1,6 +1,6 @@
 																																																																																																																					#include "JumpBumpGame.h"
 
-#include "Sprites.h"
+/*#include "Sprites.h"
 #include "ContentManager.h"
 #include "Rabbit.h"
 #include "GraphicsDevice.h"
@@ -83,4 +83,4 @@ void JumpBumpGame::Update(const Framework::GameTime &gameTime)
 void JumpBumpGame::Draw(const Framework::GameTime &gameTime)
 {
 	base::Draw(gameTime);
-}
+}*/

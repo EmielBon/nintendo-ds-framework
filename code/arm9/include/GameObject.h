@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ZeldaGameTypes.h"
+/*#include "ZeldaGameTypes.h"
 
 class GameObject : public DrawableGameComponent
 {
@@ -16,4 +16,4 @@ public:
     fx12 ImageIndex;
     Sprite *CurrentSprite;
     SpriteSet *Sprites;
-};
+};*/

@@ -15,7 +15,7 @@ namespace Graphics
 		TiledImage();
 		
 		///
-		TiledImage(int width, int height, int bpp);
+		TiledImage(int width, int height);
 		
 		///
 		int GetTileIndex(int x, int y) const;
@@ -36,17 +36,16 @@ namespace Graphics
 		
 		List<Tile*> Tiles;
 		Framework::Size Size;
-		int Bpp;
 	};
 	
 	//-------------------------------------------------------------------------------------------------
-	inline TiledImage::TiledImage() : Bpp(0)
+	inline TiledImage::TiledImage()
 	{
 		
 	}
 	
 	//-------------------------------------------------------------------------------------------------
-	inline TiledImage::TiledImage(int width, int height, int bpp) : Size(width, height), Bpp(bpp)
+	inline TiledImage::TiledImage(int width, int height) : Size(width, height)
 	{
 		Tiles.assign(width * height, nullptr);
 	}
@@ -74,7 +73,6 @@ namespace Graphics
 	{
 		// Assert there are no tiles of different bpp in this map
 		sassert(tile, "Cannot set tile to null");
-		sassert(Bpp == tile->BitsPerPixel(), "Cannot add tiles of different bit-depth");
 		Tiles[i] = tile;
 	}
 

@@ -18,7 +18,7 @@ namespace Graphics
 		TiledBackground() = default;
 		
 		///
-		TiledBackground(int width, int height, int bpp);
+		TiledBackground(int width, int height);
 		
 		/// 
 		void SetTileParameters(int index, bool flippedHorizontal, bool flippedVertical, u32 paletteIndex);
@@ -35,7 +35,7 @@ namespace Graphics
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline TiledBackground::TiledBackground(int width, int height, int bpp) : base(width, height, bpp)
+	inline TiledBackground::TiledBackground(int width, int height) : base(width, height)
 	{
 		TileParameters.assign(width * height, ScreenBlockEntry());
 	}

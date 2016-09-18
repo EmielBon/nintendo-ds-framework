@@ -56,6 +56,7 @@ namespace Graphics
 
 	public:
 
+		static uint32_t nextFreeIdentifier;
 		uint32_t      Identifier;
 		List<uint8_t> Pixels; // todo: Rename, Pixels[0] for instance does not give you the first pixel in case of 4bpp, but the first and the second
 		Color         TransparentColor;
@@ -64,9 +65,9 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	inline Tile::Tile(int bpp, const void *data /* = nullptr */) : TransparentColor(Color::HotPink)
 	{
-		static uint32_t nextFreeIdentifier = 0;
 		Identifier = nextFreeIdentifier++;
 		size_t size = bpp * 64 / 8;
+
 		if (data) {
 			Pixels.assign((uint8_t *)data, (uint8_t *)data + size);
 		} else {

@@ -4,6 +4,8 @@
 
 namespace Graphics
 {
+	uint32_t Tile::nextFreeIdentifier = 0;
+
 	//-------------------------------------------------------------------------------------------------
 	uint16_t Tile::GetPixel(int index) const
 	{
@@ -20,7 +22,7 @@ namespace Graphics
 			return colors[index];
 		}
 
-		sassert(false, "Error: Unsupported number of bits per pixel");
+		sassert(false, "Error: Unsupported number of bits per pixel: %i, size: %i", bpp, ByteSize());
 		return 0;
 	}
 
@@ -29,17 +31,19 @@ namespace Graphics
 	{
 		sassert(index >= 0 && index < 64, "Pixel index out of range");
 		
-		if (BitsPerPixel() == 4)
-		{
+		int bpp = BitsPerPixel();
+
+		if (bpp == 4) {
 			uint16_t rawColor = (uint16_t) value;
 			uint8_t& pixel  = Pixels[index/2];
 			int   mask   = (index % 2 == 0) ? 0xF : 0xF0; 
 			int   newpix = (index % 2 == 0) ? rawColor << 4 : rawColor;
 			pixel = (pixel & mask) | newpix;
-		}
-		else
-		{
+		} else if (bpp == 8) {
 			Pixels[index] = value;
+		} else if (bpp == 16) {
+			auto pixels = (uint16_t *)Pixels.data();
+			pixels[index] = value;
 		}
 	}
 }

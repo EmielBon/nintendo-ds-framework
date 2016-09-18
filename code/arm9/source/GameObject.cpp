@@ -1,4 +1,4 @@
-#include "GameObject.h"
+/*#include "GameObject.h"
 #include "Link.h"
 #include "Room1.h"
 #include "ZeldaGame.h"
@@ -16,7 +16,8 @@ void GameObject::Initialize()
 
 void GameObject::Update ( const GameTime &gameTime )
 {
-    ImageIndex = ( ImageIndex + ImageSpeed * gameTime.ElapsedGameTime.TotalSeconds() ) % ( fx12 ) ( ( int ) CurrentSprite->SubImages.size() );
+    //ImageIndex = ( ImageIndex + ImageSpeed * gameTime.ElapsedGameTime.TotalSeconds() ) % ( fx12 ) ( ( int ) CurrentSprite->SubImages.size() );
     base::Update ( gameTime );
 }
 
+*/

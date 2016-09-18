@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ZeldaGameTypes.h"
+#include "types.h"
 
 class GameObject : public DrawableGameComponent
 {

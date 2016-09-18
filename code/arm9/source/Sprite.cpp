@@ -7,7 +7,7 @@ namespace Graphics
 	using namespace Math;
 
 	//-------------------------------------------------------------------------------------------------
-	Sprite::Sprite(const List<TiledImage> &subImages) 
+	/*Sprite::Sprite(const List<TiledImage> &subImages)
 		: Priority(OBJPRIORITY_0), ImageIndex(0), ImageSpeed(1), SubImages(subImages), size(OBJSIZE_8), shape(OBJSHAPE_SQUARE)
 	{
 		int width  = subImages[0].Size.Width  * 8;
@@ -33,6 +33,6 @@ namespace Graphics
 			shape = OBJSHAPE_WIDE;
 		if (width < height)
 			shape = OBJSHAPE_TALL;
-		 */
-	}
+
+	}*/
 }

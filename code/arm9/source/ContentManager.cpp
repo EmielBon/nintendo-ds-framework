@@ -48,6 +48,7 @@ namespace Framework
 		TileSetFileHeader header;
 		fs.Read(&header);
 
+		sassert(header.TileWidth > 0 && header.TileHeight > 0, "Error: Tile size cannot be 0");
 		sassert(header.TileWidth % 8 == 0 && header.TileHeight % 8 == 0, "Error: Invalid tile size");
 
 		auto tileSet = New<TileSet>(header.TileWidth, header.TileHeight);
@@ -115,7 +116,7 @@ namespace Framework
 			if (type == "t") tileSet = ContentManager::Load<TileSet>(fileName);
 		}
 
-		auto tiledBackground = New<TiledBackground>(mapSize.Width, mapSize.Height, 8);
+		auto tiledBackground = New<TiledBackground>(mapSize.Width, mapSize.Height);
 
 		for(u32 i = 0; i < screenBlockEntries.size(); ++i)
 		{
@@ -130,7 +131,7 @@ namespace Framework
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	template<>
+	/*template<>
 	Ptr<SpriteSet> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		StreamReader reader(fs);
@@ -170,7 +171,7 @@ namespace Framework
 				int tileCount = size.Width * size.Height;
 				for (u32 i = 2; i < tokens.size(); ++i)
 				{
-					TiledImage subImage(size.Width, size.Height, 8);
+					TiledImage subImage(size.Width, size.Height);
 					for (int j = 0; j < tileCount; ++j)
 					{
 						u32 subImageBaseIdentifier = StringHelper::ParseInt(tokens[i]) * tileCount;
@@ -183,7 +184,7 @@ namespace Framework
 		}
 
 		return spriteSet;
-	}
+	}*/
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
