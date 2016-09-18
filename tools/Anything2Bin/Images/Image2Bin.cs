@@ -121,7 +121,7 @@ using System.Diagnostics;
             var tiles = bitmap.Tiled(tileWidth, tileHeight);
 
             FileStream stream = new FileStream(outputFile, FileMode.Create);
-            BinaryWriter output = new BinaryWriter(stream);
+            BinaryWriter output = new BinaryWriter(stream, Encoding.BigEndianUnicode);
             output.Write(tileWidth);
             output.Write(tileHeight);
 
@@ -132,7 +132,9 @@ using System.Diagnostics;
                 {
                     var pixel = tile.GetPixel(x, y);
                     var value = pixel.ToRGB16();
-                    output.Write(value);
+                    var bytes = BitConverter.GetBytes(value);
+                    output.Write(bytes[1]);
+                    output.Write(bytes[0]);
                 }
             }
 
@@ -194,4 +196,5 @@ using System.Diagnostics;
 
             return (ushort)((a << 15) | r | (g << 5) | (b << 10));
         }
+
     }

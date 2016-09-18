@@ -32,4 +32,16 @@ public class ImageTilingTests
         return true;
     }
 
+    [TestMethod()]
+    public void ColorConversionTest()
+    {
+        var red = Color.Red;
+        var green = Color.Green;
+        var blue = Color.Blue;
+
+        Assert.AreEqual(red.ToRGB16(),   0x801F, "Red not equal to 0x801F");
+        Assert.AreEqual(green.ToRGB16(), 0x81E0, "Green not equal to 0x81E0");
+        Assert.AreEqual(blue.ToRGB16(), 0xFC00, "Blue not equal to 0x801F");
+    }
+
 }
