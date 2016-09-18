@@ -6,11 +6,8 @@ using System.IO;
 using System.Threading;
 using System.Globalization;
 using Anything2Bin.Models;
-using Anything2Bin.Images;
 using System.Text.RegularExpressions;
 
-namespace Anything2Bin
-{
     class Program
     {
         static void Main(string[] args)
@@ -53,4 +50,3 @@ namespace Anything2Bin
             return s1;
         }
     }
-}
