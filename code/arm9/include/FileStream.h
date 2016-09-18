@@ -24,26 +24,11 @@ namespace FileSystem
 		 *  \param path The path to the file in the file system. */
 		void Open(const String &path);
 
+		///
+		size_t FileSize() const;
+
 		/** \brief Closes this stream */
 		void Close();
-
-		/** \brief Reads the file's header.
-		 *  \bug When this method is not called directly after opening the stream, it will just read the next couple 
-		 *       of bytes after the current file position and interpret those as the header. 
-		 *  \todo Let the File class help with the header problem. 
-		 *  \returns The header of the file as the template-specified type. */
-		template<typename H>
-		H ReadHeader();
-
-		/** \brief Reads a number of elements from the stream.
-		 *  \param elements The number of elements to read.
-		 *  \returns A list of the read elements.
-		 *
-		 *  Reading starts at the current file position. The type specification determines the type (and size) of the 
-		 *  elements. If reading goes beyond the end of the file, the list containing the elements up to the end of the
-		 *  file is returned. */
-		template<class T>
-		List<T> Read(int elements);
 
 		/** \brief Reads all remaining elements from the stream.
 		 *  \returns A list of the read elements.
@@ -53,6 +38,9 @@ namespace FileSystem
 		template<class T>
 		List<T> ReadAll();
 
+		template<class T>
+		List<T> Read(size_t numberOfElements);
+
 		/** \brief Reads raw bytes from the stream.
 		 *  \param buffer A pointer to the memory in which the read data can be stored.
 		 *  \param bytesPerElement The number of bytes that takes up 1 element.
@@ -61,7 +49,13 @@ namespace FileSystem
 
 		 *  Reading starts at the current file position. If reading goes beyond the end of the file, number of read 
 		 *  elements up to the end of the file is returned. */
-		int Read(void *buffer, u32 bytesPerElement, u32 nrOfElements);
+		size_t Read(void *buffer, size_t bytesPerElement, size_t nrOfElements);
+
+		template<class T>
+		size_t Read(T *output);
+
+		template<class T>
+		size_t Read(T *output, size_t numberOfElements);
 
 		/** \brief Prints all directories in the root.
 		 *  \param root A string to the root directory.
@@ -74,71 +68,56 @@ namespace FileSystem
 
 		bool open;
 		FILE* stream;
+		size_t fileSize;
 
 	public:
 		
-		bool EndOfFile;
 		String resourceName;
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline FileStream::FileStream(const String &resourceName) : stream(nullptr), EndOfFile(false), resourceName(resourceName)
+	inline FileStream::FileStream(const String &resourceName) : open(false), stream(nullptr), fileSize(-1), resourceName(resourceName)
 	{
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	template<typename H>
-	inline H FileStream::ReadHeader()
+	inline size_t FileStream::FileSize() const
 	{
-		H header;
-		Read(&header, 1, sizeof(H));
-		return header;
+		return fileSize;
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	template<class T> 
-	inline List<T> FileStream::Read(int elements)
+	template<class T>
+	List<T> FileStream::ReadAll()
 	{
-		List<T> binaryData;
-
-		for(int i = 0; i < elements; ++i)
-		{
-			T buffer;
-			int elementsRead = Read(&buffer, sizeof(T), 1);
-			if (elementsRead < 1)
-			{
-				EndOfFile = true;
-				break;
-			}
-			binaryData.push_back(buffer);
-		}
-
-		return binaryData;
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	template<class T> 
-	inline List<T> FileStream::ReadAll()
-	{
-		const int bufferSize = Math::Max(8U, sizeof(T));
-
-		List<T> binaryData;
-
-		T buffer[bufferSize];
-		int byterPerElement = sizeof(T);
-		int nrOfElements = bufferSize;
-
-		int elementsRead = Read(buffer, byterPerElement, nrOfElements);
-
-		while(elementsRead > 0)
-		{
-			for(int i = 0; i < elementsRead; ++i)
-				binaryData.push_back(buffer[i]);
-			elementsRead = Read(buffer, byterPerElement, nrOfElements);
-		}
-
-		EndOfFile = true;
+		size_t elementSize = sizeof(T);
+		size_t numberOfElements = fileSize / elementSize;
+		List<T> elements = Read<T>(numberOfElements);
+		sassert(elements.size() == numberOfElements, "Error: File not fully read");
 		Close();
-		return binaryData;
+		return elements;
+	}
+
+	template<class T>
+	List<T> FileStream::Read(size_t numberOfElements)
+	{
+		List<T> elements(numberOfElements);
+		size_t elementsRead = Read(elements.data(), sizeof(T), numberOfElements);
+		elements.resize(elementsRead);
+		return elements;
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	template<class T>
+	inline size_t FileStream::Read(T *output)
+	{
+		return Read(output, 1);
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	template<class T>
+	inline size_t FileStream::Read(T *output, size_t numberOfElements)
+	{
+		return Read(output, sizeof(T), numberOfElements);
 	}
 }

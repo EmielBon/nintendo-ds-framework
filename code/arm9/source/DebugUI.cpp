@@ -112,8 +112,9 @@ namespace Debug
 			
 		elapsedSeconds = (int)gameTime.TotalGameTime.TotalSeconds();
 		
-		TextLayer->Clear();
-		ButtonLayer->Clear();
+		// todo: replace this with something
+		//TextLayer->Clear();
+		//ButtonLayer->Clear();
 		
 		switch(mode)
 		{
@@ -131,7 +132,8 @@ namespace Debug
 	//-------------------------------------------------------------------------------------------------
 	void DebugUI::DrawVRAMView()
 	{
-		TextLayer->Clear();
+		// todo: replace this with something
+		//TextLayer->Clear();
 		PROFILE_METHOD(DUIVRA);
 		tr->DrawText(ToStr("FPS: " << fpsCounter.FPS), 1, 3, 0);
 		tr->DrawText("VRAM Usage", 1, 5, 0);
@@ -185,7 +187,8 @@ namespace Debug
 	//-------------------------------------------------------------------------------------------------
 	void DebugUI::DrawProfilingView()
 	{
-		TextLayer->Clear();
+		// todo: replace this with something
+		//TextLayer->Clear();
 		PROFILE_METHOD(DUIPro);
 		auto& results = ProfilingManager::ProfilingResults;
 

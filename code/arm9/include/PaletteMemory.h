@@ -25,26 +25,19 @@ namespace Graphics
 		PaletteMemory() = delete;
 
 		///
+		virtual ~PaletteMemory() = default;
+
+		///
 		PaletteMemory(bool isMain, u32 type);
 
 		/// Initialize this PaletteMemory
 		void Initialize(u32 parentType);
 
 		/// 
-		int AddColor(u16 color);
-
-		/// Add a Palette to the Nintendo DS's PaletteMemory
-		void AddPalette(Ptr<Palette> palette);
-
-		/// Add a Palette to the Nintendo DS's PaletteMemory, returns the start index of the 2D block in palette memory 
-		int AddDynamicPalette(const List<Ptr<Palette>> &palettes);
+		int AddColor(Color color);
 
 		///
-		void SetTransparentColor(u16 color);
-
-		/// Finds the index at which a sequence with the given width and height can be placed in 16x16 palette memory
-		/// Returns a number in the range [1, 255]. The column 1x16 contains the transparent colors for every 16x1 palette, so it is skipped
-		int FindFreeSequence2D(int width, int height = 1) const;
+		void SetTransparentColor(Color color);
 
 		///
 		bool IsFree(int i) const;
@@ -62,21 +55,21 @@ namespace Graphics
 		static Point PositionForIndex(int index);
 
 		///
-		bool HasColor(u16 color) const;
+		bool HasColor(Color color) const;
 
 		/// 
-		void RegisterPaletteIndexForColor(int paletteIndex, u16 color);
+		void RegisterPaletteIndexForColor(int paletteIndex, Color color);
 
 		/// 
-		int GetIndexForColor(u16 color) const;
+		int GetIndexForColor(Color color) const;
 
 		/// 
-		void SetColorForIndex(u16 color, int index);
+		void SetColorForIndex(Color color, int index);
 
 	protected:
 	
 		/// 
-		int SetColorToNextFreeIndex(u16 color);
+		int SetColorToNextFreeIndex(Color color);
 		
 		/// 
 		int FindNextFreeIndex();
@@ -85,17 +78,15 @@ namespace Graphics
 
 		u16* location;
 		Dictionary< u16, int > ColorToPaletteIndex;
-		int currentFreeIndex;
+		int currentIndex;
 		bool free[256];
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	finline int PaletteMemory::AddColor(u16 color)
+	finline int PaletteMemory::AddColor(Color color)
 	{
 		int index = GetIndexForColor(color);
-		if (index != -1)
-			return index;
-		return SetColorToNextFreeIndex(color);
+		return index != -1 ? index : SetColorToNextFreeIndex(color);
 	}
 	
 	//-------------------------------------------------------------------------------------------------
@@ -136,25 +127,25 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline void PaletteMemory::SetTransparentColor(u16 color)
+	inline void PaletteMemory::SetTransparentColor(Color color)
 	{
 		location[0] = color;
 	}
 	
 	//-------------------------------------------------------------------------------------------------
-	inline bool PaletteMemory::HasColor(u16 color) const
+	inline bool PaletteMemory::HasColor(Color color) const
 	{
 		return (GetIndexForColor(color) != -1);
 	}
 	
 	//-------------------------------------------------------------------------------------------------
-	inline void PaletteMemory::RegisterPaletteIndexForColor(int paletteIndex, u16 color)
+	inline void PaletteMemory::RegisterPaletteIndexForColor(int paletteIndex, Color color)
 	{
 		ColorToPaletteIndex[color] = paletteIndex;
 	}
 	
 	//-------------------------------------------------------------------------------------------------
-	inline int PaletteMemory::GetIndexForColor(u16 color) const
+	inline int PaletteMemory::GetIndexForColor(Color color) const
 	{
 		auto it = ColorToPaletteIndex.find(color);
 		return (it == ColorToPaletteIndex.end()) ? -1 : it->second;

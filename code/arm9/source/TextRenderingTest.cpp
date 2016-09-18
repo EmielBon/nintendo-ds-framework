@@ -9,7 +9,6 @@
 #include "PaletteMemory.h"
 #include "Color.h"
 #include "Logging.h"
-#include "TileSet16.h"
 #include "Screen.h"
 
 namespace Test

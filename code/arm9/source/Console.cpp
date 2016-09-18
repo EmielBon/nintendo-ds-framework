@@ -55,7 +55,8 @@ namespace System
 			return;
 
 		startEntry = newStartEntry;
-		Background->Clear();
+		// todo: replace this with something
+		//Background->Clear();
 
 		// Todo: clean up
 		int charWidth = Font->CharSize().Width;

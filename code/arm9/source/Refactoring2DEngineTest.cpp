@@ -1,14 +1,12 @@
 #include <Refactoring2DEngineTest.h>
 #include "GraphicsDevice.h"
-#include "Background.h"
-#include "ContentManager.h"
-#include "TileSet256.h"
-#include "Palette.h"
-#include "Map.h"
 #include "BackgroundMemory.h"
-#include "Sprite.h"
 #include "SpriteMemory.h"
-#include "PaletteMemory.h"
+#include "ContentManager.h"
+#include "Background.h"
+#include "TileSet.h"
+#include "Map.h"
+#include "Sprite.h"
 
 using namespace Framework;
 using namespace System;
@@ -16,29 +14,29 @@ using namespace Graphics;
 
 void Refactoring2DEngineTest::Initialize()
 {
+	super::Initialize();
+
 	imageIndex = 0.0f;
 
-	GraphicsDevice::Sub.Backgrounds[0]->ColorMode = ColorMode16;
-	GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
+	//GraphicsDevice::Sub.Backgrounds[0]->ColorMode = ColorMode16;
+	//GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
 
-	console = new Console(GraphicsDevice::Sub.Backgrounds[0]);
-	AddComponent(console);
+	//console = new Console(GraphicsDevice::Sub.Backgrounds[0]);
+	//AddComponent(console);
 
-	for (int i = 0; i < 64; ++i) {
-		console->WriteLine(ToStr("Hoi " << i));
-	}
+//	for (int i = 0; i < 64; ++i) {
+//		console->WriteLine(ToStr("Hoi " << i));
+//	}
+//
+//	console->WriteLine("");
 
-	console->WriteLine("");
-	super::Initialize();
 }
 
 void Refactoring2DEngineTest::LoadContent()
 {
 	super::LoadContent();
-	TileSet256.FromBytes(byte[] bytes)
-	auto tileSet = Content.Load<TileSet256>("background");
-	// Set the palette to non-transparent. Since every tile in a tileset retains a pointer to their common palette, it only has to be changed for a single tile.
-	tileSet->Tiles[0].Palettes[0]->Transparent = false;
+
+	auto tileSet = Content.Load<TileSet>("background");
 
 	auto &map = GraphicsDevice.BackgroundMemory->Maps[0];
 

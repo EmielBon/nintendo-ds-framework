@@ -3,7 +3,6 @@
 #include "Logging.h"
 #include "MathFunctions.h"
 #include "Sprite.h"
-#include "TileSet256.h"
 #include "FixedHelper.h"
 #include "SpriteMemory.h"
 #include <nds/dma.h>

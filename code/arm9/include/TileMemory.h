@@ -24,46 +24,44 @@ namespace Graphics
 		/// 
 		TileMemory() = delete;
 
+		virtual ~TileMemory() = default;
+
 		/// Add a single tile to VRAM, returns the VRAM index it was copied to
-		// todo: remove dynamicPaletteStartIndex argument
-		u32 AddTile(const Tile &tile, int dynamicPaletteStartIndex = -1);
+		uint32_t AddTile(const Tile &tile);
 
 		/// todo: rename
-		Ptr< List<byte> > OffsetPixelsForTile(const Tile &tile);
-
-		/// todo: remove
-		Ptr< List<byte> > OffsetPixelsForTile(const Tile &tile, int offset);
+		Tile PalettedTileFromTile(const Tile &tile);
 
 		///
-		void RegisterVRAMIndexForTile(u32 identifier, u32 VRAMIndex);
+		void RegisterVRAMIndexForTile(uint32_t identifier, u32 VRAMIndex);
 
 		///
-		bool TileInVRAM(u32 identifier) const;
+		bool TileInVRAM(uint32_t identifier) const;
 
 		///
-		int VRAMIndexForTile(u32 identifier) const;
+		int VRAMIndexForTile(uint32_t identifier) const;
 
 	public:
 
 		Ptr<Graphics::PaletteMemory> PaletteMemory;
 		int nextAvailableIndex;
-		Dictionary<u32, u32> IdentifierToVRAMIndex;
+		Dictionary<uint32_t, uint32_t> IdentifierToVRAMIndex;
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	finline void TileMemory::RegisterVRAMIndexForTile( u32 identifier, u32 VRAMIndex )
+	finline void TileMemory::RegisterVRAMIndexForTile( uint32_t identifier, uint32_t VRAMIndex )
 	{
 		IdentifierToVRAMIndex[identifier] = VRAMIndex;
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	finline bool TileMemory::TileInVRAM( u32 identifier ) const
+	finline bool TileMemory::TileInVRAM( uint32_t identifier ) const
 	{
 		return VRAMIndexForTile(identifier) != -1;
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	finline int TileMemory::VRAMIndexForTile( u32 identifier ) const
+	finline int TileMemory::VRAMIndexForTile( uint32_t identifier ) const
 	{
 		auto it = IdentifierToVRAMIndex.find(identifier);
 		return (it == IdentifierToVRAMIndex.end()) ? -1 : it->second;

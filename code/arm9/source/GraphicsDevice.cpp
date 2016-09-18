@@ -58,29 +58,9 @@ namespace Graphics
 		SpriteMemory->Initialize();
 		TextureMemory->Initialize();
 
-		for (u32 i = 0; i < Backgrounds.size(); ++i)
-			Backgrounds[i]->Clear();
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	void GraphicsDevice::SetMode(u32 modeIndex)
-	{
-		// Main engine has 6 modes, sub engine 5 modes, any number higher is invalid
-		sassert(modeIndex >= 0 && modeIndex <= (IsMain() ? 6 : 5), "Error: invalid mode index specified");
-		mode = modeIndex;
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	void GraphicsDevice::Enable3D(bool enable)
-	{
-		sassert(IsMain(), "Error: The sub engine does not support 3D");
-		enable3D = enable;
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	void GraphicsDevice::EnableSprites(bool enable)
-	{
-		enableSprites = enable;
+		// todo: replace this with something
+		//for (u32 i = 0; i < Backgrounds.size(); ++i)
+		//	Backgrounds[i]->Clear();
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -142,21 +122,16 @@ namespace Graphics
 		auto &bgMem = background.BackgroundMemory();
 		auto &map   = *bgMem.Maps[background.GetMapIndex()];
 
+		sassert(tile, "Error: Tile cannot be nil");
 		sassert(IMPLIES(tile->BitsPerPixel() == 4, background.ColorMode == ColorMode16),  "Error: Setting tile to background with incompatible color mode");
 		sassert(IMPLIES(tile->BitsPerPixel() == 8, background.ColorMode == ColorMode256), "Error: Setting tile to background with incompatible color mode");
+		// todo: implement 16bpp tiles and update this check accordingly
+		sassert(tile->BitsPerPixel() != 16, "Error: 16bpp tiles not yet implemented!");
 
-		if (tile)
-		{
-			// todo: dynamic palette parameter disabled here
-			u32 tileIndex = bgMem.AddTile(*tile, 0);
-			auto screenBlockEntry = params;
-			screenBlockEntry.SetTileIndex(tileIndex);
-			map.SetTile(i, j, screenBlockEntry);
-		}
-		else
-		{
-			map.SetTile(i, j, map.ClearTile);
-		}
+		uint32_t tileIndex = bgMem.AddTile(*tile);
+		auto screenBlockEntry = params;
+		screenBlockEntry.SetTileIndex(tileIndex);
+		map.SetTile(i, j, screenBlockEntry);
 	}
 
 	//-------------------------------------------------------------------------------------------------

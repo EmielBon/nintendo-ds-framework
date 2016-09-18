@@ -54,7 +54,6 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	finline ScreenBlockEntry::ScreenBlockEntry(u16 tileIndex, bool flippedHorizontal, bool flippedVertical, u16 paletteIndex) : value(0)
 	{
-		ASSERT(tileIndex >= 0, "Negative tile index");
 		ASSERT(paletteIndex >= 0 && paletteIndex < 16, "Palette index out of bounds");
 
 		// todo: compose in one step
@@ -96,7 +95,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	inline int ScreenBlockEntry::TileIndex()
 	{
-		return (value & 0x3FF);
+		return value & 0x3FF;
 	}
 
 	//-------------------------------------------------------------------------------------------------

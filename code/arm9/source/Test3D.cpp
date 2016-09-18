@@ -8,9 +8,9 @@
 #include "VideoRam.h"
 
 // 2D graphics
-#include "TileSet256.h"
 #include "Palette.h"
 #include "Background.h"
+#include "TileSet.h"
 #include "Map.h"
 #include "BackgroundMemory.h"
 
@@ -97,9 +97,7 @@ namespace Test
 		scene->Camera = New<GameCamera>(mario);
 		
 		// Create the background
-		auto tileSet = Content.Load<TileSet256>("background");
-		// Set the palette to non-transparent. Since every tile in a tileset retains a pointer to their common palette, it only has to be changed for a single tile.
-		tileSet->Tiles[0].Palettes[0]->Transparent = false;
+		auto tileSet = Content.Load<TileSet>("background");
 		
 		auto &map = GraphicsDevice.BackgroundMemory->Maps[0];
 		

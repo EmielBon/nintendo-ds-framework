@@ -7,8 +7,7 @@
 
 // Stuff you can load
 #include "TiledBackground.h"
-#include "TileSet16.h"
-#include "TileSet256.h"
+#include "TileSet.h"
 #include "Palette.h"
 #include "CollisionMap.h"
 #include "Path.h"
@@ -36,53 +35,32 @@ namespace Framework
 	using namespace Framework2D;
 	using namespace Framework3D;
 
-	// Todo: code duplications in TileSet16 and TileSet256
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<TileSet16> ContentManager::LoadResourceFromStream(FileStream &fs)
+	Ptr<TileSet> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		struct TileSetFileHeader
 		{
-			byte Width;
-			byte Height;
-			byte TileCount;
+			int TileWidth;
+			int TileHeight;
 		};
 
-		auto header = fs.ReadHeader<TileSetFileHeader>();
-		auto tiles = New<TileSet16>();
-		tiles->tileSize.Width  = header.Width;
-		tiles->tileSize.Height = header.Height;
-		tiles->AddTiles(fs.ReadAll<Tile4bpp>());
+		TileSetFileHeader header;
+		fs.Read(&header);
 
-		sassert(tiles->tileSize.Width % 8 == 0 || tiles->tileSize.Height % 8 == 0, "Error: Invalid tile size");
+		sassert(header.TileWidth % 8 == 0 && header.TileHeight % 8 == 0, "Error: Invalid tile size");
 
-		return tiles;
-	}
+		auto tileSet = New<TileSet>(header.TileWidth, header.TileHeight);
 
-	//-------------------------------------------------------------------------------------------------
-	template<>
-	Ptr<TileSet256> ContentManager::LoadResourceFromStream(FileStream &fs)
-	{
-		struct TileSetFileHeader
+		Tile16bpp rawTile;
+		size_t tilesRead = fs.Read(&rawTile);
+
+		while (tilesRead > 0)
 		{
-			byte Width;
-			byte Height;
-			byte TileCount;
-		};
-
-		auto header = fs.ReadHeader<TileSetFileHeader>();
-		
-		auto tileSet = New<TileSet256>();
-		tileSet->AddTiles(fs.ReadAll<Tile8bpp>());
-		tileSet->tileSize.Width  = header.Width;
-		tileSet->tileSize.Height = header.Height;
-			
-		auto palette = Load<Palette>(fs.resourceName + "_pal");
-		
-		for (auto &tile : tileSet->Tiles)
-			tile.AddPalette(palette.get());
- 
-		sassert(tileSet->tileSize.Width % 8 == 0 || tileSet->tileSize.Height % 8 == 0, "Error: Invalid tile size");
+			auto tile = Tile(rawTile);
+			tileSet->AddTile(tile);
+			tilesRead = fs.Read(&rawTile);
+		}
 
 		return tileSet;
 	}
@@ -91,7 +69,7 @@ namespace Framework
 	template<>
 	Ptr<Font> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
-		return static_pointer_cast<Font>( LoadResourceFromStream<TileSet16>(fs) );
+		return static_pointer_cast<Font>( LoadResourceFromStream<TileSet>(fs) );
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -104,7 +82,7 @@ namespace Framework
 		Size                   mapSize;
 		List<ScreenBlockEntry> screenBlockEntries;
 		Ptr<CollisionMap>      collisionMap;
-		Ptr<TileSet256>        tileSet;
+		Ptr<TileSet>           tileSet;
 		Ptr<Palette>           palette;
 
 		for(auto &line : lines)
@@ -134,7 +112,7 @@ namespace Framework
 				screenBlockEntries = dataFileStream.ReadAll<ScreenBlockEntry>();
 			}
 			// \todo Support for loading more than one tile set per map
-			if (type == "t") tileSet      = ContentManager::Load<TileSet256>(fileName);
+			if (type == "t") tileSet = ContentManager::Load<TileSet>(fileName);
 		}
 
 		auto tiledBackground = New<TiledBackground>(mapSize.Width, mapSize.Height, 8);
@@ -158,34 +136,35 @@ namespace Framework
 		StreamReader reader(fs);
 		auto lines = reader.ReadToEnd();
 
-		Size            size;
-		Ptr<TileSet256> tileSet;
+		//sassert(false, "%s\n%s\n%s\n%s\n%s\n%s\n%s", lines[0].c_str(), lines[1].c_str(), lines[2].c_str(), lines[3].c_str(), lines[4].c_str(), lines[5].c_str(), lines[6].c_str());
+
+		Size         size;
+		Ptr<TileSet> tileSet;
 		auto spriteSet = New<SpriteSet>();
 
 		for (u32 i = 0; i < lines.size(); ++i)
 		{
 			auto tokens = StringHelper::Split(lines[i], ' ');
 
-			if (tokens[0] == "")
+			if (tokens[0] == "") {
 				continue;
+			}
 
 			String type = tokens[0];
 			String fileName = tokens[1];
 
-			if (fileName == "none" || fileName == "")
+			if (fileName == "none" || fileName == "") {
 				continue;
+			}
 
-			if (type == "s")
-			{
+			if (type == "s") {
 				auto sizeStr = StringHelper::Split(tokens[1], 'x');
 				int width = StringHelper::ParseInt(sizeStr[0]);
 				int height = StringHelper::ParseInt(sizeStr[1]);
 				size = Size(width / 8, height / 8);
-			}
-			// \todo Support for loading more than one tile set per map
-			if (type == "t") tileSet = ContentManager::Load<TileSet256>(fileName);
-			if (type == "i")
-			{
+			} else if (type == "t") {
+				tileSet = ContentManager::Load<TileSet>(fileName);
+			} else if (type == "i") {
 				String name = tokens[1];
 				List<TiledImage> subImages;
 				int tileCount = size.Width * size.Height;
@@ -208,25 +187,16 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<Palette> ContentManager::LoadResourceFromStream(FileStream &fs)
-	{
-		auto palette = New<Palette>();
-		palette->Colors = fs.ReadAll<u16>();
-		return palette;
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	template<>
 	Ptr<Path> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		auto path = New<Path>();
-		auto data = fs.ReadAll<u16>();
-		int size = data.size();
+		auto wayPoints = fs.ReadAll<uint16_t>();
 
-		ASSERT(size % 2 == 0, "Error: Incorrect path file");
+		ASSERT(wayPoints.size() % 2 == 0, "Error: Incorrect path file");
 		
-		for(int i = 0; i < size; i+=2)
-			path->Add(data[i], data[i+1]); // Todo: check for valid coordinates
+		for(int i = 0; i < (int)wayPoints.size(); i+=2) {
+			path->Add(wayPoints[i], wayPoints[i+1]); // Todo: check for valid coordinates
+		}
 
 		return path;
 	}
@@ -271,30 +241,25 @@ namespace Framework
 			int VertexCount;
 		};
 
-		auto header = fs.ReadHeader<MeshFileHeader>();
-		auto mesh = New<ModelMesh>();
+		MeshFileHeader header;
+		fs.Read(&header);
 		
 		ModelMeshPart meshPart;
-		
-		auto vertices = fs.Read<VertexF>(header.VertexCount);
-		for (auto &vertex : vertices)
-		{
-			meshPart.Vertices.push_back((Vertex)vertex);
-		}
-		//meshPart.Vertices = *(fs.Read<VertexF>(header.VertexCount));
-		meshPart.Indices = fs.ReadAll<u16>();
 
-		for(auto &vertex : meshPart.Vertices)
+		for (int i = 0; i < header.VertexCount; ++i)
 		{
-			Vector3 &normal = vertex.Normal;
-			normal = normal.Normalize(); 
+			VertexF vertexF;
+			fs.Read(&vertexF);
+			auto vertex = (Vertex) vertexF;
+			meshPart.Vertices.push_back(vertex);
 		}
 
+		meshPart.Indices = fs.ReadAll<uint16_t>();
 		meshPart.VertexBuffer->SetData(meshPart.Vertices);
 		meshPart.IndexBuffer->SetData(meshPart.Indices);
 
+		auto mesh = New<ModelMesh>();
 		mesh->AddPart(meshPart);
-
 		return mesh;
 	}
 
@@ -308,10 +273,17 @@ namespace Framework
 			int Height;
 		};
 
-		auto header = fs.ReadHeader<TextureFileHeader>();
-		auto texture = New<Texture>(header.Width, header.Height);
-		texture->Pixels = fs.ReadAll<u16>();
-		
+		TextureFileHeader header;
+		fs.Read(&header);
+
+		int width = header.Width;
+		int height = header.Height;
+
+		auto texture = New<Texture>(width, height);
+		texture->Pixels = fs.ReadAll<uint16_t>();
+
+		sassert((int)texture->Pixels.size() == width * height, "File size does not match texture dimensions");
+
 		return texture;
 	}
 

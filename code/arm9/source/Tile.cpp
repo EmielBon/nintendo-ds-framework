@@ -4,49 +4,42 @@
 
 namespace Graphics
 {
-	u32 Tile::nextFreeIdentifier = 1;
-	
 	//-------------------------------------------------------------------------------------------------
-	int Tile::GetPixel(int index) const
+	uint16_t Tile::GetPixel(int index) const
 	{
 		sassert(index >= 0 && index < 64, "Pixel index out of range");
-		sassert(Pixels, "Getter : Pixel data was released, cannot access");
 		
-		auto &pixels = *Pixels;
-		
-		if (BitsPerPixel() == 4)
-			return (index % 2 == 0) ? pixels[index/2] >> 4 : pixels[index/2] & 0xF;
-		return pixels[index];
+		int bpp = BitsPerPixel();
+
+		if (bpp == 4) {
+			return (index % 2 == 0) ? Pixels[index/2] >> 4 : Pixels[index/2] & 0xF;
+		} else if (bpp == 8) {
+			return Pixels[index];
+		} else if (bpp == 16) {
+			auto colors = (uint16_t *)Pixels.data();
+			return colors[index];
+		}
+
+		sassert(false, "Error: Unsupported number of bits per pixel");
+		return 0;
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void Tile::SetPixel(int index, int value)
+	void Tile::SetPixel(int index, uint16_t value)
 	{
 		sassert(index >= 0 && index < 64, "Pixel index out of range");
-		sassert(Pixels, "Setter: Pixel data was released, cannot access");
 		
-		auto &pixels = *Pixels;
-
 		if (BitsPerPixel() == 4)
 		{
-			byte& pixel  = pixels[index/2];
+			uint16_t rawColor = (uint16_t) value;
+			uint8_t& pixel  = Pixels[index/2];
 			int   mask   = (index % 2 == 0) ? 0xF : 0xF0; 
-			int   newpix = (index % 2 == 0) ? value << 4 : value;
+			int   newpix = (index % 2 == 0) ? rawColor << 4 : rawColor;
 			pixel = (pixel & mask) | newpix;
 		}
 		else
 		{
-			pixels[index] = value;
+			Pixels[index] = value;
 		}
-	}
-	
-	//-------------------------------------------------------------------------------------------------
-	void Tile::AddPalette(Palette *palette)
-	{
-		sassert(!palette->IsEmpty(), "Cannot add an empty palette to a tile");
-		Palettes.push_back(palette);
-		// Bpp == 8 implies having 1 palette after adding
-		sassert(!(BitsPerPixel() == 8) || Palettes.size() == 1, "Cannot add more than 1 palette to an 8bpp tile");
-		sassert(Palettes.size() <= 16, "Cannot add more than 16 palettes to a tile");
 	}
 }

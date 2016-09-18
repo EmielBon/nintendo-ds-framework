@@ -55,8 +55,10 @@ namespace Graphics
 	//------------------------------------------------------------------------------------------------- 
 	void SpriteMemory::AddSprite(const Sprite &sprite)
 	{
-		for (auto subImage : sprite.SubImages)
-			for (auto tile : subImage.Tiles)
+		for (auto subImage : sprite.SubImages) {
+			for (auto tile : subImage.Tiles) {
 				AddTile(*tile);
+			}
+		}
 	}
 }

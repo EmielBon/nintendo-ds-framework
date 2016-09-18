@@ -10,14 +10,14 @@ namespace Graphics
 
 		Texture();
 
-		Texture(int width, int height);
+		Texture(int width, int height, const uint16_t *data = nullptr);
 
 		int GetByteSize() const;
 
 	public:
 
 		int Width, Height;
-		List<u16> Pixels;
+		List<uint16_t> Pixels;
 		Ptr<Graphics::Palette> Palette;
 		
 	private:
@@ -32,9 +32,12 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline Texture::Texture(int width, int height) : Width(width), Height(height), parameters(0)
+	inline Texture::Texture(int width, int height, const uint16_t *data /* = nullptr */) : Width(width), Height(height), parameters(0)
 	{
-		
+		if (data) {
+			size_t size = width * height;
+			Pixels.assign(data, data + size);
+		}
 	}
 
 	//-------------------------------------------------------------------------------------------------
