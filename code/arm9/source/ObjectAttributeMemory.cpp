@@ -21,7 +21,12 @@ namespace Graphics
 		oam = new OAMTable();
 		location = graphicsDevice->IsMain() ? OAM : OAM_SUB;
 
-		Reset();
+		memset(oam, 0, sizeof(OAMTable));
+
+		for (int i = 0; i < SPRITE_COUNT; ++i) {
+			oam->oamBuffer[i].isHidden = true;
+		}
+
 		Update();
 	}
 
@@ -31,7 +36,7 @@ namespace Graphics
 		sassert(graphicsDevice && oam && location , "Error: OAM not initialized");
 
 		DC_FlushAll();
-		dmaCopy( oam->oamBuffer, location, SPRITE_MAX * sizeof(SpriteEntry) );
+		dmaCopy( oam->oamBuffer, location, SPRITE_COUNT * sizeof(SpriteEntry) );
 		Reset();
 	}
 
@@ -40,6 +45,7 @@ namespace Graphics
 	{
 		auto &entry = oam->oamBuffer[spriteCount];
 		entry.gfxIndex = graphicsDevice->SpriteMemory->VRAMIndexForTile(sprite.Identifier);
+
 		entry.x = (int)Math::Round(x);
 		entry.y = (int)Math::Round(y);
 		entry.isHidden = false;
@@ -78,7 +84,6 @@ namespace Graphics
 	void ObjectAttributeMemory::Reset()
 	{
 		sassert(oam, "Error: OAM not initialized");
-
 		/*
 		 * For all 128 sprites on the DS, disable and clear any attributes they 
 		 * might have. This prevents any garbage from being displayed and gives 
@@ -95,7 +100,7 @@ namespace Graphics
 		 * matrix again. We initialize it to the identity matrix, as we did
 		 * with backgrounds
 		 */
-		for (u32 i = 0; i < SPRITE_MAX_AFFINE; ++i)
+		for (u32 i = 0; i < MATRIX_COUNT; ++i)
 		{
 			oam->matrixBuffer[i].hdx = FixedHelper::Tof16( fx8(1) );
 			oam->matrixBuffer[i].hdy = FixedHelper::Tof16( fx8(0) );

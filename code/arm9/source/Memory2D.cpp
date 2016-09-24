@@ -45,8 +45,9 @@ namespace Graphics
 		{
 			MemorySlot& slot = *Slots[i];
 
-			if ( !slot.IsFree() ) continue;
-
+			if (!slot.IsFree()) {
+				continue;
+			}
 			for(auto bank = banks.begin(); bank != banks.end(); ++bank)
 			{
 				if ( bank->IsFree() && slot.IsCompatible(*bank) )
@@ -57,7 +58,7 @@ namespace Graphics
 			}
 		}
 
-		ASSERT(false, "Error: Memory expansion failed!");
+		sassert(false, "Error: Memory expansion failed!");
 	}
 
 	//-------------------------------------------------------------------------------------------------

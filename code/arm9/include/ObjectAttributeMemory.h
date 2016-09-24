@@ -66,9 +66,6 @@ namespace Graphics
 		u16* location;
 
 		int spriteCount;
-
-		const static u32 SPRITE_MAX = 128;
-		const static u32 SPRITE_MAX_AFFINE = 32;
 	};
 
 	//-------------------------------------------------------------------------------------------------

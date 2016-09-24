@@ -70,14 +70,14 @@ namespace Graphics
 
 	//-------------------------------------------------------------------------------------------------
 	inline VideoRamBank::VideoRamBank() 
-		: name(Bank0), size(0), controlRegister(NULL), location(NULL), oldVRAMCRMappingValue(0)
+		: name(Bank0), size(0), controlRegister(nullptr), location(nullptr), oldVRAMCRMappingValue(0)
 	{
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline bool VideoRamBank::IsFree() const
 	{
-		return owner == NULL;
+		return owner == nullptr;
 	}
 
 	//-------------------------------------------------------------------------------------------------

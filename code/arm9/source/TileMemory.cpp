@@ -2,6 +2,8 @@
 #include "PaletteMemory.h"
 #include "Tile.h"
 #include "Debug.h"
+#include "GraphicsDevice.h"
+#include "SpriteMemory.h"
 
 namespace Graphics
 {
@@ -21,7 +23,9 @@ namespace Graphics
 		
 		// Check if tile is already in memory. If so, return the current VRAM index
 		int vramIndex = VRAMIndexForTile(tile.Identifier);
-		if (vramIndex != -1) {
+		bool alreadyInMemory = vramIndex != -1;
+		
+		if (alreadyInMemory) {
 			return vramIndex;
 		}
 
@@ -32,6 +36,7 @@ namespace Graphics
 		// Copy the tile to the next available VRAM location
 		// todo: wont this overwrite stuff if 4bpp tiles are added second?
 		uint16_t* location = TileBaseAddress() + vramIndex * palettedTile.ByteSize() / sizeof(uint16_t);
+		sassert((int)location < (int)TileBaseAddress() + 128 * 1024, "Location outside of memory: %i", (int)location);
 		bool success = Add(palettedTile.Pixels, location);
 		sassert(success, "Failed to copy tiles to VRAM");
 		// Register the identifier to the VRAM location

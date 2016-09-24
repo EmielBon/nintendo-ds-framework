@@ -693,6 +693,9 @@
     <ClCompile Include="source\ModelMesh.cpp">
       <Filter>Graphics\3D</Filter>
     </ClCompile>
+    <ClCompile Include="source\Refactoring2DEngineTest.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Graphics">

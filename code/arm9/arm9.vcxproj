@@ -50,6 +50,7 @@
     <ClCompile Include="source\ProfilingResult.cpp" />
     <ClCompile Include="source\ProfilingTest.cpp" />
     <ClCompile Include="source\Rabbit.cpp" />
+    <ClCompile Include="source\Refactoring2DEngineTest.cpp" />
     <ClCompile Include="source\Room1.cpp" />
     <ClCompile Include="source\Scene.cpp" />
     <ClCompile Include="source\SceneObject.cpp" />
@@ -273,7 +274,9 @@
     <NMakeOutput>aRPiGi.arm9.elf</NMakeOutput>
     <NMakePreprocessorDefinitions>ARM9;__STDC__;DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <NMakeIncludeSearchPath>$(SolutionDir)arm9\include;$(DEVKITPRO_ROOT)\libnds\include;$(DEVKITPRO_ROOT)\devkitARM\arm-eabi\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
-    <IncludePath>$(DEVKITPRO_ROOT)\devkitARM\arm-none-eabi\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(DEVKITPRO_ROOT)\libnds\include;$(DEVKITPRO_ROOT)\devkitARM\arm-none-eabi\include;$(IncludePath)</IncludePath>
+    <NMakeBuildCommandLine>make -j4</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>make clean</NMakeCleanCommandLine>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeOutput>aRPiGi.arm9.elf</NMakeOutput>
