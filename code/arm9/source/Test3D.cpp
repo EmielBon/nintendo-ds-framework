@@ -52,7 +52,6 @@ namespace Test
 	//-------------------------------------------------------------------------------------------------
 	void Test3D::Initialize()
 	{
-		GraphicsDevice::Main.TextureMemory->AutomaticExpansion = false;
 		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankA, 0);
 		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankB, 1);
 		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankC, 2);

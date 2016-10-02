@@ -27,12 +27,6 @@ namespace Graphics
 	protected:
 
 		///
-		bool Reserve(int size);
-
-		/// Expand the memory by mapping a compatible VRAM bank to the next empty slot, if possible. Returns whether successful
-		void Expand();
-
-		///
 		bool Add(const void *source, void *location, int size);
 
 		// Todo: These Add and Replace functions do not really work as expected!
@@ -95,13 +89,10 @@ namespace Graphics
 
 		List<Ptr<MemorySlot>> Slots;
 
-	public:
-
-		bool AutomaticExpansion;
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline Memory2D::Memory2D(bool isMain, u32 type) : type(type), totalSize(0), available(0), AutomaticExpansion(true)
+	inline Memory2D::Memory2D(bool isMain, u32 type) : type(type), totalSize(0), available(0)
 	{
 		engineType = (isMain) ? EngineType::MAIN : EngineType::SUB;
 	}

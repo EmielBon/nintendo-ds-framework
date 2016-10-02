@@ -19,49 +19,6 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	bool Memory2D::Reserve(int size)
-	{
-		if (size <= 0)
-			return true;
-
-		// Add additional memory if needed
-		if ( available < size && totalSize < Maximum() )
-			Expand();
-
-		if ( available >= size )
-		{
-			available -= size;
-			return true;
-		}
-		return false;
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	void Memory2D::Expand()
-	{
-		auto& banks = VideoRam::Banks;
-
-		for(u32 i = 0; i < Slots.size(); ++i)
-		{
-			MemorySlot& slot = *Slots[i];
-
-			if (!slot.IsFree()) {
-				continue;
-			}
-			for(auto bank = banks.begin(); bank != banks.end(); ++bank)
-			{
-				if ( bank->IsFree() && slot.IsCompatible(*bank) )
-				{
-					AssignBankToSlot(bank->GetName(), i);
-					return;
-				}
-			}
-		}
-
-		sassert(false, "Error: Memory expansion failed!");
-	}
-
-	//-------------------------------------------------------------------------------------------------
 	bool Memory2D::Add(const void *source, void *location, int size)
 	{
 		ASSERT(location != NULL, "Error: Copy data to NULL");
@@ -69,45 +26,11 @@ namespace Graphics
 		if (size <= 0)
 			return true;
 		
-		// Add additional memory if needed
-		if ( available < size && totalSize < Maximum() )
-		{
-			if (AutomaticExpansion) 
-				Expand();
-			else
-				ASSERT(false, "Error: No more memory available");
-		}
-		
-		ASSERT(available >= size, "Error: Memory expansion failed");
+		ASSERT(available >= size, "Error: Memory full");
 
 		Copy(source, location, size);
 		available -= size;
 		return true;
-	}
-
-	//-------------------------------------------------------------------------------------------------
-	bool Memory2D::Replace(const void *source, void *location, int size)
-	{
-		if (location == NULL)
-		{
-			LOG_WARNING(": attempt to move data to NULL");
-			return false;
-		}
-
-		// Todo: Assert size not < 0
-		if (size <= 0)
-			return true;
-
-		// Add additional memory if needed
-		if ( totalSize < size && totalSize < Maximum() )
-			Reserve(size);
-
-		if ( totalSize >= size )
-		{
-			Copy(source, location, size);
-			return true;
-		}
-		return false;
 	}
 
 	//-------------------------------------------------------------------------------------------------

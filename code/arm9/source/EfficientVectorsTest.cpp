@@ -59,7 +59,6 @@ namespace Test
 	void EVTest::Initialize()
 	{
 		//ASSERT2(false, fx12((int)(fx12(15.253f))).ToFloat());
-		GraphicsDevice::Main.TextureMemory->AutomaticExpansion = false;
 		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankA, 0);
 		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankB, 1);
 		GraphicsDevice::Main.TextureMemory->AssignBankToSlot(BankC, 2);

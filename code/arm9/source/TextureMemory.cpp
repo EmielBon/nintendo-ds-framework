@@ -96,15 +96,14 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	void TextureMemory::CopyTextureToVRAM(Ptr<Texture> texture)
 	{
-		Reserve(texture->GetByteSize());
-		
 		auto mappedBanks = GetMappedBanks();
 
 		// LCD mapping means the CPU can directly access the VRAM. 
 		for(u32 i = 0; i < mappedBanks.size(); ++i)
 			mappedBanks[i]->AssignToLCD();
 		
-		Replace(texture->Pixels, nextAvailableAddress);
+		// Changed from replace during refactoring (02-10-2016)
+		Add(texture->Pixels, nextAvailableAddress);
 		
 		for(u32 i = 0; i < mappedBanks.size(); ++i)
 			mappedBanks[i]->Restore();

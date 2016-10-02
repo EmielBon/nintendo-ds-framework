@@ -21,9 +21,10 @@ void Refactoring2DEngineTest::Initialize()
 
 	imageIndex = 0.0f;
 
+	GraphicsDevice::Main.SpriteMemory->AssignBankToSlot(BankA, 0);
+	GraphicsDevice::Main.BackgroundMemory->AssignBankToSlot(BankB, 0);
+
 	GraphicsDevice::Main.SpriteMemory->PaletteMemory->AddColor(Color::Green);
-	GraphicsDevice::Main.BackgroundMemory->AutomaticExpansion = false;
-	GraphicsDevice::Main.SpriteMemory->AutomaticExpansion = false;
 
 	//GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
 
@@ -42,18 +43,8 @@ void Refactoring2DEngineTest::LoadContent()
 {
 	super::LoadContent();
 	
-	//GraphicsDevice::Main.BackgroundMemory->AssignBankToSlot(BankD, 0);
-
 	auto tileSet = Content.Load<TileSet>("background");
 	auto linkTiles = Content.Load<TileSet>("red32x32");
-	GraphicsDevice::Main.SpriteMemory->AssignBankToSlot(BankA, 0);
-	GraphicsDevice::Main.BackgroundMemory->AssignBankToSlot(BankB, 0);
-
-	// Sprite not drawn when putting this here
-	//GraphicsDevice::Main.BackgroundMemory->AssignBankToSlot(BankB, 0);
-	
-	// Everything is fine when putting this here
-	//GraphicsDevice::Main.BackgroundMemory->AssignBankToSlot(BankB, 0);
 
 	auto &map = GraphicsDevice::Main.BackgroundMemory->Maps[0];
 
@@ -74,7 +65,6 @@ void Refactoring2DEngineTest::LoadContent()
 	sprite.size = OBJSIZE_32;
 	sprite.shape = OBJSHAPE_SQUARE;
 	sprite.Identifier = linkTiles->Tiles[0].Identifier;
-
 
 	// TODO: Drawing only the background is working, drawing only 1 sprite is kinda working, when both are drawn,
 	// the sprite does not even appear in sprite memory
