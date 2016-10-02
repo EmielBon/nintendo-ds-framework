@@ -57,13 +57,13 @@ namespace Graphics
 	};
 
 	//-------------------------------------------------------------------------------------------------
-	inline MemorySlot::MemorySlot() : memory(NULL), index(-1), vramBank(NULL)
+	inline MemorySlot::MemorySlot() : memory(nullptr), index(-1), vramBank(nullptr)
 	{
 
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline MemorySlot::MemorySlot(Memory2D *m, int i) : memory(m), index(i), vramBank(NULL)
+	inline MemorySlot::MemorySlot(Memory2D *m, int i) : memory(m), index(i), vramBank(nullptr)
 	{
 
 	}
@@ -71,7 +71,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	inline bool MemorySlot::IsFree() const
 	{
-		return (vramBank == NULL);
+		return (vramBank == nullptr);
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -89,6 +89,6 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	inline void MemorySlot::Release()
 	{
-		vramBank = NULL;
+		vramBank = nullptr;
 	}
 }

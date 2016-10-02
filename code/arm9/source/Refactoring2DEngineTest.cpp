@@ -42,31 +42,18 @@ void Refactoring2DEngineTest::LoadContent()
 {
 	super::LoadContent();
 	
+	//GraphicsDevice::Main.BackgroundMemory->AssignBankToSlot(BankD, 0);
+
+	auto tileSet = Content.Load<TileSet>("background");
 	auto linkTiles = Content.Load<TileSet>("red32x32");
 	GraphicsDevice::Main.SpriteMemory->AssignBankToSlot(BankA, 0);
-	
-	// Everything is fine when putting this here
 	GraphicsDevice::Main.BackgroundMemory->AssignBankToSlot(BankB, 0);
-
-	for (int i = 0; i < 16; ++i) {
-		GraphicsDevice.SpriteMemory->AddTile(linkTiles->Tiles[i]);
-	}
 
 	// Sprite not drawn when putting this here
 	//GraphicsDevice::Main.BackgroundMemory->AssignBankToSlot(BankB, 0);
-
-	sprite = Sprite();
-	sprite.Priority = OBJPRIORITY_0;
-	sprite.ImageIndex = 0;
-	sprite.ImageSpeed = 1;
-	sprite.size = OBJSIZE_32;
-	sprite.shape = OBJSHAPE_SQUARE;
-	sprite.Identifier = linkTiles->Tiles[0].Identifier;
-
-	auto tileSet = Content.Load<TileSet>("background");
-
-	// TODO: Drawing only the background is working, drawing only 1 sprite is kinda working, when both are drawn,
-	// the sprite does not even appear in sprite memory
+	
+	// Everything is fine when putting this here
+	//GraphicsDevice::Main.BackgroundMemory->AssignBankToSlot(BankB, 0);
 
 	auto &map = GraphicsDevice::Main.BackgroundMemory->Maps[0];
 
@@ -76,10 +63,28 @@ void Refactoring2DEngineTest::LoadContent()
 		map->SetTile(i, ScreenBlockEntry(vramIndex));
 	}
 
-	sassert(GraphicsDevice::Main.BackgroundMemory->GetMappedBanks()[0]->GetName() == BankB, "Nooo");
-	sassert(GraphicsDevice::Main.SpriteMemory->GetMappedBanks()[0]->GetName() == BankA, "Nooo2");
-	sassert(GraphicsDevice::Main.BackgroundMemory->GetMappedBanks()[0]->GetOwner()->GetIndex() == 0, "Nooo3");
-	sassert(GraphicsDevice::Main.SpriteMemory->GetMappedBanks()[0]->GetOwner()->GetIndex() == 0, "Nooo4");
+	for (int i = 0; i < 16; ++i) {
+		GraphicsDevice.SpriteMemory->AddTile(linkTiles->Tiles[i]);
+	}
+
+	sprite = Sprite();
+	sprite.Priority = OBJPRIORITY_0;
+	sprite.ImageIndex = 0;
+	sprite.ImageSpeed = 1;
+	sprite.size = OBJSIZE_32;
+	sprite.shape = OBJSHAPE_SQUARE;
+	sprite.Identifier = linkTiles->Tiles[0].Identifier;
+
+
+	// TODO: Drawing only the background is working, drawing only 1 sprite is kinda working, when both are drawn,
+	// the sprite does not even appear in sprite memory
+	
+
+	
+	//sassert(GraphicsDevice::Main.BackgroundMemory->GetMappedBanks()[0]->GetName() == BankB, "Nooo");
+	//sassert(GraphicsDevice::Main.SpriteMemory->GetMappedBanks()[0]->GetName() == BankA, "Nooo2");
+	//sassert(GraphicsDevice::Main.BackgroundMemory->GetMappedBanks()[0]->GetOwner()->GetIndex() == 0, "Nooo3");
+	//sassert(GraphicsDevice::Main.SpriteMemory->GetMappedBanks()[0]->GetOwner()->GetIndex() == 0, "Nooo4");
 }
 
 void Refactoring2DEngineTest::Update(const GameTime &gameTime)

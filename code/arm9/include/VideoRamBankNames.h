@@ -7,17 +7,14 @@ namespace Graphics
 	enum BankName
 	{
 		Bank0 = 0,
-		BankA = BIT(0),
-		BankB = BIT(1),  
-		BankC = BIT(2), 
-		BankD = BIT(3), 
-		BankE = BIT(4), 
-		BankF = BIT(5), 
-		BankG = BIT(6), 
-		BankH = BIT(7), 
-		BankI = BIT(8),
-		MainBanks = BankA | BankB | BankC | BankD,
-		AuxBanks  = BankE | BankF | BankG | BankH | BankI,
-		AllBanks  = MainBanks | AuxBanks,
+		BankA = 1,
+		BankB = 2,  
+		BankC = 3, 
+		BankD = 4, 
+		BankE = 5, 
+		BankF = 6, 
+		BankG = 7, 
+		BankH = 8, 
+		BankI = 9,
 	};
 }
