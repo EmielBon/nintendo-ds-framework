@@ -24,8 +24,6 @@ void Refactoring2DEngineTest::Initialize()
 	GraphicsDevice::Main.SpriteMemory->AssignBankToSlot(BankA, 0);
 	GraphicsDevice::Main.BackgroundMemory->AssignBankToSlot(BankB, 0);
 
-	GraphicsDevice::Main.SpriteMemory->PaletteMemory->AddColor(Color::Green);
-
 	//GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
 
 	//console = new Console(GraphicsDevice::Sub.Backgrounds[0]);
@@ -44,7 +42,9 @@ void Refactoring2DEngineTest::LoadContent()
 	super::LoadContent();
 	
 	auto tileSet = Content.Load<TileSet>("background");
-	auto linkTiles = Content.Load<TileSet>("red32x32");
+
+	auto linkTiles = Content.Load<TileSet>("link32x32");
+	auto rabbitTiles = Content.Load<TileSet>("rabbit16x16");
 
 	auto &map = GraphicsDevice::Main.BackgroundMemory->Maps[0];
 
@@ -54,10 +54,15 @@ void Refactoring2DEngineTest::LoadContent()
 		map->SetTile(i, ScreenBlockEntry(vramIndex));
 	}
 
+
 	for (int i = 0; i < 16; ++i) {
 		GraphicsDevice.SpriteMemory->AddTile(linkTiles->Tiles[i]);
 	}
 
+	for (int i = 0; i < 4; ++i) {
+		GraphicsDevice.SpriteMemory->AddTile(rabbitTiles->Tiles[i]);
+	}
+	
 	sprite = Sprite();
 	sprite.Priority = OBJPRIORITY_0;
 	sprite.ImageIndex = 0;
@@ -65,6 +70,14 @@ void Refactoring2DEngineTest::LoadContent()
 	sprite.size = OBJSIZE_32;
 	sprite.shape = OBJSHAPE_SQUARE;
 	sprite.Identifier = linkTiles->Tiles[0].Identifier;
+	
+	sprite2 = Sprite();
+	sprite2.Priority = OBJPRIORITY_0;
+	sprite2.ImageIndex = 0;
+	sprite2.ImageSpeed = 1;
+	sprite2.size = OBJSIZE_16;
+	sprite2.shape = OBJSHAPE_SQUARE;
+	sprite2.Identifier = rabbitTiles->Tiles[0].Identifier;
 
 	// TODO: Drawing only the background is working, drawing only 1 sprite is kinda working, when both are drawn,
 	// the sprite does not even appear in sprite memory
@@ -92,4 +105,5 @@ void Refactoring2DEngineTest::Draw(const GameTime &gameTime)
 	GraphicsDevice::Main.Backgrounds[0]->ShowMapWithIndex(0);
 	
 	GraphicsDevice::Main.ObjectAttributeMemory.DrawSprite(sprite, 50.0f, 50.0f, 0, 1.0f, 1.0f);
+	GraphicsDevice::Main.ObjectAttributeMemory.DrawSprite(sprite2, 100.0f, 50.0f, 0, 1.0f, 1.0f);
 }

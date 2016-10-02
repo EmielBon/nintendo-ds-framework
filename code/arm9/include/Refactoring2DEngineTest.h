@@ -22,6 +22,7 @@ public:
 
 	System::Console *console;
 	Graphics::Sprite sprite;
+	Graphics::Sprite sprite2;
 	Ptr<Graphics::SpriteSet> spriteSet;
 	fx12 imageIndex;
 };

@@ -8,16 +8,39 @@ public class ImageTilingTests
     [TestMethod()]
     public void ImageTilingTest()
     {
-        string filename = "TestImages/tilingTest.png";
+        string filename = "TestImages/tilingTest16x16.png";
         var bitmap = new Bitmap(filename);
-        var tiles = bitmap.Tiled(8, 8);
+        var tiles = bitmap.Tiled();
 
-        Assert.AreEqual(tiles.Count, 4, "Incorrect number of tiles");
+        Assert.AreEqual(4, tiles.Count, "Incorrect number of tiles");
 
-        Assert.IsTrue(TileHasUniformColor(tiles[0], Color.Red));
-        Assert.IsTrue(TileHasUniformColor(tiles[1], Color.Green));
-        Assert.IsTrue(TileHasUniformColor(tiles[2], Color.Blue));
-        Assert.IsTrue(TileHasUniformColor(tiles[3], Color.Yellow));
+        Assert.IsTrue(TileHasUniformColor(tiles[0], Color.FromArgb(255, 255, 0, 0)));
+        Assert.IsTrue(TileHasUniformColor(tiles[1], Color.FromArgb(255, 0, 255, 0)));
+        Assert.IsTrue(TileHasUniformColor(tiles[2], Color.FromArgb(255, 0, 0, 255)));
+        Assert.IsTrue(TileHasUniformColor(tiles[3], Color.FromArgb(255, 255, 255, 0)));
+    }
+
+    [TestMethod()]
+    public void Image16x16TilingTest()
+    {
+        string filename = "TestImages/tilingTestB16x16.png";
+        var bitmap = new Bitmap(filename);
+        var tiles = bitmap.Tiled();
+        Assert.AreEqual(8, tiles.Count, "Incorrect number of tiles");
+        Assert.AreEqual(8, tiles[0].Width, "Incorrect width");
+        Assert.AreEqual(8, tiles[0].Height, "Incorrect height");
+
+
+        Assert.IsTrue(TileHasUniformColor(tiles[0], Color.FromArgb(255, 255, 0, 0)));
+        Assert.IsTrue(TileHasUniformColor(tiles[1], Color.FromArgb(255, 0, 255, 0)));
+        Assert.IsTrue(TileHasUniformColor(tiles[2], Color.FromArgb(255, 0, 0, 255)));
+        Assert.IsTrue(TileHasUniformColor(tiles[3], Color.FromArgb(255, 255, 255, 0)));
+
+        Assert.IsTrue(TileHasUniformColor(tiles[4], Color.FromArgb(255, 255, 0, 0)));
+        Assert.IsTrue(TileHasUniformColor(tiles[5], Color.FromArgb(255, 0, 255, 0)));
+        Assert.IsTrue(TileHasUniformColor(tiles[6], Color.FromArgb(255, 0, 0, 255)));
+        Assert.IsTrue(TileHasUniformColor(tiles[7], Color.FromArgb(255, 255, 255, 0)));
+
     }
 
     private bool TileHasUniformColor(Bitmap tile, Color c)
@@ -26,7 +49,7 @@ public class ImageTilingTests
             for (var x = 0; x < tile.Width; x++)
             {
                 var tileColor = tile.GetPixel(x, y);
-                if (c.Equals(tileColor))
+                if (!c.Equals(tileColor))
                     return false;
             }
         return true;
