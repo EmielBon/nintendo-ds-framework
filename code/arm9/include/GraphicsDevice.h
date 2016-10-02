@@ -96,20 +96,8 @@ namespace Graphics
 		///
 		void SetBackgroundColor(u16 color);
 
-		///
-		void SetBackground(int index, const TiledBackground &background);
-
-		/// 
-		static void SetBackground(Background &bg, const TiledBackground &background);
-
 		/// 
 		Background* GetBackgroundAtLayer(int layer) const;
-
-		/// 
-		static void SetBackgroundTile(Background &background, int i, int j, Tile *tile, TileParameters params);
-
-		/// 
-		void SetTileForBackgroundAtLayer(int layer, int i, int j, Tile *tile, TileParameters params = 0);
 
 		/// Can draw a maximum of 6144 vertices per frame, which corresponds roughly to about 2048 triangles or 1536 quads
 		void DrawIndexedPrimitives(PrimitiveType type, int vertexOffset, int minVertexIndex, int numVertices, int startIndex, int primitiveCount);
@@ -154,13 +142,6 @@ namespace Graphics
 		return this == &Main;
 	}
 
-	//------------------------------------------------------------------------------------------------- 
-	inline void GraphicsDevice::SetTileForBackgroundAtLayer(int layer, int i, int j, Tile *tile, TileParameters params /* = 0 */)
-	{
-		auto bg = GetBackgroundAtLayer(layer);
-		sassert(bg, "Background cannot be null");
-		SetBackgroundTile(*bg, i, j, tile, params);
-	}
 
 	//-------------------------------------------------------------------------------------------------
 	inline void GraphicsDevice::SetMode(u32 modeIndex)

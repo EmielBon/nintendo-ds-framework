@@ -15,7 +15,7 @@ namespace System
 
 	//-------------------------------------------------------------------------------------------------
 	Console::Console(Graphics::Background *background) 
-		: super(background, "font8x8@4"), startEntry(-1)
+		: super(background, "font8x8"), startEntry(-1)
 	{
 	}
 

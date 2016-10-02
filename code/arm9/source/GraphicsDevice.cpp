@@ -96,41 +96,12 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void GraphicsDevice::SetBackground(int index, const TiledBackground &background)
-	{
-		GraphicsDevice::SetBackground(*Backgrounds[index], background);
-	}
-
-	void GraphicsDevice::SetBackground(Background &bg, const TiledBackground &background)
-	{
-		background.CopyToHardwareBackground(bg);
-	}
-
-	//-------------------------------------------------------------------------------------------------
 	Background* GraphicsDevice::GetBackgroundAtLayer(int layer) const
 	{
 		for (auto background : Backgrounds)
 			if (background->GetLayer() == layer)
 				return background;
 		return nullptr;
-	}
-
-	//------------------------------------------------------------------------------------------------- 
-	void GraphicsDevice::SetBackgroundTile(Background &background, int i, int j, Tile *tile, TileParameters params /* = 0 */)
-	{
-		auto &bgMem = background.BackgroundMemory();
-		auto &map   = *bgMem.Maps[background.GetMapIndex()];
-
-		sassert(tile, "Error: Tile cannot be nil");
-		sassert(IMPLIES(tile->BitsPerPixel() == 4, background.ColorMode == ColorMode16),  "Error: Setting tile to background with incompatible color mode");
-		sassert(IMPLIES(tile->BitsPerPixel() == 8, background.ColorMode == ColorMode256), "Error: Setting tile to background with incompatible color mode");
-		// todo: implement 16bpp tiles and update this check accordingly
-		sassert(tile->BitsPerPixel() != 16, "Error: 16bpp tiles not yet implemented!");
-
-		uint32_t tileIndex = bgMem.AddTile(*tile);
-		auto screenBlockEntry = params;
-		screenBlockEntry.SetTileIndex(tileIndex);
-		map.SetTile(i, j, screenBlockEntry);
 	}
 
 	//-------------------------------------------------------------------------------------------------

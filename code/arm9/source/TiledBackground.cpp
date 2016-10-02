@@ -1,4 +1,4 @@
-#include "TiledBackground.h"
+/*#include "TiledBackground.h"
 #include "Tile.h"
 #include "Debug.h"
 #include "BackgroundMemory.h"
@@ -21,4 +21,4 @@ namespace Graphics
 			GraphicsDevice::SetBackgroundTile(bg, i, j, tile, params);
 		}
 	}
-}
+}*/

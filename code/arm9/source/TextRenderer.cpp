@@ -1,5 +1,4 @@
 #include "TextRenderer.h"
-#include "TiledBackground.h"
 #include "Background.h"
 #include "ContentManager.h"
 #include "GraphicsDevice.h"
@@ -72,7 +71,8 @@ namespace Graphics
 					continue;
 
 				auto &tile = Font->Tiles[str[i] * tilesPerChar + j];
-				GraphicsDevice::SetBackgroundTile(*Background, x2, y2, &tile, TileParameters(0, false, false, palIndex));
+				//GraphicsDevice::SetBackgroundTile(*Background, x2, y2, &tile, TileParameters(0, false, false, palIndex));
+				//Background->GetMap()->SetTile(x2, y2, TileParameters(0, false, false, palIndex));
 			}
 			x += charWidth;
 		}

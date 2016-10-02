@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 #include "TiledImage.h"
 #include "types.h"
@@ -53,3 +53,4 @@ namespace Graphics
 		TileParameters[index] = ScreenBlockEntry(0, flippedHorizontal, flippedVertical, paletteIndex);
 	}
 }
+*/

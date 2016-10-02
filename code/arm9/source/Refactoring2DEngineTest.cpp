@@ -26,14 +26,14 @@ void Refactoring2DEngineTest::Initialize()
 
 	//GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
 
-	//console = new Console(GraphicsDevice::Sub.Backgrounds[0]);
-	//AddComponent(console);
+	console = new Console(GraphicsDevice::Sub.Backgrounds[0]);
+	AddComponent(console);
 
-//	for (int i = 0; i < 64; ++i) {
-//		console->WriteLine(ToStr("Hoi " << i));
-//	}
-//
-//	console->WriteLine("");
+	for (int i = 0; i < 64; ++i) {
+		console->WriteLine(ToStr("Hoi " << i));
+	}
+
+	console->WriteLine("");
 
 }
 

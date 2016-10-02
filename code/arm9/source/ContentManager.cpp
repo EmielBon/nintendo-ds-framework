@@ -72,7 +72,7 @@ namespace Framework
 	{
 		return static_pointer_cast<Font>( LoadResourceFromStream<TileSet>(fs) );
 	}
-
+	/*
 	//-------------------------------------------------------------------------------------------------
 	template<>
 	Ptr<TiledBackground> ContentManager::LoadResourceFromStream(FileStream &fs)
@@ -128,7 +128,7 @@ namespace Framework
 		}
 
 		return tiledBackground;
-	}
+	}*/
 
 	//-------------------------------------------------------------------------------------------------
 	/*template<>

@@ -31,7 +31,6 @@ namespace Graphics
 
 	class Tile;
 	class TileSet;
-	class TiledBackground;
 	class Sprite;
 	class Palette;
 	class Background;
