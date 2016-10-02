@@ -30,13 +30,10 @@ namespace Graphics
 		Font = ContentManager::Load<Graphics::Font>(FontName);
 		int index = Background->GetMapIndex();
 		sassert(index >= 0 && index <= 3, "Map index out of bounds");
-		// todo: replace this with something
 		// Set the map's clear tile to the font's first glyph. todo: This makes little sense, it takes the first 8x8 tile in the tileset
-		//auto &bgmem = Background->BackgroundMemory();
-		//auto &blankTile = Font->Tiles[0];
-		//bgmem.AddTile(blankTile);
-		//u32 blankTileIndex = bgmem.VRAMIndexForTile(blankTile.Identifier);
-		//bgmem.Maps[index]->ClearTile = ScreenBlockEntry(blankTileIndex);
+		auto &bgmem = Background->BackgroundMemory();
+		auto &blankTile = Font->Tiles[0];
+		bgmem.AddTile(blankTile);
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -73,6 +70,12 @@ namespace Graphics
 				auto &tile = Font->Tiles[str[i] * tilesPerChar + j];
 				//GraphicsDevice::SetBackgroundTile(*Background, x2, y2, &tile, TileParameters(0, false, false, palIndex));
 				//Background->GetMap()->SetTile(x2, y2, TileParameters(0, false, false, palIndex));
+				auto map = Background->GetMap();
+				uint32_t tileIndex = GraphicsDevice::Sub.BackgroundMemory->AddTile(tile);
+				auto screenBlockEntry = TileParameters(0, false, false, palIndex);
+				screenBlockEntry.SetTileIndex(tileIndex);
+				map->SetTile(i, j, screenBlockEntry);
+			
 			}
 			x += charWidth;
 		}

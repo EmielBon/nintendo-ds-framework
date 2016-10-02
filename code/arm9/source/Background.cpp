@@ -7,7 +7,7 @@
 namespace Graphics
 {
 	//-------------------------------------------------------------------------------------------------
-	Background::Background(GraphicsDevice *e, int i) : index(i), graphicsDevice(e), Offset(0, 0), ColorMode(ColorMode16)
+	Background::Background(GraphicsDevice *e, int i) : index(i), graphicsDevice(e), isEnabled(false), Offset(0, 0), ColorMode(ColorMode16)
 	{
 		mapIndex = index;
 		layer    = index;

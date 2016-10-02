@@ -10,7 +10,7 @@ public class ImageTilingTests
     {
         string filename = "TestImages/tilingTest16x16.png";
         var bitmap = new Bitmap(filename);
-        var tiles = bitmap.Tiled();
+        var tiles = bitmap.Tiled(16, 16);
 
         Assert.AreEqual(4, tiles.Count, "Incorrect number of tiles");
 
@@ -25,7 +25,7 @@ public class ImageTilingTests
     {
         string filename = "TestImages/tilingTestB16x16.png";
         var bitmap = new Bitmap(filename);
-        var tiles = bitmap.Tiled();
+        var tiles = bitmap.Tiled(16, 16);
         Assert.AreEqual(8, tiles.Count, "Incorrect number of tiles");
         Assert.AreEqual(8, tiles[0].Width, "Incorrect width");
         Assert.AreEqual(8, tiles[0].Height, "Incorrect height");

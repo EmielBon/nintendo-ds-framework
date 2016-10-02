@@ -118,7 +118,7 @@ public class Image2Bin
         */
 
         var bitmap = new Bitmap(inputFile);
-        var tiles = bitmap.Tiled();
+        var tiles = bitmap.Tiled(tileWidth, tileHeight);
 
         FileStream stream = new FileStream(outputFile, FileMode.Create);
         BinaryWriter output = new BinaryWriter(stream, Encoding.BigEndianUnicode);
@@ -160,7 +160,7 @@ public class Image2Bin
 
 public static class Extensions
 {
-    public static List<Bitmap> Tiled(this Bitmap bitmap)
+    public static List<Bitmap> Tiled(this Bitmap bitmap, int tileWidth, int tileHeight)
     {
         var width = bitmap.Width;
         var height = bitmap.Height;
@@ -182,10 +182,10 @@ public static class Extensions
             }
             tiles.Add(tile);
         }
-        return SortTiles(tiles, width / 8);
+        return SortTiles(tiles, width / 8, tileWidth, tileHeight);
     }
 
-    public static List<Bitmap> SortTiles(List<Bitmap> tiles, int widthInTiles)
+    public static List<Bitmap> SortTiles(List<Bitmap> tiles, int widthInTiles, int tileWidth, int tileHeight)
     {
         var heightInTiles = tiles.Count / widthInTiles;
         var tiles2D = new Bitmap[widthInTiles, heightInTiles];
@@ -199,15 +199,15 @@ public static class Extensions
 
         var sortedTiles = new List<Bitmap>();
 
-        for (int y = 0; y < tiles2D.GetLength(1); y += 2)
-            for (int x = 0; x < tiles2D.GetLength(0); x += 2)
+        for (int y = 0; y < tiles2D.GetLength(1); y += tileHeight / 8)
+        for (int x = 0; x < tiles2D.GetLength(0); x += tileWidth / 8)
+        {
+            for (int tileY = 0; tileY < tileHeight / 8; ++tileY)
+            for (int tileX = 0; tileX < tileWidth / 8; ++tileX)
             {
-                for (int tileY = 0; tileY < 2; ++tileY)
-                    for (int tileX = 0; tileX < 2; ++tileX)
-                    {
-                        sortedTiles.Add(tiles2D[x + tileX, y + tileY]);
-                    }
+                sortedTiles.Add(tiles2D[x + tileX, y + tileY]);
             }
+        }
 
         return sortedTiles;
     }

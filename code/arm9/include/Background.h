@@ -28,6 +28,10 @@ namespace Graphics
 		/// Returns whether this background is enabled
 		bool IsEnabled() const;
 
+		void Enable();
+
+		void Disable();
+
 		/// 
 		int GetLayer() const;
 
@@ -56,6 +60,7 @@ namespace Graphics
 
 		GraphicsDevice *graphicsDevice;
 		int mapIndex;
+		bool isEnabled;
 
 	public:
 
@@ -64,9 +69,21 @@ namespace Graphics
 	};
 
 	//-------------------------------------------------------------------------------------------------
+	inline void Background::Enable()
+	{
+		isEnabled = true;
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	inline void Background::Disable()
+	{
+		isEnabled = false;
+	}
+
+	//-------------------------------------------------------------------------------------------------
 	inline bool Background::IsEnabled() const
 	{
-		return mapIndex >= 0;
+		return isEnabled;
 	}
 
 	//-------------------------------------------------------------------------------------------------

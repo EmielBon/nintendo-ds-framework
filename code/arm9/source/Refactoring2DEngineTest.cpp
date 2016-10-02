@@ -21,17 +21,19 @@ void Refactoring2DEngineTest::Initialize()
 
 	imageIndex = 0.0f;
 
+	GraphicsDevice::Main.Backgrounds[0]->Enable();
+	GraphicsDevice::Sub.Backgrounds[0]->Enable();
+
 	GraphicsDevice::Main.SpriteMemory->AssignBankToSlot(BankA, 0);
 	GraphicsDevice::Main.BackgroundMemory->AssignBankToSlot(BankB, 0);
+	GraphicsDevice::Sub.BackgroundMemory->AssignBankToSlot(BankC, 0);
 
 	//GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
 
 	console = new Console(GraphicsDevice::Sub.Backgrounds[0]);
 	AddComponent(console);
 
-	for (int i = 0; i < 64; ++i) {
-		console->WriteLine(ToStr("Hoi " << i));
-	}
+	console->WriteLine(ToStr("abcdefghijklmnopqrstuvwxyz "));
 
 	console->WriteLine("");
 
@@ -103,6 +105,9 @@ void Refactoring2DEngineTest::Draw(const GameTime &gameTime)
 
 	GraphicsDevice::Main.Backgrounds[0]->ColorMode = ColorMode::ColorMode256;
 	GraphicsDevice::Main.Backgrounds[0]->ShowMapWithIndex(0);
+
+	GraphicsDevice::Sub.Backgrounds[0]->ColorMode = ColorMode::ColorMode256;
+	GraphicsDevice::Sub.Backgrounds[0]->ShowMapWithIndex(0);
 	
 	GraphicsDevice::Main.ObjectAttributeMemory.DrawSprite(sprite, 50.0f, 50.0f, 0, 1.0f, 1.0f);
 	GraphicsDevice::Main.ObjectAttributeMemory.DrawSprite(sprite2, 100.0f, 50.0f, 0, 1.0f, 1.0f);
