@@ -28,8 +28,10 @@ namespace Graphics
 		/// Returns whether this background is enabled
 		bool IsEnabled() const;
 
+		///
 		void Enable();
 
+		///
 		void Disable();
 
 		/// 

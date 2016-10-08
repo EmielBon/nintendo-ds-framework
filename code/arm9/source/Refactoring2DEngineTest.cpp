@@ -17,7 +17,6 @@ using namespace Graphics;
 
 void Refactoring2DEngineTest::Initialize()
 {
-	super::Initialize();
 
 	imageIndex = 0.0f;
 
@@ -37,6 +36,7 @@ void Refactoring2DEngineTest::Initialize()
 
 	console->WriteLine("");
 
+	super::Initialize();
 }
 
 void Refactoring2DEngineTest::LoadContent()
@@ -55,7 +55,6 @@ void Refactoring2DEngineTest::LoadContent()
 		auto vramIndex = GraphicsDevice::Main.BackgroundMemory->AddTile(tile);
 		map->SetTile(i, ScreenBlockEntry(vramIndex));
 	}
-
 
 	for (int i = 0; i < 16; ++i) {
 		GraphicsDevice.SpriteMemory->AddTile(linkTiles->Tiles[i]);

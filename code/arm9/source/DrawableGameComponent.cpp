@@ -5,7 +5,6 @@ namespace Framework
 	//-------------------------------------------------------------------------------------------------
 	void DrawableGameComponent::LoadContent()
 	{
-
 		for (auto it = Components.begin(); it != Components.end(); ++it)
 		{
 			if (auto drawable = static_cast<DrawableGameComponent*>(*it))

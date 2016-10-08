@@ -9,10 +9,14 @@ namespace Graphics
 {
 	class TextRenderer : public Framework::DrawableGameComponent
 	{
+	private:
+
+		using super = Framework::DrawableGameComponent;
+
 	public:
 
 		///
-		TextRenderer(Graphics::Background *background, const String &fontName = "font8x8@4");
+		TextRenderer(Graphics::Background *background, const String &fontName = "font8x8");
 
 		///
 		virtual void LoadContent();

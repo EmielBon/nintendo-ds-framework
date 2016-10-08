@@ -18,7 +18,7 @@ namespace Graphics
 	using namespace Framework;
 
 	//-------------------------------------------------------------------------------------------------
-	TextRenderer::TextRenderer(Graphics::Background *background, const String &fontName /* = "font8x8@4" */) 
+	TextRenderer::TextRenderer(Graphics::Background *background, const String &fontName /* = "font8x8" */) 
 		: FontName(fontName), Background(background)
 	{
 		
@@ -34,6 +34,8 @@ namespace Graphics
 		auto &bgmem = Background->BackgroundMemory();
 		auto &blankTile = Font->Tiles[0];
 		bgmem.AddTile(blankTile);
+
+		super::LoadContent();
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -74,8 +76,7 @@ namespace Graphics
 				uint32_t tileIndex = GraphicsDevice::Sub.BackgroundMemory->AddTile(tile);
 				auto screenBlockEntry = TileParameters(0, false, false, palIndex);
 				screenBlockEntry.SetTileIndex(tileIndex);
-				map->SetTile(i, j, screenBlockEntry);
-			
+				map->SetTile(x2, y2, screenBlockEntry);
 			}
 			x += charWidth;
 		}
