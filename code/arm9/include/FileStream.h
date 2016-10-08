@@ -91,9 +91,10 @@ namespace FileSystem
 	List<T> FileStream::ReadAll()
 	{
 		size_t elementSize = sizeof(T);
-		size_t numberOfElements = fileSize / elementSize;
-		List<T> elements = Read<T>(numberOfElements);
-		sassert(elements.size() == numberOfElements, "Error: File not fully read");
+		size_t remainingBytes = fileSize - ftell(stream);
+		size_t remainingElements = remainingBytes / elementSize;
+		List<T> elements = Read<T>(remainingElements);
+		sassert(elements.size() == remainingElements, "Error: File not fully read");
 		Close();
 		return elements;
 	}

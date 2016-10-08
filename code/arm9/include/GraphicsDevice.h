@@ -82,7 +82,10 @@ namespace Graphics
 		 Frame Buffer Mode: Direct VRAM display as bitmap
 
 		 */
-		void SetMode(u32 modeIndex);
+		void SetMode(int modeIndex);
+
+		///
+		int GetMode() const;
 
 		///
 		void EnableSprites(bool enable);
@@ -142,9 +145,14 @@ namespace Graphics
 		return this == &Main;
 	}
 
+	//-------------------------------------------------------------------------------------------------
+	inline int GraphicsDevice::GetMode() const
+	{
+		return mode;
+	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline void GraphicsDevice::SetMode(u32 modeIndex)
+	inline void GraphicsDevice::SetMode(int modeIndex)
 	{
 		// Main engine has 6 modes, sub engine 5 modes, any number higher is invalid
 		sassert(modeIndex >= 0 && modeIndex <= (IsMain() ? 6 : 5), "Error: invalid mode index specified");

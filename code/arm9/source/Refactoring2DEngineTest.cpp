@@ -10,6 +10,7 @@
 #include "PaletteMemory.h"
 #include "ObjectAttributeMemory.h"
 #include "VideoRamBank.h"
+#include "Texture.h"
 
 using namespace Framework;
 using namespace System;
@@ -20,12 +21,21 @@ void Refactoring2DEngineTest::Initialize()
 
 	imageIndex = 0.0f;
 
-	GraphicsDevice::Main.Backgrounds[0]->Enable();
+	GraphicsDevice::Main.SetMode(5);
+
+	GraphicsDevice::Main.Backgrounds[0]->Disable();
+	GraphicsDevice::Main.Backgrounds[2]->Enable();
 	GraphicsDevice::Sub.Backgrounds[0]->Enable();
+
+	GraphicsDevice::Main.Backgrounds[0]->ColorMode = ColorMode::ColorMode256;
+	GraphicsDevice::Main.Backgrounds[2]->ColorMode = ColorMode::ColorMode256;
+	GraphicsDevice::Sub.Backgrounds[0]->ColorMode = ColorMode::ColorMode256;
 
 	GraphicsDevice::Main.SpriteMemory->AssignBankToSlot(BankA, 0);
 	GraphicsDevice::Main.BackgroundMemory->AssignBankToSlot(BankB, 0);
 	GraphicsDevice::Sub.BackgroundMemory->AssignBankToSlot(BankC, 0);
+
+	GraphicsDevice::Main.Backgrounds[2]->SetType(BackgroundType::TrueColorBitmap256x256);
 
 	//GraphicsDevice::Main.SpriteMemory->PaletteMemory->SetTransparentColor(Color::HotPink);
 
@@ -48,13 +58,17 @@ void Refactoring2DEngineTest::LoadContent()
 	auto linkTiles = Content.Load<TileSet>("link32x32");
 	auto rabbitTiles = Content.Load<TileSet>("rabbit16x16");
 
-	auto &map = GraphicsDevice::Main.BackgroundMemory->Maps[0];
+	/*auto &map = GraphicsDevice::Main.BackgroundMemory->Maps[0];
 
 	for (int i = 0; i < tileSet->GetTileCount8x8(); ++i) {
 		auto &tile = tileSet->Tiles[i];
 		auto vramIndex = GraphicsDevice::Main.BackgroundMemory->AddTile(tile);
 		map->SetTile(i, ScreenBlockEntry(vramIndex));
-	}
+	}*/
+
+	auto bitmapBackground = Content.Load<Texture>("background_bitmap");
+	auto address = GraphicsDevice::Main.BackgroundMemory->StartAddress();
+	memcpy(address, bitmapBackground->Pixels.data(), bitmapBackground->GetByteSize());
 
 	for (int i = 0; i < 16; ++i) {
 		GraphicsDevice.SpriteMemory->AddTile(linkTiles->Tiles[i]);
@@ -102,10 +116,9 @@ void Refactoring2DEngineTest::Draw(const GameTime &gameTime)
 {
 	super::Draw(gameTime);
 
-	GraphicsDevice::Main.Backgrounds[0]->ColorMode = ColorMode::ColorMode256;
-	GraphicsDevice::Main.Backgrounds[0]->ShowMapWithIndex(0);
+	//GraphicsDevice::Main.Backgrounds[0]->ShowMapWithIndex(0);
+	//GraphicsDevice::Main.Backgrounds[2]->ShowMapWithIndex(0);
 
-	GraphicsDevice::Sub.Backgrounds[0]->ColorMode = ColorMode::ColorMode256;
 	GraphicsDevice::Sub.Backgrounds[0]->ShowMapWithIndex(0);
 	
 	GraphicsDevice::Main.ObjectAttributeMemory.DrawSprite(sprite, 50.0f, 50.0f, 0, 1.0f, 1.0f);

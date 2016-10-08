@@ -32,6 +32,8 @@ namespace Graphics
 		///
 		u16* TileBaseAddress() const;
 
+		uint16_t* StartAddress() const;
+
 	protected:
 
 		/// Returns a free map index

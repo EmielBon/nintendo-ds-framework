@@ -4,6 +4,7 @@
 #include "Assert.h"
 #include "Vec2.h"
 #include <nds/arm9/background.h>
+#include "Mat.h"
 
 namespace Graphics
 {
@@ -11,6 +12,18 @@ namespace Graphics
 	{
 		ColorMode16  = BG_COLOR_16,
 		ColorMode256 = BG_COLOR_256,
+	};
+
+	enum BackgroundType
+	{
+		Tiled32x32 = BG_32x32,
+		Tiled64x32 = BG_64x32,
+		Tiled32x64 = BG_32x64,
+		Tiled64x64 = BG_64x64,
+		TrueColorBitmap128x128 = BG_BMP16_128x128,
+		TrueColorBitmap256x256 = BG_BMP16_256x256,
+		TrueColorBitmap512x256 = BG_BMP16_512x256,
+		TrueColorBitmap512x512 = BG_BMP16_512x512
 	};
 
 	class Background
@@ -34,6 +47,9 @@ namespace Graphics
 		///
 		void Disable();
 
+		///
+		void SetType(BackgroundType type);
+
 		/// 
 		int GetLayer() const;
 
@@ -53,7 +69,11 @@ namespace Graphics
 		Graphics::BackgroundMemory& BackgroundMemory() const;
 
 		/// Gathers all the set options in this Background and puts them in its corresponding Nintendo DS background control register
-		void Synchronize() const;		
+		void Synchronize();		
+
+		static void SetBackground2Transformation(const Mat<fx8> &transform);
+
+		static void SetBackground3Transformation(const Mat<fx8> &transform);
 
 	private:
 
@@ -63,6 +83,7 @@ namespace Graphics
 		GraphicsDevice *graphicsDevice;
 		int mapIndex;
 		bool isEnabled;
+		BackgroundType type;
 
 	public:
 

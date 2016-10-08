@@ -7,7 +7,7 @@
 namespace Graphics
 {
 	//-------------------------------------------------------------------------------------------------
-	Background::Background(GraphicsDevice *e, int i) : index(i), graphicsDevice(e), isEnabled(false), Offset(0, 0), ColorMode(ColorMode16)
+	Background::Background(GraphicsDevice *e, int i) : index(i), graphicsDevice(e), isEnabled(false), Offset(0, 0), ColorMode(ColorMode16), type(Tiled32x32)
 	{
 		mapIndex = index;
 		layer    = index;
@@ -26,7 +26,7 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void Background::Synchronize() const
+	void Background::Synchronize()
 	{
 		ASSERT(graphicsDevice && index != -1, "Background not initialized");
 		
@@ -35,7 +35,8 @@ namespace Graphics
 
 		int tileBase = BackgroundMemory().TileBase();
 
-		u16 flags = BG_32x32 | ColorMode | BG_MAP_BASE(mapIndex) | BG_TILE_BASE(tileBase) | BG_PRIORITY(layer);
+		u16 flags = type | ColorMode | BG_MAP_BASE(0) | BG_TILE_BASE(tileBase) | BG_PRIORITY(layer);
+
 		bg_scroll scroll = { (u16)Offset.x, (u16)Offset.y };
 
 		if (graphicsDevice->IsMain())
@@ -50,4 +51,31 @@ namespace Graphics
 		}
 	}
 
+	void Background::SetType(BackgroundType newType)
+	{
+		int mode = graphicsDevice->GetMode();
+
+		bool typeIsTrueColorBitmap = type == TrueColorBitmap128x128 || type == TrueColorBitmap256x256 ||
+			                         type == TrueColorBitmap512x256 || type == TrueColorBitmap512x512;
+
+		sassert(IMPLIES(typeIsTrueColorBitmap, mode == 5), "TrueColor bitmaps are not supported in mode %i", mode);
+
+		type = newType;
+	}
+
+	void Background::SetBackground2Transformation(const Mat<fx8> &transform) 
+	{
+		REG_BG2PA = transform[0].number;
+		REG_BG2PB = transform[1].number;
+		REG_BG2PC = transform[4].number;
+		REG_BG2PD = transform[5].number;
+	}
+
+	void Background::SetBackground3Transformation(const Mat<fx8> &transform)
+	{
+		REG_BG3PA = transform[0].number;
+		REG_BG3PB = transform[1].number;
+		REG_BG3PC = transform[4].number;
+		REG_BG3PD = transform[5].number;
+	}
 }

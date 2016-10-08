@@ -75,4 +75,10 @@ namespace Graphics
 		int tileOffset = TileBase();
 		return IsMain() ? BG_TILE_RAM(tileOffset) : BG_TILE_RAM_SUB(tileOffset);
 	}
+
+	//-------------------------------------------------------------------------------------------------
+	uint16_t* BackgroundMemory::StartAddress() const
+	{
+		return IsMain() ? BG_MAP_RAM(0) : BG_MAP_RAM_SUB(0);
+	}
 }

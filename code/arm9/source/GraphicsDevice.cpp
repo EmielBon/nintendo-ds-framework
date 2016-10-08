@@ -47,6 +47,9 @@ namespace Graphics
 		for (u32 i = 0; i < Backgrounds.size(); ++i)
 			Backgrounds[i] = new Background(this, i);
 
+		Background::SetBackground2Transformation(Mat<fx8>::Identity());
+		Background::SetBackground3Transformation(Mat<fx8>::Identity());
+
 		bool main = IsMain();
 
 		BackgroundMemory      = New<Graphics::BackgroundMemory>(main);
