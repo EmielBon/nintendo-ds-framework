@@ -1,6 +1,3 @@
-s 16x16
-t rabbit16x16
-
-i rabbit_walk 0 1 2 3
-i rabbit_jump 4 5 6
-i rabbit_die 8 8 8
+rabbit16x16 rabbit_walk 0 1 2 3
+rabbit16x16 rabbit_jump 4 5 6
+rabbit16x16 rabbit_die 8 8 8
