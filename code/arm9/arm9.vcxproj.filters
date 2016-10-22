@@ -133,12 +133,6 @@
     <ClInclude Include="include\DirectionalLight.h">
       <Filter>Graphics\3D</Filter>
     </ClInclude>
-    <ClInclude Include="include\DebugUI.h">
-      <Filter>Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Font.h">
-      <Filter>Graphics\Text</Filter>
-    </ClInclude>
     <ClInclude Include="include\BoundingBox.h">
       <Filter>Framework</Filter>
     </ClInclude>
@@ -250,9 +244,6 @@
     <ClInclude Include="include\VideoRamBankNames.h">
       <Filter>Graphics\VRAM</Filter>
     </ClInclude>
-    <ClInclude Include="include\Button.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
     <ClInclude Include="include\TouchState.h">
       <Filter>Input</Filter>
     </ClInclude>
@@ -261,9 +252,6 @@
     </ClInclude>
     <ClInclude Include="include\IActionListener.h">
       <Filter>Util</Filter>
-    </ClInclude>
-    <ClInclude Include="include\AbstractButton.h">
-      <Filter>GUI</Filter>
     </ClInclude>
     <ClInclude Include="include\Room3D.h">
       <Filter>Framework\Framework3D</Filter>
@@ -282,12 +270,6 @@
     </ClInclude>
     <ClInclude Include="include\MathFunctions.h">
       <Filter>Util</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Container.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Component.h">
-      <Filter>GUI</Filter>
     </ClInclude>
     <ClInclude Include="include\Rectangle.h">
       <Filter>Framework</Filter>
@@ -393,9 +375,6 @@
     </ClInclude>
     <ClInclude Include="include\Graphics.h">
       <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GUI.h">
-      <Filter>GUI</Filter>
     </ClInclude>
     <ClInclude Include="include\System.h">
       <Filter>System</Filter>
@@ -504,9 +483,6 @@
     <ClCompile Include="source\Console.cpp">
       <Filter>System</Filter>
     </ClCompile>
-    <ClCompile Include="source\DebugUI.cpp">
-      <Filter>Debug</Filter>
-    </ClCompile>
     <ClCompile Include="source\BoundingBox.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
@@ -570,17 +546,8 @@
     <ClCompile Include="source\FPSCounter.cpp">
       <Filter>Debug</Filter>
     </ClCompile>
-    <ClCompile Include="source\Button.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
     <ClCompile Include="source\TouchState.cpp">
       <Filter>Input</Filter>
-    </ClCompile>
-    <ClCompile Include="source\AbstractButton.cpp">
-      <Filter>GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Component.cpp">
-      <Filter>GUI</Filter>
     </ClCompile>
     <ClCompile Include="source\ProfilingManager.cpp">
       <Filter>Debug</Filter>
@@ -748,9 +715,6 @@
     </Filter>
     <Filter Include="Framework\Game">
       <UniqueIdentifier>{8d308273-acd1-4deb-990a-0b921daa3394}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GUI">
-      <UniqueIdentifier>{723f2b19-ca35-4730-961b-687d308e10c3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Test\Test 2D">
       <UniqueIdentifier>{6f0a803b-90f6-43c0-9bf1-79779a766c22}</UniqueIdentifier>

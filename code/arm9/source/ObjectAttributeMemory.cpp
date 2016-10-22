@@ -40,7 +40,7 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void ObjectAttributeMemory::DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex, fx8 horizontalScale, fx8 verticalScale, ObjPriority layer)
+	void ObjectAttributeMemory::DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx8 horizontalScale, fx8 verticalScale, ObjPriority layer)
 	{
 		auto &entry = oam->oamBuffer[spriteCount];
 		

@@ -11,7 +11,6 @@
 #include "Palette.h"
 #include "CollisionMap.h"
 #include "Path.h"
-#include "Font.h"
 #include "Scene.h"
 
 #include "Vertex.h"
@@ -23,6 +22,7 @@
 #include "IndexBuffer.h"
 #include "BasicEffect.h"
 #include "Sprite.h"
+#include "Animation.h"
 
 namespace Framework
 {
@@ -37,7 +37,7 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<TileSet> ContentManager::LoadResourceFromStream(FileStream &fs)
+	UniquePtr<TileSet> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		struct TileSetFileHeader
 		{
@@ -51,7 +51,7 @@ namespace Framework
 		sassert(header.TileWidth > 0 && header.TileHeight > 0, "Error: Tile size cannot be 0");
 		sassert(header.TileWidth % 8 == 0 && header.TileHeight % 8 == 0, "Error: Invalid tile size");
 
-		auto tileSet = New<TileSet>(header.TileWidth, header.TileHeight);
+		auto tileSet = NewUnique<TileSet>(header.TileWidth, header.TileHeight);
 
 		Tile16bpp rawTile;
 		size_t tilesRead = fs.Read(&rawTile);
@@ -66,12 +66,6 @@ namespace Framework
 		return tileSet;
 	}
 
-	//-------------------------------------------------------------------------------------------------
-	template<>
-	Ptr<Font> ContentManager::LoadResourceFromStream(FileStream &fs)
-	{
-		return static_pointer_cast<Font>( LoadResourceFromStream<TileSet>(fs) );
-	}
 	/*
 	//-------------------------------------------------------------------------------------------------
 	template<>
@@ -132,14 +126,11 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	/*template<>
-	Ptr<SpriteSet> ContentManager::LoadResourceFromStream(FileStream &fs)
+	Ptr<AnimationData> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		StreamReader reader(fs);
 		auto lines = reader.ReadToEnd();
 
-		//sassert(false, "%s\n%s\n%s\n%s\n%s\n%s\n%s", lines[0].c_str(), lines[1].c_str(), lines[2].c_str(), lines[3].c_str(), lines[4].c_str(), lines[5].c_str(), lines[6].c_str());
-
-		Size         size;
 		Ptr<TileSet> tileSet;
 		auto spriteSet = New<SpriteSet>();
 
@@ -188,9 +179,9 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<Path> ContentManager::LoadResourceFromStream(FileStream &fs)
+	UniquePtr<Path> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
-		auto path = New<Path>();
+		auto path = NewUnique<Path>();
 		auto wayPoints = fs.ReadAll<uint16_t>();
 
 		ASSERT(wayPoints.size() % 2 == 0, "Error: Incorrect path file");
@@ -204,9 +195,9 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<Model> ContentManager::LoadResourceFromStream(FileStream &fs)
+	UniquePtr<Model> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
-		auto model = New<Model>();
+		auto model = NewUnique<Model>();
 
 		StreamReader reader(fs);
 
@@ -235,7 +226,7 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<ModelMesh> ContentManager::LoadResourceFromStream(FileStream &fs)
+	UniquePtr<ModelMesh> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		struct MeshFileHeader
 		{
@@ -259,14 +250,14 @@ namespace Framework
 		meshPart.VertexBuffer->SetData(meshPart.Vertices);
 		meshPart.IndexBuffer->SetData(meshPart.Indices);
 
-		auto mesh = New<ModelMesh>();
+		auto mesh = NewUnique<ModelMesh>();
 		mesh->AddPart(meshPart);
 		return mesh;
 	}
 
 	//-------------------------------------------------------------------------------------------------
 	template<>
-	Ptr<Texture> ContentManager::LoadResourceFromStream(FileStream &fs)
+	UniquePtr<Texture> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		struct TextureFileHeader
 		{
@@ -280,7 +271,7 @@ namespace Framework
 		int width = header.Width;
 		int height = header.Height;
 
-		auto texture = New<Texture>(width, height);
+		auto texture = NewUnique<Texture>(width, height);
 		texture->Pixels = fs.ReadAll<uint16_t>();
 
 		sassert((int)texture->Pixels.size() == width * height, "File size does not match texture dimensions");
@@ -289,10 +280,10 @@ namespace Framework
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	template<>
-	Ptr<Scene> ContentManager::LoadResourceFromStream(FileStream &fs)
+	/*template<>
+	UniquePtr<Scene> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
-		Ptr<Scene> scene = New<Scene>();
+		auto scene = NewUnique<Scene>();
 
 		StreamReader reader(fs);
 
@@ -317,13 +308,13 @@ namespace Framework
 			bool isSolid = StringHelper::ParseBool(tokens[10]);
 			Matrix world = scale * rotX * rotY * rotZ * translation;
 			
-			auto object = New<SceneObject>(model, world, isSolid);
+			auto object = NewUnique<SceneObject>(model, world, isSolid);
 
 			scene->AddObject(object);
 		}
 
 		return scene;
-	}
+	}*/
 
 	//-------------------------------------------------------------------------------------------------
 	/*void ContentManager::BeginProfiling()

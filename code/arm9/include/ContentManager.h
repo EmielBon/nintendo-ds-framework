@@ -13,18 +13,18 @@ namespace Framework
 
 		/// Load a specific resource from the file with the specified name
 		template<class T>
-		static Ptr<T> Load(const String &name);
+		static UniquePtr<T> Load(const String &name);
 
 	private:
 
 		/// Load the file's data
 		template<class T>
-		static Ptr<T> LoadResourceFromStream(FileSystem::FileStream &fs);
+		static UniquePtr<T> LoadResourceFromStream(FileSystem::FileStream &fs);
 	};
 
 	//-------------------------------------------------------------------------------------------------
 	template<class T>
-	inline Ptr<T> ContentManager::Load(const String &name)
+	inline UniquePtr<T> ContentManager::Load(const String &name)
 	{
 		using namespace FileSystem;
 

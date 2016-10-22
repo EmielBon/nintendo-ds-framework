@@ -31,7 +31,6 @@
 // Debug
 #include "Logging.h"
 #include "FPSCounter.h"
-#include "DebugUI.h"
 #include "Debug.h"
 #include "BasicEffect.h"
 

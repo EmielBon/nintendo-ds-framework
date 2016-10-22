@@ -55,15 +55,13 @@ void Refactoring2DEngineTest::LoadContent()
 {
 	super::LoadContent();
 	
-	auto tileSet = Content.Load<TileSet>("background");
-
-	auto linkTiles = Content.Load<TileSet>("link32x32");
 	auto rabbitTiles = Content.Load<TileSet>("rabbit16x16");
 
 	auto bitmapBackground = Content.Load<Texture>("background_bitmap");
 	auto address = GraphicsDevice::Main.BackgroundMemory->StartAddress();
 	memcpy(address, bitmapBackground->Pixels.data(), bitmapBackground->GetByteSize());
 
+	auto linkTiles = Content.Load<TileSet>("link32x32");
 	TiledImage linkImage = linkTiles->GetTiledImageAtIndex(59);
 	sprite = GraphicsDevice.SpriteMemory->AddSprite(linkImage);
 }
@@ -83,7 +81,7 @@ void Refactoring2DEngineTest::Draw(const GameTime &gameTime)
 	//GraphicsDevice::Main.Backgrounds[2]->ShowMapWithIndex(0);
 
 	GraphicsDevice::Sub.Backgrounds[0]->ShowMapWithIndex(0);
-	
-	GraphicsDevice::Main.ObjectAttributeMemory.DrawSprite(sprite, 50.0f, 50.0f, 0, 1.0f, 1.0f, OBJPRIORITY_0);
+
+	GraphicsDevice::Main.ObjectAttributeMemory.DrawSprite(sprite, 50.0f, 50.0f, 1.0f, 1.0f, OBJPRIORITY_0);
 	//GraphicsDevice::Main.ObjectAttributeMemory.DrawSprite(sprite2, 100.0f, 50.0f, 0, 1.0f, 1.0f, OBJPRIORITY_0);
 }

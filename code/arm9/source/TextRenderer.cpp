@@ -4,10 +4,10 @@
 #include "GraphicsDevice.h"
 #include "BackgroundMemory.h"
 #include "Color.h"
-#include "Font.h"
 #include "Screen.h"
 #include "ScreenBlockEntry.h"
 #include "PaletteMemory.h"
+#include "TileSet.h"
 
 // Debugging
 #include "Logging.h"
@@ -27,7 +27,7 @@ namespace Graphics
 	//-------------------------------------------------------------------------------------------------
 	void TextRenderer::LoadContent()
 	{
-		Font = ContentManager::Load<Graphics::Font>(FontName);
+		Font = ContentManager::Load<Graphics::TileSet>(FontName);
 		int index = Background->GetMapIndex();
 		sassert(index >= 0 && index <= 3, "Map index out of bounds");
 		// Set the map's clear tile to the font's first glyph. todo: This makes little sense, it takes the first 8x8 tile in the tileset
@@ -53,8 +53,8 @@ namespace Graphics
 		int mapHeight8x8 = size.Height;
 		
 		// Glyph size and tile count
-		int charWidth  = Font->CharSize().Width  / 8;
-		int charHeight = Font->CharSize().Height / 8;
+		int charWidth  = Font->GetTileSize().Width  / 8;
+		int charHeight = Font->GetTileSize().Height / 8;
 		int tilesPerChar = charWidth * charHeight;
 		
 		int palIndex = 0 / 16;

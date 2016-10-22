@@ -4,7 +4,6 @@
 
 namespace Graphics
 {
-
 	struct Sprite
 	{
 		Sprite() : Identifier(0), Shape(OBJSHAPE_FORBIDDEN), Size(OBJSIZE_8)
@@ -21,7 +20,4 @@ namespace Graphics
 		ObjShape Shape;
 		ObjSize Size;
 	};
-
-	using SpriteSet = Dictionary<String, List<Sprite*>>;
-
 }

@@ -2,9 +2,9 @@
 #include "TextRenderer.h"
 #include "Color.h"
 #include "Input.h"
-#include "Font.h"
 #include "Screen.h"
 #include "Background.h"
+#include "TileSet.h"
 #include "Assert.h"
 
 namespace System
@@ -59,7 +59,7 @@ namespace System
 		//Background->Clear();
 
 		// Todo: clean up
-		int charWidth = Font->CharSize().Width;
+		int charWidth = Font->GetTileSize().Width;
 		//int charHeight = Font->CharSize().Height;
 		//int charHeight8x8 = charHeight / 8;
 
@@ -76,8 +76,9 @@ namespace System
 			//	break;
 
 			String text = entries[entryIndex];
-			int textWidth = Font->WidthForString(text);
-			text = (textWidth < 256) ? text : Font->StringForWidth(text, 256 - 2 * charWidth) + "..";
+			int textWidth = text.length() * charWidth;
+			String cappedString = text.substr(0, (256 - 2 * charWidth) / charWidth);
+			text = (textWidth < 256) ? text : cappedString + "..";
 			//int y = (startRow + entryIndex * charHeight8x8)% 32 ;
 			int y = entryIndex % 32;
 			DrawText(text, 0, y, 0);

@@ -26,7 +26,7 @@ DATA		:=  data
 ARCH	:=	-mthumb -mthumb-interwork
 
 CFLAGS	:=	-g -Wall -O3\
-			-std=c++11\
+			-std=c++14\
  			-march=armv5te -mtune=arm946e-s -fomit-frame-pointer\
 			-ffast-math -finline-functions\
 			$(ARCH)

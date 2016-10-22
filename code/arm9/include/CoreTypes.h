@@ -19,6 +19,7 @@
 // Template aliases
 template<class T> using Ptr = std::shared_ptr<T>;
 template<class T> using WeakPtr = std::weak_ptr<T>;
+template<class T> using UniquePtr = std::unique_ptr<T>;
 template<class T> using List = std::vector<T>;
 template<class T> using Set = std::set<T>;
 template<class T> using LinkedList = std::list<T>;
@@ -38,6 +39,7 @@ using fx24 = fixed<24>;
 
 // Defines
 #define New        std::make_shared
+#define NewUnique  std::make_unique
 #define MakePair   std::make_pair
 #define MakeTuple  std::make_tuple
 

@@ -8,7 +8,6 @@
 #include "Console.h"
 #include "NDSGameHost.h"
 #include "Timer.h"
-#include "DebugUI.h"
 
 // libnds
 #include <filesystem.h>

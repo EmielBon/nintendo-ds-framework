@@ -28,7 +28,7 @@ namespace Graphics
 	public:
 
 		String FontName;
-		Ptr<Graphics::Font> Font;
+		Ptr<Graphics::TileSet> Font;
 		Ptr<Graphics::Palette> Palette;
 		Graphics::Background *Background;
 	};

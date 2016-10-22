@@ -11,16 +11,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\AbstractButton.cpp" />
     <ClCompile Include="source\BasicEffect.cpp" />
     <ClCompile Include="source\BinaryReader.cpp" />
     <ClCompile Include="source\BoundingBox.cpp" />
     <ClCompile Include="source\BoundingSphere.cpp" />
-    <ClCompile Include="source\Button.cpp" />
     <ClCompile Include="source\Color.cpp" />
     <ClCompile Include="source\ConsoleTest.cpp" />
     <ClCompile Include="source\DebuggerTest.cpp" />
-    <ClCompile Include="source\DebugUI.cpp" />
     <ClCompile Include="source\DebugUITest.cpp" />
     <ClCompile Include="source\DisplayList.cpp" />
     <ClCompile Include="source\DrawableGameComponent.cpp" />
@@ -33,7 +30,6 @@
     <ClCompile Include="source\GameObject.cpp" />
     <ClCompile Include="source\GameTime.cpp" />
     <ClCompile Include="source\GraphicsDeviceManager.cpp" />
-    <ClCompile Include="source\Component.cpp" />
     <ClCompile Include="source\JumpBumpGame.cpp" />
     <ClCompile Include="source\LogEntry.cpp" />
     <ClCompile Include="source\LogPrinter.cpp" />
@@ -63,7 +59,6 @@
     <ClCompile Include="source\TouchState.cpp" />
     <ClCompile Include="source\VertexBuffer.cpp" />
     <ClCompile Include="source\X11Palette.cpp" />
-    <ClInclude Include="include\AbstractButton.h" />
     <ClInclude Include="include\Assert.h" />
     <ClInclude Include="include\Backgrounds.h" />
     <ClInclude Include="include\BinaryReader.h" />
@@ -72,14 +67,11 @@
     <ClInclude Include="include\BoundingSphere.h" />
     <ClInclude Include="include\BasicEffect.h" />
     <ClInclude Include="include\BreakPoint.h" />
-    <ClInclude Include="include\Button.h" />
     <ClInclude Include="include\ConsoleTest.h" />
-    <ClInclude Include="include\Container.h" />
     <ClInclude Include="include\ContainmentType.h" />
     <ClInclude Include="include\DateTime.h" />
     <ClInclude Include="include\Debug.h" />
     <ClInclude Include="include\DebuggerTest.h" />
-    <ClInclude Include="include\DebugUI.h" />
     <ClInclude Include="include\DebugUITest.h" />
     <ClInclude Include="include\DirectionalLight.h" />
     <ClInclude Include="include\DisplayList.h" />
@@ -90,7 +82,6 @@
     <ClInclude Include="include\FixedHelper.h" />
     <ClInclude Include="include\FixedPointUnitTest.h" />
     <ClInclude Include="include\FlyingCamera.h" />
-    <ClInclude Include="include\Font.h" />
     <ClInclude Include="include\FPSCounter.h" />
     <ClInclude Include="include\Framework.h" />
     <ClInclude Include="include\Framework2D.h" />
@@ -103,8 +94,6 @@
     <ClInclude Include="include\GlobalFunctions.h" />
     <ClInclude Include="include\Graphics.h" />
     <ClInclude Include="include\GraphicsDeviceManager.h" />
-    <ClInclude Include="include\GUI.h" />
-    <ClInclude Include="include\Component.h" />
     <ClInclude Include="include\IActionListener.h" />
     <ClInclude Include="include\IDisposable.h" />
     <ClInclude Include="include\IDrawable.h" />

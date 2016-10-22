@@ -2,7 +2,6 @@
 #include "StringHelper.h"
 #include "Game.h"
 #include "Console.h"
-#include "DebugUI.h"
 
 namespace Debug
 {
@@ -38,7 +37,6 @@ namespace Debug
 	void LogPrinter::Clear()
 	{
 		oldLogSize = 0;
-		DebugUI::Console->Clear();
 	}
 
 	//-------------------------------------------------------------------------------------------------
@@ -54,8 +52,6 @@ namespace Debug
 			String indent = StringHelper::Replicate("| ", (depth - 1) * indentAmount);
 			prefix = indent + ToStr(enumerationToken) + " ";
 		}
-
-		DebugUI::Console->WriteLine(prefix + entry.Title);
 
 		auto &entries = entry.SubEntries;
 

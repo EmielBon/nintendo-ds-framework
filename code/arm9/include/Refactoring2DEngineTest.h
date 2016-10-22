@@ -23,6 +23,5 @@ public:
 	System::Console *console;
 	Graphics::Sprite sprite;
 	Graphics::Sprite sprite2;
-	Graphics::SpriteSet spriteSet;
 	fx12 imageIndex;
 };
