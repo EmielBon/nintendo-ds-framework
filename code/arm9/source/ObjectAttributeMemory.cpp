@@ -2,7 +2,6 @@
 #include "GraphicsDevice.h"
 #include "Logging.h"
 #include "MathFunctions.h"
-#include "Sprite.h"
 #include "FixedHelper.h"
 #include "SpriteMemory.h"
 #include <nds/dma.h>
@@ -41,9 +40,10 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void ObjectAttributeMemory::DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex, fx8 horizontalScale, fx8 verticalScale)
+	void ObjectAttributeMemory::DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex, fx8 horizontalScale, fx8 verticalScale, ObjPriority layer)
 	{
 		auto &entry = oam->oamBuffer[spriteCount];
+		
 		entry.gfxIndex = graphicsDevice->SpriteMemory->VRAMIndexForTile(sprite.Identifier);
 
 		entry.x = (int)Math::Round(x);
@@ -52,9 +52,9 @@ namespace Graphics
 		entry.isMosaic = false;
 		entry.isRotateScale = true;
 		entry.isSizeDouble = false;
-		entry.size = sprite.size;
-		entry.shape = sprite.shape;
-		entry.priority = sprite.Priority;
+		entry.size = sprite.Size;
+		entry.shape = sprite.Shape;
+		entry.priority = layer;
 		entry.colorMode = OBJCOLOR_256;
 		entry.rotationIndex = spriteCount;
 
@@ -79,6 +79,8 @@ namespace Graphics
 		default: return 1;
 		}
 	}
+
+	
 
 	//-------------------------------------------------------------------------------------------------
 	void ObjectAttributeMemory::Reset()

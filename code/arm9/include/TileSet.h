@@ -11,6 +11,7 @@
 #include "types.h"
 #include "Tile.h"
 #include "Size.h"
+#include "TiledImage.h"
 
 namespace Graphics
 {
@@ -28,7 +29,7 @@ namespace Graphics
 		void AddTile(const Tile &tile);
 
 		/// Get the size of the tiles in this tile set
-		Framework::Size GetTileSize() const;
+		Size GetTileSize() const;
 
 		/// Returns whether this tile set contains any tiles
 		bool IsEmpty() const;
@@ -48,6 +49,8 @@ namespace Graphics
 		/// Returns whether this tile can be added to this tile set
 		bool TileIsCompatible(const Tile &tile) const;
 
+		TiledImage GetTiledImageAtIndex(int index) const;
+
 		//////////////////////////////////////////////
 		// Todo: Overlap with other data containers //
 		//////////////////////////////////////////////
@@ -56,7 +59,7 @@ namespace Graphics
 
 	public:
 
-		Framework::Size tileSize;
+		Size tileSize;
 		// todo: use a list of TiledImages instead of Tiles
 		List<Tile> Tiles;
 	};
@@ -75,7 +78,7 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline Framework::Size TileSet::GetTileSize() const
+	inline Size TileSet::GetTileSize() const
 	{
 		return tileSize;
 	}

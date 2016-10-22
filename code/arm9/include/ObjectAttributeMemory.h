@@ -2,6 +2,7 @@
 
 #include "types.h"
 #include <nds/arm9/sprite.h>
+#include "Sprite.h"
 
 namespace Graphics
 {
@@ -29,7 +30,7 @@ namespace Graphics
 		void Update();
 
 		/// Adds a sprite to the Nintendo DS's OAM memory 
-		void DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex, fx8 horizontalScale, fx8 verticalScale);
+		void DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx12 imageIndex, fx8 horizontalScale, fx8 verticalScale, ObjPriority layer);
 
 		/// Clears all sprite entries
 		void Reset();

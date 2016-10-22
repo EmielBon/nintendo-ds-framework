@@ -1,7 +1,7 @@
 #include "SpriteMemory.h"
 #include "Logging.h"
 #include "VideoRamBank.h"
-#include "Sprite.h"
+#include "MathFunctions.h"
 #include <nds/arm9/video.h>
 
 namespace Graphics
@@ -50,5 +50,53 @@ namespace Graphics
 	u16* SpriteMemory::TileBaseAddress() const
 	{
 		return IsMain() ? SPRITE_GFX : SPRITE_GFX_SUB;
+	}
+
+	Sprite SpriteMemory::AddSprite(const TiledImage &tiledImage)
+	{
+		Size size = tiledImage.Size;
+		ObjShape objShape = ObjShapeForSize(size);
+		ObjSize objSize = ObjSizeForSize(size);
+
+		for (auto &tile : tiledImage.Tiles)
+		{
+			AddTile(tile);
+		}
+
+		return Sprite(tiledImage[0].Identifier, objShape, objSize);
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	ObjSize SpriteMemory::ObjSizeForSize(Size size)
+	{
+		ObjSize objSize = OBJSIZE_8;
+
+		int majorSize = Math::Max(size.Width, size.Height);
+
+		switch (majorSize)
+		{
+		case  8: objSize = OBJSIZE_8;  break;
+		case 16: objSize = OBJSIZE_16; break;
+		case 32: objSize = OBJSIZE_32; break;
+		case 64: objSize = OBJSIZE_64; break;
+		default: CRASH("Error: Invalid sprite size"); break;
+		}
+
+		return objSize;
+	}
+
+	//-------------------------------------------------------------------------------------------------
+	ObjShape SpriteMemory::ObjShapeForSize(Size size)
+	{
+		ObjShape shape = OBJSHAPE_SQUARE;
+		int width = size.Width;
+		int height = size.Height;
+
+		if (width > height)
+			shape = OBJSHAPE_WIDE;
+		if (width < height)
+			shape = OBJSHAPE_TALL;
+
+		return shape;
 	}
 }

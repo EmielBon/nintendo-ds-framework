@@ -295,9 +295,6 @@
     <ClInclude Include="include\Size.h">
       <Filter>Framework</Filter>
     </ClInclude>
-    <ClInclude Include="include\SpriteSubImage.h">
-      <Filter>Graphics\Sprite</Filter>
-    </ClInclude>
     <ClInclude Include="include\BreakPoint.h">
       <Filter>Debug</Filter>
     </ClInclude>
@@ -452,9 +449,6 @@
     </ClCompile>
     <ClCompile Include="source\PaletteMemory.cpp">
       <Filter>Graphics\Palette</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Sprite.cpp">
-      <Filter>Graphics\Sprite</Filter>
     </ClCompile>
     <ClCompile Include="source\SpriteMemory.cpp">
       <Filter>Graphics\Sprite</Filter>

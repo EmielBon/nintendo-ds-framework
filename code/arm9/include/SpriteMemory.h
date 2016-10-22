@@ -2,6 +2,8 @@
 
 #include "TileMemory.h"
 #include "types.h"
+#include "Sprite.h"
+#include "Size.h"
 
 namespace Graphics
 {
@@ -30,6 +32,12 @@ namespace Graphics
 
 		///
 		u16* TileBaseAddress() const;
+
+		Sprite AddSprite(const TiledImage &tiledImage);
+
+		ObjSize ObjSizeForSize(Size size);
+
+		ObjShape ObjShapeForSize(Size size);
 	};
 
 	//-------------------------------------------------------------------------------------------------

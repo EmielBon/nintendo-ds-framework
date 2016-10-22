@@ -31,7 +31,6 @@ namespace Graphics
 
 	class Tile;
 	class TileSet;
-	class Sprite;
 	class Palette;
 	class Background;
 	class TextRenderer;
@@ -58,7 +57,6 @@ namespace Graphics
 	class IndexBuffer;
 
 	using TileParameters = ScreenBlockEntry;
-	using SpriteSet = Dictionary<String, Sprite*>;
 	using SpriteResource = List<SpriteEntry>;
 }
 

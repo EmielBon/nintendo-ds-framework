@@ -12,7 +12,7 @@ namespace Graphics
 
 		Font() = default;
 
-		Framework::Size CharSize() { return tileSize; }
+		Size CharSize() { return tileSize; }
 
 		int WidthForString(const String &str) { return str.length() * CharSize().Width; }
 

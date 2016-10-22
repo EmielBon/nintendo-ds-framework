@@ -23,7 +23,7 @@ namespace Framework2D
 	public:
 
 		List<u8> Colors;
-		const Framework::Size Size;
+		const ::Size Size;
 	};
 
 	//-------------------------------------------------------------------------------------------------

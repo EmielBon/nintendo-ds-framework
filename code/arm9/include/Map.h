@@ -40,7 +40,7 @@ namespace Graphics
 	private:
 
 		int               index;
-		Framework::Size   size; 
+		Size			  size; 
 		u16*              location;
 		
 	public:

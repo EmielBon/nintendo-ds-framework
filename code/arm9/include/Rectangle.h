@@ -17,7 +17,7 @@ namespace Framework
 	public:
 
 		Framework::Point Position;
-		Framework::Size  Size;
+		::Size Size;
 	};
 
 	//-------------------------------------------------------------------------------------------------

@@ -2,7 +2,6 @@
 
 #include "Size.h"
 #include "types.h"
-// todo: only here for the bpp assertion in SetTile 
 #include "Tile.h"
 
 namespace Graphics
@@ -10,44 +9,35 @@ namespace Graphics
 	class TiledImage
 	{
 	public:
-	
-		/// Empty constructor
-		TiledImage();
 		
 		///
-		TiledImage(int width, int height);
+		TiledImage(int width, int height, const List<Tile> &tiles);
 		
 		///
 		int GetTileIndex(int x, int y) const;
-	
-		///
-		Tile* GetTile(int i) const;
 
 		///
-		Tile* GetTile(int x, int y) const;
+		const Tile& GetTile(int x, int y) const;
 
 		///
-		void SetTile(int i, Tile *tile);
+		void SetTile(int x, int y, const Tile &tile);
 
 		///
-		void SetTile(int x, int y, Tile *tile);
+		Tile& operator [](int index);
 		
+		///
+		const Tile& operator [](int index) const;
+
 	public:
 		
-		List<Tile*> Tiles;
-		Framework::Size Size;
+		List<Tile> Tiles;
+		::Size Size;
 	};
 	
 	//-------------------------------------------------------------------------------------------------
-	inline TiledImage::TiledImage()
+	inline TiledImage::TiledImage(int width, int height, const List<Tile> &tiles) : Tiles(tiles), Size(width, height)
 	{
 		
-	}
-	
-	//-------------------------------------------------------------------------------------------------
-	inline TiledImage::TiledImage(int width, int height) : Size(width, height)
-	{
-		Tiles.assign(width * height, nullptr);
 	}
 	
 	//-------------------------------------------------------------------------------------------------
@@ -57,28 +47,28 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline Tile* TiledImage::GetTile(int i) const
+	inline const Tile& TiledImage::GetTile( int x, int y ) const
 	{
-		return Tiles[i];
+		int index = GetTileIndex(x, y);
+		return Tiles[index];
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline Tile* TiledImage::GetTile( int x, int y ) const
+	inline void TiledImage::SetTile( int x, int y, const Tile &tile )
 	{
-		return GetTile( GetTileIndex(x, y) );
+		int index = GetTileIndex(x, y);
+		Tiles[index] = tile;
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline void TiledImage::SetTile(int i, Tile *tile)
+	inline Tile& TiledImage::operator[](int index) 
 	{
-		// Assert there are no tiles of different bpp in this map
-		sassert(tile, "Cannot set tile to null");
-		Tiles[i] = tile;
+		return Tiles[index];
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	inline void TiledImage::SetTile( int x, int y, Tile *tile )
+	inline const Tile& TiledImage::operator[](int index) const
 	{
-		Tiles[ GetTileIndex(x, y) ] = tile;
+		return Tiles[index];
 	}
 }

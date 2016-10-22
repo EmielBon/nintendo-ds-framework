@@ -147,7 +147,6 @@
     <ClInclude Include="include\SetHelper.h" />
     <ClInclude Include="include\Size.h" />
     <ClInclude Include="include\Sprites.h" />
-    <ClInclude Include="include\SpriteSubImage.h" />
     <ClInclude Include="include\StreamReader.h" />
     <ClInclude Include="include\StringHelper.h" />
     <ClInclude Include="include\System.h" />
@@ -235,7 +234,6 @@
     <ClCompile Include="source\Path.cpp" />
     <ClCompile Include="source\Room.cpp" />
     <ClCompile Include="source\Screen.cpp" />
-    <ClCompile Include="source\Sprite.cpp" />
     <ClCompile Include="source\SpriteMemory.cpp" />
     <ClCompile Include="source\Test3D.cpp" />
     <ClCompile Include="source\TextRenderer.cpp" />
