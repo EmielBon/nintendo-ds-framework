@@ -4,6 +4,7 @@
 #include "MathFunctions.h"
 #include "FixedHelper.h"
 #include "SpriteMemory.h"
+#include "Mat.h"
 #include <nds/dma.h>
 #include <nds/arm9/cache.h>
 
@@ -40,7 +41,7 @@ namespace Graphics
 	}
 
 	//-------------------------------------------------------------------------------------------------
-	void ObjectAttributeMemory::DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx8 horizontalScale, fx8 verticalScale, ObjPriority layer)
+	void ObjectAttributeMemory::DrawSprite(const Sprite &sprite, fx12 x, fx12 y, Mat<fx8> transform, ObjPriority layer)
 	{
 		auto &entry = oam->oamBuffer[spriteCount];
 		
@@ -59,10 +60,10 @@ namespace Graphics
 		entry.rotationIndex = spriteCount;
 
 		SpriteRotation &rotObj = oam->matrixBuffer[spriteCount];
-		rotObj.hdx = FixedHelper::Tof16(fx8(1) / horizontalScale);
-		rotObj.hdy = 0;
-		rotObj.vdx = 0;
-		rotObj.vdy = FixedHelper::Tof16(fx8(1) / verticalScale);
+		rotObj.hdx = transform[0].number;//FixedHelper::Tof16(fx8(1) / horizontalScale);
+		rotObj.hdy = transform[1].number;
+		rotObj.vdx = transform[4].number;
+		rotObj.vdy = transform[5].number;//FixedHelper::Tof16(fx8(1) / verticalScale);
 
 		spriteCount++;
 	}

@@ -29,14 +29,11 @@ namespace Graphics
 			return vramIndex;
 		}
 
-		// Map the tile's pixels to colors in palette memory
 		Tile palettedTile = PalettedTileFromTile(tile);
 		// Generate a new free location for the next addition
 		vramIndex = nextAvailableIndex++;
 		// Copy the tile to the next available VRAM location
-		// todo: wont this overwrite stuff if 4bpp tiles are added second?
 		uint16_t* location = TileBaseAddress() + vramIndex * palettedTile.ByteSize() / sizeof(uint16_t);
-
 		bool success = Add(palettedTile.Pixels, location);
 		sassert(success, "Failed to copy tiles to VRAM");
 		// Register the identifier to the VRAM location

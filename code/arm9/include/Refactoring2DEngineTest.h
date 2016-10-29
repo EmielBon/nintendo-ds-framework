@@ -22,6 +22,8 @@ public:
 
 	System::Console *console;
 	Graphics::Sprite sprite;
-	Graphics::Sprite sprite2;
+	Graphics::Sprite chomp;
 	fx12 imageIndex;
+	float rotation;
+	float x;
 };

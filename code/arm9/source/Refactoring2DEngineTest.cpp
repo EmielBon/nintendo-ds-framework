@@ -48,21 +48,28 @@ void Refactoring2DEngineTest::Initialize()
 
 	console->WriteLine("");
 
+	rotation = 0;
+	float x = 160.0f;
+
 	super::Initialize();
 }
 
 void Refactoring2DEngineTest::LoadContent()
 {
 	super::LoadContent();
-	
-	auto rabbitTiles = Content.Load<TileSet>("rabbit16x16");
 
 	auto bitmapBackground = Content.Load<Texture>("background_bitmap");
 	auto address = GraphicsDevice::Main.BackgroundMemory->StartAddress();
 	memcpy(address, bitmapBackground->Pixels.data(), bitmapBackground->GetByteSize());
 
+	auto chompTiles = Content.Load<TileSet>("chomp64x64");
+	TiledImage chompImage = chompTiles->GetTiledImageAtIndex(0);
+	chomp = GraphicsDevice.SpriteMemory->AddSprite(chompImage);
 	auto linkTiles = Content.Load<TileSet>("link32x32");
-	TiledImage linkImage = linkTiles->GetTiledImageAtIndex(59);
+	auto linkImage = linkTiles->GetTiledImageAtIndex(59);
+	GraphicsDevice.SpriteMemory->AddSprite(linkImage);	
+	linkTiles = Content.Load<TileSet>("link32x32");
+	linkImage = linkTiles->GetTiledImageAtIndex(59);
 	sprite = GraphicsDevice.SpriteMemory->AddSprite(linkImage);
 }
 
@@ -82,6 +89,8 @@ void Refactoring2DEngineTest::Draw(const GameTime &gameTime)
 
 	GraphicsDevice::Sub.Backgrounds[0]->ShowMapWithIndex(0);
 
-	GraphicsDevice::Main.ObjectAttributeMemory.DrawSprite(sprite, 50.0f, 50.0f, 1.0f, 1.0f, OBJPRIORITY_0);
-	//GraphicsDevice::Main.ObjectAttributeMemory.DrawSprite(sprite2, 100.0f, 50.0f, 0, 1.0f, 1.0f, OBJPRIORITY_0);
+	rotation += -0.001f;
+	x += -0.025f;
+	GraphicsDevice::Main.ObjectAttributeMemory.DrawSprite(sprite, 50.0f, 50.0f, Mat<fx8>::Identity(), OBJPRIORITY_0);
+	GraphicsDevice::Main.ObjectAttributeMemory.DrawSprite(chomp, x, 100.0f, Mat<fx8>::CreateRotationZ(rotation), OBJPRIORITY_0);
 }

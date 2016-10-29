@@ -126,7 +126,7 @@ namespace Framework
 
 	//-------------------------------------------------------------------------------------------------
 	/*template<>
-	Ptr<AnimationData> ContentManager::LoadResourceFromStream(FileStream &fs)
+	UniquePtr<AnimationData> ContentManager::LoadResourceFromStream(FileStream &fs)
 	{
 		StreamReader reader(fs);
 		auto lines = reader.ReadToEnd();
@@ -175,8 +175,8 @@ namespace Framework
 		}
 
 		return spriteSet;
-	}*/
-
+	}
+	*/
 	//-------------------------------------------------------------------------------------------------
 	template<>
 	UniquePtr<Path> ContentManager::LoadResourceFromStream(FileStream &fs)

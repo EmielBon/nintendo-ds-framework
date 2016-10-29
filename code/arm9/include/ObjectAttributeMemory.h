@@ -30,7 +30,7 @@ namespace Graphics
 		void Update();
 
 		/// Adds a sprite to the Nintendo DS's OAM memory 
-		void DrawSprite(const Sprite &sprite, fx12 x, fx12 y, fx8 horizontalScale, fx8 verticalScale, ObjPriority layer);
+		void DrawSprite(const Sprite &sprite, fx12 x, fx12 y, Mat<fx8> transform, ObjPriority layer);
 
 		/// Clears all sprite entries
 		void Reset();
